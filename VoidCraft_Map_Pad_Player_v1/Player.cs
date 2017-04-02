@@ -8,9 +8,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         /// <summary>
         /// Statystyki Postaci
         /// </summary>
-
-            // TESTOWY KOMENTARZ!
-
+        
         // HP
         public int HP { get; set; }
         private int HP_Czas;
