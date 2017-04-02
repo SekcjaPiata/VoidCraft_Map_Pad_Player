@@ -6,10 +6,18 @@ using MapControler;
 
 namespace PlayerControler {
     class Player {
+
+        /*
+          
+        TO DO: 
+        1. Poprawic wczytywanie tekstur (wrzucic do Klasy) 
+        2. Dodac Animacje Idle w kazdym kierunku
+        
+        */
+
         /// <summary>
         /// Statystyki Postaci
         /// </summary>
-        
         // HP
         public int HP { get; set; }
         private int HP_Czas;
@@ -170,7 +178,7 @@ namespace PlayerControler {
             //Spadek_HP(gameTime);
             Spadek_Wody(gameTime);
             Spadek_Glod(gameTime);
-            //  Spadek_Strach(gameTime);
+            //Spadek_Strach(gameTime);
         }
 
     }
