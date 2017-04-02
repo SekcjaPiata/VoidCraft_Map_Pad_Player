@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MapControler;
 
-namespace VoidCraft_Map_Pad_Player_v1 {
+namespace PlayerControler {
     class Player {
         /// <summary>
         /// Statystyki Postaci
@@ -152,13 +153,14 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         /// <summary>
         /// Sterowanie
         /// </summary>
-        public void Move(int direction, List<Texture2D> tx) {
+        public void Move(Direction direction, List<Texture2D> tx) {
             switch (direction) {
-                case 0: { Texture = tx[4]; break; }
-                case 1: { Texture = tx[0]; break; }
-                case 2: { Texture = tx[1]; break; }
-                case 3: { Texture = tx[2]; break; }
-                case 4: { Texture = tx[3]; break; }
+
+                case Direction.None: { Texture = tx[4]; break; }
+                case Direction.Up: { Texture = tx[2]; break; }
+                case Direction.Down: { Texture = tx[3]; break; }
+                case Direction.Left: { Texture = tx[1]; break; }
+                case Direction.Right: { Texture = tx[0]; break; }
                 default: break;
             }
         }

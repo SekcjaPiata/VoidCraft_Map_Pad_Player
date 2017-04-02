@@ -6,6 +6,7 @@ using MapControler;
 using PadControler;
 using System;
 using System.Collections.Generic;
+using PlayerControler;
 
 namespace VoidCraft_Map_Pad_Player_v1 {
     public class Game1 : Game {
@@ -90,26 +91,26 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
             if (ButtonPressed.Contains(GamePadStatus.None)) {
                 WalkingDirection = Direction.None;
-                Gracz.Move(0, PlayerMoveTexture);
+                Gracz.Move(Direction.None, PlayerMoveTexture);
             } else
             if (ButtonPressed.Contains(GamePadStatus.Up)) {
                 WalkingDirection = Direction.Up;
-                Gracz.Move(3, PlayerMoveTexture);
+                Gracz.Move(Direction.Up, PlayerMoveTexture);
                 map.MoveMap(0, -Speed);
             } else
             if (ButtonPressed.Contains(GamePadStatus.Down)) {
                 WalkingDirection = Direction.Down;
-                Gracz.Move(4, PlayerMoveTexture);
+                Gracz.Move(Direction.Down, PlayerMoveTexture);
                 map.MoveMap(0, Speed);
             } else
             if (ButtonPressed.Contains(GamePadStatus.Right)) {
                 WalkingDirection = Direction.Right;
-                Gracz.Move(1, PlayerMoveTexture);
+                Gracz.Move(Direction.Right, PlayerMoveTexture);
                 map.MoveMap(Speed, 0);
             } else
             if (ButtonPressed.Contains(GamePadStatus.Left)) {
                 WalkingDirection = Direction.Left;
-                Gracz.Move(2, PlayerMoveTexture);
+                Gracz.Move(Direction.Left, PlayerMoveTexture);
                 map.MoveMap(-Speed, 0);
             }
 

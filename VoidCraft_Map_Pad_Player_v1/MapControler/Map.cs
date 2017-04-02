@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace MapControler {
     enum Direction {
-        None, On, Left, Right, Up, Down
+        None,Left, Right, Up, Down
     }
 
     class Map {
