@@ -166,8 +166,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
             if (Gracz.HP != 0) { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(100, 100), Color.Black); } else { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
 
-            Gracz.Draw(spriteBatch, new Vector2(
-                ((ScreenX / 2) - (map.GetZoomValue() / 2)), ((ScreenY / 2))-42)
+            Gracz.Draw(spriteBatch, new Rectangle(
+                ((ScreenX / 2) - (map.GetZoomValue() / 2)), ((ScreenY / 2))-42,map.GetZoomValue(), map.GetZoomValue())
                 ); // Rysowanie Gracza
 
 

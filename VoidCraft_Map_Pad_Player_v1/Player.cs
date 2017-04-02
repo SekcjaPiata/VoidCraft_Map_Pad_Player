@@ -134,7 +134,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         /// <summary>
         /// Rysowanie Postaci
         /// </summary>
-        public void Draw(SpriteBatch spriteBatch, Vector2 location) {
+        public void Draw(SpriteBatch spriteBatch, Rectangle location) {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
             int row = (int)((float)currentFrame / Columns);
@@ -142,7 +142,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
 
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, location.Width, location.Height+ (int)(location.Height * 0.4));
 
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
