@@ -1,0 +1,188 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
+using MapControler;
+using PadControler;
+using System;
+using System.Collections.Generic;
+
+namespace VoidCraft_Map_Pad_Player_v1 {
+    public class Game1 : Game {
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
+        SpriteFont sf;
+        Map map;
+        GameControler Pad;
+        Direction WalkingDirection;
+        Texture2D asd;
+        double Speed = 0.05;
+        int LicznikPachPach = 0;
+        public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
+
+        private Player Gracz; // Tworzenie istancji
+
+        private SpriteFont font; // Napis
+
+        private int IloscKlatek = 4; // ilosc klatek w danej animacji  
+
+        public int ScreenX { get; private set; }
+        public int ScreenY { get; private set; }
+        bool A = false;
+        public Game1() {
+            graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+            WalkingDirection = Direction.None;
+            graphics.IsFullScreen = true;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 480;
+            graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
+
+        }
+
+        protected override void Initialize() {
+            ScreenX = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+            sf = Content.Load<SpriteFont>("SpriteFontPL");
+
+            PlayerMoveTexture = new List<Texture2D>();
+            map = new Map(GraphicsDevice, "ProjektTestowy", ScreenX, ScreenY);
+            // map = new Map(GraphicsDevice, "JohnnoweTekstury", ScreenX, ScreenY);
+            //map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
+            map.SetPosition(22, 20);
+            Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
+
+            using (var stream = TitleContainer.OpenStream("Content/Bot.png")) {
+                asd = Texture2D.FromStream(GraphicsDevice, stream);
+            }
+
+            font = Content.Load<SpriteFont>("File"); // Use the name of your sprite font file
+
+            // Wczytywanie tekstur Animacji
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Right_140"));   //0
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Left_140"));    //1
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_140"));    //2
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Front_140"));   //3 
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Idle_140"));    //4
+
+            Gracz = new Player(PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); // Przekazuje teksture do postaci
+
+
+            base.Initialize();
+        }
+
+        protected override void LoadContent() {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+        }
+
+        protected override void UnloadContent() { }
+
+        protected override void Update(GameTime gameTime) {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                Exit();
+
+            //Gracz.gin(gameTime);
+            Gracz.Update(gameTime);
+
+            List<GamePadStatus> ButtonPressed = Pad.GamePadState();
+
+            if (ButtonPressed.Contains(GamePadStatus.None)) {
+                WalkingDirection = Direction.None;
+                Gracz.Move(0, PlayerMoveTexture);
+            } else
+            if (ButtonPressed.Contains(GamePadStatus.Up)) {
+                WalkingDirection = Direction.Up;
+                Gracz.Move(3, PlayerMoveTexture);
+                map.MoveMap(0, -Speed);
+            } else
+            if (ButtonPressed.Contains(GamePadStatus.Down)) {
+                WalkingDirection = Direction.Down;
+                Gracz.Move(4, PlayerMoveTexture);
+                map.MoveMap(0, Speed);
+            } else
+            if (ButtonPressed.Contains(GamePadStatus.Right)) {
+                WalkingDirection = Direction.Right;
+                Gracz.Move(1, PlayerMoveTexture);
+                map.MoveMap(Speed, 0);
+            } else
+            if (ButtonPressed.Contains(GamePadStatus.Left)) {
+                WalkingDirection = Direction.Left;
+                Gracz.Move(2, PlayerMoveTexture);
+                map.MoveMap(-Speed, 0);
+            }
+
+
+            if (ButtonPressed.Contains(GamePadStatus.A)) {
+                if (map.GetObjectType(3, WalkingDirection) == 2) { // Tak se misja // 2 -> Id skrzynek
+                    map.Message("I pach pach w krzynke\n\n             OK", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 700, 400));
+
+                }
+            } else
+            if (ButtonPressed.Contains(GamePadStatus.B)) {
+                ///
+            }
+
+            if (map.GetPosition().X == 25 && map.GetPosition().Y == 20) { // Tak se misja 
+                map.Message("Bla bla bla\n\n                  OK", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 700, 200));
+            }
+
+
+            if (Pad.GamePadState().Contains(GamePadStatus.A)) {
+                map.Message("I pach pach poraz " + LicznikPachPach, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                if (!A) {
+                    LicznikPachPach++;
+                }
+                A = true;
+
+            } else {
+                A = false;
+            }
+
+            if (map.GetObjectType(3, WalkingDirection) == 2) { // Tak se misja // 2 -> Id skrzynek
+                map.Message("Ooo skrzyneczka  WALNIJ JA (A) :D   \nna pozycji: \nX= " + map.GetPosition().X + "  \nY= " + map.GetPosition().Y + "\n   WALNIJ JA", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 700, 400));
+            }
+
+            map.Update();
+
+            base.Update(gameTime);
+        }
+
+        protected override void Draw(GameTime gameTime) {
+            GraphicsDevice.Clear(Color.Green);
+
+            spriteBatch.Begin();
+
+            map.Draw(spriteBatch, 0, false);
+            map.Draw(spriteBatch, 1, false);
+
+
+            spriteBatch.DrawString(sf, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Firebrick);
+            spriteBatch.DrawString(sf, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Firebrick);
+            spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Firebrick);
+            spriteBatch.DrawString(sf, "...: " + "", new Vector2(50, 200), Color.Red);
+
+
+            if (Gracz.HP != 0) { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(100, 100), Color.Black); } else { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
+
+            Gracz.Draw(spriteBatch, new Vector2(
+                ((ScreenX / 2) - (map.GetZoomValue() / 2)), ((ScreenY / 2))-42)
+                ); // Rysowanie Gracza
+
+
+            map.Draw(spriteBatch, 2, true);
+
+            //spriteBatch.Draw(
+            //    asd,
+            //    new Rectangle(((ScreenX / 2) - (map.GetZoomValue() / 2)), ((ScreenY / 2)),
+            //    map.GetZoomValue(), map.GetZoomValue()),
+            //    Color.White);
+
+            Pad.Draw(spriteBatch);
+
+            spriteBatch.End();
+            base.Draw(gameTime);
+        }
+    }
+}

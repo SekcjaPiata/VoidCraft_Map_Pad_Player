@@ -1,0 +1,603 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:Android
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+
+#---------------------------------- Content ---------------------------------#
+
+#begin Maps/JohnnoweTekstury/Map/L0.vcmf
+/copy:Maps/JohnnoweTekstury/Map/L0.vcmf
+
+#begin Maps/JohnnoweTekstury/Map/L1.vcmf
+/copy:Maps/JohnnoweTekstury/Map/L1.vcmf
+
+#begin Maps/JohnnoweTekstury/Map/L2.vcmf
+/copy:Maps/JohnnoweTekstury/Map/L2.vcmf
+
+#begin Maps/JohnnoweTekstury/Map/L3.vcmf
+/copy:Maps/JohnnoweTekstury/Map/L3.vcmf
+
+#begin Maps/JohnnoweTekstury/Textures/L0/empty.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/empty.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/GrassSand_Corner.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/GrassSand_Corner.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/GrassSand_cut.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/GrassSand_cut.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Grass_Corner_R.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Grass_Corner_R.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Grass_Full.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Grass_Full.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Grass_Grass.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Grass_Grass.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Road_1_Corner.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Road_1_Corner.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Road_1_End.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Road_1_End.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Road_1_Full.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Road_1_Full.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Sand_Full.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Sand_Full.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Sand_Ocean.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Sand_Ocean.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Sand_Ocean_Corner.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Sand_Ocean_Corner.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Sand_Ocean_Peak.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Sand_Ocean_Peak.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Water_Corner.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Water_Corner.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Water_Full.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Water_Full.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Water_Grass_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Water_Grass_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Water_Grass_2.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Water_Grass_2.png
+
+#begin Maps/JohnnoweTekstury/Textures/L0/Water_Grass_Peak.png
+/copy:Maps/JohnnoweTekstury/Textures/L0/Water_Grass_Peak.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Box.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Box.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Bush_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Bush_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Bush_1_2.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Bush_1_2.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/CampFire.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/CampFire.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/empty.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/empty.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Fance_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Fance_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Flower_1_Blue.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Flower_1_Blue.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Flower_1_Red.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Flower_1_Red.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Flower_1_Yellow.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Flower_1_Yellow.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Grass_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Grass_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Shelter_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Shelter_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Shelter_2.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Shelter_2.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Stone_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Stone_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Stone_2.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Stone_2.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Stone_3_1_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Stone_3_1_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Stone_3_1_2.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Stone_3_1_2.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Stone_3_2_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Stone_3_2_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Stone_3_2_2.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Stone_3_2_2.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/Tree_1_1_trans.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/Tree_1_1_trans.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/tree_3_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/tree_3_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/tree_3_2.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/tree_3_2.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/tree_4_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/tree_4_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/tree_5_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/tree_5_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/xWood_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/xWood_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/x_Cut_Tree_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/x_Cut_Tree_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L1/x_DryWood_1.png
+/copy:Maps/JohnnoweTekstury/Textures/L1/x_DryWood_1.png
+
+#begin Maps/JohnnoweTekstury/Textures/L2/empty.png
+/copy:Maps/JohnnoweTekstury/Textures/L2/empty.png
+
+#begin Maps/JohnnoweTekstury/Textures/L2/Tree_1_2_trans.png
+/copy:Maps/JohnnoweTekstury/Textures/L2/Tree_1_2_trans.png
+
+#begin Maps/JohnnoweTekstury/Textures/L2/tree_4_2.png
+/copy:Maps/JohnnoweTekstury/Textures/L2/tree_4_2.png
+
+#begin Maps/JohnnoweTekstury/Textures/L2/tree_5_2.png
+/copy:Maps/JohnnoweTekstury/Textures/L2/tree_5_2.png
+
+#begin Maps/JohnnoweTekstury/Textures/L3/Grass_Corner.png
+/copy:Maps/JohnnoweTekstury/Textures/L3/Grass_Corner.png
+
+#begin Maps/JohnnoweTekstury/mapdata.vcmd
+/copy:Maps/JohnnoweTekstury/mapdata.vcmd
+
+#begin Maps/JohnnoweTekstury/texturelist.vctl
+/copy:Maps/JohnnoweTekstury/texturelist.vctl
+
+#begin Maps/NoweTeksturyV4/Map/L0.vcmf
+/copy:Maps/NoweTeksturyV4/Map/L0.vcmf
+
+#begin Maps/NoweTeksturyV4/Map/L1.vcmf
+/copy:Maps/NoweTeksturyV4/Map/L1.vcmf
+
+#begin Maps/NoweTeksturyV4/Map/L2.vcmf
+/copy:Maps/NoweTeksturyV4/Map/L2.vcmf
+
+#begin Maps/NoweTeksturyV4/Map/L3.vcmf
+/copy:Maps/NoweTeksturyV4/Map/L3.vcmf
+
+#begin Maps/NoweTeksturyV4/Textures/L0/1_EMPTY.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/1_EMPTY.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gf.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gf.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gg.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gg.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gk_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gk_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gk_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gk_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gk_3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gk_3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gk_4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gk_4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gk_R1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gk_R1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gk_R2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gk_R2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gk_R3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gk_R3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gk_R4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gk_R4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw_K1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw_K1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw_K2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw_K2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw_K3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw_K3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw_K4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw_K4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw_P1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw_P1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw_P2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw_P2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw_P3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw_P3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/gw_P4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/gw_P4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/of.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/of.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/qwe.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/qwe.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/rf.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/rf.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/r_E1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/r_E1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/r_E2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/r_E2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/r_E3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/r_E3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/r_E4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/r_E4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/r_K1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/r_K1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/r_K2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/r_K2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/r_K3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/r_K3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/r_K4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/r_K4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/sf.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/sf.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/sg_K1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/sg_K1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/sg_K2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/sg_K2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/sg_K3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/sg_K3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/sg_K4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/sg_K4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/sg_S1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/sg_S1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/sg_S2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/sg_S2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/sg_S3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/sg_S3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/sg_S4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/sg_S4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_K1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_K1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_K2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_K2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_K3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_K3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_K4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_K4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_P1.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_P1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_P2.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_P2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_P3.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_P3.png
+
+#begin Maps/NoweTeksturyV4/Textures/L0/so_P4.png
+/copy:Maps/NoweTeksturyV4/Textures/L0/so_P4.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/1_EMPTY.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/1_EMPTY.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Box.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Box.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Bush_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Bush_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Bush_1_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Bush_1_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/CampFire.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/CampFire.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Fance_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Fance_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Flower_1_Blue.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Flower_1_Blue.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Flower_1_Red.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Flower_1_Red.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Flower_1_Yellow.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Flower_1_Yellow.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Grass_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Grass_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Shelter_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Shelter_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Shelter_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Shelter_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Stone_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Stone_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Stone_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Stone_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Stone_3_1_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Stone_3_1_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Stone_3_2_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Stone_3_2_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/Tree_1_1_trans.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/Tree_1_1_trans.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/tree_3_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/tree_3_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/tree_4_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/tree_4_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/tree_5_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/tree_5_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/xWood_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/xWood_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/x_Cut_Tree_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/x_Cut_Tree_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L1/x_DryWood_1.png
+/copy:Maps/NoweTeksturyV4/Textures/L1/x_DryWood_1.png
+
+#begin Maps/NoweTeksturyV4/Textures/L2/1_EMPTY.png
+/copy:Maps/NoweTeksturyV4/Textures/L2/1_EMPTY.png
+
+#begin Maps/NoweTeksturyV4/Textures/L2/Stone_3_1_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L2/Stone_3_1_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L2/Stone_3_2_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L2/Stone_3_2_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L2/Tree_1_2_trans.png
+/copy:Maps/NoweTeksturyV4/Textures/L2/Tree_1_2_trans.png
+
+#begin Maps/NoweTeksturyV4/Textures/L2/tree_3_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L2/tree_3_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L2/tree_4_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L2/tree_4_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L2/tree_5_2.png
+/copy:Maps/NoweTeksturyV4/Textures/L2/tree_5_2.png
+
+#begin Maps/NoweTeksturyV4/Textures/L3/1_EMPTY.png
+/copy:Maps/NoweTeksturyV4/Textures/L3/1_EMPTY.png
+
+#begin Maps/NoweTeksturyV4/mapdata.vcmd
+/copy:Maps/NoweTeksturyV4/mapdata.vcmd
+
+#begin Maps/NoweTeksturyV4/texturelist.vctl
+/copy:Maps/NoweTeksturyV4/texturelist.vctl
+
+#begin Maps/ProjektTestowy/Map/L0.vcmf
+/copy:Maps/ProjektTestowy/Map/L0.vcmf
+
+#begin Maps/ProjektTestowy/Map/L1.vcmf
+/copy:Maps/ProjektTestowy/Map/L1.vcmf
+
+#begin Maps/ProjektTestowy/Map/L2.vcmf
+/copy:Maps/ProjektTestowy/Map/L2.vcmf
+
+#begin Maps/ProjektTestowy/Map/L3.vcmf
+/copy:Maps/ProjektTestowy/Map/L3.vcmf
+
+#begin Maps/ProjektTestowy/Textures/L0/EMPTY.png
+/copy:Maps/ProjektTestowy/Textures/L0/EMPTY.png
+
+#begin Maps/ProjektTestowy/Textures/L0/GRASS.png
+/copy:Maps/ProjektTestowy/Textures/L0/GRASS.png
+
+#begin Maps/ProjektTestowy/Textures/L0/SAND.png
+/copy:Maps/ProjektTestowy/Textures/L0/SAND.png
+
+#begin Maps/ProjektTestowy/Textures/L0/WATER.png
+/copy:Maps/ProjektTestowy/Textures/L0/WATER.png
+
+#begin Maps/ProjektTestowy/Textures/L1/chest.png
+/copy:Maps/ProjektTestowy/Textures/L1/chest.png
+
+#begin Maps/ProjektTestowy/Textures/L1/EMPTY.png
+/copy:Maps/ProjektTestowy/Textures/L1/EMPTY.png
+
+#begin Maps/ProjektTestowy/Textures/L1/TREE_1.png
+/copy:Maps/ProjektTestowy/Textures/L1/TREE_1.png
+
+#begin Maps/ProjektTestowy/Textures/L1/TREE_2_3.png
+/copy:Maps/ProjektTestowy/Textures/L1/TREE_2_3.png
+
+#begin Maps/ProjektTestowy/Textures/L1/TREE_2_4.png
+/copy:Maps/ProjektTestowy/Textures/L1/TREE_2_4.png
+
+#begin Maps/ProjektTestowy/Textures/L2/EMPTY.png
+/copy:Maps/ProjektTestowy/Textures/L2/EMPTY.png
+
+#begin Maps/ProjektTestowy/Textures/L2/TREE_1.png
+/copy:Maps/ProjektTestowy/Textures/L2/TREE_1.png
+
+#begin Maps/ProjektTestowy/Textures/L2/TREE_2_1.png
+/copy:Maps/ProjektTestowy/Textures/L2/TREE_2_1.png
+
+#begin Maps/ProjektTestowy/Textures/L2/TREE_2_2.png
+/copy:Maps/ProjektTestowy/Textures/L2/TREE_2_2.png
+
+#begin Maps/ProjektTestowy/Textures/L3/block.png
+/copy:Maps/ProjektTestowy/Textures/L3/block.png
+
+#begin Maps/ProjektTestowy/Textures/L3/chest.png
+/copy:Maps/ProjektTestowy/Textures/L3/chest.png
+
+#begin Maps/ProjektTestowy/Textures/L3/EMPTY.png
+/copy:Maps/ProjektTestowy/Textures/L3/EMPTY.png
+
+#begin Maps/ProjektTestowy/mapdata.vcmd
+/copy:Maps/ProjektTestowy/mapdata.vcmd
+
+#begin Maps/ProjektTestowy/texturelist.vctl
+/copy:Maps/ProjektTestowy/texturelist.vctl
+
+#begin UI/Pad/A.png
+/copy:UI/Pad/A.png
+
+#begin UI/Pad/B.png
+/copy:UI/Pad/B.png
+
+#begin UI/Pad/DOWN.png
+/copy:UI/Pad/DOWN.png
+
+#begin UI/Pad/LEFT.png
+/copy:UI/Pad/LEFT.png
+
+#begin UI/Pad/RIGHT.png
+/copy:UI/Pad/RIGHT.png
+
+#begin UI/Pad/UP.png
+/copy:UI/Pad/UP.png
+
+#begin UI/Menu.png
+/copy:UI/Menu.png
+
+#begin UI/MessageWnd.png
+/copy:UI/MessageWnd.png
+
+#begin UI/SomeMsg.png
+/copy:UI/SomeMsg.png
+
+#begin UI/Touch.png
+/copy:UI/Touch.png
+
+#begin Back_140.png
+/importer:
+/processor:
+/build:Back_140.png
+
+#begin Bot.png
+/importer:
+/processor:
+/build:Bot.png
+
+#begin File.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:File.spritefont
+
+#begin Front_140.png
+/importer:
+/processor:
+/build:Front_140.png
+
+#begin Idle_140.png
+/importer:
+/processor:
+/build:Idle_140.png
+
+#begin Left_140.png
+/importer:
+/processor:
+/build:Left_140.png
+
+#begin Right_140.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Right_140.png
+
+#begin SpriteFontPL.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:SpriteFontPL.spritefont
+
