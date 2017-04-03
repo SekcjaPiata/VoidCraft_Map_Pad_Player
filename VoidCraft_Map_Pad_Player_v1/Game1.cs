@@ -8,15 +8,17 @@ using System;
 using System.Collections.Generic;
 using PlayerControler;
 
-namespace VoidCraft_Map_Pad_Player_v1 {
-    public class Game1 : Game {
+namespace VoidCraft_Map_Pad_Player_v1
+{
+    public class Game1 : Game
+    {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteFont sf;
         Map map;
         GameControler Pad;
         Direction WalkingDirection;
-        Texture2D asd;
+        //Texture2D asd;
         double Speed = 0.05;
         int LicznikPachPach = 0;
         public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
@@ -30,10 +32,11 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         public int ScreenX { get; private set; }
         public int ScreenY { get; private set; }
         bool A = false;
-        public Game1() {
+        public Game1()
+        {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            WalkingDirection = Direction.None;
+            WalkingDirection = Direction.Idle_Down;
             graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 480;
@@ -41,22 +44,24 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
         }
 
-        protected override void Initialize() {
+        protected override void Initialize()
+        {
             ScreenX = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
             sf = Content.Load<SpriteFont>("SpriteFontPL");
 
             PlayerMoveTexture = new List<Texture2D>();
-            map = new Map(GraphicsDevice, "ProjektTestowy", ScreenX, ScreenY);
+            //map = new Map(GraphicsDevice, "ProjektTestowy", ScreenX, ScreenY);
             // map = new Map(GraphicsDevice, "JohnnoweTekstury", ScreenX, ScreenY);
-            //map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
+            map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
             map.SetPosition(22, 20);
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
-            using (var stream = TitleContainer.OpenStream("Content/Bot.png")) {
-                asd = Texture2D.FromStream(GraphicsDevice, stream);
-            }
+            // NIE UZYWANE
+            //  using (var stream = TitleContainer.OpenStream("Content/Bot.png")) {
+            //     asd = Texture2D.FromStream(GraphicsDevice, stream);
+            // }
 
             font = Content.Load<SpriteFont>("File"); // Use the name of your sprite font file
 
@@ -66,6 +71,10 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_140"));    //2
             PlayerMoveTexture.Add(Content.Load<Texture2D>("Front_140"));   //3 
             PlayerMoveTexture.Add(Content.Load<Texture2D>("Idle_140"));    //4
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Left_Idle_140")); //5
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Right_Idle_140"));//6
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_Idle"));//7
+
 
             Gracz = new Player(PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); // Przekazuje teksture do postaci
 
@@ -73,75 +82,123 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             base.Initialize();
         }
 
-        protected override void LoadContent() {
+        protected override void LoadContent()
+        {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
         }
 
         protected override void UnloadContent() { }
 
-        protected override void Update(GameTime gameTime) {
+        GamePadStatus buff = GamePadStatus.None;
+
+        protected override void Update(GameTime gameTime)
+        {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
 
             //Gracz.gin(gameTime);
             Gracz.Update(gameTime);
-
+           
             List<GamePadStatus> ButtonPressed = Pad.GamePadState();
 
-            if (ButtonPressed.Contains(GamePadStatus.None)) {
-                WalkingDirection = Direction.None;
-                Gracz.Move(Direction.None, PlayerMoveTexture);
-            } else
-            if (ButtonPressed.Contains(GamePadStatus.Up)) {
+            if (ButtonPressed.Contains(GamePadStatus.DirNone))
+            {
+                if (buff == GamePadStatus.Up)
+                {
+
+                    Gracz.Move(Direction.Idle_Back, PlayerMoveTexture);
+                }
+                else if(buff == GamePadStatus.Down)
+                {
+
+                    Gracz.Move(Direction.Idle_Down, PlayerMoveTexture);
+
+                }
+                else if(buff == GamePadStatus.Right)
+                {
+
+                    Gracz.Move(Direction.Idle_Right, PlayerMoveTexture);
+
+                }
+                else if(buff == GamePadStatus.Left)
+                {
+
+                    Gracz.Move(Direction.Idle_Left, PlayerMoveTexture);
+
+                }
+            }
+            else
+            if (ButtonPressed.Contains(GamePadStatus.Up))
+            {
                 WalkingDirection = Direction.Up;
+                buff = GamePadStatus.Up;
                 Gracz.Move(Direction.Up, PlayerMoveTexture);
                 map.MoveMap(0, -Speed);
-            } else
-            if (ButtonPressed.Contains(GamePadStatus.Down)) {
+            }
+            else
+            if (ButtonPressed.Contains(GamePadStatus.Down))
+            {
                 WalkingDirection = Direction.Down;
+                buff = GamePadStatus.Down;
                 Gracz.Move(Direction.Down, PlayerMoveTexture);
                 map.MoveMap(0, Speed);
-            } else
-            if (ButtonPressed.Contains(GamePadStatus.Right)) {
+            }
+            else
+            if (ButtonPressed.Contains(GamePadStatus.Right))
+            {
                 WalkingDirection = Direction.Right;
+                buff = GamePadStatus.Right;
                 Gracz.Move(Direction.Right, PlayerMoveTexture);
                 map.MoveMap(Speed, 0);
-            } else
-            if (ButtonPressed.Contains(GamePadStatus.Left)) {
+            }
+            else
+            if (ButtonPressed.Contains(GamePadStatus.Left))
+            {
                 WalkingDirection = Direction.Left;
+                buff = GamePadStatus.Left;
                 Gracz.Move(Direction.Left, PlayerMoveTexture);
                 map.MoveMap(-Speed, 0);
             }
 
 
-            if (ButtonPressed.Contains(GamePadStatus.A)) {
-                if (map.GetObjectType(3, WalkingDirection) == 2) { // Tak se misja // 2 -> Id skrzynek
+            if (ButtonPressed.Contains(GamePadStatus.A))
+            {
+                if (map.GetObjectType(3, WalkingDirection) == 2)
+                { // Tak se misja // 2 -> Id skrzynek
                     map.Message("I pach pach w krzynke\n\n             OK", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 700, 400));
 
                 }
-            } else
-            if (ButtonPressed.Contains(GamePadStatus.B)) {
+            }
+            else
+            if (ButtonPressed.Contains(GamePadStatus.B))
+            {
                 ///
             }
 
-            if (map.GetPosition().X == 25 && map.GetPosition().Y == 20) { // Tak se misja 
+            if (map.GetPosition().X == 25 && map.GetPosition().Y == 20)
+            { // Tak se misja 
                 map.Message("Bla bla bla\n\n                  OK", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 700, 200));
             }
 
 
-            if (Pad.GamePadState().Contains(GamePadStatus.A)) {
+            if (Pad.GamePadState().Contains(GamePadStatus.A))
+            {
                 map.Message("I pach pach poraz " + LicznikPachPach, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-                if (!A) {
+                if (!A)
+                {
                     LicznikPachPach++;
                 }
                 A = true;
 
-            } else {
+            }
+            else
+            {
                 A = false;
             }
 
-            if (map.GetObjectType(3, WalkingDirection) == 2) { // Tak se misja // 2 -> Id skrzynek
+            if (map.GetObjectType(3, WalkingDirection) == 2)
+            { // Tak se misja // 2 -> Id skrzynek
                 map.Message("Ooo skrzyneczka  WALNIJ JA (A) :D   \nna pozycji: \nX= " + map.GetPosition().X + "  \nY= " + map.GetPosition().Y + "\n   WALNIJ JA", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 700, 400));
             }
 
@@ -150,7 +207,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             base.Update(gameTime);
         }
 
-        protected override void Draw(GameTime gameTime) {
+        protected override void Draw(GameTime gameTime)
+        {
             GraphicsDevice.Clear(Color.Green);
 
             spriteBatch.Begin();
@@ -168,7 +226,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             if (Gracz.HP != 0) { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(100, 100), Color.Black); } else { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
 
             Gracz.Draw(spriteBatch, new Rectangle(
-                ((ScreenX / 2) - (map.GetZoomValue() / 2)), ((ScreenY / 2))-42,map.GetZoomValue(), map.GetZoomValue())
+                ((ScreenX / 2) - (map.GetZoomValue() / 2)), ((ScreenY / 2)) - 42, map.GetZoomValue(), map.GetZoomValue())
                 ); // Rysowanie Gracza
 
 

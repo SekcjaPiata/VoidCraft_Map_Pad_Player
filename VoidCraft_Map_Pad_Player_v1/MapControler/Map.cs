@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace MapControler {
     enum Direction {
-        None,Left, Right, Up, Down
+        Idle_Down,Left, Right, Up, Down,Idle_Left, Idle_Right, Idle_Back
     }
 
     class Map {
@@ -214,7 +214,7 @@ namespace MapControler {
 
         public int GetObjectType(int Layer ,Direction Dir) {
             int i = -1;
-            if (Dir != Direction.None) {
+            if (Dir != Direction.Idle_Down) {
                 int x = (Dir == Direction.Left) ? -1 : (Dir == Direction.Right) ? 1 : 0;
                 int y = (Dir == Direction.Up) ? -1 : (Dir == Direction.Down) ? 1 : 0;
 

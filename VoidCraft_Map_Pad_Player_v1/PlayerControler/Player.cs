@@ -4,12 +4,22 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MapControler;
 
-namespace PlayerControler {
-    class Player {
+namespace PlayerControler
+{
+    class Player
+    {
+
+        /*
+          
+        TO DO: 
+        1. Poprawic wczytywanie tekstur (wrzucic do Klasy) 
+        2. Dodac Animacje Idle w kazdym kierunku
+        
+        */
+
         /// <summary>
         /// Statystyki Postaci
         /// </summary>
-        
         // HP
         public int HP { get; set; }
         private int HP_Czas;
@@ -57,7 +67,8 @@ namespace PlayerControler {
         /// <summary>
         /// Konstruktor Parametryczny Postaci
         /// </summary>
-        public Player(Texture2D texture, int rows, int columns, int posX, int posY) {
+        public Player(Texture2D texture, int rows, int columns, int posX, int posY)
+        {
             Texture = texture;
             Rows = rows;
             Columns = columns;
@@ -75,40 +86,48 @@ namespace PlayerControler {
 
 
 
-        public void Spadek_HP(GameTime gameTime) {
+        public void Spadek_HP(GameTime gameTime)
+        {
             HP_Czas += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (HP_Czas > HP_Predkosc) {
+            if (HP_Czas > HP_Predkosc)
+            {
                 HP_Czas -= HP_Predkosc;
                 if (HP != 0) { HP -= 1; }
                 HP_Czas = 0;
             }
         }
 
-        public void Spadek_Wody(GameTime gameTime) {
+        public void Spadek_Wody(GameTime gameTime)
+        {
             Woda_Czas += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (Woda_Czas > Woda_Predkosc) {
+            if (Woda_Czas > Woda_Predkosc)
+            {
                 Woda_Czas -= Woda_Predkosc;
                 if (WODA != 0) { WODA -= 1; }
                 Woda_Czas = 0;
             }
         }
 
-        public void Spadek_Glod(GameTime gameTime) {
+        public void Spadek_Glod(GameTime gameTime)
+        {
             Glod_Czas += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (Glod_Czas > Glod_Predkosc) {
+            if (Glod_Czas > Glod_Predkosc)
+            {
                 Glod_Czas -= Glod_Predkosc;
                 if (GLOD != 0) { GLOD -= 1; }
                 Glod_Czas = 0;
             }
         }
 
-        public void Spadek_Strach(GameTime gameTime) {
+        public void Spadek_Strach(GameTime gameTime)
+        {
             Strach_Czas += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (Strach_Czas > Strach_Predkosc) {
+            if (Strach_Czas > Strach_Predkosc)
+            {
                 Strach_Czas -= Strach_Predkosc;
                 if (STRACH != 0) { STRACH -= 1; }
                 Strach_Czas = 0;
@@ -120,9 +139,11 @@ namespace PlayerControler {
         /// <summary>
         /// Wyœwietlanie Animacji
         /// </summary>
-        public void Update(GameTime gameTime) {
+        public void Update(GameTime gameTime)
+        {
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
-            if (timeSinceLastFrame > milliseconsuPerFrame) {
+            if (timeSinceLastFrame > milliseconsuPerFrame)
+            {
                 timeSinceLastFrame -= milliseconsuPerFrame;
                 currentFrame++;
                 timeSinceLastFrame = 0;
@@ -135,7 +156,8 @@ namespace PlayerControler {
         /// <summary>
         /// Rysowanie Postaci
         /// </summary>
-        public void Draw(SpriteBatch spriteBatch, Rectangle location) {
+        public void Draw(SpriteBatch spriteBatch, Rectangle location)
+        {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
             int row = (int)((float)currentFrame / Columns);
@@ -143,7 +165,7 @@ namespace PlayerControler {
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
 
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, location.Width, location.Height+ (int)(location.Height * 0.4));
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, location.Width, location.Height + (int)(location.Height * 0.4));
 
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
@@ -153,24 +175,29 @@ namespace PlayerControler {
         /// <summary>
         /// Sterowanie
         /// </summary>
-        public void Move(Direction direction, List<Texture2D> tx) {
-            switch (direction) {
-
-                case Direction.None: { Texture = tx[4]; break; }
+        public void Move(Direction direction, List<Texture2D> tx)
+        {
+            switch (direction)
+            {
+                case Direction.Idle_Down: { Texture = tx[4]; break; }
                 case Direction.Up: { Texture = tx[2]; break; }
                 case Direction.Down: { Texture = tx[3]; break; }
                 case Direction.Left: { Texture = tx[1]; break; }
                 case Direction.Right: { Texture = tx[0]; break; }
+                case Direction.Idle_Left: { Texture = tx[5]; break; }
+                case Direction.Idle_Right: { Texture = tx[6]; break; }
+                case Direction.Idle_Back: { Texture = tx[7]; break; }
                 default: break;
             }
         }
 
         // TESTOWE
-        public void gin(GameTime gameTime) {
+        public void gin(GameTime gameTime)
+        {
             //Spadek_HP(gameTime);
             Spadek_Wody(gameTime);
             Spadek_Glod(gameTime);
-            //  Spadek_Strach(gameTime);
+            //Spadek_Strach(gameTime);
         }
 
     }
