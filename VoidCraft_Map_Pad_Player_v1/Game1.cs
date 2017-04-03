@@ -54,9 +54,10 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             map.SetPosition(22, 20);
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
-            using (var stream = TitleContainer.OpenStream("Content/Bot.png")) {
-                asd = Texture2D.FromStream(GraphicsDevice, stream);
-            }
+            // NIE UZYWANE
+            //  using (var stream = TitleContainer.OpenStream("Content/Bot.png")) {
+            //     asd = Texture2D.FromStream(GraphicsDevice, stream);
+            // }
 
             font = Content.Load<SpriteFont>("File"); // Use the name of your sprite font file
 
