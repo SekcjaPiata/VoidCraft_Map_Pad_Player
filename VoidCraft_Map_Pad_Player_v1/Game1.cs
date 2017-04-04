@@ -8,6 +8,14 @@ using System;
 using System.Collections.Generic;
 using PlayerControler;
 
+
+            /////////////////////////////////////////////////////////////
+            //////////////////                          /////////////////
+            //////////////////     VERSION 0.05         /////////////////
+            //////////////////                          /////////////////
+            /////////////////////////////////////////////////////////////
+
+
 namespace VoidCraft_Map_Pad_Player_v1 {
     public class Game1 : Game {
         GraphicsDeviceManager graphics;
@@ -16,16 +24,15 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         Map map;
         GameControler Pad;
         Direction WalkingDirection;
-        //Texture2D asd;
         double Speed = 0.05;
         int LicznikPachPach = 0;
+
+        //John
         public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
-
         private Player Gracz; // Tworzenie istancji
-
         private SpriteFont font; // Napis
-
         private int IloscKlatek = 4; // ilosc klatek w danej animacji  
+
 
         public int ScreenX { get; private set; }
         public int ScreenY { get; private set; }
@@ -55,25 +62,20 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             map.SetPosition(22, 20);
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
-            // NIE UZYWANE
-            //  using (var stream = TitleContainer.OpenStream("Content/Bot.png")) {
-            //     asd = Texture2D.FromStream(GraphicsDevice, stream);
-            // }
-
             font = Content.Load<SpriteFont>("File"); // Use the name of your sprite font file
 
-            // Wczytywanie tekstur Animacji
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Right_140"));   //0
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Left_140"));    //1
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_140"));    //2
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Front_140"));   //3 
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Idle_140"));    //4
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Left_Idle_140")); //5
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Right_Idle_140"));//6
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_Idle"));//7
+            // Wczytywanie tekstur Animacji i tworzenie instancji Player
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Right_140"));        //0
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Left_140"));         //1
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_140"));         //2
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Front_140"));        //3 
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Idle_140"));         //4
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Left_Idle_140"));    //5
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Right_Idle_140"));   //6
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_Idle"));        //7
 
-
-            Gracz = new Player(PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); // Przekazuje teksture do postaci
+            // Przekazuje teksture do postaci i ilosc klatek w danej animacji
+            Gracz = new Player(PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); 
 
 
             base.Initialize();
@@ -227,31 +229,28 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
             spriteBatch.Begin();
 
+            // Rysowanie Pierwszych 2 warstw.
             map.Draw(spriteBatch, 0, false);
             map.Draw(spriteBatch, 1, false);
-
-
+            
             spriteBatch.DrawString(sf, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Firebrick);
             spriteBatch.DrawString(sf, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Firebrick);
             spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Firebrick);
             spriteBatch.DrawString(sf, "...: " + "", new Vector2(50, 200), Color.Red);
 
+            //Wyswietlanie Poziomu HP na Ekranie
+            if (Gracz.HP != 0) { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(100, 100), Color.Black); }
+            else { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
 
-            if (Gracz.HP != 0) { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(100, 100), Color.Black); } else { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
-
+            // Rysowanie Gracza
             Gracz.Draw(spriteBatch, new Rectangle(
                 ((ScreenX / 2) - (map.GetZoomValue() / 2)), ((ScreenY / 2)) - 42, map.GetZoomValue(), map.GetZoomValue())
-                ); // Rysowanie Gracza
+                );
 
-
+            // Rysowanie 3 Warstwy.
             map.Draw(spriteBatch, 2, true);
-
-            //spriteBatch.Draw(
-            //    asd,
-            //    new Rectangle(((ScreenX / 2) - (map.GetZoomValue() / 2)), ((ScreenY / 2)),
-            //    map.GetZoomValue(), map.GetZoomValue()),
-            //    Color.White);
-
+            
+            // Rysowanie Przyiskow
             Pad.Draw(spriteBatch);
 
             spriteBatch.End();

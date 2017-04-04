@@ -10,11 +10,10 @@ namespace PlayerControler
     {
 
         /*
-          
         TO DO: 
         1. Poprawic wczytywanie tekstur (wrzucic do Klasy) 
-        2. Dodac Animacje Idle w kazdym kierunku
-        
+        2. Dodac Animacje Idle w kazdym kierunku // zrobione
+        3. Przesunac Postac na srodek kratki (up)
         */
 
         /// <summary>
