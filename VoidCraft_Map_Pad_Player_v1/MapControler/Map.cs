@@ -38,7 +38,10 @@ namespace MapControler {
         string MapName;
         int MapSizeX = 18, MapSizeY = 11;
         int NumberOfLayers, Height, Width;
-        double MapOfsetX, MapOfsetY;
+
+        public double MapOfsetX { get; set; }
+        public double MapOfsetY{ get; set; }
+
         private int screenX;
         private int screenY;
         private int InitMapZoom;
@@ -221,6 +224,7 @@ namespace MapControler {
 
                 if (GetPosition().X + x >= 0 && GetPosition().Y + y >= 0)
                     if (GetPosition().X + x < Width && GetPosition().Y + y < Height)
+                        //if(x>=0&&y>=0)
                         i = Textur[Layer][Tiles[Layer][((int)GetPosition().X + x)-1, ((int)GetPosition().Y + y)-1].Id].ID;
 
             }
@@ -235,15 +239,18 @@ namespace MapControler {
         /// Seters
         /// </summary>
         public void MoveMap(double ToAddX, double ToAddY) {
-            MapOfsetX += ToAddX;
-            MapOfsetY += ToAddY;
+            
+                MapOfsetX += ToAddX;
+                MapOfsetY += ToAddY;
+                
 
-            if (MapOfsetX <= 1) { MapOfsetX = 1; }
-            if (MapOfsetY <= 1) { MapOfsetY = 1; }
+                if (MapOfsetX <= 1) { MapOfsetX = 1; }
+                if (MapOfsetY <= 1) { MapOfsetY = 1; }
 
-            if (MapOfsetX >= Width) { MapOfsetX = Width; }
+                if (MapOfsetX >= Width) { MapOfsetX = Width; }
 
-            if (MapOfsetY >= Height) { MapOfsetY = Height; }
+                if (MapOfsetY >= Height) { MapOfsetY = Height; }
+
 
         }
 

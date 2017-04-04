@@ -41,18 +41,18 @@ namespace PadControler
 
             int BtnSize = ScreenWidth / 17;
 
-            Up = new PadButton(graphicsDevice, "Content/UI/Pad/UP.png", new Rectangle((2 * BtnSize), ScreenHeight - (4 * BtnSize), BtnSize, BtnSize));
+            Up = new PadButton(graphicsDevice, "Content/UI/Pad/UP.png", new Rectangle((2 * BtnSize), ScreenHeight - (4 * BtnSize), BtnSize+(BtnSize/2), (int)(BtnSize*1.5)));
 
-            Down = new PadButton(graphicsDevice, "Content/UI/Pad/DOWN.png", new Rectangle((2 * BtnSize), ScreenHeight - (2 * BtnSize), BtnSize, BtnSize));
+            Down = new PadButton(graphicsDevice, "Content/UI/Pad/DOWN.png", new Rectangle((2 * BtnSize), ScreenHeight - (2 * BtnSize), (int)(BtnSize*1.5), (int)(BtnSize*1.5)));
 
-            Right = new PadButton(graphicsDevice, "Content/UI/Pad/RIGHT.png", new Rectangle((3 * BtnSize), ScreenHeight - (3 * BtnSize), BtnSize, BtnSize));
+            Right = new PadButton(graphicsDevice, "Content/UI/Pad/RIGHT.png", new Rectangle((3 * BtnSize), ScreenHeight - (3 * BtnSize), (int)(BtnSize*1.5), (int)(BtnSize*1.5)));
 
-            Left = new PadButton(graphicsDevice, "Content/UI/Pad/LEFT.png", new Rectangle(BtnSize, ScreenHeight - (3 * BtnSize), BtnSize, BtnSize));
+            Left = new PadButton(graphicsDevice, "Content/UI/Pad/LEFT.png", new Rectangle(BtnSize, ScreenHeight - (3 * BtnSize), (int)(BtnSize*1.5), (int)(BtnSize*1.5)));
 
 
-            A = new PadButton(graphicsDevice, "Content/UI/Pad/A.png", new Rectangle(ScreenWidth - (2 * BtnSize), ScreenHeight - (3 * BtnSize), BtnSize, BtnSize));
+            A = new PadButton(graphicsDevice, "Content/UI/Pad/A.png", new Rectangle(ScreenWidth - (2 * BtnSize), ScreenHeight - (3 * BtnSize), (int)(BtnSize*1.5), (int)(BtnSize*1.5)));
 
-            B = new PadButton(graphicsDevice, "Content/UI/Pad/B.png", new Rectangle(ScreenWidth - (4 * BtnSize), ScreenHeight - (2 * BtnSize), BtnSize, BtnSize));
+            B = new PadButton(graphicsDevice, "Content/UI/Pad/B.png", new Rectangle(ScreenWidth - (4 * BtnSize), ScreenHeight - (2 * BtnSize), (int)(BtnSize*1.5), (int)(BtnSize*1.5)));
         }
 
         public List<GamePadStatus> GamePadState()
