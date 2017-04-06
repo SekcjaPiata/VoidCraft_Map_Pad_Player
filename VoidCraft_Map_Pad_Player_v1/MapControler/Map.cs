@@ -224,7 +224,7 @@ namespace MapControler {
 
                 if (GetPosition().X + x >= 0 && GetPosition().Y + y >= 0)
                     if (GetPosition().X + x < Width && GetPosition().Y + y < Height)
-                        //if(x>=0&&y>=0)
+                        if(((int)GetPosition().X + x) -1 >= 0 && ((int)GetPosition().Y + y) -1 >= 0)
                         i = Textur[Layer][Tiles[Layer][((int)GetPosition().X + x)-1, ((int)GetPosition().Y + y)-1].Id].ID;
 
             }

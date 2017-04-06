@@ -951,3 +951,282 @@
 #begin Maps/MalaMapa/Textures/L3/block.png
 /copy:Maps/MalaMapa/Textures/L3/block.png
 
+#begin Maps/POLIGON/Map/L0.vcmf
+/copy:Maps/POLIGON/Map/L0.vcmf
+
+#begin Maps/POLIGON/Map/L1.vcmf
+/copy:Maps/POLIGON/Map/L1.vcmf
+
+#begin Maps/POLIGON/Map/L2.vcmf
+/copy:Maps/POLIGON/Map/L2.vcmf
+
+#begin Maps/POLIGON/Map/L3.vcmf
+/copy:Maps/POLIGON/Map/L3.vcmf
+
+#begin Maps/POLIGON/Textures/L0/1_EMPTY.png
+/copy:Maps/POLIGON/Textures/L0/1_EMPTY.png
+
+#begin Maps/POLIGON/Textures/L0/gf.png
+/copy:Maps/POLIGON/Textures/L0/gf.png
+
+#begin Maps/POLIGON/Textures/L0/gg.png
+/copy:Maps/POLIGON/Textures/L0/gg.png
+
+#begin Maps/POLIGON/Textures/L0/gk_1.png
+/copy:Maps/POLIGON/Textures/L0/gk_1.png
+
+#begin Maps/POLIGON/Textures/L0/gk_2.png
+/copy:Maps/POLIGON/Textures/L0/gk_2.png
+
+#begin Maps/POLIGON/Textures/L0/gk_3.png
+/copy:Maps/POLIGON/Textures/L0/gk_3.png
+
+#begin Maps/POLIGON/Textures/L0/gk_4.png
+/copy:Maps/POLIGON/Textures/L0/gk_4.png
+
+#begin Maps/POLIGON/Textures/L0/gk_R1.png
+/copy:Maps/POLIGON/Textures/L0/gk_R1.png
+
+#begin Maps/POLIGON/Textures/L0/gk_R2.png
+/copy:Maps/POLIGON/Textures/L0/gk_R2.png
+
+#begin Maps/POLIGON/Textures/L0/gk_R3.png
+/copy:Maps/POLIGON/Textures/L0/gk_R3.png
+
+#begin Maps/POLIGON/Textures/L0/gk_R4.png
+/copy:Maps/POLIGON/Textures/L0/gk_R4.png
+
+#begin Maps/POLIGON/Textures/L0/gw1.png
+/copy:Maps/POLIGON/Textures/L0/gw1.png
+
+#begin Maps/POLIGON/Textures/L0/gw2.png
+/copy:Maps/POLIGON/Textures/L0/gw2.png
+
+#begin Maps/POLIGON/Textures/L0/gw3.png
+/copy:Maps/POLIGON/Textures/L0/gw3.png
+
+#begin Maps/POLIGON/Textures/L0/gw4.png
+/copy:Maps/POLIGON/Textures/L0/gw4.png
+
+#begin Maps/POLIGON/Textures/L0/gw_K1.png
+/copy:Maps/POLIGON/Textures/L0/gw_K1.png
+
+#begin Maps/POLIGON/Textures/L0/gw_K2.png
+/copy:Maps/POLIGON/Textures/L0/gw_K2.png
+
+#begin Maps/POLIGON/Textures/L0/gw_K3.png
+/copy:Maps/POLIGON/Textures/L0/gw_K3.png
+
+#begin Maps/POLIGON/Textures/L0/gw_K4.png
+/copy:Maps/POLIGON/Textures/L0/gw_K4.png
+
+#begin Maps/POLIGON/Textures/L0/gw_P1.png
+/copy:Maps/POLIGON/Textures/L0/gw_P1.png
+
+#begin Maps/POLIGON/Textures/L0/gw_P2.png
+/copy:Maps/POLIGON/Textures/L0/gw_P2.png
+
+#begin Maps/POLIGON/Textures/L0/gw_P3.png
+/copy:Maps/POLIGON/Textures/L0/gw_P3.png
+
+#begin Maps/POLIGON/Textures/L0/gw_P4.png
+/copy:Maps/POLIGON/Textures/L0/gw_P4.png
+
+#begin Maps/POLIGON/Textures/L0/of.png
+/copy:Maps/POLIGON/Textures/L0/of.png
+
+#begin Maps/POLIGON/Textures/L0/qwe.png
+/copy:Maps/POLIGON/Textures/L0/qwe.png
+
+#begin Maps/POLIGON/Textures/L0/sf.png
+/copy:Maps/POLIGON/Textures/L0/sf.png
+
+#begin Maps/POLIGON/Textures/L0/sg_K1.png
+/copy:Maps/POLIGON/Textures/L0/sg_K1.png
+
+#begin Maps/POLIGON/Textures/L0/sg_K2.png
+/copy:Maps/POLIGON/Textures/L0/sg_K2.png
+
+#begin Maps/POLIGON/Textures/L0/sg_K3.png
+/copy:Maps/POLIGON/Textures/L0/sg_K3.png
+
+#begin Maps/POLIGON/Textures/L0/sg_K4.png
+/copy:Maps/POLIGON/Textures/L0/sg_K4.png
+
+#begin Maps/POLIGON/Textures/L0/sg_S1.png
+/copy:Maps/POLIGON/Textures/L0/sg_S1.png
+
+#begin Maps/POLIGON/Textures/L0/sg_S2.png
+/copy:Maps/POLIGON/Textures/L0/sg_S2.png
+
+#begin Maps/POLIGON/Textures/L0/sg_S3.png
+/copy:Maps/POLIGON/Textures/L0/sg_S3.png
+
+#begin Maps/POLIGON/Textures/L0/sg_S4.png
+/copy:Maps/POLIGON/Textures/L0/sg_S4.png
+
+#begin Maps/POLIGON/Textures/L0/so_1.png
+/copy:Maps/POLIGON/Textures/L0/so_1.png
+
+#begin Maps/POLIGON/Textures/L0/so_2.png
+/copy:Maps/POLIGON/Textures/L0/so_2.png
+
+#begin Maps/POLIGON/Textures/L0/so_3.png
+/copy:Maps/POLIGON/Textures/L0/so_3.png
+
+#begin Maps/POLIGON/Textures/L0/so_4.png
+/copy:Maps/POLIGON/Textures/L0/so_4.png
+
+#begin Maps/POLIGON/Textures/L0/so_K1.png
+/copy:Maps/POLIGON/Textures/L0/so_K1.png
+
+#begin Maps/POLIGON/Textures/L0/so_K2.png
+/copy:Maps/POLIGON/Textures/L0/so_K2.png
+
+#begin Maps/POLIGON/Textures/L0/so_K3.png
+/copy:Maps/POLIGON/Textures/L0/so_K3.png
+
+#begin Maps/POLIGON/Textures/L0/so_K4.png
+/copy:Maps/POLIGON/Textures/L0/so_K4.png
+
+#begin Maps/POLIGON/Textures/L0/so_P1.png
+/copy:Maps/POLIGON/Textures/L0/so_P1.png
+
+#begin Maps/POLIGON/Textures/L0/so_P2.png
+/copy:Maps/POLIGON/Textures/L0/so_P2.png
+
+#begin Maps/POLIGON/Textures/L0/so_P3.png
+/copy:Maps/POLIGON/Textures/L0/so_P3.png
+
+#begin Maps/POLIGON/Textures/L0/so_P4.png
+/copy:Maps/POLIGON/Textures/L0/so_P4.png
+
+#begin Maps/POLIGON/Textures/L1/1_EMPTY.png
+/copy:Maps/POLIGON/Textures/L1/1_EMPTY.png
+
+#begin Maps/POLIGON/Textures/L1/Box.png
+/copy:Maps/POLIGON/Textures/L1/Box.png
+
+#begin Maps/POLIGON/Textures/L1/Bush_1.png
+/copy:Maps/POLIGON/Textures/L1/Bush_1.png
+
+#begin Maps/POLIGON/Textures/L1/Bush_1_2.png
+/copy:Maps/POLIGON/Textures/L1/Bush_1_2.png
+
+#begin Maps/POLIGON/Textures/L1/CampFire.png
+/copy:Maps/POLIGON/Textures/L1/CampFire.png
+
+#begin Maps/POLIGON/Textures/L1/Fance_1.png
+/copy:Maps/POLIGON/Textures/L1/Fance_1.png
+
+#begin Maps/POLIGON/Textures/L1/Flower_1_Blue.png
+/copy:Maps/POLIGON/Textures/L1/Flower_1_Blue.png
+
+#begin Maps/POLIGON/Textures/L1/Flower_1_Red.png
+/copy:Maps/POLIGON/Textures/L1/Flower_1_Red.png
+
+#begin Maps/POLIGON/Textures/L1/Flower_1_Yellow.png
+/copy:Maps/POLIGON/Textures/L1/Flower_1_Yellow.png
+
+#begin Maps/POLIGON/Textures/L1/Grass_1.png
+/copy:Maps/POLIGON/Textures/L1/Grass_1.png
+
+#begin Maps/POLIGON/Textures/L1/rf.png
+/copy:Maps/POLIGON/Textures/L1/rf.png
+
+#begin Maps/POLIGON/Textures/L1/r_E1.png
+/copy:Maps/POLIGON/Textures/L1/r_E1.png
+
+#begin Maps/POLIGON/Textures/L1/r_E2.png
+/copy:Maps/POLIGON/Textures/L1/r_E2.png
+
+#begin Maps/POLIGON/Textures/L1/r_E3.png
+/copy:Maps/POLIGON/Textures/L1/r_E3.png
+
+#begin Maps/POLIGON/Textures/L1/r_E4.png
+/copy:Maps/POLIGON/Textures/L1/r_E4.png
+
+#begin Maps/POLIGON/Textures/L1/r_K1.png
+/copy:Maps/POLIGON/Textures/L1/r_K1.png
+
+#begin Maps/POLIGON/Textures/L1/r_K2.png
+/copy:Maps/POLIGON/Textures/L1/r_K2.png
+
+#begin Maps/POLIGON/Textures/L1/r_K3.png
+/copy:Maps/POLIGON/Textures/L1/r_K3.png
+
+#begin Maps/POLIGON/Textures/L1/r_K4.png
+/copy:Maps/POLIGON/Textures/L1/r_K4.png
+
+#begin Maps/POLIGON/Textures/L1/Shelter_1.png
+/copy:Maps/POLIGON/Textures/L1/Shelter_1.png
+
+#begin Maps/POLIGON/Textures/L1/Shelter_2.png
+/copy:Maps/POLIGON/Textures/L1/Shelter_2.png
+
+#begin Maps/POLIGON/Textures/L1/Stone_1.png
+/copy:Maps/POLIGON/Textures/L1/Stone_1.png
+
+#begin Maps/POLIGON/Textures/L1/Stone_2.png
+/copy:Maps/POLIGON/Textures/L1/Stone_2.png
+
+#begin Maps/POLIGON/Textures/L1/Stone_3_1_1.png
+/copy:Maps/POLIGON/Textures/L1/Stone_3_1_1.png
+
+#begin Maps/POLIGON/Textures/L1/Stone_3_2_1.png
+/copy:Maps/POLIGON/Textures/L1/Stone_3_2_1.png
+
+#begin Maps/POLIGON/Textures/L1/Tree_1_1_trans.png
+/copy:Maps/POLIGON/Textures/L1/Tree_1_1_trans.png
+
+#begin Maps/POLIGON/Textures/L1/tree_3_1.png
+/copy:Maps/POLIGON/Textures/L1/tree_3_1.png
+
+#begin Maps/POLIGON/Textures/L1/tree_4_1.png
+/copy:Maps/POLIGON/Textures/L1/tree_4_1.png
+
+#begin Maps/POLIGON/Textures/L1/tree_5_1.png
+/copy:Maps/POLIGON/Textures/L1/tree_5_1.png
+
+#begin Maps/POLIGON/Textures/L1/xWood_1.png
+/copy:Maps/POLIGON/Textures/L1/xWood_1.png
+
+#begin Maps/POLIGON/Textures/L1/x_Cut_Tree_1.png
+/copy:Maps/POLIGON/Textures/L1/x_Cut_Tree_1.png
+
+#begin Maps/POLIGON/Textures/L1/x_DryWood_1.png
+/copy:Maps/POLIGON/Textures/L1/x_DryWood_1.png
+
+#begin Maps/POLIGON/Textures/L2/1_EMPTY.png
+/copy:Maps/POLIGON/Textures/L2/1_EMPTY.png
+
+#begin Maps/POLIGON/Textures/L2/Stone_3_1_2.png
+/copy:Maps/POLIGON/Textures/L2/Stone_3_1_2.png
+
+#begin Maps/POLIGON/Textures/L2/Stone_3_2_2.png
+/copy:Maps/POLIGON/Textures/L2/Stone_3_2_2.png
+
+#begin Maps/POLIGON/Textures/L2/Tree_1_2_trans.png
+/copy:Maps/POLIGON/Textures/L2/Tree_1_2_trans.png
+
+#begin Maps/POLIGON/Textures/L2/tree_3_2.png
+/copy:Maps/POLIGON/Textures/L2/tree_3_2.png
+
+#begin Maps/POLIGON/Textures/L2/tree_4_2.png
+/copy:Maps/POLIGON/Textures/L2/tree_4_2.png
+
+#begin Maps/POLIGON/Textures/L2/tree_5_2.png
+/copy:Maps/POLIGON/Textures/L2/tree_5_2.png
+
+#begin Maps/POLIGON/Textures/L3/1_EMPTY.png
+/copy:Maps/POLIGON/Textures/L3/1_EMPTY.png
+
+#begin Maps/POLIGON/Textures/L3/block.png
+/copy:Maps/POLIGON/Textures/L3/block.png
+
+#begin Maps/POLIGON/mapdata.vcmd
+/copy:Maps/POLIGON/mapdata.vcmd
+
+#begin Maps/POLIGON/texturelist.vctl
+/copy:Maps/POLIGON/texturelist.vctl
+
