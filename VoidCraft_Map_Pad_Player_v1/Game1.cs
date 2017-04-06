@@ -11,7 +11,7 @@ using PlayerControler;
 
 /////////////////////////////////////////////////////////////
 //////////////////                          /////////////////
-//////////////////     VERSION 0.07         /////////////////
+//////////////////     VERSION 0.08         ///////////////// Heh nie zapomnia³em
 //////////////////                          /////////////////
 /////////////////////////////////////////////////////////////
 
@@ -24,10 +24,10 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         Map map;
         GameControler Pad;
         Direction WalkingDirection;
-        double Speed = 0.5;
+        double Speed = 0.05;
         int LicznikPachPach = 0;
 
-        //John
+        //John'owicz
         public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
         private Player Gracz; // Tworzenie istancji
         private SpriteFont font; // Napis
@@ -36,7 +36,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
         public int ScreenX { get; private set; }
         public int ScreenY { get; private set; }
-        bool A = false;
+
         GamePadStatus buff = GamePadStatus.None;
 
         public Game1() {
@@ -47,6 +47,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 480;
             graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
+
+            //this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / 2.0f);
         }
 
         protected override void Initialize() {
@@ -63,7 +65,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             //map = new Map(GraphicsDevice, "MalaMapa", ScreenX, ScreenY);
             map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
 
-            map.SetPosition(2, 2);
+            map.SetPosition(5, 5);
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
             font = Content.Load<SpriteFont>("File"); // Use the name of your sprite font file
@@ -91,14 +93,14 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         }
 
         protected override void UnloadContent() { }
-        
+
         protected override void Update(GameTime gameTime) {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
 
             //Gracz.gin(gameTime);
             Gracz.Update(gameTime);
-            
+
             if (Pad.IsButtonPresed(GamePadStatus.DirNone)) {
                 if (buff == GamePadStatus.Up) {
                     Gracz.Move(Direction.Idle_Back, PlayerMoveTexture);
@@ -114,8 +116,12 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                 if (map.GetObjectType(3, Direction.Up) != 1) {
                     WalkingDirection = Direction.Up;
                     buff = GamePadStatus.Up;
+
+
                     Gracz.Move(Direction.Up, PlayerMoveTexture);
                     map.MoveMap(0, -Speed);
+
+
                 }
             } else
             if (Pad.IsButtonPresed(GamePadStatus.Down)) {
@@ -150,13 +156,13 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                     map.Message("I pach pach w krzynke\n\n             OK", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 700, 400));
 
                 }
-            
+
                 map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-            }else if (Pad.IsButtonClicked(GamePadStatus.B)) {
+            } else if (Pad.IsButtonClicked(GamePadStatus.B)) {
                 map.Message("I pach pach poraz " + (--LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
             }
 
-
+            
 
             if (map.GetObjectType(3, WalkingDirection) == 2) { // Tak se misja // 2 -> Id skrzynek
                 map.Message("Ooo skrzyneczka  WALNIJ JA (A) :D   \nna pozycji: \nX= " + map.GetPosition().X + "  \nY= " + map.GetPosition().Y + "\n   WALNIJ JA", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 700, 400));
@@ -176,11 +182,11 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             map.Draw(spriteBatch, 0, false);
             map.Draw(spriteBatch, 1, false);
 
-            
+
             // Rysowanie Gracza
             Gracz.Draw(spriteBatch, new Rectangle(
-                ((ScreenX / 2) - (map.GetZoomValue() / 2)), 
-                ((ScreenY / 2)) - map.GetZoomValue(), 
+                ((ScreenX / 2) - (map.GetZoomValue() / 2)),
+                ((ScreenY / 2)) - map.GetZoomValue(),
                 map.GetZoomValue(), map.GetZoomValue())
                 );
 
@@ -190,9 +196,9 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             // Rysowanie Przyiskow
             Pad.Draw(spriteBatch);
 
-            spriteBatch.DrawString(sf, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Firebrick);
-            spriteBatch.DrawString(sf, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Firebrick);
-            spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Firebrick);
+            spriteBatch.DrawString(sf, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Red);
+            spriteBatch.DrawString(sf, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Red);
+            spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Red);
             spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 200), Color.Red);
 
             //Wyswietlanie Poziomu HP na Ekranie
