@@ -11,7 +11,7 @@ using PlayerControler;
 
 /////////////////////////////////////////////////////////////
 //////////////////                          /////////////////
-//////////////////     VERSION 0.06         /////////////////
+//////////////////     VERSION 0.07         /////////////////
 //////////////////                          /////////////////
 /////////////////////////////////////////////////////////////
 
@@ -24,7 +24,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         Map map;
         GameControler Pad;
         Direction WalkingDirection;
-        double Speed = 0.3;
+        double Speed = 0.5;
         int LicznikPachPach = 0;
 
         //John
@@ -63,7 +63,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             //map = new Map(GraphicsDevice, "MalaMapa", ScreenX, ScreenY);
             map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
 
-            map.SetPosition(22, 20);
+            map.SetPosition(2, 2);
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
             font = Content.Load<SpriteFont>("File"); // Use the name of your sprite font file
@@ -176,18 +176,11 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             map.Draw(spriteBatch, 0, false);
             map.Draw(spriteBatch, 1, false);
 
-            spriteBatch.DrawString(sf, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Firebrick);
-            spriteBatch.DrawString(sf, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Firebrick);
-            spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Firebrick);
-            spriteBatch.DrawString(sf, "...: " + "", new Vector2(50, 200), Color.Red);
-
-            //Wyswietlanie Poziomu HP na Ekranie
-            if (Gracz.HP != 0) { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(100, 100), Color.Black); } else { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
-
+            
             // Rysowanie Gracza
             Gracz.Draw(spriteBatch, new Rectangle(
                 ((ScreenX / 2) - (map.GetZoomValue() / 2)), 
-                ((ScreenY / 2)) , 
+                ((ScreenY / 2)) - map.GetZoomValue(), 
                 map.GetZoomValue(), map.GetZoomValue())
                 );
 
@@ -196,6 +189,14 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
             // Rysowanie Przyiskow
             Pad.Draw(spriteBatch);
+
+            spriteBatch.DrawString(sf, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Firebrick);
+            spriteBatch.DrawString(sf, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Firebrick);
+            spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Firebrick);
+            spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 200), Color.Red);
+
+            //Wyswietlanie Poziomu HP na Ekranie
+            if (Gracz.HP != 0) { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(100, 100), Color.Black); } else { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
 
             spriteBatch.End();
             base.Draw(gameTime);
