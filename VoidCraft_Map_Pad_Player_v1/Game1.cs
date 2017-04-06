@@ -63,9 +63,11 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             //map = new Map(GraphicsDevice, "JohnnoweTekstury", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "MalaMapa", ScreenX, ScreenY);
-            map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
+            //map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
 
-            map.SetPosition(5, 5);
+            map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
+            map.SetPosition(25, 34);
+
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
             font = Content.Load<SpriteFont>("File"); // Use the name of your sprite font file
