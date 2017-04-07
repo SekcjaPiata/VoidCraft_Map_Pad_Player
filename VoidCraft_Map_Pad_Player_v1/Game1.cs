@@ -11,8 +11,8 @@ using PlayerControler;
 
 /////////////////////////////////////////////////////////////
 //////////////////                          /////////////////
-//////////////////     VERSION 0.09         /////////////////  a ja zapomnia³em :)
-//////////////////                          /////////////////
+//////////////////     VERSION 0.010         /////////////////  a ja zapomnia³em :)
+//////////////////                          /////////////////   HyHy
 /////////////////////////////////////////////////////////////
 
 
@@ -63,10 +63,10 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             //map = new Map(GraphicsDevice, "JohnnoweTekstury", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "MalaMapa", ScreenX, ScreenY);
-            //map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
+            map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
 
-            map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
-            map.SetPosition(25, 34);
+            //map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
+            map.SetPosition(1, 1);
 
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
@@ -164,7 +164,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                 map.Message("I pach pach poraz " + (--LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
             }
 
-            
+
 
             if (map.GetObjectType(3, WalkingDirection) == 2) { // Tak se misja // 2 -> Id skrzynek
                 map.Message("Ooo skrzyneczka  WALNIJ JA (A) :D   \nna pozycji: \nX= " + map.GetPosition().X + "  \nY= " + map.GetPosition().Y + "\n   WALNIJ JA", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 700, 400));

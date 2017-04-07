@@ -225,7 +225,7 @@ namespace MapControler {
                 if (GetPosition().X + x >= 0 && GetPosition().Y + y >= 0)
                     if (GetPosition().X + x < Width && GetPosition().Y + y < Height)
                         if(((int)GetPosition().X + x) -1 >= 0 && ((int)GetPosition().Y + y) -1 >= 0)
-                        i = Textur[Layer][Tiles[Layer][((int)GetPosition().X + x)-1, ((int)GetPosition().Y + y)-1].Id].ID;
+                            i = Textur[Layer][Tiles[Layer][((int)GetPosition().X + x)-1, ((int)GetPosition().Y + y)-1].Id].ID;
 
             }
             return i;
@@ -239,17 +239,17 @@ namespace MapControler {
         /// Seters
         /// </summary>
         public void MoveMap(double ToAddX, double ToAddY) {
-            
-                MapOfsetX += ToAddX;
-                MapOfsetY += ToAddY;
-                
 
-                if (MapOfsetX <= 1) { MapOfsetX = 1; }
-                if (MapOfsetY <= 1) { MapOfsetY = 1; }
+            MapOfsetX += ToAddX;
+            MapOfsetY += ToAddY;
 
-                if (MapOfsetX >= Width) { MapOfsetX = Width; }
 
-                if (MapOfsetY >= Height) { MapOfsetY = Height; }
+            if (MapOfsetX <= 1) { MapOfsetX = 1; }
+            if (MapOfsetY <= 1) { MapOfsetY = 1; }
+
+            if (MapOfsetX >= Width) { MapOfsetX = Width; }
+
+            if (MapOfsetY >= Height) { MapOfsetY = Height; }
 
 
         }
