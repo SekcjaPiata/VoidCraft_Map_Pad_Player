@@ -240,6 +240,3 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-
-VoidCraft_Map_Pad_Player_v1/VoidCraft_Map_Pad_Player_v1.csproj
-VoidCraft_Map_Pad_Player_v1/VoidCraft_Map_Pad_Player_v1.csproj.bak
