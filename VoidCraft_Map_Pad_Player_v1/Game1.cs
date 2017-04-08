@@ -56,7 +56,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
             sf = Content.Load<SpriteFont>("SpriteFontPL");
-           // cvxcvxcvxcv
+
             PlayerMoveTexture = new List<Texture2D>();
 
             //map = new Map(GraphicsDevice, "ProjektTestowy", ScreenX, ScreenY);
