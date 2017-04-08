@@ -7,6 +7,7 @@ using PadControler;
 using System;
 using System.Collections.Generic;
 using PlayerControler;
+using Microsoft.Xna.Framework.Media;
 
 
 /////////////////////////////////////////////////////////////
@@ -24,8 +25,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         Map map;
         GameControler Pad;
         Direction WalkingDirection;
-        double Speed = 0.5;
-        int LicznikPachPach = 0;
+        double Speed = 1;
+        Song song;
 
         int GameHour, GameMinute;
         float timer = 1;
@@ -65,6 +66,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
             PlayerMoveTexture = new List<Texture2D>();
 
+            song = Content.Load<Song>("ZombiesAreComing");
+
             //map = new Map(GraphicsDevice, "ProjektTestowy", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "JohnnoweTekstury", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
@@ -93,7 +96,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
             Gracz = new Player(PlayerMoveTexture[4], 1, IloscKlatek, 10, 600);
-
+            MediaPlayer.Play(song);
 
             base.Initialize();
         }
@@ -102,6 +105,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
 
+            
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer < 0) {
                 GameTimeControl();

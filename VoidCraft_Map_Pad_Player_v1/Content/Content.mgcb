@@ -1824,3 +1824,9 @@
 #begin Maps/POLIGON/texturelist.vctl
 /copy:Maps/POLIGON/texturelist.vctl
 
+#begin ZombiesAreComing.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:ZombiesAreComing.ogg
+
