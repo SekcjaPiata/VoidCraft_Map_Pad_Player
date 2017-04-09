@@ -59,8 +59,7 @@ namespace PlayerControler
         /// Prêdkoœæ Wyœwietlania Animacji
         /// </summary>
         private int timeSinceLastFrame = 0;
-        private int milliseconsuPerFrame = 160;
-
+        private int milliseconsuPerFrame = 30;
 
 
         /// <summary>
