@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 /////////////////////////////////////////////////////////////
 //////////////////                          /////////////////
-//////////////////     VERSION 0.011         ////////////////
+//////////////////     VERSION 0.012        /////////////////   "Nie ma opierdalania sie" ~ Burnejka / Stejk
 //////////////////                          ///////////////// 
 /////////////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         Map map;
         GameControler Pad;
         Direction WalkingDirection;
-        double Speed = 1;
+        double Speed = 0.05;
         Song song;
 
         int GameHour, GameMinute;
@@ -43,6 +43,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         public int ScreenY { get; private set; }
 
         GamePadStatus buff = GamePadStatus.None;
+
         /// -----------------------------------------------------------------------------------------------------
 
         public Game1() {
@@ -54,6 +55,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             graphics.PreferredBackBufferHeight = 480;
             graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
         }
+
         /// -----------------------------------------------------------------------------------------------------
 
         protected override void Initialize() {
@@ -96,15 +98,21 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
             Gracz = new Player(PlayerMoveTexture[4], 1, IloscKlatek, 10, 600);
+
+            MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(song);
+           
 
             base.Initialize();
         }
+
+        /// -----------------------------------------------------------------------------------------------------
 
         protected override void Update(GameTime gameTime) {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
 
+            
             
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer < 0) {
@@ -191,6 +199,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             base.Update(gameTime);
         }
 
+        /// -----------------------------------------------------------------------------------------------------
+        
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Green);
 
