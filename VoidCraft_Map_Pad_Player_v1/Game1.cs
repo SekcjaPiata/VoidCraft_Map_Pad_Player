@@ -8,11 +8,12 @@ using System;
 using System.Collections.Generic;
 using PlayerControler;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 
 /////////////////////////////////////////////////////////////
 //////////////////                          /////////////////
-//////////////////     VERSION 0.013        /////////////////   "Nie ma opierdalania sie" ~ Burnejka / Stejk
+//////////////////     VERSION 0.014        /////////////////   co jak co ale myœmy wiêkszoœæ swojego zrobili ... ja czekam na EQ ,itemy i takie tam
 //////////////////                          ///////////////// 
 /////////////////////////////////////////////////////////////
 
@@ -29,6 +30,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         Direction WalkingDirection;
         double Speed = 0.05;
         Song song;
+        SoundEffect GrassWalk;
 
         int GameHour, GameMinute;
         float timer = 1;
@@ -76,8 +78,9 @@ namespace VoidCraft_Map_Pad_Player_v1
             PlayerMoveTexture = new List<Texture2D>();
             DayCycleTexture = new List<Texture2D>();
 
-            song = Content.Load<Song>("ZombiesAreComing");
-
+            song = Content.Load<Song>("BgMusic");
+            GrassWalk = Content.Load<SoundEffect>("GrassStep");
+            
             //map = new Map(GraphicsDevice, "ProjektTestowy", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "JohnnoweTekstury", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
@@ -87,8 +90,8 @@ namespace VoidCraft_Map_Pad_Player_v1
             //map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
             map.SetPosition(1, 1);
 
-            GameHour = 7;
-            GameMinute = 50;
+            GameHour = 19;
+            GameMinute = 30;
 
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
@@ -133,9 +136,10 @@ namespace VoidCraft_Map_Pad_Player_v1
             PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_Idle"));        //7
 
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
-            Gracz = new Player(PlayerMoveTexture[4], 1, IloscKlatek, 10, 600);
-
+            Gracz = new Player(GrassWalk,PlayerMoveTexture[4], 1, IloscKlatek, 10, 600);
+            
             MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = 0.70f;
             MediaPlayer.Play(song);
 
 

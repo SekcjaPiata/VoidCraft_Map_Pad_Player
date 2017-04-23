@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MapControler;
+using Microsoft.Xna.Framework.Audio;
 
 namespace PlayerControler
 {
@@ -54,6 +55,7 @@ namespace PlayerControler
         private int currentFrame;
         private int totalFrames;
 
+        bool IsMoving = false;
 
         /// <summary>
         /// Prêdkoœæ Wyœwietlania Animacji
@@ -61,12 +63,15 @@ namespace PlayerControler
         private int timeSinceLastFrame = 0;
         private int milliseconsuPerFrame = 140;
 
+        SoundEffect Grass;
 
         /// <summary>
         /// Konstruktor Parametryczny Postaci
         /// </summary>
-        public Player(Texture2D texture, int rows, int columns, int posX, int posY)
+        public Player(SoundEffect Grass ,Texture2D texture, int rows, int columns, int posX, int posY)
         {
+            this.Grass = Grass;
+
             Texture = texture;
             Rows = rows;
             Columns = columns;
@@ -147,6 +152,10 @@ namespace PlayerControler
                 timeSinceLastFrame = 0;
 
                 if (currentFrame == totalFrames) { currentFrame = 0; }
+
+                if ((currentFrame == 1 || currentFrame == 3) && IsMoving) {
+                    Grass.Play();
+                }
             }
         }
 
@@ -177,14 +186,14 @@ namespace PlayerControler
         {
             switch (direction)
             {
-                case Direction.Idle_Down: { Texture = tx[4]; break; }
-                case Direction.Up: { Texture = tx[2]; break; }
-                case Direction.Down: { Texture = tx[3]; break; }
-                case Direction.Left: { Texture = tx[1]; break; }
-                case Direction.Right: { Texture = tx[0]; break; }
-                case Direction.Idle_Left: { Texture = tx[5]; break; }
-                case Direction.Idle_Right: { Texture = tx[6]; break; }
-                case Direction.Idle_Back: { Texture = tx[7]; break; }
+                case Direction.Idle_Down: { IsMoving = false; Texture = tx[4]; break; }
+                case Direction.Up: { IsMoving = true; Texture = tx[2]; break; }
+                case Direction.Down: { IsMoving = true; Texture = tx[3]; break; }
+                case Direction.Left: { IsMoving = true; Texture = tx[1]; break; }
+                case Direction.Right: { IsMoving = true; Texture = tx[0]; break; }
+                case Direction.Idle_Left: { IsMoving = false; Texture = tx[5]; break; }
+                case Direction.Idle_Right: { IsMoving = false; Texture = tx[6]; break; }
+                case Direction.Idle_Back: { IsMoving = false; Texture = tx[7]; break; }
                 default: break;
             }
         }

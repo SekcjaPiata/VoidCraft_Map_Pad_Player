@@ -2130,3 +2130,15 @@
 /processorParam:TextureFormat=Color
 /build:NightFolder/Night_25.png
 
+#begin BgMusic.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:BgMusic.mp3
+
+#begin GrassStep.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:GrassStep.mp3
+
