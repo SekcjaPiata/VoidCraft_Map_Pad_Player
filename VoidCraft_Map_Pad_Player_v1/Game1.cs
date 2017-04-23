@@ -13,8 +13,8 @@ using Microsoft.Xna.Framework.Audio;
 
 /////////////////////////////////////////////////////////////
 //////////////////                          /////////////////
-//////////////////     VERSION 0.014        /////////////////   co jak co ale myœmy wiêkszoœæ swojego zrobili ... ja czekam na EQ ,itemy i takie tam
-//////////////////                          ///////////////// 
+//////////////////     VERSION 0.015        /////////////////   No nie da siê ukryæ ¿e tym razem nawet ja siê nie opierdalam :)
+//////////////////                          /////////////////   Zrobilem Sladowi Menu chcia³bym zobaczyæ jak to dzia³a. proste ale niech zrobi
 /////////////////////////////////////////////////////////////
 
 
@@ -34,7 +34,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
         int GameHour, GameMinute;
         float timer = 1;
-        Texture2D Night;
+        //Texture2D Night;
 
         //John'owicz
         public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
@@ -45,6 +45,8 @@ namespace VoidCraft_Map_Pad_Player_v1
         double DayCycleTimer = 0; // FPS dla systemu dnia i nocy
         public List<Texture2D> DayCycleTexture;  // Lista na Textury Nocy
         int DayCycle = 0;
+
+        
 
         public int ScreenX { get; private set; }
         public int ScreenY { get; private set; }
@@ -85,13 +87,13 @@ namespace VoidCraft_Map_Pad_Player_v1
             //map = new Map(GraphicsDevice, "JohnnoweTekstury", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "MalaMapa", ScreenX, ScreenY);
-            map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
+            //map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
 
-            //map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
-            map.SetPosition(1, 1);
+            map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
+            map.SetPosition(26, 34);
 
-            GameHour = 19;
-            GameMinute = 30;
+            GameHour = 7;
+            GameMinute = 50;
 
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
@@ -292,8 +294,9 @@ namespace VoidCraft_Map_Pad_Player_v1
             // Rysowanie 3 Warstwy.
             map.Draw(spriteBatch, 2, true);
 
+
             // Dzien i noc
-            if (GameHour >= 8 && GameHour <= 20) // DZIEN
+            if (GameHour >= 8 && GameHour <= 19) // DZIEN
             {
                 while (DayCycleTimer % 10 == 0)
                 {
@@ -301,10 +304,9 @@ namespace VoidCraft_Map_Pad_Player_v1
                     DayCycleTimer++;
                     DayCycle--;
                 }
-                spriteBatch.Draw(DayCycleTexture[DayCycle], new Rectangle(0, 0, ScreenX, ScreenY), Color.White);
             }
 
-            else if (GameHour >= 20 || GameHour <= 8) // NOC
+            else if (GameHour >= 20 || GameHour <= 7) // NOC
             { 
                 while (DayCycleTimer % 10 == 0)
                 {
@@ -312,8 +314,10 @@ namespace VoidCraft_Map_Pad_Player_v1
                     DayCycleTimer++;
                     DayCycle++;
                 }
-                spriteBatch.Draw(DayCycleTexture[DayCycle], new Rectangle(0, 0, ScreenX, ScreenY), Color.White);
             }
+
+            // Rysowanie Tekstury Nocy
+            spriteBatch.Draw(DayCycleTexture[DayCycle], new Rectangle(0, 0, ScreenX, ScreenY), Color.White);
 
 
             // Rysowanie Przyciskow
@@ -325,7 +329,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 200), Color.Red);
             spriteBatch.DrawString(sf, "Game time: " + GameHour + ":" + GameMinute, new Vector2(50, 250), Color.Red);
 
-            spriteBatch.DrawString(sf, "FPS: " + DayCycleTimer, new Vector2(50, 300), Color.LightYellow); // DayCycle TEST
+            spriteBatch.DrawString(sf, "DayCycleTimer: " + DayCycleTimer, new Vector2(50, 300), Color.LightYellow); // DayCycle TEST
             DayCycleTimer++;
             if (DayCycleTimer >= 1000) { DayCycleTimer = 0; }
             
@@ -356,3 +360,4 @@ namespace VoidCraft_Map_Pad_Player_v1
         protected override void UnloadContent() { }
     }
 }
+
