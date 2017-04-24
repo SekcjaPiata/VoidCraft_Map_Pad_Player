@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Audio;
 
 /////////////////////////////////////////////////////////////
 //////////////////                          /////////////////
-//////////////////     VERSION 0.015        /////////////////   No nie da siê ukryæ ¿e tym razem nawet ja siê nie opierdalam :)
+//////////////////     VERSION 0.016        /////////////////   No nie da siê ukryæ ¿e tym razem nawet ja siê nie opierdalam :)
 //////////////////                          /////////////////   Zrobilem Sladowi Menu chcia³bym zobaczyæ jak to dzia³a. proste ale niech zrobi
 /////////////////////////////////////////////////////////////
 
@@ -92,8 +92,8 @@ namespace VoidCraft_Map_Pad_Player_v1
             map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
             map.SetPosition(26, 34);
 
-            GameHour = 7;
-            GameMinute = 50;
+            GameHour = 17;
+            GameMinute = 55;
 
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
@@ -296,9 +296,9 @@ namespace VoidCraft_Map_Pad_Player_v1
 
 
             // Dzien i noc
-            if (GameHour >= 8 && GameHour <= 19) // DZIEN
+            if (GameHour >= 6 && GameHour <= 17) // DZIEN
             {
-                while (DayCycleTimer % 10 == 0)
+                while (DayCycleTimer % 300 == 0)
                 {
                     if (DayCycle == 0) break;
                     DayCycleTimer++;
@@ -306,9 +306,9 @@ namespace VoidCraft_Map_Pad_Player_v1
                 }
             }
 
-            else if (GameHour >= 20 || GameHour <= 7) // NOC
+            else if (GameHour >= 18 || GameHour <= 5) // NOC
             { 
-                while (DayCycleTimer % 10 == 0)
+                while (DayCycleTimer % 300 == 0)
                 {
                     if (DayCycle == 24) break;
                     DayCycleTimer++;
@@ -331,7 +331,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             spriteBatch.DrawString(sf, "DayCycleTimer: " + DayCycleTimer, new Vector2(50, 300), Color.LightYellow); // DayCycle TEST
             DayCycleTimer++;
-            if (DayCycleTimer >= 1000) { DayCycleTimer = 0; }
+            if (DayCycleTimer >= 100000){ DayCycleTimer = 0; }
             
 
             //Wyswietlanie Poziomu HP na Ekranie
