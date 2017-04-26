@@ -13,8 +13,7 @@ namespace PlayerControler
         /*
         TO DO: 
         1. Poprawic wczytywanie tekstur (wrzucic do Klasy) 
-        2. Dodac Animacje Idle w kazdym kierunku // zrobione
-        3. Przesunac Postac na srodek kratki (up)
+        2. Przesunac Postac na srodek kratki (up)
         */
 
         /// <summary>
@@ -86,8 +85,6 @@ namespace PlayerControler
         }
 
         /////////////////////////// METODY ///////////////////////////////////////
-
-
 
         public void Spadek_HP(GameTime gameTime)
         {

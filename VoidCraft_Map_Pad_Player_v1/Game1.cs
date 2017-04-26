@@ -13,8 +13,8 @@ using Microsoft.Xna.Framework.Audio;
 
 /////////////////////////////////////////////////////////////
 //////////////////                          /////////////////
-//////////////////     VERSION 0.016        /////////////////   No nie da siê ukryæ ¿e tym razem nawet ja siê nie opierdalam :)
-//////////////////                          /////////////////   Zrobilem Sladowi Menu chcia³bym zobaczyæ jak to dzia³a. proste ale niech zrobi
+//////////////////     VERSION 0.017        /////////////////   Smutne pozegnanie ze star¹ postaci¹ :(  
+//////////////////                          /////////////////   Dla mnie ta jest taka sobie... 
 /////////////////////////////////////////////////////////////
 
 
@@ -42,7 +42,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         private SpriteFont font; // Napis
         private int IloscKlatek = 4; // ilosc klatek w danej animacji
 
-        double DayCycleTimer = 0; // FPS dla systemu dnia i nocy
+        double DayCycleTimer = 0; // Timer dla systemu dnia i nocy
         public List<Texture2D> DayCycleTexture;  // Lista na Textury Nocy
         int DayCycle = 0;
 
@@ -127,15 +127,15 @@ namespace VoidCraft_Map_Pad_Player_v1
             DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_25"));
 
 
-            // Wczytywanie tekstur Animacji i tworzenie instancji Player
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Right_140"));        //0
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Left_140"));         //1
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_140"));         //2
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Front_140"));        //3 
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Idle_140"));         //4
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Left_Idle_140"));    //5
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Right_Idle_140"));   //6
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Back_Idle"));        //7
+            //// Wczytywanie tekstur Animacji i tworzenie instancji Player
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Right"));        //0
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Left"));         //1
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Back"));         //2
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Front"));        //3 
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Front"));   //4
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Left"));    //5
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Right"));   //6
+            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Back"));    //7
 
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
             Gracz = new Player(GrassWalk,PlayerMoveTexture[4], 1, IloscKlatek, 10, 600);
