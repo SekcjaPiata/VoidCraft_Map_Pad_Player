@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace MapControler {
     enum Direction {
-        Idle_Down,Left, Right, Up, Down,Idle_Left, Idle_Right, Idle_Back
+        Idle_Down,Left, Right, Up, Down,Idle_Left, Idle_Right, Idle_Back,On
     }
 
     class Map {
@@ -56,7 +56,10 @@ namespace MapControler {
             this.screenX = screenX;
             this.screenY = screenY;
 
-            this.MapZoom = (screenX / 17);
+            //this.MapZoom = (screenX / 17); // Po szerokosci
+            //this.MapZoom = (screenY / 10); // Po wyskokosci
+
+            this.MapZoom =( (screenY / 10)+ (screenX / 17))/2; // Po wyskokosci i szerokosci
 
             this.InitMapZoom = this.MapZoom;
 
@@ -220,12 +223,19 @@ namespace MapControler {
             if (Dir != Direction.Idle_Down) {
                 int x = (Dir == Direction.Left) ? -1 : (Dir == Direction.Right) ? 1 : 0;
                 int y = (Dir == Direction.Up) ? -1 : (Dir == Direction.Down) ? 1 : 0;
+               // x = 0;
+               // y = 0;
 
+                if (GetPosition().X + x >= 0 && GetPosition().Y + y >= 0) {
+                    if (GetPosition().X + x < Width && GetPosition().Y + y < Height) {
+                         if (((int)GetPosition().X + x) - 1 >= 0 && ((int)GetPosition().Y + y) - 1 >= 0) {
+                            i = Textur[Layer][Tiles[Layer][((int)GetPosition().X + x) - 1, ((int)GetPosition().Y + y) - 1].Id].ID;
+                         }
 
-                if (GetPosition().X + x >= 0 && GetPosition().Y + y >= 0)
-                    if (GetPosition().X + x < Width && GetPosition().Y + y < Height)
-                        if(((int)GetPosition().X + x) -1 >= 0 && ((int)GetPosition().Y + y) -1 >= 0)
-                            i = Textur[Layer][Tiles[Layer][((int)GetPosition().X + x)-1, ((int)GetPosition().Y + y)-1].Id].ID;
+                        // TOFIX
+
+                    }
+                }
 
             }
             return i;
@@ -250,8 +260,7 @@ namespace MapControler {
             if (MapOfsetX >= Width) { MapOfsetX = Width; }
 
             if (MapOfsetY >= Height) { MapOfsetY = Height; }
-
-
+            
         }
 
         public void ChangeZoom(int ToAddValue) {

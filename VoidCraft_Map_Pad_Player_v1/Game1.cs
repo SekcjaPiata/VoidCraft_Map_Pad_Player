@@ -13,9 +13,9 @@ using Microsoft.Xna.Framework.Audio;
 
 /////////////////////////////////////////////////////////////
 //////////////////                          /////////////////
-//////////////////     VERSION 0.017        /////////////////   Smutne pozegnanie ze star¹ postaci¹ :(  
-//////////////////                          /////////////////   Dla mnie ta jest taka sobie... 
-/////////////////////////////////////////////////////////////
+//////////////////     VERSION 0.018        /////////////////   J:Smutne pozegnanie ze star¹ postaci¹ :(  
+//////////////////                          /////////////////   J:Dla mnie ta jest taka sobie... 
+/////////////////////////////////////////////////////////////   A: Smuteq :( 
 
 
 namespace VoidCraft_Map_Pad_Player_v1
@@ -187,50 +187,60 @@ namespace VoidCraft_Map_Pad_Player_v1
                     Gracz.Move(Direction.Idle_Left, PlayerMoveTexture);
                 }
             }
-            else
+            
+
             if (Pad.IsButtonPresed(GamePadStatus.Up))
             {
-                if (map.GetObjectType(3, Direction.Up) == 0)
-                {
+                if (map.GetObjectType(3, Direction.On) == 0) {
                     WalkingDirection = Direction.Up;
                     buff = GamePadStatus.Up;
                     Gracz.Move(Direction.Up, PlayerMoveTexture);
                     map.MoveMap(0, -Speed);
+
+                    if (map.GetObjectType(3, Direction.On) != 0)
+                        map.MoveMap(0, Speed);
                 }
             }
             else
             if (Pad.IsButtonPresed(GamePadStatus.Down))
             {
-                if (map.GetObjectType(3, Direction.Down) == 0)
+                if (map.GetObjectType(3, Direction.On) == 0)
                 {
                     WalkingDirection = Direction.Down;
                     buff = GamePadStatus.Down;
                     Gracz.Move(Direction.Down, PlayerMoveTexture);
                     map.MoveMap(0, Speed);
+
+                    if (map.GetObjectType(3, Direction.On) != 0)
+                    map.MoveMap(0, -Speed);
                 }
             }
             else
             if (Pad.IsButtonPresed(GamePadStatus.Right))
             {
 
-                if (map.GetObjectType(3, Direction.Right) == 0)
+                if (map.GetObjectType(3, Direction.On) == 0)
                 {
                     WalkingDirection = Direction.Right;
                     buff = GamePadStatus.Right;
                     Gracz.Move(Direction.Right, PlayerMoveTexture);
                     map.MoveMap(Speed, 0);
+                    if (map.GetObjectType(3, Direction.On) != 0)
+                        map.MoveMap(-Speed, 0);
                 }
             }
             else
             if (Pad.IsButtonPresed(GamePadStatus.Left))
             {
 
-                if (map.GetObjectType(3, Direction.Left) == 0)
+                if (map.GetObjectType(3, Direction.On) == 0)
                 {
                     WalkingDirection = Direction.Left;
                     buff = GamePadStatus.Left;
                     Gracz.Move(Direction.Left, PlayerMoveTexture);
                     map.MoveMap(-Speed, 0);
+                    if (map.GetObjectType(3, Direction.On) != 0)
+                        map.MoveMap(Speed, 0);
                 }
             }
 
@@ -328,8 +338,11 @@ namespace VoidCraft_Map_Pad_Player_v1
             spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Red);
             spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 200), Color.Red);
             spriteBatch.DrawString(sf, "Game time: " + GameHour + ":" + GameMinute, new Vector2(50, 250), Color.Red);
-
-            spriteBatch.DrawString(sf, "DayCycleTimer: " + DayCycleTimer, new Vector2(50, 300), Color.LightYellow); // DayCycle TEST
+            spriteBatch.DrawString(sf, "Resolution: " + ScreenX + "x" + ScreenY, new Vector2(50, 300), Color.Red);
+            spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 350), Color.Red);
+            spriteBatch.DrawString(sf, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2)))+"x"+(((ScreenY / 2)) - map.GetZoomValue()), new Vector2(50, 400), Color.Red);
+            spriteBatch.DrawString(sf, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2)))/18 + "x" + (((ScreenY / 2)) - map.GetZoomValue())/11, new Vector2(50, 450), Color.Red);
+            spriteBatch.DrawString(sf, "DayCycleTimer: " + DayCycleTimer, new Vector2(50, 500), Color.Red); // DayCycle TEST
             DayCycleTimer++;
             if (DayCycleTimer >= 100000){ DayCycleTimer = 0; }
             

@@ -56,11 +56,7 @@ namespace PadControler {
 
             TouchCollection tl = TouchPanel.GetState();
 
-            if (tl.Count == 0) {
-                ToReturn.Add(GamePadStatus.DirNone);
-
-                ToReturn.Add(GamePadStatus.None);
-            }
+            
 
             foreach (TouchLocation T in tl) {
 
@@ -68,6 +64,7 @@ namespace PadControler {
                     if (P.Position.Contains(T.Position)) {
                         ToReturn.Add(P.ButonType);
                     }
+
                 }
 
                 //if (Up.Position.Contains(T.Position)) {
@@ -86,6 +83,13 @@ namespace PadControler {
                 //    ToReturn.Add(GamePadStatus.B);
                 //}
             }
+
+            if (tl.Count == 0 || ToReturn.Count == 0) {
+                ToReturn.Add(GamePadStatus.DirNone);
+
+                ToReturn.Add(GamePadStatus.None);
+            }
+
             return ToReturn;
         }
 
