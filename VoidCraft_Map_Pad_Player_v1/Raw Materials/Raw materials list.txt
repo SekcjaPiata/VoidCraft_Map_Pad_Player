@@ -1,0 +1,17 @@
+﻿Spis listy surowców dających się pozyskać:
+
+Surowce, które można pozyskać bez narzędzi:
+1.Drewno
+2.Kamień
+3.Woda pitna ->z jeziora 
+4.Jedzienie ->Dostaje się z jagódek
+5.Liany -> ze specyficznych drzewek
+
+Surowce, które zdobywamy za pomocą narzędzi:
+1.Metal
+2.Woda pitna -> Przefiltrowana z morza (ognisko + woda z morza = woda pitna)
+3.Jedzenie -> Z pułapek albo sieci rybackich (Tak zdobyte jedzenie zwiększa pole jedzenie o większą ilość)
+
+
+Ogólnie wyświetlany będzie stan:
+Jedzenia,wody, drewna, kamieni,lian,metalu

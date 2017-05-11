@@ -1,0 +1,6 @@
+﻿Lista budynków, które możemy stworzyć, postawić
+
+1.Schronienie (50 drewna, 50 liany, 5 kamienie, 1 młotek, 1 siekiera)
+2.Ognisko (10 drewno, 5 kamienie)->Zostawia po sobie węgiel(opcjonalne)
+3.Stół do craftu(50 drewno, 10 liany, 30 kamienie, 50 metal,1 młotek, 1 piła)
+4.Pułapka (5 drewno, 10 liany, 10 metal, 1 młotek, 1 siekiera) -> po 24 h można zebrać z niej 10 jedzenia i znika
