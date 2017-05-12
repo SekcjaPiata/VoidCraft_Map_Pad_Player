@@ -66,9 +66,10 @@
     <Compile Include="PadControler\GameControler.cs" />
     <Compile Include="PadControler\PadButton.cs" />
     <Compile Include="PlayerControler\Player.cs" />
-    <Compile Include="Raw Materials\Raw_Materials.cs" />
+    <Compile Include="Raw Materials C\RawMaterials.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Tool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -97,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Buildings\Buildings list.txt" />
-    <Content Include="Raw Materials\Raw materials list.txt" />
+    <Content Include="Raw Materials C\Raw materials list.txt" />
     <Content Include="Tools\Tools list.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
