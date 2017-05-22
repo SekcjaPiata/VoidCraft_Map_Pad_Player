@@ -21,6 +21,8 @@ namespace VoidCraft_Map_Pad_Player_v1.Tools
             public CantCraftException(string message) : base(message) { }
         }
 
+    
+
         //Klasa opisuje narzêdzia. Zak³adamy, ¿e takowe siê nie niszcz¹
 
         private Texture2D _toolTexture;//Wczytana zostanie tekstura narzêdzia
@@ -83,7 +85,7 @@ namespace VoidCraft_Map_Pad_Player_v1.Tools
 
         }
 
-        public Tool(string TexturePath, string ToolName, int WoodNeeded, int StoneNeeded,
+        public Tool(Texture2D TexturePath, string ToolName, int WoodNeeded, int StoneNeeded,
             int LianasNeeded, int MetalNeeded, int WaterNeeded, int FoodNeeded)
         //kontruktor, który tworzy narzêdzie i ustawia wymagania do jego posiadania(scrafcenia) przez playera
         {
@@ -91,6 +93,7 @@ namespace VoidCraft_Map_Pad_Player_v1.Tools
             this.ToolName = ToolName;
             _requirements = new RawMaterials(WoodNeeded, StoneNeeded, LianasNeeded, MetalNeeded, WaterNeeded, FoodNeeded);
             this.IsOwned = false;
+            this._toolTexture = TexturePath;
         }
 
 

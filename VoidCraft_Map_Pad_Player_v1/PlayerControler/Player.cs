@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Graphics;
 using MapControler;
 using Microsoft.Xna.Framework.Audio;
 
+using VoidCraft_Map_Pad_Player_v1.Raw_Materials_C;
+
 namespace PlayerControler
 {
     class Player
@@ -38,6 +40,18 @@ namespace PlayerControler
         public int STRACH { get; set; }
         private int Strach_Czas;
         private int Strach_Predkosc = 70;
+
+
+        //Surowce posiadane
+
+        private RawMaterials materials;
+
+        public RawMaterials Materials
+        {
+            get { return materials; }
+            set { materials = value; }
+        }
+
 
 
         /// <summary>
@@ -82,7 +96,10 @@ namespace PlayerControler
             STRACH = 100;
             this.PosX = posX;
             this.PosY = posY;
+
+            materials = new RawMaterials();
         }
+
 
         /////////////////////////// METODY ///////////////////////////////////////
 

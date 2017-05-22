@@ -11,15 +11,17 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 
 
-///////////////////////////////////////////////////////////// A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy 
+///////////////////////////////////////////////////////////// A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
 //////////////////                          /////////////////
 //////////////////     VERSION 0.019        /////////////////   
 //////////////////                          /////////////////   
 /////////////////////////////////////////////////////////////   
 
 
-namespace VoidCraft_Map_Pad_Player_v1 {
-    public class Game1 : Game {
+namespace VoidCraft_Map_Pad_Player_v1
+{
+    public class Game1 : Game
+    {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteFont sf;
@@ -54,7 +56,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
         /// -----------------------------------------------------------------------------------------------------
 
-        public Game1() {
+        public Game1()
+        {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             WalkingDirection = Direction.Idle_Down;
@@ -66,7 +69,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
         /// -----------------------------------------------------------------------------------------------------
 
-        protected override void Initialize() {
+        protected override void Initialize()
+        {
             ScreenX = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
@@ -84,9 +88,9 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             //map = new Map(GraphicsDevice, "JohnnoweTekstury", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "MalaMapa", ScreenX, ScreenY);
-            //map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
+            map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
 
-            map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
+            //map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
             map.SetPosition(26, 34);
 
             GameHour = 17;
@@ -147,14 +151,16 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
         /// -----------------------------------------------------------------------------------------------------
 
-        protected override void Update(GameTime gameTime) {
+        protected override void Update(GameTime gameTime)
+        {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
 
 
 
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timer < 0) {
+            if (timer < 0)
+            {
                 GameTimeControl();
                 timer = 1;   //Reset Timer
             }
@@ -163,21 +169,31 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             //Gracz.gin(gameTime);
             Gracz.Update(gameTime);
 
-            if (Pad.IsButtonPresed(GamePadStatus.DirNone)) {
-                if (buff == GamePadStatus.Up) {
+            if (Pad.IsButtonPresed(GamePadStatus.DirNone))
+            {
+                if (buff == GamePadStatus.Up)
+                {
                     Gracz.Move(Direction.Idle_Back, PlayerMoveTexture);
-                } else if (buff == GamePadStatus.Down) {
+                }
+                else if (buff == GamePadStatus.Down)
+                {
                     Gracz.Move(Direction.Idle_Down, PlayerMoveTexture);
-                } else if (buff == GamePadStatus.Right) {
+                }
+                else if (buff == GamePadStatus.Right)
+                {
                     Gracz.Move(Direction.Idle_Right, PlayerMoveTexture);
-                } else if (buff == GamePadStatus.Left) {
+                }
+                else if (buff == GamePadStatus.Left)
+                {
                     Gracz.Move(Direction.Idle_Left, PlayerMoveTexture);
                 }
             }
 
 
-            if (Pad.IsButtonPresed(GamePadStatus.Up)) {
-                if (map.GetObjectType(3, Direction.On) == 0) {
+            if (Pad.IsButtonPresed(GamePadStatus.Up))
+            {
+                if (map.GetObjectType(3, Direction.On) == 0)
+                {
                     WalkingDirection = Direction.Up;
                     buff = GamePadStatus.Up;
                     Gracz.Move(Direction.Up, PlayerMoveTexture);
@@ -186,9 +202,12 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                     if (map.GetObjectType(3, Direction.On) != 0)
                         map.MoveMap(0, Speed);
                 }
-            } else
-            if (Pad.IsButtonPresed(GamePadStatus.Down)) {
-                if (map.GetObjectType(3, Direction.On) == 0) {
+            }
+            else
+            if (Pad.IsButtonPresed(GamePadStatus.Down))
+            {
+                if (map.GetObjectType(3, Direction.On) == 0)
+                {
                     WalkingDirection = Direction.Down;
                     buff = GamePadStatus.Down;
                     Gracz.Move(Direction.Down, PlayerMoveTexture);
@@ -197,10 +216,13 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                     if (map.GetObjectType(3, Direction.On) != 0)
                         map.MoveMap(0, -Speed);
                 }
-            } else
-            if (Pad.IsButtonPresed(GamePadStatus.Right)) {
+            }
+            else
+            if (Pad.IsButtonPresed(GamePadStatus.Right))
+            {
 
-                if (map.GetObjectType(3, Direction.On) == 0) {
+                if (map.GetObjectType(3, Direction.On) == 0)
+                {
                     WalkingDirection = Direction.Right;
                     buff = GamePadStatus.Right;
                     Gracz.Move(Direction.Right, PlayerMoveTexture);
@@ -208,10 +230,13 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                     if (map.GetObjectType(3, Direction.On) != 0)
                         map.MoveMap(-Speed, 0);
                 }
-            } else
-            if (Pad.IsButtonPresed(GamePadStatus.Left)) {
+            }
+            else
+            if (Pad.IsButtonPresed(GamePadStatus.Left))
+            {
 
-                if (map.GetObjectType(3, Direction.On) == 0) {
+                if (map.GetObjectType(3, Direction.On) == 0)
+                {
                     WalkingDirection = Direction.Left;
                     buff = GamePadStatus.Left;
                     Gracz.Move(Direction.Left, PlayerMoveTexture);
@@ -221,26 +246,43 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                 }
             }
 
-            if (Pad.IsButtonClicked(GamePadStatus.A)) {
+            if (Pad.IsButtonClicked(GamePadStatus.A))
+            {
+                if (map.GetObjectType(3, WalkingDirection) == 2)
+                { // Drewno
+                    Gracz.Materials.Wood++;
+                    String message = "Zebrano drewno, ilosc drewna: " + Gracz.Materials.Wood;
+                    map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                }
+                else if (map.GetObjectType(3, WalkingDirection) == 3)
+                { // Jerzynki
+                    Gracz.Materials.Food++;
+                    String message = "Zebrano jedzenie, ilosc jedzenia: " + Gracz.Materials.Food;
+                    map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
 
+                }
+                else if (map.GetObjectType(3, WalkingDirection) == 4)
+                { // Kamien
+                    Gracz.Materials.Stone++;
+                    String message = "Zebrano kamien, ilosc kamienia: " + Gracz.Materials.Stone;
+                    map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
 
-                if (map.GetObjectType(3, WalkingDirection) == 2) { // Drewno
-                    map.Message("I pach pach w drewno", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-                } else if (map.GetObjectType(3, WalkingDirection) == 3) { // Jerzynki
-                    map.Message("I pach pach w jerzynki", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-
-                } else if (map.GetObjectType(3, WalkingDirection) == 4) { // Kamien
-                    map.Message("I pach pach w kamien", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-
-                } else if (map.GetObjectType(3, WalkingDirection) == 5) { // Woda
-                    map.Message("I pach pach w wode", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-
-                } else {
+                }
+                else if (map.GetObjectType(3, WalkingDirection) == 5)
+                { // Woda
+                    Gracz.Materials.Water++;
+                    String message = "Zebrano wode ilosc wody: " + Gracz.Materials.Water;
+                    map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                }
+                else
+                {
                     map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                 }
 
-            } else if (Pad.IsButtonClicked(GamePadStatus.B)) {
-               map.Message("I pach pach poraz " + (--LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+            }
+            else if (Pad.IsButtonClicked(GamePadStatus.B))
+            {
+                map.Message("I pach pach poraz " + (--LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
             }
 
 
@@ -252,7 +294,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
         /// -----------------------------------------------------------------------------------------------------
 
-        protected override void Draw(GameTime gameTime) {
+        protected override void Draw(GameTime gameTime)
+        {
             GraphicsDevice.Clear(Color.Green);
 
             spriteBatch.Begin();
@@ -276,14 +319,17 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             // Dzien i noc
             if (GameHour >= 6 && GameHour <= 17) // DZIEN
             {
-                while (DayCycleTimer % 300 == 0) {
+                while (DayCycleTimer % 300 == 0)
+                {
                     if (DayCycle == 0) break;
                     DayCycleTimer++;
                     DayCycle--;
                 }
-            } else if (GameHour >= 18 || GameHour <= 5) // NOC
-              {
-                while (DayCycleTimer % 300 == 0) {
+            }
+            else if (GameHour >= 18 || GameHour <= 5) // NOC
+            {
+                while (DayCycleTimer % 300 == 0)
+                {
                     if (DayCycle == 24) break;
                     DayCycleTimer++;
                     DayCycle++;
@@ -318,11 +364,14 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             base.Draw(gameTime);
         }
 
-        private void GameTimeControl() {
+        private void GameTimeControl()
+        {
             GameMinute++;
-            if (GameMinute >= 60) {
+            if (GameMinute >= 60)
+            {
                 GameHour++;
-                if (GameHour >= 24) {
+                if (GameHour >= 24)
+                {
                     GameHour = 0;
                 }
                 GameMinute = 0;

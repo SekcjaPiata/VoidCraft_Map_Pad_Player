@@ -48,7 +48,7 @@ namespace VoidCraft_Map_Pad_Player_v1.Raw_Materials_C
             get { return _wood; }
             set
             {
-                if (_wood - value < 0)
+                if (_wood + value < 0)
                 {
                     throw new OutOfWoodException("Zbyt ma這 drewna!");
                 }
@@ -66,7 +66,7 @@ namespace VoidCraft_Map_Pad_Player_v1.Raw_Materials_C
             get { return _stone; }
             set
             {
-                if (_stone - value < 0)
+                if (_stone + value < 0)
                 {
                     throw new OutOfStoneException("Zbyt ma這 kamienia!");
                 }
@@ -84,7 +84,7 @@ namespace VoidCraft_Map_Pad_Player_v1.Raw_Materials_C
             get { return _lianas; }
             set
             {
-                if (Lianas - value < 0) { throw new OutOfLianasException("Zbyt ma這 lian!"); }
+                if (Lianas + value < 0) { throw new OutOfLianasException("Zbyt ma這 lian!"); }
                 else
                 {
                     _lianas = value;
@@ -98,7 +98,7 @@ namespace VoidCraft_Map_Pad_Player_v1.Raw_Materials_C
             get { return _metal; }
             set
             {
-                if (_metal - value < 0) { throw new OutOfMetalException("Zbyt ma這 metalu!"); }
+                if (_metal + value < 0) { throw new OutOfMetalException("Zbyt ma這 metalu!"); }
                 else
                 {
                     _metal = value;
@@ -113,7 +113,7 @@ namespace VoidCraft_Map_Pad_Player_v1.Raw_Materials_C
             get { return _water; }
             set
             {
-                if (_water - value < 0) { throw new OutOfWaterException("Zbyt ma這 wody!"); }
+                if (_water + value < 0) { throw new OutOfWaterException("Zbyt ma這 wody!"); }
 
                 else { _water = value; }
             }
@@ -126,7 +126,7 @@ namespace VoidCraft_Map_Pad_Player_v1.Raw_Materials_C
             get { return _food; }
             set
             {
-                if (_food - value < 0)
+                if (_food + value < 0)
                 {
                     throw new OutOfFoodException("Zbyt ma這 jedzienia!");
                 }
