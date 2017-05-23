@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity1.cs" />
+    <Compile Include="EpicQuests\Quest.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="MapControler\Map.cs" />
     <Compile Include="MapControler\MapTexture.cs" />
