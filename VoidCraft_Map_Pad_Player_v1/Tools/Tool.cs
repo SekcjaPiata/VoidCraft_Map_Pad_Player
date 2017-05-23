@@ -48,6 +48,15 @@ namespace VoidCraft_Map_Pad_Player_v1.Tools
             set { _isOwned = value; }
         }
 
+        private Tool[] tools_needed;
+
+        public Tool[] Tools_needed
+        {
+            get { return tools_needed; }
+            set { tools_needed = value; }
+        }
+
+
         private RawMaterials _requirements;
 
         public RawMaterials Requirements
@@ -95,7 +104,17 @@ namespace VoidCraft_Map_Pad_Player_v1.Tools
             this.IsOwned = false;
             this._toolTexture = TexturePath;
         }
-
+        public Tool(Texture2D TexturePath, string ToolName, int WoodNeeded, int StoneNeeded,
+           int LianasNeeded, int MetalNeeded, int WaterNeeded, int FoodNeeded,params Tool[] ToolsNeeded)
+        //kontruktor, który tworzy narzêdzie i ustawia wymagania do jego posiadania(scrafcenia) przez playera i wymagane narzêdzia
+        {
+            //potrzeba pomocy w za³adowaniu tekstury! :(
+            this.ToolName = ToolName;
+            _requirements = new RawMaterials(WoodNeeded, StoneNeeded, LianasNeeded, MetalNeeded, WaterNeeded, FoodNeeded);
+            this.IsOwned = false;
+            this._toolTexture = TexturePath;
+            this.Tools_needed = ToolsNeeded;
+        }
 
 
 

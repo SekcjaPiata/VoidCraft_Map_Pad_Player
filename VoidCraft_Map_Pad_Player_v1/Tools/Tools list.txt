@@ -2,7 +2,7 @@
 
 Obowiązkowe:
 //Narzędzia
-1.Młotek (1 drewna, 3 liany, 1 kamień) ->można wydobywać metal
+1.Młotek (1 drewna, 3 liany, 1 kamień)
 2.Siekiera (1 młotek,3 drewna, 3 liany, 3 kamień) -> Jeśli jest w eq to daje więcej drewna po ścięciu drzewa
 3.Kilof (1 młotek, 5 drewna, 5 liany, 5 kamień) ->pozwala wydobywać metal
 4.Piła (1 młotek, 3 drewna, 5 metal, 5 liany)
