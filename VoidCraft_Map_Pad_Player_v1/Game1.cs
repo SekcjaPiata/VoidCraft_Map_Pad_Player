@@ -9,11 +9,12 @@ using System.Collections.Generic;
 using PlayerControler;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
-
+using VoidCraft_Map_Pad_Player_v1.Tools;
+using System.Text;
 
 ///////////////////////////////////////////////////////////// A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
 //////////////////                          ///////////////// P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
-//////////////////     VERSION 0.021        /////////////////   
+//////////////////     VERSION 0.022        /////////////////   
 //////////////////                          /////////////////   
 /////////////////////////////////////////////////////////////   
 
@@ -71,6 +72,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
         protected override void Initialize()
         {
+            
             ScreenX = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
@@ -250,9 +252,20 @@ namespace VoidCraft_Map_Pad_Player_v1
             {
                 if (map.GetObjectType(3, WalkingDirection) == 2)
                 { // Drewno
-                    Gracz.Materials.Wood++;
-                    String message = "Zebrano drewno, ilosc drewna: " + Gracz.Materials.Wood;
-                    map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                    if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
+                    {
+                        //linq w chuj
+                        Gracz.Materials.Wood+=2;
+                        String message = "Zebrano drewno siekiera, ilosc drewna: " + Gracz.Materials.Wood;
+                        map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+
+                    }
+                    else
+                    {
+                        Gracz.Materials.Wood++;
+                        String message = "Zebrano drewno, ilosc drewna: " + Gracz.Materials.Wood;
+                        map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                    }
                 }
                 else if (map.GetObjectType(3, WalkingDirection) == 3)
                 { // Jerzynki

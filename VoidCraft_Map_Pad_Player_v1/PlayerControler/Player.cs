@@ -56,8 +56,8 @@ namespace PlayerControler
 
         public List<Tool> Tools
         {
-            get { return Tools; }
-            set { Tools = value; }
+            get { return tools; }
+            set { tools = value; }
         }
 
 
@@ -106,17 +106,20 @@ namespace PlayerControler
             this.PosY = posY;
 
             materials = new RawMaterials();
-            Tools = new List<Tool>();
+            tools = new List<Tool>();
 
             //dodawanie Toolsów do listy, dodaæ tutaj tekstury w miejsce "texture" w konstruktorze!
             //M³otek  (1 drewna, 3 liany, 1 kamieñ) 
-            Tools.Add(new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0));
-            //Topór Siekiera (1 m³otek,3 drewna, 3 liany, 3 kamieñ,3 metal) -> Jeœli jest w eq to daje wiêcej drewna po œciêciu drzewa
-            Tools.Add(new Tool(texture, "Axe",3,3,3,0,0,0,new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
-            //3.Kilof (1 m³otek, 5 drewna, 5 liany, 5 kamieñ) ->pozwala wydobywaæ metal
-            Tools.Add(new Tool(texture, "Pick", 5, 5, 5, 0, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+            tools.Add(new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0));
+            //Topór Siekiera (1 m³otek,3 drewna, 3 liany, 3 kamieñ) -> Jeœli jest w eq to daje wiêcej drewna po œciêciu drzewa
+            tools.Add(new Tool(texture, "Axe",3,3,3,0,0,0,new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+            //3.Kilof (1 m³otek, 5 drewna, 5 liany, 5 kamieñ) ->pozwala wydobywaæ metal 
+            tools.Add(new Tool(texture, "Pick", 5, 5, 5, 0, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
             //Saw 4.Pi³a (1 m³otek, 3 drewna, 5 metal, 5 liany)
-            Tools.Add(new Tool(texture, "Saw", 3, 0, 5, 5, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+            tools.Add(new Tool(texture, "Saw", 3, 0, 5, 5, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+
+            //test z posiadan¹ siekier¹
+            tools.Find(x => x.ToolName == "Axe").IsOwned = true;
 
 
         }
