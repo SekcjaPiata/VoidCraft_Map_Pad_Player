@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 using MapControler;
 using PadControler;
 using System;
@@ -8,7 +9,10 @@ using System.Collections.Generic;
 using PlayerControler;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
+using Tools;
 using Menu;
+using System.Text;
+using EpicQuests;
 
 ///////////////////////////////////////////////////////////// A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
 //////////////////                          ///////////////// P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
@@ -165,7 +169,8 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             if (Running == true)
             {
-
+                Gracz.PosY = map.GetPosition().Y;
+                Gracz.PosX = map.GetPosition().X;
 
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                     Exit();
@@ -291,6 +296,20 @@ namespace VoidCraft_Map_Pad_Player_v1
                     } else
                     {
                         map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                        //moze na klik zadziala
+                        foreach (Quest quest in Gracz.Quests)
+                        {
+                            if (Gracz.PosX == quest.Start_position.X && Gracz.PosY == quest.Start_position.Y)
+                            {
+                                if (!quest.Activated)
+                                {
+                                    map.Message("Aktywowala sie misja o nazwie:" + quest.Name, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                                    quest.Activated = true;
+                                }
+                                
+                            }
+                        }
+
                     }
 
                 } else if (Pad.IsButtonClicked(GamePadStatus.B))
@@ -301,6 +320,18 @@ namespace VoidCraft_Map_Pad_Player_v1
                 if (map.GetMissionID(4) != 0)
                 {
                     map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                }
+                //nie wiem czemu to kurwa nie dzia³a :(
+                foreach (Quest quest in Gracz.Quests)
+                {
+                    if (Gracz.PosX == quest.Start_position.X && Gracz.PosY == quest.Start_position.Y)
+                    {
+                       if (!quest.Activated)
+                        {
+                            map.Message("Aktywowala sie misja o nazwie:" + quest.Name, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                        }
+                        quest.Activated = true;
+                    }
                 }
 
 
@@ -363,7 +394,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 // Rysowanie Przyciskow
                 Pad.Draw(spriteBatch);
-
+                
                 spriteBatch.DrawString(sf, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Red);
                 spriteBatch.DrawString(sf, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Red);
                 spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Red);
