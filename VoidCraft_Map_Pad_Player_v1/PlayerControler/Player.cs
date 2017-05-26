@@ -89,7 +89,7 @@ namespace PlayerControler
         /// <summary>
         /// Konstruktor Parametryczny Postaci
         /// </summary>
-        public Player(SoundEffect Grass ,Texture2D texture, int rows, int columns, int posX, int posY)
+        public Player(SoundEffect Grass, Texture2D texture, int rows, int columns, int posX, int posY)
         {
             this.Grass = Grass;
 
@@ -112,7 +112,7 @@ namespace PlayerControler
             //M³otek  (1 drewna, 3 liany, 1 kamieñ) 
             tools.Add(new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0));
             //Topór Siekiera (1 m³otek,3 drewna, 3 liany, 3 kamieñ) -> Jeœli jest w eq to daje wiêcej drewna po œciêciu drzewa
-            tools.Add(new Tool(texture, "Axe",3,3,3,0,0,0,new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+            tools.Add(new Tool(texture, "Axe", 3, 3, 3, 0, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
             //3.Kilof (1 m³otek, 5 drewna, 5 liany, 5 kamieñ) ->pozwala wydobywaæ metal 
             tools.Add(new Tool(texture, "Pick", 5, 5, 5, 0, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
             //Saw 4.Pi³a (1 m³otek, 3 drewna, 5 metal, 5 liany)
@@ -134,7 +134,8 @@ namespace PlayerControler
             if (HP_Czas > HP_Predkosc)
             {
                 HP_Czas -= HP_Predkosc;
-                if (HP != 0) { HP -= 1; }
+                if (HP != 0)
+                { HP -= 1; }
                 HP_Czas = 0;
             }
         }
@@ -146,7 +147,8 @@ namespace PlayerControler
             if (Woda_Czas > Woda_Predkosc)
             {
                 Woda_Czas -= Woda_Predkosc;
-                if (WODA != 0) { WODA -= 1; }
+                if (WODA != 0)
+                { WODA -= 1; }
                 Woda_Czas = 0;
             }
         }
@@ -158,7 +160,8 @@ namespace PlayerControler
             if (Glod_Czas > Glod_Predkosc)
             {
                 Glod_Czas -= Glod_Predkosc;
-                if (GLOD != 0) { GLOD -= 1; }
+                if (GLOD != 0)
+                { GLOD -= 1; }
                 Glod_Czas = 0;
             }
         }
@@ -170,7 +173,8 @@ namespace PlayerControler
             if (Strach_Czas > Strach_Predkosc)
             {
                 Strach_Czas -= Strach_Predkosc;
-                if (STRACH != 0) { STRACH -= 1; }
+                if (STRACH != 0)
+                { STRACH -= 1; }
                 Strach_Czas = 0;
             }
         }
@@ -189,9 +193,11 @@ namespace PlayerControler
                 currentFrame++;
                 timeSinceLastFrame = 0;
 
-                if (currentFrame == totalFrames) { currentFrame = 0; }
+                if (currentFrame == totalFrames)
+                { currentFrame = 0; }
 
-                if ((currentFrame == 1 || currentFrame == 3) && IsMoving) {
+                if ((currentFrame == 1 || currentFrame == 3) && IsMoving)
+                {
                     Grass.Play();
                 }
             }
@@ -224,15 +230,24 @@ namespace PlayerControler
         {
             switch (direction)
             {
-                case Direction.Idle_Down: { IsMoving = false; Texture = tx[4]; break; }
-                case Direction.Up: { IsMoving = true; Texture = tx[2]; break; }
-                case Direction.Down: { IsMoving = true; Texture = tx[3]; break; }
-                case Direction.Left: { IsMoving = true; Texture = tx[1]; break; }
-                case Direction.Right: { IsMoving = true; Texture = tx[0]; break; }
-                case Direction.Idle_Left: { IsMoving = false; Texture = tx[5]; break; }
-                case Direction.Idle_Right: { IsMoving = false; Texture = tx[6]; break; }
-                case Direction.Idle_Back: { IsMoving = false; Texture = tx[7]; break; }
-                default: break;
+                case Direction.Idle_Down:
+                { IsMoving = false; Texture = tx [4]; break; }
+                case Direction.Up:
+                { IsMoving = true; Texture = tx [2]; break; }
+                case Direction.Down:
+                { IsMoving = true; Texture = tx [3]; break; }
+                case Direction.Left:
+                { IsMoving = true; Texture = tx [1]; break; }
+                case Direction.Right:
+                { IsMoving = true; Texture = tx [0]; break; }
+                case Direction.Idle_Left:
+                { IsMoving = false; Texture = tx [5]; break; }
+                case Direction.Idle_Right:
+                { IsMoving = false; Texture = tx [6]; break; }
+                case Direction.Idle_Back:
+                { IsMoving = false; Texture = tx [7]; break; }
+                default:
+                break;
             }
         }
 

@@ -45,16 +45,16 @@ namespace VoidCraft_Map_Pad_Player_v1.EpicQuests
         }
 
 
-        
 
-        public Quest(String name,Vector2 start_position,params Vector2[] quest_places)
+
+        public Quest(String name, Vector2 start_position, params Vector2 [] quest_places)
         {
             this.name = name;
             this.Start_position = new Vector2(start_position.X, start_position.Y);
 
             for (int i = 0; i < quest_places.Length; i++)
             {
-                Quest_requirements.Add(quest_places[i], false);//dodaje miejsca, ktore trzeba zaliczyæ i domyœlnie ustawia je na false
+                Quest_requirements.Add(quest_places [i], false);//dodaje miejsca, ktore trzeba zaliczyæ i domyœlnie ustawia je na false
             }
 
         }

@@ -3,7 +3,8 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 
-namespace VoidCraft_Map_Pad_Player_v1 {
+namespace VoidCraft_Map_Pad_Player_v1
+{
     [Activity(Label = "VoidCraft_Map_Pad_Player_v1"
         , MainLauncher = true
         , Icon = "@drawable/icon"
@@ -12,8 +13,10 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         , LaunchMode = Android.Content.PM.LaunchMode.SingleInstance
         , ScreenOrientation = ScreenOrientation.Landscape
         , ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
-    public class Activity1 : Microsoft.Xna.Framework.AndroidGameActivity {
-        protected override void OnCreate(Bundle bundle) {
+    public class Activity1 : Microsoft.Xna.Framework.AndroidGameActivity
+    {
+        protected override void OnCreate(Bundle bundle)
+        {
             base.OnCreate(bundle);
             var g = new Game1();
             SetContentView((View)g.Services.GetService(typeof(View)));

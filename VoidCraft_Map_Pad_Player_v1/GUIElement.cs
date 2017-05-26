@@ -16,12 +16,12 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Input;
 namespace VoidCraft_Map_Pad_Player_v1
 {
-  public  class GUIElement
+    public class GUIElement
     {
         private Texture2D GUITexture;
         private Rectangle GUIRect;
 
-       // private string assetName;
+        // private string assetName;
         public string AssetName { get; set; }
 
         public delegate void ElementClicked(string element);
@@ -35,10 +35,10 @@ namespace VoidCraft_Map_Pad_Player_v1
         public void LoadContent(ContentManager content)
         {
             GUITexture = content.Load<Texture2D>(AssetName); // GUITEXTURE instancja Texture2D
-           
-    
-            
-            GUIRect = new Rectangle(0, 0, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width/17, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height/17);
+
+
+
+            GUIRect = new Rectangle(0, 0, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 17, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 17);
 
 
         }
@@ -48,24 +48,24 @@ namespace VoidCraft_Map_Pad_Player_v1
         }
         public void Update()
         {
-            TouchCollection touchcollection =  TouchPanel.GetState();
-          
-            
+            TouchCollection touchcollection = TouchPanel.GetState();
+
+
             foreach (TouchLocation tl in touchcollection) // włazi w Kwadrat
-            if (GUIRect.Contains(tl.Position))
-            {
+                if (GUIRect.Contains(tl.Position))
+                {
                     clickEvent(AssetName);
-            }
-      
+                }
+
         }
 
-        public void CenterElement(int height,int width)
+        public void CenterElement(int height, int width)
         {
-                GUIRect = new Rectangle((width / 2) - (this.GUITexture.Width / 2), (height / 2) - (this.GUITexture.Height / 2), this.GUITexture.Width / 2, this.GUITexture.Height/2 );
+            GUIRect = new Rectangle((width / 2) - (this.GUITexture.Width / 2), (height / 2) - (this.GUITexture.Height / 2), this.GUITexture.Width / 2, this.GUITexture.Height / 2);
 
         }
 
-        public void MoveElement(int x,int y)
+        public void MoveElement(int x, int y)
         {
             GUIRect = new Rectangle(GUIRect.X += x, GUIRect.Y += y, GUIRect.Width, GUIRect.Height);
         }
