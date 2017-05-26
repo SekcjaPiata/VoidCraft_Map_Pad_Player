@@ -90,7 +90,8 @@ namespace VoidCraft_Map_Pad_Player_v1
             //map = new Map(GraphicsDevice, "JohnnoweTekstury", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "NoweTeksturyV4", ScreenX, ScreenY);
             //map = new Map(GraphicsDevice, "MalaMapa", ScreenX, ScreenY);
-            map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
+            //map = new Map(GraphicsDevice, "POLIGON", ScreenX, ScreenY);
+            map = new Map(GraphicsDevice, "PiecioWarstwowy", ScreenX, ScreenY);
 
             //map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
             map.SetPosition(26, 34);
@@ -296,6 +297,10 @@ namespace VoidCraft_Map_Pad_Player_v1
             else if (Pad.IsButtonClicked(GamePadStatus.B))
             {
                 map.Message("I pach pach poraz " + (--LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+            }
+
+            if (map.GetMissionID(4) != 0) {
+                map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
             }
 
 
