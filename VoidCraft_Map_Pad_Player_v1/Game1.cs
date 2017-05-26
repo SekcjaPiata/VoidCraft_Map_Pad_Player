@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Input.Touch;
 using MapControler;
 using PadControler;
 using System;
@@ -9,9 +8,7 @@ using System.Collections.Generic;
 using PlayerControler;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
-using Tools;
 using Menu;
-using System.Text;
 
 ///////////////////////////////////////////////////////////// A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
 //////////////////                          ///////////////// P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow

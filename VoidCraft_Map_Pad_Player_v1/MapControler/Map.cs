@@ -1,17 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Microsoft.Xna.Framework.Graphics;
-using System.Runtime.Remoting.Contexts;
 using Microsoft.Xna.Framework;
 using System.IO;
 using Microsoft.Xna.Framework.Input.Touch;
