@@ -20,7 +20,7 @@ using VoidCraft_Map_Pad_Player_v1;
 
 namespace VoidCraft_Map_Pad_Player_v1
 {
- 
+
 
 
     public class MainMenu
@@ -28,18 +28,18 @@ namespace VoidCraft_Map_Pad_Player_v1
 
         private int c = 1;
         private Song mor;
-    
-        enum GameState { MainMenu,authors,inGame,Options}
+
+        enum GameState { MainMenu, authors, inGame, Options }
         GameState gamestate;
 
         List<GUIElement> options = new List<GUIElement>();
         List<GUIElement> main = new List<GUIElement>();
-      public  List<GUIElement> enterName = new List<GUIElement>();
+        public List<GUIElement> enterName = new List<GUIElement>();
 
-      //  private Keys
+        //  private Keys
         public MainMenu()
         {
-           
+
             main.Add(new GUIElement("Menu\\M_BACK"));
             main.Add(new GUIElement("Menu\\B_graj"));
             main.Add(new GUIElement("Menu\\B_ustawianie"));
@@ -54,32 +54,32 @@ namespace VoidCraft_Map_Pad_Player_v1
 
         public void LoadContent(ContentManager content)
         {
-           
+
             foreach (GUIElement element in main)
             {
                 element.LoadContent(content);
 
-                element.CenterElement((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-500)+250*c, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
+                element.CenterElement((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 500) + 250 * c, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
                 c++;
                 element.clickEvent += OnClick;
             }
             c = 1;
             main.Find(x => x.AssetName == "Menu\\M_BACK").Background();
-           main.Find(x => x.AssetName == "Menu\\voidscraft").MoveElement(0, -600);
-          
+            main.Find(x => x.AssetName == "Menu\\voidscraft").MoveElement(0, -600);
+
             foreach (GUIElement element in enterName)
             {
                 element.LoadContent(content);
-              
-                element.CenterElement((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-500) + 250 * c, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
+
+                element.CenterElement((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 500) + 250 * c, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
                 element.clickEvent += OnClick;
                 c++;
             }
 
 
-            foreach(GUIElement element in options)
+            foreach (GUIElement element in options)
             {
-             
+
                 element.LoadContent(content);
                 element.CenterElement(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
                 element.clickEvent += OnClick;
@@ -92,29 +92,29 @@ namespace VoidCraft_Map_Pad_Player_v1
             switch (gamestate)
             {
                 case GameState.MainMenu:
-                    foreach (GUIElement element in main)
-                    {
-                        element.Update();
-                    }
-                    break;
+                foreach (GUIElement element in main)
+                {
+                    element.Update();
+                }
+                break;
                 case GameState.authors:
-                    foreach (GUIElement element in enterName)
-                    {
-                        element.Update();
-                    }
-                    break;
+                foreach (GUIElement element in enterName)
+                {
+                    element.Update();
+                }
+                break;
                 case GameState.inGame:
-                    break;
+                break;
                 case GameState.Options:
-                    foreach(GUIElement element in options)
-                    {
-                        element.Update();
-                    }
+                foreach (GUIElement element in options)
+                {
+                    element.Update();
+                }
 
-                    break;
+                break;
             }
-          
-        
+
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -122,61 +122,61 @@ namespace VoidCraft_Map_Pad_Player_v1
             switch (gamestate)
             {
                 case GameState.MainMenu:
-                    foreach (GUIElement element in main)
-                    {
-                        element.Draw(spriteBatch);
+                foreach (GUIElement element in main)
+                {
+                    element.Draw(spriteBatch);
 
-                    }
-                    break;
+                }
+                break;
                 case GameState.authors:
-                    foreach (GUIElement element in enterName)
-                    {
-                        
-                        element.Draw(spriteBatch);
-                       
-                    }
-                    break;
-                case GameState.inGame:
-                    break;
-                case GameState.Options:
-                    foreach(GUIElement element in options)
-                    {
-                        element.Draw(spriteBatch);
-                    }
+                foreach (GUIElement element in enterName)
+                {
 
-                    break;
+                    element.Draw(spriteBatch);
+
+                }
+                break;
+                case GameState.inGame:
+                break;
+                case GameState.Options:
+                foreach (GUIElement element in options)
+                {
+                    element.Draw(spriteBatch);
+                }
+
+                break;
 
             }
-           
-          
+
+
         }
 
-     
+
         public void OnClick(string element)
         {
-            if (element=="Menu\\B_graj")
+            if (element == "Menu\\B_graj")
             {
                 Game1.Running = true;
                 // plays the game
                 gamestate = GameState.inGame;
             }
-            if(element== "Menu\\B_autorzy")
+            if (element == "Menu\\B_autorzy")
             {
-               gamestate = GameState.authors;
-               
+                gamestate = GameState.authors;
+
 
             }
             if (element == "Menu\\done")//Done button
             {
                 gamestate = GameState.MainMenu;
             }
-            if (element== "Menu\\B_ustawianie")
+            if (element == "Menu\\B_ustawianie")
             {
                 gamestate = GameState.Options;
             }
-            if (element== "Menu\\Bot")
+            if (element == "Menu\\Bot")
             {
-            // To do: Tuaj będą "ustawienia" jakieś pomysły ?
+                // To do: Tuaj będą "ustawienia" jakieś pomysły ?
             }
         }
         //private void GetKeys()

@@ -21,7 +21,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         private Texture2D GUITexture;
         private Rectangle GUIRect;
 
-        private string assetName;
+       // private string assetName;
         public string AssetName { get; set; }
 
         public delegate void ElementClicked(string element);
@@ -29,12 +29,12 @@ namespace VoidCraft_Map_Pad_Player_v1
 
         public GUIElement(string assetName)
         {
-            this.assetName = assetName;
+            this.AssetName = assetName;
         }
 
         public void LoadContent(ContentManager content)
         {
-            GUITexture = content.Load<Texture2D>(assetName); // GUITEXTURE instancja Texture2D
+            GUITexture = content.Load<Texture2D>(AssetName); // GUITEXTURE instancja Texture2D
            
     
             
@@ -54,7 +54,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             foreach (TouchLocation tl in touchcollection) // włazi w Kwadrat
             if (GUIRect.Contains(tl.Position))
             {
-                    clickEvent(assetName);
+                    clickEvent(AssetName);
             }
       
         }

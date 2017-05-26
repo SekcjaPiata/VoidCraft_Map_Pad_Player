@@ -11,8 +11,10 @@ using Android.Views;
 using Android.Widget;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MapControler {
-    class MapTexture {
+namespace MapControler
+{
+    class MapTexture
+    {
         public int ID { get; set; }
         public int Layer { get; set; }
         public string Name { get; set; }
@@ -20,7 +22,8 @@ namespace MapControler {
         public Texture2D Bitmap { get; set; }
 
 
-        public MapTexture(int id, int layer, string name, string path, Texture2D bitmap) {
+        public MapTexture(int id, int layer, string name, string path, Texture2D bitmap)
+        {
             ID = id;
             Layer = layer;
             Name = name;
