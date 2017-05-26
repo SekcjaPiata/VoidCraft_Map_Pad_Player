@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Microsoft.Xna.Framework;
+using Raw_Materials_C;
 
 namespace EpicQuests
 {
@@ -44,19 +45,71 @@ namespace EpicQuests
             set { quest_requirements = value; }
         }
 
+        private RawMaterials materials_needed;
+
+        public RawMaterials Materials_needed
+        {
+            get { return   materials_needed; }
+            set {   materials_needed = value; }
+        }
+
+        private bool materials_for_quest_owned;
+
+        public bool Materials_for_quest_owned
+        {
+            get { return materials_for_quest_owned; }
+            set { materials_for_quest_owned = value; }
+        }
+
+        private bool activated;
+
+        public bool Activated
+        {
+            get { return activated; }
+            set { activated = value; }
+        }
 
 
+        private bool finished;
 
-        public Quest(String name, Vector2 start_position, params Vector2 [] quest_places)
+        public bool Finished
+        {
+            
+            get { return finished; }
+            //set { finished = value; }
+        }
+
+        public bool IsFinished(RawMaterials player_materials)
+        {
+            if (finished) return finished;//jeœli ju¿ jest ukoñczony nie przeszukuj tylko zwróæ, ¿e ukoñczono
+            foreach (KeyValuePair<Vector2, bool> Quests in Quest_requirements)
+            {
+                if (Quests.Value == false)
+                {//jeœli choæ jeden warunek nie jest spe³nionny to zwróc fa³sz
+                    return false;
+                }
+            }//jak wszystko jest spelnione to ustaw, ¿e ukoñczono i zwróc prawdê
+
+            if (!player_materials.Contains(materials_needed)) return false;
+
+            materials_for_quest_owned = true;
+            finished = true;
+            return true;
+        }
+
+
+        public Quest(String name, Vector2 startposition,RawMaterials requested_materials, params Vector2 [] quest_places)
         {
             this.name = name;
-            this.Start_position = new Vector2(start_position.X, start_position.Y);
+            this.start_position.X = startposition.X;//, startposition.Y);
+            this.start_position.Y = startposition.Y;
 
             for (int i = 0; i < quest_places.Length; i++)
             {
                 Quest_requirements.Add(quest_places [i], false);//dodaje miejsca, ktore trzeba zaliczyæ i domyœlnie ustawia je na false
             }
-
+            materials_needed = requested_materials;
+            this.activated = false;
         }
 
 

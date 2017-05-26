@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Audio;
 
 using Tools;
 using Raw_Materials_C;
+using EpicQuests;
 
 namespace PlayerControler
 {
@@ -51,7 +52,7 @@ namespace PlayerControler
             get { return materials; }
             set { materials = value; }
         }
-
+        //posiadane toolsy
         private List<Tool> tools;
 
         public List<Tool> Tools
@@ -59,7 +60,14 @@ namespace PlayerControler
             get { return tools; }
             set { tools = value; }
         }
+        //lista wszystkich questów, które planujemy dla playera aktualnie
+        private List<Quest> quests;
 
+        public List<Quest> Quests
+        {
+            get { return quests; }
+            set { quests = value; }
+        }
 
 
         /// <summary>
@@ -67,8 +75,8 @@ namespace PlayerControler
         /// </summary>
         public Texture2D Texture { get; set; }
 
-        public int PosX { get; set; }
-        public int PosY { get; set; }
+        public float PosX { get; set; }
+        public float PosY { get; set; }
 
         public int Rows { get; set; }
         public int Columns { get; set; }
@@ -121,6 +129,12 @@ namespace PlayerControler
             //test z posiadan¹ siekier¹
             tools.Find(x => x.ToolName == "Axe").IsOwned = true;
 
+            //Dodajemy questy dla playera, tutaj dawajcie opisy tychze questow
+            //misja startowa, zaczyna siê wraz z pojawieniem siê na wyspie
+            //x26 y34
+            //Gracz musi zebraæ 10 drewna, 10 kamienia,5 wody i 5 jedzenia a potem nacisj¹æ B na wspó³rzêdnych  X18 Y 20
+            quests.Add(new Quest("Misja startowa", new Vector2(26, 34), new RawMaterials(10, 10, 0, 0, 5, 5),new Vector2(18,20)));
+            
 
         }
 

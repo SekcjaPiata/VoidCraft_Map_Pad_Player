@@ -128,6 +128,26 @@ namespace Raw_Materials_C
             }
         }
 
+        public bool Contains(RawMaterials checked_materials)//sprawdza czy dane materia³y zawieraj¹ podane w parametrach
+            //na przyk³ad jeœli chcemy sprawdziæ, czy gracz mo¿e sobie pozwoliæ na scrafcenie czegoœ to porównujemy jego materia³y z wymaganymi
+        {
+            if (this.Wood < checked_materials.Wood)
+                return false;
+            if (this.Stone < checked_materials.Stone)
+                return false;
+            if (this.Lianas < checked_materials.Lianas)
+                return false;
+            if (this.Metal < checked_materials.Metal)
+                return false;
+            if (this.Water < checked_materials.Water)
+                return false;
+            if (this.Food < checked_materials.Food)
+                return false;
+            return true;
+            
+        }
+
+
         //Konstruktory
         public RawMaterials()
         {

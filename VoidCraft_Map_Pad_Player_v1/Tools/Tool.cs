@@ -67,19 +67,20 @@ namespace Tools
 
         public bool CanCraft(RawMaterials PlayerMaterials)//bêdzie sprawdza³, czy wymagania pokrywaj¹ siê z posiadanym eq playera
         {
-            if (PlayerMaterials.Wood < Requirements.Wood)
-                return false;
-            if (PlayerMaterials.Stone < Requirements.Stone)
-                return false;
-            if (PlayerMaterials.Lianas < Requirements.Lianas)
-                return false;
-            if (PlayerMaterials.Metal < Requirements.Metal)
-                return false;
-            if (PlayerMaterials.Water < Requirements.Water)
-                return false;
-            if (PlayerMaterials.Food < Requirements.Food)
-                return false;
-            return true;
+            //if (PlayerMaterials.Wood < Requirements.Wood)
+            //    return false;
+            //if (PlayerMaterials.Stone < Requirements.Stone)
+            //    return false;
+            //if (PlayerMaterials.Lianas < Requirements.Lianas)
+            //    return false;
+            //if (PlayerMaterials.Metal < Requirements.Metal)
+            //    return false;
+            //if (PlayerMaterials.Water < Requirements.Water)
+            //    return false;
+            //if (PlayerMaterials.Food < Requirements.Food)
+            //    return false;
+            //return true;
+            return PlayerMaterials.Contains(this._requirements);
         }
 
         public void Craft(ref RawMaterials PlayerMaterials)
