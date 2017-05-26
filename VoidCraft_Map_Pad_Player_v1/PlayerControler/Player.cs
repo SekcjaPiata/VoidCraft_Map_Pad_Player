@@ -5,8 +5,8 @@ using Microsoft.Xna.Framework.Graphics;
 using MapControler;
 using Microsoft.Xna.Framework.Audio;
 
-using VoidCraft_Map_Pad_Player_v1.Tools;
-using VoidCraft_Map_Pad_Player_v1.Raw_Materials_C;
+using Tools;
+using Raw_Materials_C;
 
 namespace PlayerControler
 {

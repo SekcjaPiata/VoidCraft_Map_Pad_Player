@@ -9,10 +9,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using VoidCraft_Map_Pad_Player_v1.Raw_Materials_C;
+using Raw_Materials_C;
 
 
-namespace VoidCraft_Map_Pad_Player_v1.Tools
+namespace Tools
 {
     class Tool
     {

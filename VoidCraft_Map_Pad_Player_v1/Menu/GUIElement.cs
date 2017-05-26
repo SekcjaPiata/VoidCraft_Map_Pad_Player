@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Input;
-namespace VoidCraft_Map_Pad_Player_v1
+namespace Menu
 {
     public class GUIElement
     {

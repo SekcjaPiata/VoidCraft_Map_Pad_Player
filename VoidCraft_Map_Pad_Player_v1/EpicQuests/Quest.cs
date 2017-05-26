@@ -11,7 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Microsoft.Xna.Framework;
 
-namespace VoidCraft_Map_Pad_Player_v1.EpicQuests
+namespace EpicQuests
 {
     class Quest
     {

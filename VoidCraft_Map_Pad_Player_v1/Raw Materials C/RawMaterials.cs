@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace VoidCraft_Map_Pad_Player_v1.Raw_Materials_C
+namespace Raw_Materials_C
 {
     class RawMaterials
     {

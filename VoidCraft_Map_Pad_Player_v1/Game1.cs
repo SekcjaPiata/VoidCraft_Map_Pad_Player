@@ -9,7 +9,8 @@ using System.Collections.Generic;
 using PlayerControler;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
-using VoidCraft_Map_Pad_Player_v1.Tools;
+using Tools;
+using Menu;
 using System.Text;
 
 ///////////////////////////////////////////////////////////// A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy

@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
 using VoidCraft_Map_Pad_Player_v1;
 
-namespace VoidCraft_Map_Pad_Player_v1
+namespace Menu
 {
 
 

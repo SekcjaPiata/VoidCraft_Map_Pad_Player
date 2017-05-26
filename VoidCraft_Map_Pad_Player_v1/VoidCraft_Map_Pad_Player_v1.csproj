@@ -61,8 +61,8 @@
     <Compile Include="Activity1.cs" />
     <Compile Include="EpicQuests\Quest.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="GUIElement.cs" />
-    <Compile Include="MainMenu.cs" />
+    <Compile Include="Menu\GUIElement.cs" />
+    <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="MapControler\Map.cs" />
     <Compile Include="MapControler\MapTexture.cs" />
     <Compile Include="MapControler\Tile.cs" />
