@@ -115,6 +115,7 @@ namespace PlayerControler
 
             materials = new RawMaterials();
             tools = new List<Tool>();
+            quests = new List<Quest>();
 
             //dodawanie Toolsów do listy, dodaæ tutaj tekstury w miejsce "texture" w konstruktorze!
             //M³otek  (1 drewna, 3 liany, 1 kamieñ) 
@@ -128,7 +129,7 @@ namespace PlayerControler
 
             //test z posiadan¹ siekier¹
             tools.Find(x => x.ToolName == "Axe").IsOwned = true;
-
+            
             //Dodajemy questy dla playera, tutaj dawajcie opisy tychze questow
             //misja startowa, zaczyna siê wraz z pojawieniem siê na wyspie
             //x26 y34

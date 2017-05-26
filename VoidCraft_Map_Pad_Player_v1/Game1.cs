@@ -295,20 +295,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                         map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                     } else
                     {
-                        map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-                        //moze na klik zadziala
-                        foreach (Quest quest in Gracz.Quests)
-                        {
-                            if (Gracz.PosX == quest.Start_position.X && Gracz.PosY == quest.Start_position.Y)
-                            {
-                                if (!quest.Activated)
-                                {
-                                    map.Message("Aktywowala sie misja o nazwie:" + quest.Name, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-                                    quest.Activated = true;
-                                }
-                                
-                            }
-                        }
+                        map.Message("I pach pachz poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                       
 
                     }
 

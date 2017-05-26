@@ -103,7 +103,7 @@ namespace EpicQuests
             this.name = name;
             this.start_position.X = startposition.X;//, startposition.Y);
             this.start_position.Y = startposition.Y;
-
+            quest_requirements = new Dictionary<Vector2, bool>();
             for (int i = 0; i < quest_places.Length; i++)
             {
                 Quest_requirements.Add(quest_places [i], false);//dodaje miejsca, ktore trzeba zaliczyæ i domyœlnie ustawia je na false
