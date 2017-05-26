@@ -20,11 +20,9 @@ namespace VoidCraft_Map_Pad_Player_v1
     {
         private Texture2D GUITexture;
         private Rectangle GUIRect;
-        private string assetName;
- 
-        
 
-        public string AssetName { get => assetName; set => assetName = value; }
+        private string assetName;
+        public string AssetName { get; set; }
 
         public delegate void ElementClicked(string element);
         public event ElementClicked clickEvent;

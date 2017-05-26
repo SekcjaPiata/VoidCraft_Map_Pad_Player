@@ -2238,3 +2238,393 @@
 /processorParam:TextureFormat=Color
 /build:Menu/name.png
 
+#begin Maps/PiecioWarstwowy/Map/L0.vcmf
+/copy:Maps/PiecioWarstwowy/Map/L0.vcmf
+
+#begin Maps/PiecioWarstwowy/Map/L1.vcmf
+/copy:Maps/PiecioWarstwowy/Map/L1.vcmf
+
+#begin Maps/PiecioWarstwowy/Map/L2.vcmf
+/copy:Maps/PiecioWarstwowy/Map/L2.vcmf
+
+#begin Maps/PiecioWarstwowy/Map/L3.vcmf
+/copy:Maps/PiecioWarstwowy/Map/L3.vcmf
+
+#begin Maps/PiecioWarstwowy/Map/L4.vcmf
+/copy:Maps/PiecioWarstwowy/Map/L4.vcmf
+
+#begin Maps/PiecioWarstwowy/Textures/L0/1_EMPTY.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/1_EMPTY.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_10.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_10.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_11.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_11.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_12.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_12.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_13.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_13.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_3.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_3.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_4.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_4.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_5.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_5.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_6.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_6.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_7.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_7.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_8.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_8.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/green_9.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/green_9.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_10.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_10.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_11.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_11.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_12.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_12.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_13.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_13.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_14.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_14.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_3.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_3.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_4.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_4.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_5.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_5.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_6.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_6.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_7.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_7.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_8.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_8.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GR_9.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GR_9.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_10.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_10.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_11.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_11.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_12.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_12.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_13.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_13.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_14.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_14.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_3.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_3.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_4.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_4.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_5.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_5.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_6.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_6.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_7.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_7.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_8.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_8.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GS_9.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GS_9.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_10.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_10.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_11.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_11.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_12.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_12.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_13.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_13.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_14.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_14.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_3.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_3.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_4.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_4.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_5.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_5.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_6.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_6.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_7.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_7.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_8.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_8.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/GW_9.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/GW_9.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_10.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_10.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_11.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_11.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_12.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_12.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_13.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_13.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_14.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_14.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_3.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_3.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_4.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_4.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_5.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_5.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_6.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_6.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_7.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_7.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_8.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_8.png
+
+#begin Maps/PiecioWarstwowy/Textures/L0/SW_9.png
+/copy:Maps/PiecioWarstwowy/Textures/L0/SW_9.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/1_EMPTY.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/1_EMPTY.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Box.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Box.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Bush_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Bush_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Bush_1_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Bush_1_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/CampFire.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/CampFire.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Fance_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Fance_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Flower_1_Blue.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Flower_1_Blue.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Flower_1_Red.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Flower_1_Red.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Flower_1_Yellow.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Flower_1_Yellow.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Grass_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Grass_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Palm1_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Palm1_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/rf.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/rf.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/r_E1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/r_E1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/r_E2.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/r_E2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/r_E3.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/r_E3.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/r_E4.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/r_E4.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/r_K1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/r_K1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/r_K2.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/r_K2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/r_K3.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/r_K3.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/r_K4.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/r_K4.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Shelter_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Shelter_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Shelter_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Shelter_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Stone_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Stone_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Stone_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Stone_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Stone_3_1_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Stone_3_1_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Stone_3_2_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Stone_3_2_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/Tree_1_1_trans.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/Tree_1_1_trans.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/tree_3_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/tree_3_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/tree_4_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/tree_4_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/tree_5_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/tree_5_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/xWood_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/xWood_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/x_Cut_Tree_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/x_Cut_Tree_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L1/x_DryWood_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/x_DryWood_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L2/1_EMPTY.png
+/copy:Maps/PiecioWarstwowy/Textures/L2/1_EMPTY.png
+
+#begin Maps/PiecioWarstwowy/Textures/L2/Palm1_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L2/Palm1_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L2/Stone_3_1_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L2/Stone_3_1_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L2/Stone_3_2_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L2/Stone_3_2_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L2/Tree_1_2_trans.png
+/copy:Maps/PiecioWarstwowy/Textures/L2/Tree_1_2_trans.png
+
+#begin Maps/PiecioWarstwowy/Textures/L2/tree_3_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L2/tree_3_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L2/tree_4_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L2/tree_4_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L2/tree_5_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L2/tree_5_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L3/1_EMPTY.png
+/copy:Maps/PiecioWarstwowy/Textures/L3/1_EMPTY.png
+
+#begin Maps/PiecioWarstwowy/Textures/L3/block.png
+/copy:Maps/PiecioWarstwowy/Textures/L3/block.png
+
+#begin Maps/PiecioWarstwowy/Textures/L3/Drewno.png
+/copy:Maps/PiecioWarstwowy/Textures/L3/Drewno.png
+
+#begin Maps/PiecioWarstwowy/Textures/L3/Jezynki.png
+/copy:Maps/PiecioWarstwowy/Textures/L3/Jezynki.png
+
+#begin Maps/PiecioWarstwowy/Textures/L3/Kamien.png
+/copy:Maps/PiecioWarstwowy/Textures/L3/Kamien.png
+
+#begin Maps/PiecioWarstwowy/Textures/L3/Woda.png
+/copy:Maps/PiecioWarstwowy/Textures/L3/Woda.png
+
+#begin Maps/PiecioWarstwowy/Textures/L4/1_EMPTY.png
+/copy:Maps/PiecioWarstwowy/Textures/L4/1_EMPTY.png
+
+#begin Maps/PiecioWarstwowy/Textures/L4/_1.png
+/copy:Maps/PiecioWarstwowy/Textures/L4/_1.png
+
+#begin Maps/PiecioWarstwowy/Textures/L4/_2.png
+/copy:Maps/PiecioWarstwowy/Textures/L4/_2.png
+
+#begin Maps/PiecioWarstwowy/Textures/L4/_3.png
+/copy:Maps/PiecioWarstwowy/Textures/L4/_3.png
+
+#begin Maps/PiecioWarstwowy/Textures/L4/_4.png
+/copy:Maps/PiecioWarstwowy/Textures/L4/_4.png
+
+#begin Maps/PiecioWarstwowy/Textures/L4/_5.png
+/copy:Maps/PiecioWarstwowy/Textures/L4/_5.png
+
+#begin Maps/PiecioWarstwowy/mapdata.vcmd
+/copy:Maps/PiecioWarstwowy/mapdata.vcmd
+
+#begin Maps/PiecioWarstwowy/texturelist.vctl
+/copy:Maps/PiecioWarstwowy/texturelist.vctl
+

@@ -32,7 +32,6 @@ namespace VoidCraft_Map_Pad_Player_v1
         double Speed = 0.05;
         Song song;
         SoundEffect GrassWalk;
-        static bool running = false;
         MainMenu main = new MainMenu();
         Texture2D back;
 
@@ -55,10 +54,12 @@ namespace VoidCraft_Map_Pad_Player_v1
         public int ScreenX { get; private set; }
         public int ScreenY { get; private set; }
         public int LicznikPachPach { get; private set; }
-        public static bool Running { get => running; set => running = value; }
+        GamePadStatus buff = GamePadStatus.None;
+
+        static bool running = false;
+        public static bool Running { get; set; }
       
 
-        GamePadStatus buff = GamePadStatus.None;
 
         /// -----------------------------------------------------------------------------------------------------
 
