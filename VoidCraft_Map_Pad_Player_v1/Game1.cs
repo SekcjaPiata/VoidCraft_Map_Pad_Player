@@ -276,6 +276,10 @@ namespace VoidCraft_Map_Pad_Player_v1
                     map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                 }
                 //nie wiem czemu to kurwa nie dzia³a :(
+                // Serio sprawdzæ czy gracz stoi na której kolwiek misji ??
+                // to¿ to jak bd ze >100 misji .... to OP sprawa OP!
+                // Te znaczniki misji z 5 warstwy mog¹ to zast¹piæ .... 
+                // Ale to tylko moja propozycja ... bo co ja tam wiem ...
                 foreach (Quest quest in Gracz.Quests)
                 {
                     if (Gracz.PosX == quest.Start_position.X && Gracz.PosY == quest.Start_position.Y)
