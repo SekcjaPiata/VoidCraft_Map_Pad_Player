@@ -14,11 +14,12 @@ using Menu;
 using System.Text;
 using EpicQuests;
 
-///////////////////////////////////////////////////////////// A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
-//////////////////                          ///////////////// P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
-//////////////////     VERSION 0.025        ///////////////// A: ... coœ tam wa¿nego :/   
-//////////////////                          /////////////////   
-/////////////////////////////////////////////////////////////   
+/////////////////////////////////////////////////////////////
+//////////////////      28.05.2017r         /////////////////   
+//////////////////     VERSION 0.026        /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////                          /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
+/////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
+
 
 
 namespace VoidCraft_Map_Pad_Player_v1
@@ -39,7 +40,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
         int GameHour, GameMinute;
         float timer = 1;
-        //Texture2D Night;
+      
 
         //John'owicz
         public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
@@ -87,8 +88,6 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             sf = Content.Load<SpriteFont>("SpriteFontPL");
 
-            //Night = Content.Load<Texture2D>("Night");
-
             PlayerMoveTexture = new List<Texture2D>();
             DayCycleTexture = new List<Texture2D>();
 
@@ -113,50 +112,21 @@ namespace VoidCraft_Map_Pad_Player_v1
             font = Content.Load<SpriteFont>("File"); // Use the name of your sprite font file
 
             // Wczytywanie tekstur Cyklu Dnia
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_1"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_2"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_3"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_4"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_5"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_6"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_7"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_8")); // TAK WIEM ZE CHUJOWO I IDZIE ZROBIC LEPIEJ
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_9")); // ALE TO TEST ;)
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_10"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_11"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_12"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_13"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_14"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_15"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_16"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_17"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_18"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_19"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_20"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_21"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_22"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_23"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_24"));
-            DayCycleTexture.Add(Content.Load<Texture2D>("NightFolder\\Night_25"));
-
+            String DayFoldName = "NightFolder\\Night_";
+            for (int i = 0; i < 25; i++)  {  DayCycleTexture.Add(Content.Load<Texture2D>(DayFoldName + (i+1)));   }
 
             //// Wczytywanie tekstur Animacji i tworzenie instancji Player
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Right"));        //0
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Left"));         //1
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Back"));         //2
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Front"));        //3 
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Front"));   //4
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Left"));    //5
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Right"));   //6
-            PlayerMoveTexture.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Back"));    //7
-
+            String CharFoldName = "Characters\\NewChar_";
+            for (int i = 0; i < 8; i++) {  PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
+            
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
             Gracz = new Player(GrassWalk, PlayerMoveTexture [4], 1, IloscKlatek, 10, 600);
 
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.70f;
             MediaPlayer.Play(song);
-
+            
+  
 
             base.Initialize();
         }
@@ -175,15 +145,12 @@ namespace VoidCraft_Map_Pad_Player_v1
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                     Exit();
 
-
-
                 timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (timer < 0)
                 {
                     GameTimeControl();
                     timer = 1;   //Reset Timer
                 }
-
 
                 //Gracz.gin(gameTime);
                 Gracz.Update(gameTime);
@@ -270,7 +237,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                             String message = "Zebrano drewno siekiera, ilosc drewna: " + Gracz.Materials.Wood;
                             map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
 
-                        } else
+                        }
+                        else
                         {
                             Gracz.Materials.Wood++;
                             String message = "Zebrano drewno, ilosc drewna: " + Gracz.Materials.Wood;
@@ -296,8 +264,6 @@ namespace VoidCraft_Map_Pad_Player_v1
                     } else
                     {
                         map.Message("I pach pachz poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-                       
-
                     }
 
                 } else if (Pad.IsButtonClicked(GamePadStatus.B))
@@ -321,8 +287,6 @@ namespace VoidCraft_Map_Pad_Player_v1
                         quest.Activated = true;
                     }
                 }
-
-
 
                 map.Update();
             } else
@@ -379,7 +343,6 @@ namespace VoidCraft_Map_Pad_Player_v1
                 // Rysowanie Tekstury Nocy
                 spriteBatch.Draw(DayCycleTexture [DayCycle], new Rectangle(0, 0, ScreenX, ScreenY), Color.White);
 
-
                 // Rysowanie Przyciskow
                 Pad.Draw(spriteBatch);
                 
@@ -403,7 +366,6 @@ namespace VoidCraft_Map_Pad_Player_v1
                 { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(0, 20), Color.Black); } else
                 { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
 
-
             } else
                 main.Draw(spriteBatch);
             spriteBatch.End();
@@ -425,14 +387,12 @@ namespace VoidCraft_Map_Pad_Player_v1
         }
 
         /// -----------------------------------------------------------------------------------------------------
+        
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             back = Content.Load<Texture2D>("Menu\\M_BACK");
             main.LoadContent(Content);
-
-
-
         }
         protected override void UnloadContent() { }
     }

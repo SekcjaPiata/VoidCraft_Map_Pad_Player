@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MapControler;
 using Microsoft.Xna.Framework.Audio;
+using MonoGame;
 
 using Tools;
 using Raw_Materials_C;
@@ -11,8 +12,24 @@ using EpicQuests;
 
 namespace PlayerControler
 {
+    
+
     class Player
     {
+
+
+       /* void WczytywanieTekstur(Texture2D loadtx)
+        {
+            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Right"));        //0
+            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Left"));         //1
+            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Back"));         //2
+            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Front"));        //3 
+            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Front"));   //4
+            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Left"));    //5
+            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Right"));   //6
+            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Back"));    //7
+
+        }*/
 
         /*
         TO DO: 
