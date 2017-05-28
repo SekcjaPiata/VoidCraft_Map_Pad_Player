@@ -16,27 +16,6 @@ namespace PlayerControler
 
     class Player
     {
-
-
-       /* void WczytywanieTekstur(Texture2D loadtx)
-        {
-            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Right"));        //0
-            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Left"));         //1
-            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Back"));         //2
-            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Front"));        //3 
-            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Front"));   //4
-            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Left"));    //5
-            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Right"));   //6
-            loadtx.Add(Content.Load<Texture2D>("Characters\\NewChar_Idle_Back"));    //7
-
-        }*/
-
-        /*
-        TO DO: 
-        1. Poprawic wczytywanie tekstur (wrzucic do Klasy) 
-        2. Przesunac Postac na srodek kratki (up)
-        */
-
         /// <summary>
         /// Statystyki Postaci
         /// </summary>
