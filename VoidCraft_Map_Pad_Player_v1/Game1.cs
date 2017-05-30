@@ -19,7 +19,7 @@ using EpicQuests;
 //////////////////     VERSION 0.027        /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
 //////////////////                          /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
-
+//test
 
 
 namespace VoidCraft_Map_Pad_Player_v1
