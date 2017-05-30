@@ -283,12 +283,22 @@ namespace PlayerControler
                 { IsMoving = false; Texture = tx [6]; break; }
                 case Direction.Idle_Back:
                 { IsMoving = false; Texture = tx [7]; break; }
-                case Direction.Pac_Right:
-                { IsMoving = false; Texture = tx[8]; break; }
-                case Direction.Pac_Left:
-                { IsMoving = false; Texture = tx[9]; break; }
                 default:
                 break;
+            }
+        }
+
+
+        public void PAC_PAC(DirectionPAC direction, List<Texture2D> tx)
+        {
+            switch (direction)
+            {
+                case DirectionPAC.Pac_Right:
+                    { IsMoving = false; Texture = tx[8]; break; }
+                case DirectionPAC.Pac_Left:
+                    { IsMoving = false; Texture = tx[9]; break; }
+                default:
+                    break;
             }
         }
 

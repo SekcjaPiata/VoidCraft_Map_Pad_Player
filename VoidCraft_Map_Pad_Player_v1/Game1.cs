@@ -51,6 +51,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         bool PAC = false;
         bool kierun_Left = false;
         bool kierun_Right = false;
+        DirectionPAC PACDirection;
 
         double DayCycleTimer = 0; // Timer dla systemu dnia i nocy
         public List<Texture2D> DayCycleTexture;  // Lista na Textury Nocy
@@ -75,6 +76,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             WalkingDirection = Direction.Idle_Down;
+            PACDirection = DirectionPAC.Pac_Left;
             graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 480;
@@ -251,22 +253,19 @@ namespace VoidCraft_Map_Pad_Player_v1
                     
                     ///------ PAC PAC
                     
-                    //if(kierun_Right == true)
-                    //{
-                    //    PAC = true;
-                    //    WalkingDirection = Direction.Pac_Right;
-                    //    Gracz.Move(Direction.Pac_Right, PlayerMoveTexture);
-                    //}
+                    if(kierun_Right == true)
+                    {
+                        PAC = true;
+                        PACDirection = DirectionPAC.Pac_Right;
+                        Gracz.PAC_PAC(DirectionPAC.Pac_Right, PlayerMoveTexture);
+                    }
 
-                    //if(kierun_Left == true)
-                    //{
-                    //    PAC = true;
-                    //    WalkingDirection = Direction.Pac_Left;
-                    //    Gracz.Move(Direction.Pac_Left, PlayerMoveTexture);
-                    //}
-                   
-                    
-
+                    if(kierun_Left == true)
+                    {
+                        PAC = true;
+                        PACDirection = DirectionPAC.Pac_Left;
+                        Gracz.PAC_PAC(DirectionPAC.Pac_Left, PlayerMoveTexture);
+                    }
                    
 
                     ///------------------
@@ -310,7 +309,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                         map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                     } else
                     {
-                        map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                      //  map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                     }
 
                 } else if (Pad.IsButtonClicked(GamePadStatus.B))
