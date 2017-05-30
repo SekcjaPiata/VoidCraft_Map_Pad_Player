@@ -36,7 +36,7 @@ namespace PlayerControler
         private int Glod_Predkosc = 70;
 
         // Strach
-        public int STRACH { get; set; }
+        public int STRACH { get; set; } 
         private int Strach_Czas;
         private int Strach_Predkosc = 70;
 
