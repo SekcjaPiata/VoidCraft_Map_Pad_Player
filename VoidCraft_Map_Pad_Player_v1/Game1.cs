@@ -49,6 +49,8 @@ namespace VoidCraft_Map_Pad_Player_v1
         private SpriteFont font; // Napis
         private int IloscKlatek = 4; // ilosc klatek w danej animacji
         bool PAC = false;
+        bool kierun_Left = false;
+        bool kierun_Right = false;
 
         double DayCycleTimer = 0; // Timer dla systemu dnia i nocy
         public List<Texture2D> DayCycleTexture;  // Lista na Textury Nocy
@@ -119,7 +121,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             //// Wczytywanie tekstur Animacji i tworzenie instancji Player
             String CharFoldName = "Characters\\NewChar_";
-            for (int i = 0; i < 9; i++) {  PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
+            for (int i = 0; i < 10; i++) {  PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
             
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
             Gracz = new Player(GrassWalk, PlayerMoveTexture [4], 1, IloscKlatek, 10, 600);
@@ -162,8 +164,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                 if(PAC == false)
                 { Gracz.milliseconsuPerFrame = 140;}
                 else{ Gracz.milliseconsuPerFrame = 60;}
-                
 
+               
 
                 if (Pad.IsButtonPresed(GamePadStatus.DirNone))
                 {
@@ -221,6 +223,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                         map.MoveMap(Speed, 0);
                         if (map.GetObjectType(3, Direction.On) != 0)
                             map.MoveMap(-Speed, 0);
+                        kierun_Right = true;
+                        kierun_Left = false;
                     }
                 } else
                 if (Pad.IsButtonPresed(GamePadStatus.Left))
@@ -234,15 +238,35 @@ namespace VoidCraft_Map_Pad_Player_v1
                         map.MoveMap(-Speed, 0);
                         if (map.GetObjectType(3, Direction.On) != 0)
                             map.MoveMap(Speed, 0);
+                        kierun_Left = true;
+                        kierun_Right = false;
+
                     }
                 }
 
                 if (Pad.IsButtonClicked(GamePadStatus.A))
                 {
+                    
                     ///------ PAC PAC
-                    PAC = true;
-                    WalkingDirection = Direction.PAC;
-                    Gracz.Move(Direction.PAC, PlayerMoveTexture);
+                    
+                    if(kierun_Right == true)
+                    {
+                        PAC = true;
+                        WalkingDirection = Direction.Pac_Right;
+                        Gracz.Move(Direction.Pac_Right, PlayerMoveTexture);
+                    }
+
+                    if(kierun_Left == true)
+                    {
+                        PAC = true;
+                        WalkingDirection = Direction.Pac_Left;
+                        Gracz.Move(Direction.Pac_Left, PlayerMoveTexture);
+                    }
+                   
+                    
+
+                   
+
                     ///------------------
 
                     if (map.GetObjectType(3, WalkingDirection) == 2)
