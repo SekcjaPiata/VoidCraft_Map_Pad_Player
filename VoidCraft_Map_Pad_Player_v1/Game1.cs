@@ -16,7 +16,7 @@ using EpicQuests;
 
 /////////////////////////////////////////////////////////////
 //////////////////      28.05.2017r         /////////////////   
-//////////////////     VERSION 0.026        /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////     VERSION 0.027        /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
 //////////////////                          /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
 
