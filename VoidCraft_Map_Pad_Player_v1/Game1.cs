@@ -16,7 +16,7 @@ using EpicQuests;
 
 /////////////////////////////////////////////////////////////
 //////////////////      28.05.2017r         /////////////////   
-//////////////////     VERSION 0.026        /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////     VERSION 0.027        /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
 //////////////////                          /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
 
@@ -40,7 +40,8 @@ namespace VoidCraft_Map_Pad_Player_v1
 
         int GameHour, GameMinute;
         float timer = 1;
-      
+
+        bool DebugMode = false;
 
         //John'owicz
         public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
@@ -349,26 +350,30 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 // Rysowanie Przyciskow
                 Pad.Draw(spriteBatch);
-                
-                spriteBatch.DrawString(sf, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Red);
-                spriteBatch.DrawString(sf, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Red);
-                spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Red);
-                spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 200), Color.Red);
-                spriteBatch.DrawString(sf, "Game time: " + GameHour + ":" + GameMinute, new Vector2(50, 250), Color.Red);
-                spriteBatch.DrawString(sf, "Resolution: " + ScreenX + "x" + ScreenY, new Vector2(50, 300), Color.Red);
-                spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 350), Color.Red);
-                spriteBatch.DrawString(sf, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) + "x" + (((ScreenY / 2)) - map.GetZoomValue()), new Vector2(50, 400), Color.Red);
-                spriteBatch.DrawString(sf, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) / 18 + "x" + (((ScreenY / 2)) - map.GetZoomValue()) / 11, new Vector2(50, 450), Color.Red);
-                spriteBatch.DrawString(sf, "DayCycleTimer: " + DayCycleTimer, new Vector2(50, 500), Color.Red); // DayCycle TEST
+                if (DebugMode)
+                {
+                    spriteBatch.DrawString(sf, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Red);
+                    spriteBatch.DrawString(sf, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Red);
+                    spriteBatch.DrawString(sf, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Red);
+                    spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 200), Color.Red);
+                    spriteBatch.DrawString(sf, "Game time: " + GameHour + ":" + GameMinute, new Vector2(50, 250), Color.Red);
+                    spriteBatch.DrawString(sf, "Resolution: " + ScreenX + "x" + ScreenY, new Vector2(50, 300), Color.Red);
+                    spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 350), Color.Red);
+                    spriteBatch.DrawString(sf, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) + "x" + (((ScreenY / 2)) - map.GetZoomValue()), new Vector2(50, 400), Color.Red);
+                    spriteBatch.DrawString(sf, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) / 18 + "x" + (((ScreenY / 2)) - map.GetZoomValue()) / 11, new Vector2(50, 450), Color.Red);
+                    spriteBatch.DrawString(sf, "DayCycleTimer: " + DayCycleTimer, new Vector2(50, 500), Color.Red); // DayCycle TEST
+                    if (Gracz.HP != 0)
+                    { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(0, 20), Color.Black); } else
+                    { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
+                }
+
                 DayCycleTimer++;
                 if (DayCycleTimer >= 100000)
                 { DayCycleTimer = 0; }
 
 
                 //Wyswietlanie Poziomu HP na Ekranie
-                if (Gracz.HP != 0)
-                { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(0, 20), Color.Black); } else
-                { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
+                
 
             } else
                 main.Draw(spriteBatch);

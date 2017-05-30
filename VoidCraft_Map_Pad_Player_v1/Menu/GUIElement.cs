@@ -49,7 +49,17 @@ namespace Menu
 
         public void CenterElement(int height, int width)
         {
-            GUIRect = new Rectangle((width / 2) - (this.GUITexture.Width / 2), (height / 2) - (this.GUITexture.Height / 2), this.GUITexture.Width / 2, this.GUITexture.Height / 2);
+
+            int ScreenX = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            int ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+            int a = ((ScreenY / 10) + (ScreenX / 17)) / 2;
+             // TODO Dororbić
+            GUIRect = new Rectangle(
+                (width / 2) - a, 
+                (height / 2) - (a/ 2), 
+                a*2, 
+                a);
 
         }
 
