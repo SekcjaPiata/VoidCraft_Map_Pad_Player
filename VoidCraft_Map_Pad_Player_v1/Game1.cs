@@ -316,8 +316,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                 // Rysowanie Gracza
                 Gracz.Draw(spriteBatch, new Rectangle(
                     ((ScreenX / 2) - (map.GetZoomValue() / 2)),
-                    ((ScreenY / 2)) - map.GetZoomValue(),
-                    map.GetZoomValue(), map.GetZoomValue())
+                    ((ScreenY / 2)) - map.GetZoomValue()+40,
+                    map.GetZoomValue()-30, map.GetZoomValue()-40)
                     );
 
                 // Rysowanie 3 Warstwy.
