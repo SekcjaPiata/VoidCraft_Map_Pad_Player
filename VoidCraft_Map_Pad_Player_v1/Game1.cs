@@ -251,19 +251,19 @@ namespace VoidCraft_Map_Pad_Player_v1
                     
                     ///------ PAC PAC
                     
-                    if(kierun_Right == true)
-                    {
-                        PAC = true;
-                        WalkingDirection = Direction.Pac_Right;
-                        Gracz.Move(Direction.Pac_Right, PlayerMoveTexture);
-                    }
+                    //if(kierun_Right == true)
+                    //{
+                    //    PAC = true;
+                    //    WalkingDirection = Direction.Pac_Right;
+                    //    Gracz.Move(Direction.Pac_Right, PlayerMoveTexture);
+                    //}
 
-                    if(kierun_Left == true)
-                    {
-                        PAC = true;
-                        WalkingDirection = Direction.Pac_Left;
-                        Gracz.Move(Direction.Pac_Left, PlayerMoveTexture);
-                    }
+                    //if(kierun_Left == true)
+                    //{
+                    //    PAC = true;
+                    //    WalkingDirection = Direction.Pac_Left;
+                    //    Gracz.Move(Direction.Pac_Left, PlayerMoveTexture);
+                    //}
                    
                     
 
@@ -279,7 +279,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                             //linq
                             Gracz.Materials.Wood += 2;
                             Gracz.Materials.Lianas += 2;
-                            String message = "Zebrano drewno siekiera\r\n, ilosc drewna: " + Gracz.Materials.Wood + "\r\n Ilosc lian:" + Gracz.Materials.Lianas;
+                            String message = "Zebrano drewno siekiera\r\n ilosc drewna: " + Gracz.Materials.Wood + "\r\n Ilosc lian:" + Gracz.Materials.Lianas;
                             map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 200));
 
                         }
@@ -287,7 +287,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                         {
                             Gracz.Materials.Wood++;
                             Gracz.Materials.Lianas++;
-                            String message = "Zebrano drewno i liany\r\n, ilosc drewna: " + Gracz.Materials.Wood+"\r\nIlosc lian"+Gracz.Materials.Lianas;
+                            String message = "Zebrano drewno i liany\r\n ilosc drewna: " + Gracz.Materials.Wood+"\r\n Ilosc lian: "+Gracz.Materials.Lianas;
                             map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 200));
                            
                         }
@@ -310,7 +310,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                         map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                     } else
                     {
-                        map.Message("I pach pachz poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                        map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                     }
 
                 } else if (Pad.IsButtonClicked(GamePadStatus.B))
@@ -331,7 +331,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 if (Gracz.ActiveGuest >= Gracz.Quests.Count)
                 {
-                    map.Message("Ukonczono fabule prologu!", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(100, 100, 600, 600));
+                    map.Message("\r\n Brawo! Zebrales potrzebne materialy\r\n aby stworzyc schronienie i przetrwac\r\n nadchodzaca NOC \r\n \r\n Ukonczono fabule prologu!", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(100, 100, 600, 600));
                     // .. map.
                     map.MessageActive = 2;
                     
