@@ -25,7 +25,7 @@ namespace MapControler
         Texture2D MessageTexture, MessageTexturBg;
         string MessageText;
         SpriteFont font;
-        int MessageActive = 0;
+       internal int MessageActive = 0;
 
         string MapName;
         int MapSizeX = 18, MapSizeY = 11;
@@ -90,7 +90,6 @@ namespace MapControler
                 this.Width = int.Parse(reader.ReadLine());
                 this.Height = int.Parse(reader.ReadLine());
                 this.NumberOfLayers = int.Parse(reader.ReadLine());
-
             }
         }
 

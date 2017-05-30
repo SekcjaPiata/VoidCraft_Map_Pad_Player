@@ -74,7 +74,7 @@ namespace Tools
             return PlayerMaterials.Contains(this._requirements);
         }
 
-        public void Craft(ref RawMaterials PlayerMaterials)
+        public void Craft(RawMaterials PlayerMaterials)
         {
             if (CanCraft(PlayerMaterials))
             {

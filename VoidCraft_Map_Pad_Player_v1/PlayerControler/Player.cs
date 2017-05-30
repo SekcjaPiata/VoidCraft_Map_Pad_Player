@@ -10,6 +10,7 @@ using Tools;
 using Raw_Materials_C;
 using EpicQuests;
 
+
 namespace PlayerControler
 {
     
@@ -65,6 +66,11 @@ namespace PlayerControler
             set { quests = value; }
         }
 
+        public int ActiveGuest { get; set; }
+
+        //S³u¿y do wyœwietlania aktualnych postêpów fabularnych gracza, na razie bêdzie pod przyciskiem B.
+        public Dairy Player_Dairy { get; set; }
+
 
         /// <summary>
         /// Zmienne Odpowiedzialne Za Poprawne Wyœwietlanie Postaci
@@ -96,7 +102,7 @@ namespace PlayerControler
         public Player(SoundEffect Grass, Texture2D texture, int rows, int columns, int posX, int posY)
         {
             this.Grass = Grass;
-
+           
             Texture = texture;
             Rows = rows;
             Columns = columns;
@@ -113,6 +119,7 @@ namespace PlayerControler
             tools = new List<Tool>();
             quests = new List<Quest>();
 
+            Player_Dairy = new Dairy();
             //dodawanie Toolsów do listy, dodaæ tutaj tekstury w miejsce "texture" w konstruktorze!
             //M³otek  (1 drewna, 3 liany, 1 kamieñ) 
             tools.Add(new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0));
@@ -124,14 +131,29 @@ namespace PlayerControler
             tools.Add(new Tool(texture, "Saw", 3, 0, 5, 5, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
 
             //test z posiadan¹ siekier¹
-            tools.Find(x => x.ToolName == "Axe").IsOwned = true;
-            
+            //tools.Find(x => x.ToolName == "Axe").IsOwned = true;
+
             //Dodajemy questy dla playera, tutaj dawajcie opisy tychze questow
             //misja startowa, zaczyna siê wraz z pojawieniem siê na wyspie
             //x26 y34
-            //Gracz musi zebraæ 10 drewna, 10 kamienia,5 wody i 5 jedzenia a potem nacisj¹æ B na wspó³rzêdnych  X18 Y 20
-            quests.Add(new Quest("Misja startowa", new Vector2(26, 34), new RawMaterials(10, 10, 0, 0, 5, 5),new Vector2(18,20)));
-            
+            ActiveGuest = 0;
+            //Pocz¹tek, zcrafæ m³otek
+            string plot1 = "Nie wiem co sie stalo... \r\n Musze zbudowac jakies schronienie przed noca\r\nMusze zaczac od budowy mlotka\r\nPotrzeba: 1 wood\r\n1 stone\r\n3 lianas";
+            quests.Add(new Quest("1.Stworz mlotek",new Vector2(26,34),new RawMaterials(), plot1,new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+            //quests[0].Activated = true;
+            //Druga misja-scrafciæ Axe
+            string plot2 = "\r\n\r\n Udalo mi sie stworzyc mlotek" +
+                "\r\nMusze szybciej zdobywac drewno\r\n"
+                + "trzeba zrobic siekiere"
+            +"\r\n Potrzeba: 3 wood \r\n 3 stone \r\n 3 lianas\r\n";
+            quests.Add(new Quest("2.Craft Axe", new Vector2(26, 34), new RawMaterials(), plot2, new Tool(texture, "Axe", 3, 3, 3, 0, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0))));
+            //Trzecia misja - stworzenie szeltera przed noc¹
+            string plot3 = "\r\nZbliza sie noc, musze zbudowac schronienie!"+
+                "Potrzebne : 20 wood \r\n 20 stone \r\n 20 lianas \r\n";
+            quests.Add(new Quest("3.Build shelter", new Vector2(26, 34), new RawMaterials(20,20,20,0,0,0), plot3));
+
+
+
 
         }
 

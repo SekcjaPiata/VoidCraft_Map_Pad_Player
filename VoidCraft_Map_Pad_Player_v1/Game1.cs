@@ -103,7 +103,9 @@ namespace VoidCraft_Map_Pad_Player_v1
             map = new Map(GraphicsDevice, "PiecioWarstwowy", ScreenX, ScreenY);
 
             //map = new Map(GraphicsDevice, "VoidMap", ScreenX, ScreenY); // 6.04.2017r
-            map.SetPosition(26, 34);
+            double Starting_posX = 26;
+            double Starting_posY = 34;
+            map.SetPosition(Starting_posX, Starting_posY);
 
             GameHour = 17;
             GameMinute = 55;
@@ -233,17 +235,20 @@ namespace VoidCraft_Map_Pad_Player_v1
                     { // Drewno
                         if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
                         {
-                            //linq w chuj
+                            //linq
                             Gracz.Materials.Wood += 2;
-                            String message = "Zebrano drewno siekiera, ilosc drewna: " + Gracz.Materials.Wood;
-                            map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                            Gracz.Materials.Lianas += 2;
+                            String message = "Zebrano drewno siekiera\r\n, ilosc drewna: " + Gracz.Materials.Wood + "\r\n Ilosc lian:" + Gracz.Materials.Lianas;
+                            map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 200));
 
                         }
                         else
                         {
                             Gracz.Materials.Wood++;
-                            String message = "Zebrano drewno, ilosc drewna: " + Gracz.Materials.Wood;
-                            map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                            Gracz.Materials.Lianas++;
+                            String message = "Zebrano drewno i liany\r\n, ilosc drewna: " + Gracz.Materials.Wood+"\r\nIlosc lian"+Gracz.Materials.Lianas;
+                            map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 200));
+                           
                         }
                     } else if (map.GetObjectType(3, WalkingDirection) == 3)
                     { // Jerzynki
@@ -269,28 +274,50 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 } else if (Pad.IsButtonClicked(GamePadStatus.B))
                 {
-                    map.Message("I pach pach poraz " + (--LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                    // map.Message("I pach pach poraz " + (--LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                    string dairy="";
+                    foreach (string m in Gracz.Player_Dairy.dairy_notes)
+                    {
+                        dairy += m;
+                    }
+                    map.Message(dairy, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 1000, 1000));
                 }
 
-                if (map.GetMissionID(4) != 0)
+                //if (map.GetMissionID(4) != 0)
+                //{
+                //    map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                //}
+
+                if (Gracz.ActiveGuest >= Gracz.Quests.Count)
                 {
-                    map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                    map.Message("Ukonczono fabule prologu!", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(100, 100, 600, 600));
+                    // .. map.
+                    map.MessageActive = 2;
+                    
                 }
-                //nie wiem czemu to kurwa nie dzia³a :(
-                // Serio sprawdzæ czy gracz stoi na której kolwiek misji ??
-                // to¿ to jak bd ze >100 misji .... to OP sprawa OP!
-                // Te znaczniki misji z 5 warstwy mog¹ to zast¹piæ .... 
-                // Ale to tylko moja propozycja ... bo co ja tam wiem ...
-                foreach (Quest quest in Gracz.Quests)
+               else if (!Gracz.Quests[Gracz.ActiveGuest].Activated)
                 {
-                    if (Gracz.PosX == quest.Start_position.X && Gracz.PosY == quest.Start_position.Y)
+                    map.Message( Gracz.Quests[Gracz.ActiveGuest].Name, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                    Gracz.Quests[Gracz.ActiveGuest].Activated = true;
+                    Gracz.Player_Dairy.dairy_notes.Add(Gracz.Quests[Gracz.ActiveGuest].Quest_message);
+
+                }
+                else if (Gracz.Quests[Gracz.ActiveGuest].IsFinished(Gracz.Materials))
+                {
+                    map.Message("Ukonczono misje:\r\n"+Gracz.Quests[Gracz.ActiveGuest].Name, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(100, 100, 600, 600));
+                    switch(Gracz.ActiveGuest)
                     {
-                       if (!quest.Activated)
-                        {
-                            map.Message("Aktywowala sie misja o nazwie:" + quest.Name, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-                        }
-                        quest.Activated = true;
+                        case 0:
+                            Gracz.Tools.Find(x => x.ToolName == "Hammer").IsOwned = true;
+                            Gracz.Tools.Find(x => x.ToolName == "Hammer").Craft(Gracz.Materials);
+                            break;
+                        case 1:
+                            Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned = true;
+                            Gracz.Tools.Find(x => x.ToolName == "Axe").Craft(Gracz.Materials);
+                            break;
                     }
+                    Gracz.Player_Dairy.dairy_notes.Add("\r\nUkonczono misje : \r\n"+Gracz.Quests[Gracz.ActiveGuest].Name);
+                    Gracz.ActiveGuest++;
                 }
 
                 map.Update();
