@@ -48,6 +48,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         private Player Gracz; // Tworzenie istancji
         private SpriteFont font; // Napis
         private int IloscKlatek = 4; // ilosc klatek w danej animacji
+        bool PAC = false;
 
         double DayCycleTimer = 0; // Timer dla systemu dnia i nocy
         public List<Texture2D> DayCycleTexture;  // Lista na Textury Nocy
@@ -118,7 +119,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             //// Wczytywanie tekstur Animacji i tworzenie instancji Player
             String CharFoldName = "Characters\\NewChar_";
-            for (int i = 0; i < 8; i++) {  PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
+            for (int i = 0; i < 9; i++) {  PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
             
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
             Gracz = new Player(GrassWalk, PlayerMoveTexture [4], 1, IloscKlatek, 10, 600);
@@ -156,8 +157,17 @@ namespace VoidCraft_Map_Pad_Player_v1
                 //Gracz.gin(gameTime);
                 Gracz.Update(gameTime);
 
+
+                /// Zmiana predkosci animacji przy Pacnieciu
+                if(PAC == false)
+                { Gracz.milliseconsuPerFrame = 140;}
+                else{ Gracz.milliseconsuPerFrame = 60;}
+                
+
+
                 if (Pad.IsButtonPresed(GamePadStatus.DirNone))
                 {
+                    PAC = false;
                     if (buff == GamePadStatus.Up)
                     {
                         Gracz.Move(Direction.Idle_Back, PlayerMoveTexture);
@@ -229,8 +239,15 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 if (Pad.IsButtonClicked(GamePadStatus.A))
                 {
+                    ///------ PAC PAC
+                    PAC = true;
+                    WalkingDirection = Direction.PAC;
+                    Gracz.Move(Direction.PAC, PlayerMoveTexture);
+                    ///------------------
+
                     if (map.GetObjectType(3, WalkingDirection) == 2)
                     { // Drewno
+                       
                         if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
                         {
                             //linq w chuj

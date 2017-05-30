@@ -9,7 +9,7 @@ namespace MapControler
 {
     enum Direction
     {
-        Idle_Down, Left, Right, Up, Down, Idle_Left, Idle_Right, Idle_Back, On
+        Idle_Down, Left, Right, Up, Down, Idle_Left, Idle_Right, Idle_Back, On, PAC
     }
 
     class Map

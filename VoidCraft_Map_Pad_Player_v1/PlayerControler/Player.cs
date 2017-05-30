@@ -59,6 +59,7 @@ namespace PlayerControler
         //lista wszystkich questów, które planujemy dla playera aktualnie
         private List<Quest> quests;
 
+
         public List<Quest> Quests
         {
             get { return quests; }
@@ -86,7 +87,10 @@ namespace PlayerControler
         /// Prêdkoœæ Wyœwietlania Animacji
         /// </summary>
         private int timeSinceLastFrame = 0;
-        private int milliseconsuPerFrame = 140;
+        public int milliseconsuPerFrame = 140;
+          
+
+
 
         SoundEffect Grass;
 
@@ -257,6 +261,8 @@ namespace PlayerControler
                 { IsMoving = false; Texture = tx [6]; break; }
                 case Direction.Idle_Back:
                 { IsMoving = false; Texture = tx [7]; break; }
+                case Direction.PAC:
+                { IsMoving = false; Texture = tx[8]; break; }
                 default:
                 break;
             }
