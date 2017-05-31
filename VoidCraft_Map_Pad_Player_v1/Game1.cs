@@ -14,10 +14,11 @@ using Menu;
 using System.Text;
 using EpicQuests;
 
+
 /////////////////////////////////////////////////////////////   
-//////////////////      30.05.2017r         /////////////////   
-//////////////////      23:54               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
-//////////////////     VERSION 0.045        /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
+//////////////////      31.05.2017r         /////////////////   
+//////////////////      18:52               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////     VERSION 0.046        /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
 
 
@@ -166,10 +167,11 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 /// Zmiana predkosci animacji przy Pacnieciu
                 if(PAC == false)
-                { Gracz.milliseconsuPerFrame = 140;}
+                { Gracz.milliseconsuPerFrame = 140;} 
                 else{ Gracz.milliseconsuPerFrame = 60;}
 
                
+                ///---------- STEROWANIE POSTACIA ----------------
 
                 if (Pad.IsButtonPresed(GamePadStatus.DirNone))
                 {
@@ -189,8 +191,9 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
                 }
 
+                
 
-                if (Pad.IsButtonPresed(GamePadStatus.Up))
+                if (Pad.IsButtonPresed(GamePadStatus.Up))                   ///---------- UP ----------------
                 {
                     if (map.GetObjectType(3, Direction.On) == 0)
                     {
@@ -203,7 +206,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                             map.MoveMap(0, Speed);
                     }
                 } else
-                if (Pad.IsButtonPresed(GamePadStatus.Down))
+                if (Pad.IsButtonPresed(GamePadStatus.Down))                 ///---------- DOWN ----------------
                 {
                     if (map.GetObjectType(3, Direction.On) == 0)
                     {
@@ -216,7 +219,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                             map.MoveMap(0, -Speed);
                     }
                 } else
-                if (Pad.IsButtonPresed(GamePadStatus.Right))
+                if (Pad.IsButtonPresed(GamePadStatus.Right))                ///---------- RIGHT ----------------
                 {
 
                     if (map.GetObjectType(3, Direction.On) == 0)
@@ -231,7 +234,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                         kierun_Left = false;
                     }
                 } else
-                if (Pad.IsButtonPresed(GamePadStatus.Left))
+                if (Pad.IsButtonPresed(GamePadStatus.Left))                 ///---------- LEFT ----------------
                 {
 
                     if (map.GetObjectType(3, Direction.On) == 0)
@@ -248,12 +251,11 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
                 }
 
-                if (Pad.IsButtonClicked(GamePadStatus.A))
+                if (Pad.IsButtonClicked(GamePadStatus.A))                   ///---------- BUTTON A ----------------
                 {
-                    
-                    ///------ PAC PAC
-                    
-                    if(kierun_Right == true)
+
+
+                    if (kierun_Right == true)                               ///---------- Animacja Zbierania ----------------
                     {
                         PAC = true;
                         PACDirection = DirectionPAC.Pac_Right;
@@ -268,7 +270,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
                    
 
-                    ///------------------
+                    ///-------------------------------------------------------------   WYKRYWANIE KOLIZJI   -------------------------//
 
                     if (map.GetObjectType(3, WalkingDirection) == 2)
                     { // Drewno
@@ -312,7 +314,13 @@ namespace VoidCraft_Map_Pad_Player_v1
                       //  map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                     }
 
-                } else if (Pad.IsButtonClicked(GamePadStatus.B))
+
+
+
+                    //-------------------------------------------- BUTTON B ---------------------------------------//
+
+                }
+                else if (Pad.IsButtonClicked(GamePadStatus.B))
                 {
                     // map.Message("I pach pach poraz " + (--LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                     string dairy="";
@@ -366,7 +374,15 @@ namespace VoidCraft_Map_Pad_Player_v1
             base.Update(gameTime);
         }
 
-        /// -----------------------------------------------------------------------------------------------------
+
+
+
+
+        /// ------------------------------   FUNKCJE RYSUJACE  ------------------------------------
+
+
+
+
 
         protected override void Draw(GameTime gameTime)
         {
@@ -412,10 +428,13 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
                 }
 
-                // Rysowanie Tekstury Nocy
-                spriteBatch.Draw(DayCycleTexture [DayCycle], new Rectangle(0, 0, ScreenX, ScreenY), Color.White);
+                
+                spriteBatch.Draw(DayCycleTexture [DayCycle], new Rectangle(0, 0, ScreenX, ScreenY), Color.White);      // Rysowanie Tekstury Nocy
 
-                // Rysowanie Przyciskow
+
+
+                // Rysowanie Przyciskow i informacji pomocniczych.
+
                 Pad.Draw(spriteBatch);
                 if (DebugMode)
                 {
@@ -430,17 +449,18 @@ namespace VoidCraft_Map_Pad_Player_v1
                     spriteBatch.DrawString(sf, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) / 18 + "x" + (((ScreenY / 2)) - map.GetZoomValue()) / 11, new Vector2(50, 450), Color.Red);
                     spriteBatch.DrawString(sf, "DayCycleTimer: " + DayCycleTimer, new Vector2(50, 500), Color.Red); // DayCycle TEST
                     if (Gracz.HP != 0)
-                    { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(0, 20), Color.Black); } else
+                    { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(0, 20), Color.Black); } //Wyswietlanie Poziomu HP na Ekranie
+                    else 
                     { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
                 }
 
+
+                // Timer Cyklu Dnia
                 DayCycleTimer++;
                 if (DayCycleTimer >= 100000)
                 { DayCycleTimer = 0; }
 
 
-                //Wyswietlanie Poziomu HP na Ekranie
-                
 
             } else
                 main.Draw(spriteBatch);
@@ -461,6 +481,10 @@ namespace VoidCraft_Map_Pad_Player_v1
                 GameMinute = 0;
             }
         }
+
+
+
+
 
         /// -----------------------------------------------------------------------------------------------------
         
