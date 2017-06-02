@@ -23,22 +23,22 @@ namespace PlayerControler
         // HP
         public int HP { get; set; }
         private int HP_Czas;
-        private int HP_Predkosc = 70;
+        private int HP_Predkosc = 5000;    // Predkosc > wolniejsze spadanie HP
 
         // Woda
         public int WODA { get; set; }
         private int Woda_Czas;
-        private int Woda_Predkosc = 70;
+        private int Woda_Predkosc = 2000;
 
         // Glod
         public int GLOD { get; set; }
         private int Glod_Czas;
-        private int Glod_Predkosc = 70;
+        private int Glod_Predkosc = 3000;
 
         // Strach
         public int STRACH { get; set; } 
         private int Strach_Czas;
-        private int Strach_Predkosc = 70;
+        private int Strach_Predkosc = 4000;
 
 
         //Surowce posiadane
@@ -288,7 +288,11 @@ namespace PlayerControler
             }
         }
 
-
+        /// <summary>
+        /// Animacja Zbierania
+        /// </summary>
+        /// <param name="direction"></param>
+        /// <param name="tx"></param>
         public void PAC_PAC(DirectionPAC direction, List<Texture2D> tx)
         {
             switch (direction)
@@ -305,10 +309,10 @@ namespace PlayerControler
         // TESTOWE
         public void gin(GameTime gameTime)
         {
-            //Spadek_HP(gameTime);
+            Spadek_HP(gameTime);
             Spadek_Wody(gameTime);
             Spadek_Glod(gameTime);
-            //Spadek_Strach(gameTime);
+            Spadek_Strach(gameTime);
         }
 
     }
