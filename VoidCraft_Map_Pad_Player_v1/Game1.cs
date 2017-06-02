@@ -39,6 +39,13 @@ namespace VoidCraft_Map_Pad_Player_v1
         MainMenu main = new MainMenu();
         Texture2D back;
 
+
+        Texture2D Knefel_EQ; // Guziczek do ingame menu **
+        Texture2D Inventory; // Ekwipunek Ingamemenu **
+        bool IsMenuButtonPressed = false; // pomocniczy bool dow wyœwietlania menu **
+
+
+
         int GameHour, GameMinute;
         float timer = 1;
 
@@ -100,6 +107,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             PlayerMoveTexture = new List<Texture2D>();
             DayCycleTexture = new List<Texture2D>();
 
+
             song = Content.Load<Song>("BgMusic");
             GrassWalk = Content.Load<SoundEffect>("GrassStep");
 
@@ -136,8 +144,9 @@ namespace VoidCraft_Map_Pad_Player_v1
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.70f;
             MediaPlayer.Play(song);
-            
-  
+            Knefel_EQ = Content.Load<Texture2D>("Knefel_EQ"); // £adowanie tekstury knefla **
+            Inventory = Content.Load<Texture2D>("UI\\Equipment"); // £adowanie tekstury menu **
+
 
             base.Initialize();
         }
@@ -435,6 +444,43 @@ namespace VoidCraft_Map_Pad_Player_v1
                 spriteBatch.Draw(DayCycleTexture [DayCycle], new Rectangle(0, 0, ScreenX, ScreenY), Color.White);      // Rysowanie Tekstury Nocy
 
 
+                // \/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+                Rectangle KnefelRect = new Rectangle((int)(ScreenX / 1.125), 50, 50, 50);   // Pozycja knefla do ingame menu **
+                spriteBatch.Draw(Knefel_EQ, new Rectangle( (int)(ScreenX / 1.125), 50, 50, 50), Color.White); // Rysowanie knefla do ingame menu **
+
+                TouchCollection tl = TouchPanel.GetState();
+
+
+
+                foreach (TouchLocation T in tl)
+                {
+
+
+                    if (KnefelRect.Contains(T.Position))
+                    {
+                        IsMenuButtonPressed = !IsMenuButtonPressed;
+                        DebugMode = !DebugMode;
+                        break;
+                    }
+                   
+                }
+                if (IsMenuButtonPressed)
+                {
+                    spriteBatch.Draw(Inventory, new Rectangle(100, 100, 800, 400), Color.White); // Rysowanie knefla do ingame menu **
+
+                    spriteBatch.DrawString(sf, "Woda: " + Gracz.Materials.Water, new Vector2(120, 150), Color.White);
+                    spriteBatch.DrawString(sf, "Jedzenie: " + Gracz.Materials.Food, new Vector2(120, 200), Color.White);
+                    spriteBatch.DrawString(sf, "Drewno: " + Gracz.Materials.Wood, new Vector2(120, 250), Color.White);
+                    spriteBatch.DrawString(sf, "Liany: " + Gracz.Materials.Lianas, new Vector2(120, 300), Color.White);
+                    spriteBatch.DrawString(sf, "Kamien: " + Gracz.Materials.Stone, new Vector2(120, 350), Color.White);
+                }
+
+
+                // /\/\/\/\/\/\/\/\/\/\/\/\/\
+
+
+
 
                 // Rysowanie Przyciskow i informacji pomocniczych.
 
@@ -454,11 +500,11 @@ namespace VoidCraft_Map_Pad_Player_v1
                     spriteBatch.DrawString(sf, "PacTimer: " + PacTimer, new Vector2(50, 550), Color.White);
                     spriteBatch.DrawString(sf, "Zbierz: " + Zbierz, new Vector2(50, 600), Color.White);
 
-                    spriteBatch.DrawString(sf, "Woda: " + Gracz.Materials.Water, new Vector2(1600, 50), Color.White);
-                    spriteBatch.DrawString(sf, "Jedzenie: " + Gracz.Materials.Food, new Vector2(1600, 100), Color.White);
-                    spriteBatch.DrawString(sf, "Drewno: " + Gracz.Materials.Wood, new Vector2(1600, 150), Color.White);
-                    spriteBatch.DrawString(sf, "Liany: " + Gracz.Materials.Lianas, new Vector2(1600, 200), Color.White);
-                    spriteBatch.DrawString(sf, "Kamien: " + Gracz.Materials.Stone, new Vector2(1600, 250), Color.White);
+                 //   spriteBatch.DrawString(sf, "Woda: " + Gracz.Materials.Water, new Vector2(1600, 50), Color.White);
+                 //   spriteBatch.DrawString(sf, "Jedzenie: " + Gracz.Materials.Food, new Vector2(1600, 100), Color.White);
+                 //   spriteBatch.DrawString(sf, "Drewno: " + Gracz.Materials.Wood, new Vector2(1600, 150), Color.White);
+                 //   spriteBatch.DrawString(sf, "Liany: " + Gracz.Materials.Lianas, new Vector2(1600, 200), Color.White);
+                 //   spriteBatch.DrawString(sf, "Kamien: " + Gracz.Materials.Stone, new Vector2(1600, 250), Color.White);
 
                     spriteBatch.DrawString(sf, "Zdrowie: " + Gracz.HP, new Vector2(400, 50), Color.LightGreen);
                     spriteBatch.DrawString(sf, "Woda: " + Gracz.WODA, new Vector2(400, 100), Color.LightGreen);
