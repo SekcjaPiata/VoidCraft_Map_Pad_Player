@@ -294,12 +294,21 @@ namespace VoidCraft_Map_Pad_Player_v1
                             map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 200));
 
                         }
+
+                        // Zmiana ID kafelek mapy
+                        Vector2 TreeBase = map.ChangeID(WalkingDirection, 1, 30); // Zmiana podstawy drzewa na pieniek
+                        map.ChangeID(WalkingDirection, 3, 1); // Zmiana ID podstawy na BLOKADA
+                        map.ChangeID((int)TreeBase.X, (int)TreeBase.Y - 1, 2, 0); // Usuniêcie korony drzewa (1 wy¿ej ni¿ podstawa)
+
                     }
                     else if (map.GetObjectType(3, WalkingDirection) == 3)
                     { // Jerzynki
                         Gracz.Materials.Food++;
                         String message = "Zebrano jedzenie, ilosc jedzenia: " + Gracz.Materials.Food;
                         map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+
+                        Vector2 TreeBase = map.ChangeID(WalkingDirection, 1, 2); // Zmiana krzaka je¿ynkowego na zwyk³y
+                        map.ChangeID(WalkingDirection, 3, 1); // Zmiana ID ...
 
                     }
                     else if (map.GetObjectType(3, WalkingDirection) == 4)
@@ -334,7 +343,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                     map.Message(dairy, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 1000, 1000));
                 }
 
-                //if (map.GetMissionID(4) != 0)
+                //if (map.GetCurrentID(4) != 0)
                 //{
                 //    map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                 //}
@@ -403,7 +412,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                 Gracz.Draw(spriteBatch, new Rectangle(
                     ((ScreenX / 2) - (map.GetZoomValue() / 2)),
                     ((ScreenY / 2)) - map.GetZoomValue()+40,
-                    map.GetZoomValue()-30, map.GetZoomValue()-40)
+                    map.GetZoomValue()-20, map.GetZoomValue()-20)
                     );
 
                 // Rysowanie 3 Warstwy.
