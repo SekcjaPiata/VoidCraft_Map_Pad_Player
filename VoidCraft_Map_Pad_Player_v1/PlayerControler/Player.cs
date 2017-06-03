@@ -301,12 +301,14 @@ namespace PlayerControler
                     { IsMoving = false; Texture = tx[8]; break; }
                 case DirectionPAC.Pac_Left:
                     { IsMoving = false; Texture = tx[9]; break; }
+                case DirectionPAC.Pac_R_Axe:
+                    { IsMoving = false; Texture = tx[10]; break; }
                 default:
                     break;
             }
         }
 
-        // TESTOWE
+        // TESTOWE Pac_R_Axe
         public void gin(GameTime gameTime)
         {
             Spadek_HP(gameTime);

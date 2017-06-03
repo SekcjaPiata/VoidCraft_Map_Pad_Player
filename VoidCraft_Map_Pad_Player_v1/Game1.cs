@@ -16,9 +16,10 @@ using EpicQuests;
 
 
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
-//////////////////      2.06.2017r          /////////////////   
-//////////////////      17:29               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
-//////////////////     VERSION 0.047        /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
+//////////////////      Johnny              /////////////////
+//////////////////      3.06.2017r          /////////////////   
+//////////////////      13:44               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////      VERSION 0.049       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
 
 
@@ -136,7 +137,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             //// Wczytywanie tekstur Animacji i tworzenie instancji Player
             String CharFoldName = "Characters\\NewChar_";
-            for (int i = 0; i < 10; i++) {  PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
+            for (int i = 0; i < 11; i++) {  PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
             
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
             Gracz = new Player(GrassWalk, PlayerMoveTexture [4], 1, IloscKlatek, 10, 600);
@@ -269,8 +270,16 @@ namespace VoidCraft_Map_Pad_Player_v1
                     if (kierun_Right == true)                               ///---------- Animacja Zbierania ----------------
                     {
                         PAC = true;
-                        PACDirection = DirectionPAC.Pac_Right;
-                        Gracz.PAC_PAC(DirectionPAC.Pac_Right, PlayerMoveTexture);
+                        if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
+                        {
+                            PACDirection = DirectionPAC.Pac_R_Axe;
+                            Gracz.PAC_PAC(DirectionPAC.Pac_R_Axe, PlayerMoveTexture);
+                        }
+                        else
+                        {
+                            PACDirection = DirectionPAC.Pac_Right;
+                            Gracz.PAC_PAC(DirectionPAC.Pac_Right, PlayerMoveTexture);
+                        }
                     }
 
                     if(kierun_Left == true)
