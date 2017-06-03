@@ -14,7 +14,7 @@ namespace MapControler
 
     enum DirectionPAC
     {
-        Pac_Left, Pac_Right
+        Pac_Left, Pac_Right, Pac_R_Axe
     }
 
     class Map
@@ -271,7 +271,7 @@ namespace MapControler
             return i;
         }
 
-        public int GetMissionID(int Layer)
+        public int GetCurrentID(int Layer)
         {
 
             return Textur [Layer] [Tiles [Layer] [((int)GetPosition().X) - 1, ((int)GetPosition().Y) - 1].Id].ID;
@@ -321,6 +321,20 @@ namespace MapControler
             MapOfsetY = PosY;
         }
 
+        public void ChangeID(int x, int y, int layer , int NewID) {
+            Tiles [layer] [x - 1, y - 1].Id = NewID;
+            //Textur [layer] [Tiles [layer] [x-1, y-1].Id].ID = NewID;
+        }
+
+        public Vector2 ChangeID(Direction Dir, int layer, int NewID) {
+            int x = (int)GetPosition().X+ ((Dir == Direction.Left) ? -1 : (Dir == Direction.Right) ? 1 : 0);
+            int y = (int)GetPosition().Y+ ((Dir == Direction.Up) ? -1 : (Dir == Direction.Down) ? 1 : 0);
+
+            Tiles [layer] [x-1, y-1].Id = NewID;
+            //Textur [layer] [Tiles [layer] [x-1, y-1].Id].ID = NewID;
+
+            return new Vector2(x,y);
+        }
     }
 
 }

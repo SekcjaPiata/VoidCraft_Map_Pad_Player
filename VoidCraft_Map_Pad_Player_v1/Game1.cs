@@ -15,10 +15,11 @@ using System.Text;
 using EpicQuests;
 
 
-/////////////////////////////////////////////////////////////   
-//////////////////      31.05.2017r         /////////////////   
-//////////////////      18:52               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
-//////////////////     VERSION 0.046        /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
+/////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
+//////////////////      Johnny              /////////////////
+//////////////////      3.06.2017r          /////////////////   
+//////////////////      13:44               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////      VERSION 0.049       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
 
 
@@ -39,10 +40,17 @@ namespace VoidCraft_Map_Pad_Player_v1
         MainMenu main = new MainMenu();
         Texture2D back;
 
+
+        Texture2D Knefel_EQ; // Guziczek do ingame menu **
+        Texture2D Inventory; // Ekwipunek Ingamemenu **
+        bool IsMenuButtonPressed = false; // pomocniczy bool dow wyœwietlania menu **
+
+
+
         int GameHour, GameMinute;
         float timer = 1;
 
-        bool DebugMode = false;
+        bool DebugMode = true;
 
         //John'owicz
         public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
@@ -52,7 +60,9 @@ namespace VoidCraft_Map_Pad_Player_v1
         bool PAC = false;
         bool kierun_Left = false;
         bool kierun_Right = false;
+        bool Zbierz = false;
         DirectionPAC PACDirection;
+        double PacTimer = 0;
 
         double DayCycleTimer = 0; // Timer dla systemu dnia i nocy
         public List<Texture2D> DayCycleTexture;  // Lista na Textury Nocy
@@ -98,6 +108,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             PlayerMoveTexture = new List<Texture2D>();
             DayCycleTexture = new List<Texture2D>();
 
+
             song = Content.Load<Song>("BgMusic");
             GrassWalk = Content.Load<SoundEffect>("GrassStep");
 
@@ -126,7 +137,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             //// Wczytywanie tekstur Animacji i tworzenie instancji Player
             String CharFoldName = "Characters\\NewChar_";
-            for (int i = 0; i < 10; i++) {  PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
+            for (int i = 0; i < 11; i++) {  PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
             
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
             Gracz = new Player(GrassWalk, PlayerMoveTexture [4], 1, IloscKlatek, 10, 600);
@@ -134,8 +145,9 @@ namespace VoidCraft_Map_Pad_Player_v1
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.70f;
             MediaPlayer.Play(song);
-            
-  
+            Knefel_EQ = Content.Load<Texture2D>("Knefel_EQ"); // £adowanie tekstury knefla **
+            Inventory = Content.Load<Texture2D>("UI\\Equipment"); // £adowanie tekstury menu **
+
 
             base.Initialize();
         }
@@ -144,7 +156,6 @@ namespace VoidCraft_Map_Pad_Player_v1
 
         protected override void Update(GameTime gameTime)
         {
-
 
             if (Running == true)
             {
@@ -161,7 +172,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                     timer = 1;   //Reset Timer
                 }
 
-                //Gracz.gin(gameTime);
+                Gracz.gin(gameTime);
                 Gracz.Update(gameTime);
 
 
@@ -251,15 +262,24 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
                 }
 
+
                 if (Pad.IsButtonClicked(GamePadStatus.A))                   ///---------- BUTTON A ----------------
                 {
-
+                   
 
                     if (kierun_Right == true)                               ///---------- Animacja Zbierania ----------------
                     {
                         PAC = true;
-                        PACDirection = DirectionPAC.Pac_Right;
-                        Gracz.PAC_PAC(DirectionPAC.Pac_Right, PlayerMoveTexture);
+                        if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
+                        {
+                            PACDirection = DirectionPAC.Pac_R_Axe;
+                            Gracz.PAC_PAC(DirectionPAC.Pac_R_Axe, PlayerMoveTexture);
+                        }
+                        else
+                        {
+                            PACDirection = DirectionPAC.Pac_Right;
+                            Gracz.PAC_PAC(DirectionPAC.Pac_Right, PlayerMoveTexture);
+                        }
                     }
 
                     if(kierun_Left == true)
@@ -268,13 +288,13 @@ namespace VoidCraft_Map_Pad_Player_v1
                         PACDirection = DirectionPAC.Pac_Left;
                         Gracz.PAC_PAC(DirectionPAC.Pac_Left, PlayerMoveTexture);
                     }
-                   
 
-                    ///-------------------------------------------------------------   WYKRYWANIE KOLIZJI   -------------------------//
+                    
+                 ///-------------------------------------------------------------   WYKRYWANIE KOLIZJI   -------------------------//
 
                     if (map.GetObjectType(3, WalkingDirection) == 2)
                     { // Drewno
-                       
+
                         if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
                         {
                             //linq
@@ -288,39 +308,49 @@ namespace VoidCraft_Map_Pad_Player_v1
                         {
                             Gracz.Materials.Wood++;
                             Gracz.Materials.Lianas++;
-                            String message = "Zebrano drewno i liany\r\n ilosc drewna: " + Gracz.Materials.Wood+"\r\n Ilosc lian: "+Gracz.Materials.Lianas;
+                            String message = "Zebrano drewno i liany\r\n ilosc drewna: " + Gracz.Materials.Wood + "\r\n Ilosc lian: " + Gracz.Materials.Lianas;
                             map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 200));
-                           
+
                         }
-                    } else if (map.GetObjectType(3, WalkingDirection) == 3)
+
+                        // Zmiana ID kafelek mapy
+                        Vector2 TreeBase = map.ChangeID(WalkingDirection, 1, 30); // Zmiana podstawy drzewa na pieniek
+                        map.ChangeID(WalkingDirection, 3, 1); // Zmiana ID podstawy na BLOKADA
+                        map.ChangeID((int)TreeBase.X, (int)TreeBase.Y - 1, 2, 0); // Usuniêcie korony drzewa (1 wy¿ej ni¿ podstawa)
+
+                    }
+                    else if (map.GetObjectType(3, WalkingDirection) == 3)
                     { // Jerzynki
                         Gracz.Materials.Food++;
                         String message = "Zebrano jedzenie, ilosc jedzenia: " + Gracz.Materials.Food;
                         map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
 
-                    } else if (map.GetObjectType(3, WalkingDirection) == 4)
+                        Vector2 TreeBase = map.ChangeID(WalkingDirection, 1, 2); // Zmiana krzaka je¿ynkowego na zwyk³y
+                        map.ChangeID(WalkingDirection, 3, 1); // Zmiana ID ...
+
+                    }
+                    else if (map.GetObjectType(3, WalkingDirection) == 4)
                     { // Kamien
                         Gracz.Materials.Stone++;
                         String message = "Zebrano kamien, ilosc kamienia: " + Gracz.Materials.Stone;
                         map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
 
-                    } else if (map.GetObjectType(3, WalkingDirection) == 5)
+                    }
+                    else if (map.GetObjectType(3, WalkingDirection) == 5)
                     { // Woda
                         Gracz.Materials.Water++;
                         String message = "Zebrano wode ilosc wody: " + Gracz.Materials.Water;
                         map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-                    } else
-                    {
-                      //  map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                     }
-
-
-
-
-                    //-------------------------------------------- BUTTON B ---------------------------------------//
-
+                    else
+                    {
+                        //  map.Message("I pach pach poraz " + (++LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                    }
                 }
-                else if (Pad.IsButtonClicked(GamePadStatus.B))
+                
+                //-------------------------------------------- BUTTON B ---------------------------------------//
+
+                if (Pad.IsButtonClicked(GamePadStatus.B))
                 {
                     // map.Message("I pach pach poraz " + (--LicznikPachPach), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                     string dairy="";
@@ -331,7 +361,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                     map.Message(dairy, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 1000, 1000));
                 }
 
-                //if (map.GetMissionID(4) != 0)
+                //if (map.GetCurrentID(4) != 0)
                 //{
                 //    map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
                 //}
@@ -400,7 +430,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                 Gracz.Draw(spriteBatch, new Rectangle(
                     ((ScreenX / 2) - (map.GetZoomValue() / 2)),
                     ((ScreenY / 2)) - map.GetZoomValue()+40,
-                    map.GetZoomValue()-30, map.GetZoomValue()-40)
+                    map.GetZoomValue()-20, map.GetZoomValue()-20)
                     );
 
                 // Rysowanie 3 Warstwy.
@@ -432,6 +462,43 @@ namespace VoidCraft_Map_Pad_Player_v1
                 spriteBatch.Draw(DayCycleTexture [DayCycle], new Rectangle(0, 0, ScreenX, ScreenY), Color.White);      // Rysowanie Tekstury Nocy
 
 
+                // \/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+                Rectangle KnefelRect = new Rectangle((int)(ScreenX / 1.125), 50, 50, 50);   // Pozycja knefla do ingame menu **
+                spriteBatch.Draw(Knefel_EQ, new Rectangle( (int)(ScreenX / 1.125), 50, 50, 50), Color.White); // Rysowanie knefla do ingame menu **
+
+                TouchCollection tl = TouchPanel.GetState();
+
+
+
+                foreach (TouchLocation T in tl)
+                {
+
+
+                    if (KnefelRect.Contains(T.Position))
+                    {
+                        IsMenuButtonPressed = !IsMenuButtonPressed;
+                        DebugMode = !DebugMode;
+                        break;
+                    }
+                   
+                }
+                if (IsMenuButtonPressed)
+                {
+                    spriteBatch.Draw(Inventory, new Rectangle(100, 100, 800, 400), Color.White); // Rysowanie knefla do ingame menu **
+
+                    spriteBatch.DrawString(sf, "Woda: " + Gracz.Materials.Water, new Vector2(120, 150), Color.White);
+                    spriteBatch.DrawString(sf, "Jedzenie: " + Gracz.Materials.Food, new Vector2(120, 200), Color.White);
+                    spriteBatch.DrawString(sf, "Drewno: " + Gracz.Materials.Wood, new Vector2(120, 250), Color.White);
+                    spriteBatch.DrawString(sf, "Liany: " + Gracz.Materials.Lianas, new Vector2(120, 300), Color.White);
+                    spriteBatch.DrawString(sf, "Kamien: " + Gracz.Materials.Stone, new Vector2(120, 350), Color.White);
+                }
+
+
+                // /\/\/\/\/\/\/\/\/\/\/\/\/\
+
+
+
 
                 // Rysowanie Przyciskow i informacji pomocniczych.
 
@@ -447,11 +514,27 @@ namespace VoidCraft_Map_Pad_Player_v1
                     spriteBatch.DrawString(sf, "Square size: " + map.GetZoomValue(), new Vector2(50, 350), Color.Red);
                     spriteBatch.DrawString(sf, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) + "x" + (((ScreenY / 2)) - map.GetZoomValue()), new Vector2(50, 400), Color.Red);
                     spriteBatch.DrawString(sf, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) / 18 + "x" + (((ScreenY / 2)) - map.GetZoomValue()) / 11, new Vector2(50, 450), Color.Red);
-                    spriteBatch.DrawString(sf, "DayCycleTimer: " + DayCycleTimer, new Vector2(50, 500), Color.Red); // DayCycle TEST
+                    spriteBatch.DrawString(sf, "DayCycleTimer: " + DayCycleTimer, new Vector2(50, 500), Color.Red); // DayCycle TEST PacTimer
+                    spriteBatch.DrawString(sf, "PacTimer: " + PacTimer, new Vector2(50, 550), Color.White);
+                    spriteBatch.DrawString(sf, "Zbierz: " + Zbierz, new Vector2(50, 600), Color.White);
+
+                 //   spriteBatch.DrawString(sf, "Woda: " + Gracz.Materials.Water, new Vector2(1600, 50), Color.White);
+                 //   spriteBatch.DrawString(sf, "Jedzenie: " + Gracz.Materials.Food, new Vector2(1600, 100), Color.White);
+                 //   spriteBatch.DrawString(sf, "Drewno: " + Gracz.Materials.Wood, new Vector2(1600, 150), Color.White);
+                 //   spriteBatch.DrawString(sf, "Liany: " + Gracz.Materials.Lianas, new Vector2(1600, 200), Color.White);
+                 //   spriteBatch.DrawString(sf, "Kamien: " + Gracz.Materials.Stone, new Vector2(1600, 250), Color.White);
+
+                    spriteBatch.DrawString(sf, "Zdrowie: " + Gracz.HP, new Vector2(400, 50), Color.LightGreen);
+                    spriteBatch.DrawString(sf, "Woda: " + Gracz.WODA, new Vector2(400, 100), Color.LightGreen);
+                    spriteBatch.DrawString(sf, "Jedzenie: " + Gracz.GLOD, new Vector2(400, 150), Color.LightGreen);
+                    spriteBatch.DrawString(sf, "Strach: " + Gracz.STRACH, new Vector2(400, 200), Color.LightGreen);
+
+                    /*
                     if (Gracz.HP != 0)
                     { spriteBatch.DrawString(font, "HP: " + Gracz.HP, new Vector2(0, 20), Color.Black); } //Wyswietlanie Poziomu HP na Ekranie
                     else 
                     { spriteBatch.DrawString(font, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
+                    */
                 }
 
 

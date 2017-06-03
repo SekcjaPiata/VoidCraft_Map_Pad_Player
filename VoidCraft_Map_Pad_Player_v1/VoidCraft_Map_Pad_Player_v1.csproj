@@ -62,6 +62,7 @@
     <Compile Include="EpicQuests\Dairy.cs" />
     <Compile Include="EpicQuests\Quest.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="InGameMenu\InGameMenu.cs" />
     <Compile Include="Menu\GUIElement.cs" />
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="MapControler\Map.cs" />
