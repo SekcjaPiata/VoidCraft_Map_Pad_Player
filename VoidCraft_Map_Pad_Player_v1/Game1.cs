@@ -350,7 +350,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                     Gracz.Player_Dairy.dairy_notes.Add(Gracz.Quests[Gracz.ActiveGuest].Quest_message);
 
                 }
-                else if (Gracz.Quests[Gracz.ActiveGuest].IsFinished(Gracz.Materials))
+                else if (Gracz.Quests[Gracz.ActiveGuest].IsFinished(Gracz.Materials,Gracz.Tools))
                 {
                     map.Message("Ukonczono misje:\r\n"+Gracz.Quests[Gracz.ActiveGuest].Name, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(100, 100, 600, 600));
                     switch(Gracz.ActiveGuest)
