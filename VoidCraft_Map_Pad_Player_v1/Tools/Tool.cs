@@ -12,8 +12,6 @@ namespace Tools
             public CantCraftException(string message) : base(message) { }
         }
 
-
-
         //Klasa opisuje narzêdzia. Zak³adamy, ¿e takowe siê nie niszcz¹
 
         private Texture2D _toolTexture;//Wczytana zostanie tekstura narzêdzia

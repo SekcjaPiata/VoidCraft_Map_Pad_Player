@@ -31,21 +31,16 @@ namespace EpicQuests
 
         public bool Finished { get; set; }
 
-        public bool IsFinished(RawMaterials player_materials)
+        public bool IsFinished(RawMaterials player_materials,List<Tool> player_tools)
         {
             if (Finished) return Finished;//jeœli ju¿ jest ukoñczony nie przeszukuj tylko zwróæ, ¿e ukoñczono
-            //foreach (KeyValuePair<Vector2, bool> Quests in Quest_requirements)
-            //{
-            //    if (Quests.Value == false)
-            //    {//jeœli choæ jeden warunek nie jest spe³nionny to zwróc fa³sz
-            //        return false;
-            //    }
-            //}//jak wszystko jest spelnione to ustaw, ¿e ukoñczono i zwróc prawdê
 
             if (!player_materials.Contains(Materials_needed)) return false;
             foreach (Tool t in Tools_needed)
             {
                 if (!t.CanCraft(player_materials)) return false;
+                // if (!player_tools.Contains(t)) return false; -> wersja na póŸniejsze questy
+                // Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
             }
             Materials_for_quest_owned = true;
             Finished = true;

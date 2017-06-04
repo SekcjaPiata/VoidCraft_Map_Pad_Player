@@ -125,6 +125,7 @@ namespace PlayerControler
 
             Player_Dairy = new Dairy();
             //dodawanie Toolsów do listy, dodaæ tutaj tekstury w miejsce "texture" w konstruktorze!
+
             //M³otek  (1 drewna, 3 liany, 1 kamieñ) 
             tools.Add(new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0));
             //Topór Siekiera (1 m³otek,3 drewna, 3 liany, 3 kamieñ) -> Jeœli jest w eq to daje wiêcej drewna po œciêciu drzewa
@@ -134,9 +135,7 @@ namespace PlayerControler
             //Saw 4.Pi³a (1 m³otek, 3 drewna, 5 metal, 5 liany)
             tools.Add(new Tool(texture, "Saw", 3, 0, 5, 5, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
 
-            //test z posiadan¹ siekier¹
-            //tools.Find(x => x.ToolName == "Axe").IsOwned = true;
-
+          
             //Dodajemy questy dla playera, tutaj dawajcie opisy tychze questow
             //misja startowa, zaczyna siê wraz z pojawieniem siê na wyspie
             //x26 y34
@@ -301,12 +300,14 @@ namespace PlayerControler
                     { IsMoving = false; Texture = tx[8]; break; }
                 case DirectionPAC.Pac_Left:
                     { IsMoving = false; Texture = tx[9]; break; }
+                case DirectionPAC.Pac_R_Axe:
+                    { IsMoving = false; Texture = tx[10]; break; }
                 default:
                     break;
             }
         }
 
-        // TESTOWE
+        // TESTOWE Pac_R_Axe
         public void gin(GameTime gameTime)
         {
             Spadek_HP(gameTime);
