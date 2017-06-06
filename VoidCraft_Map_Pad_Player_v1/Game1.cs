@@ -14,6 +14,7 @@ using Menu;
 using System.Text;
 using EpicQuests;
 using Sounds;
+using Message;
 
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
 //////////////////      Johnny              /////////////////
@@ -31,6 +32,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         Map map;
         GameControler Pad;
         MainMenu main;
+        Messages messages;
 
         BackgroundSongs GameBgAmbient;
         SoundEffects GrassWalk;
@@ -88,9 +90,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             Graphics.PreferredBackBufferWidth = 800;
             Graphics.PreferredBackBufferHeight = 480;
             Graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
-
-            main = new MainMenu();
-
+            
             WalkingDirection = Direction.Idle_Down;
             PACDirection = DirectionPAC.Pac_Left;
         }
@@ -99,6 +99,9 @@ namespace VoidCraft_Map_Pad_Player_v1 {
         protected override void Initialize() {
             ScreenX = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+            main = new MainMenu();
+            messages = new Messages(Content, new Rectangle(50, 20, 200, 50), 3);
 
             DefaultFont = Content.Load<SpriteFont>("SpriteFontPL");
 
@@ -180,37 +183,37 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
                 if (Pad.IsButtonPresed(GamePadStatus.Up))                   ///---------- UP ----------------
                 {
-                    if (map.GetObjectType(3, Direction.On) == 0) {
+                    if (map.GetNextID(3, Direction.On) == 0) {
                         WalkingDirection = Direction.Up;
                         buff = GamePadStatus.Up;
                         Gracz.Move(Direction.Up, PlayerMoveTexture);
                         map.MoveMap(0, -WalkSpeed);
 
-                        if (map.GetObjectType(3, Direction.On) != 0)
+                        if (map.GetNextID(3, Direction.On) != 0)
                             map.MoveMap(0, WalkSpeed);
                     }
                 } else
                 if (Pad.IsButtonPresed(GamePadStatus.Down))                 ///---------- DOWN ----------------
                 {
-                    if (map.GetObjectType(3, Direction.On) == 0) {
+                    if (map.GetNextID(3, Direction.On) == 0) {
                         WalkingDirection = Direction.Down;
                         buff = GamePadStatus.Down;
                         Gracz.Move(Direction.Down, PlayerMoveTexture);
                         map.MoveMap(0, WalkSpeed);
 
-                        if (map.GetObjectType(3, Direction.On) != 0)
+                        if (map.GetNextID(3, Direction.On) != 0)
                             map.MoveMap(0, -WalkSpeed);
                     }
                 } else
                 if (Pad.IsButtonPresed(GamePadStatus.Right))                ///---------- RIGHT ----------------
                 {
 
-                    if (map.GetObjectType(3, Direction.On) == 0) {
+                    if (map.GetNextID(3, Direction.On) == 0) {
                         WalkingDirection = Direction.Right;
                         buff = GamePadStatus.Right;
                         Gracz.Move(Direction.Right, PlayerMoveTexture);
                         map.MoveMap(WalkSpeed, 0);
-                        if (map.GetObjectType(3, Direction.On) != 0)
+                        if (map.GetNextID(3, Direction.On) != 0)
                             map.MoveMap(-WalkSpeed, 0);
                         kierun_Right = true;
                         kierun_Left = false;
@@ -219,12 +222,12 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                 if (Pad.IsButtonPresed(GamePadStatus.Left))                 ///---------- LEFT ----------------
                 {
 
-                    if (map.GetObjectType(3, Direction.On) == 0) {
+                    if (map.GetNextID(3, Direction.On) == 0) {
                         WalkingDirection = Direction.Left;
                         buff = GamePadStatus.Left;
                         Gracz.Move(Direction.Left, PlayerMoveTexture);
                         map.MoveMap(-WalkSpeed, 0);
-                        if (map.GetObjectType(3, Direction.On) != 0)
+                        if (map.GetNextID(3, Direction.On) != 0)
                             map.MoveMap(WalkSpeed, 0);
                         kierun_Left = true;
                         kierun_Right = false;
@@ -235,7 +238,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
                 if (Pad.IsButtonClicked(GamePadStatus.A))                   ///---------- BUTTON A ----------------
                 {
-                    ChangeGameTime(GameHour + 1, 0);
+                    
 
                     if (kierun_Right == true)                               ///---------- Animacja Zbierania ----------------
                     {
@@ -257,22 +260,30 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
 
                     ///-------------------------------------------------------------   WYKRYWANIE KOLIZJI   -------------------------//
+                    if (map.GetNextID(3, WalkingDirection) == 6) { // skrzyneczka
+String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirection).X + "x" + map.GetNextCords(WalkingDirection).Y;
+                        //Gracz.Chests.Find(x, y => x.X == map.GetNextCords(WalkingDirection).X &&
+                         //x.X == map.GetNextCords(WalkingDirection).Y);
+                        //map.Message(message, DefaultFont, new Rectangle(50, 20, 600, 200));
+                        messages.AddMessage(message, new Rectangle(50, 20, 600, 200));
+                    }
 
-                    if (map.GetObjectType(3, WalkingDirection) == 2) { // Drewno
+
+                        if (map.GetNextID(3, WalkingDirection) == 2) { // Drewno
 
                         if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true) {
                             //linq
                             Gracz.Materials.Wood += 2;
                             Gracz.Materials.Lianas += 2;
                             String message = "Zebrano drewno siekiera\r\n ilosc drewna: " + Gracz.Materials.Wood + "\r\n Ilosc lian:" + Gracz.Materials.Lianas;
-                            map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 200));
-
+                            //map.Message(message, DefaultFont, new Rectangle(50, 20, 400, 200));
+                            messages.AddMessage(message, new Rectangle(50, 20, 600, 200));
                         } else {
                             Gracz.Materials.Wood++;
                             Gracz.Materials.Lianas++;
                             String message = "Zebrano drewno i liany\r\n ilosc drewna: " + Gracz.Materials.Wood + "\r\n Ilosc lian: " + Gracz.Materials.Lianas;
-                            map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 200));
-
+                            //map.Message(message, DefaultFont, new Rectangle(50, 20, 400, 200));
+                            messages.AddMessage(message, new Rectangle(50, 20, 600, 200));
                         }
 
                         // Zmiana ID kafelek mapy
@@ -280,23 +291,24 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                         map.ChangeID(WalkingDirection, 3, 1); // Zmiana ID podstawy na BLOKADA
                         map.ChangeID((int)TreeBase.X, (int)TreeBase.Y - 1, 2, 0); // Usuniêcie korony drzewa (1 wy¿ej ni¿ podstawa)
 
-                    } else if (map.GetObjectType(3, WalkingDirection) == 3) { // Jerzynki
+                    } else if (map.GetNextID(3, WalkingDirection) == 3) { // Jerzynki
                         Gracz.Materials.Food++;
                         String message = "Zebrano jedzenie, ilosc jedzenia: " + Gracz.Materials.Food;
-                        map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-
+                        //map.Message(message, DefaultFont, new Rectangle(50, 20, 400, 100));
+                        messages.AddMessage(message, new Rectangle(50, 20, 600, 200));
                         Vector2 TreeBase = map.ChangeID(WalkingDirection, 1, 2); // Zmiana krzaka je¿ynkowego na zwyk³y
                         map.ChangeID(WalkingDirection, 3, 1); // Zmiana ID ...
 
-                    } else if (map.GetObjectType(3, WalkingDirection) == 4) { // Kamien
+                    } else if (map.GetNextID(3, WalkingDirection) == 4) { // Kamien
                         Gracz.Materials.Stone++;
                         String message = "Zebrano kamien, ilosc kamienia: " + Gracz.Materials.Stone;
-                        map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
-
-                    } else if (map.GetObjectType(3, WalkingDirection) == 5) { // Woda
+                        //map.Message(message, DefaultFont, new Rectangle(50, 20, 400, 100));
+                        messages.AddMessage(message, new Rectangle(50, 20, 600, 200));
+                    } else if (map.GetNextID(3, WalkingDirection) == 5) { // Woda
                         Gracz.Materials.Water++;
                         String message = "Zebrano wode ilosc wody: " + Gracz.Materials.Water;
-                        map.Message(message, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                        //map.Message(message, DefaultFont, new Rectangle(50, 20, 400, 100));
+                        messages.AddMessage(message, new Rectangle(50, 20, 600, 200));
                     } else {
 
                     }
@@ -306,30 +318,39 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
                 if (Pad.IsButtonClicked(GamePadStatus.B)) {
 
+                    
+                    //ChangeGameTime(GameHour + 1, 0);
+
+
                     string dairy = "";
                     foreach (string m in Gracz.Player_Dairy.dairy_notes) {
                         dairy += m;
                     }
-                    map.Message(dairy, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 1000, 1000));
+                    //map.Message(dairy, DefaultFont, new Rectangle(50, 20, 1000, 1000));
+                    messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
                 }
 
                 //if (map.GetCurrentID(4) != 0)
                 //{
-                //    map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                //    map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), DefaultFont, new Rectangle(50, 20, 400, 100));
                 //}
 
                 if (Gracz.ActiveGuest >= Gracz.Quests.Count) {
-                    map.Message("\r\n Brawo! Zebrales potrzebne materialy\r\n aby stworzyc schronienie i przetrwac\r\n nadchodzaca NOC \r\n \r\n Ukonczono fabule prologu!", Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(100, 100, 600, 600));
+                    //map.Message("\r\n Brawo! Zebrales potrzebne materialy\r\n aby stworzyc schronienie i przetrwac\r\n nadchodzaca NOC \r\n \r\n Ukonczono fabule prologu!", DefaultFont, new Rectangle(100, 100, 600, 600));
                     // .. map.
                     map.MessageActive = 2;
-
+                    string message = "\r\n Brawo! Zebrales potrzebne materialy\r\n aby stworzyc schronienie i przetrwac\r\n nadchodzaca NOC \r\n \r\n Ukonczono fabule prologu!";
+                    messages.CreateIndependentMessage(message, new Rectangle(50, 20, 1000, 1000));
                 } else if (!Gracz.Quests [Gracz.ActiveGuest].Activated) {
-                    map.Message(Gracz.Quests [Gracz.ActiveGuest].Name, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(50, 20, 400, 100));
+                    //map.Message(Gracz.Quests [Gracz.ActiveGuest].Name, DefaultFont, new Rectangle(50, 20, 400, 100));
+                    messages.CreateIndependentMessage(Gracz.Quests [Gracz.ActiveGuest].Name, new Rectangle(50, 20, 1000, 1000));
+
                     Gracz.Quests [Gracz.ActiveGuest].Activated = true;
                     Gracz.Player_Dairy.dairy_notes.Add(Gracz.Quests [Gracz.ActiveGuest].Quest_message);
 
                 } else if (Gracz.Quests [Gracz.ActiveGuest].IsFinished(Gracz.Materials, Gracz.Tools)) {
-                    map.Message("Ukonczono misje:\r\n" + Gracz.Quests [Gracz.ActiveGuest].Name, Content.Load<SpriteFont>("SpriteFontPL"), new Rectangle(100, 100, 600, 600));
+                    //map.Message("Ukonczono misje:\r\n" + Gracz.Quests [Gracz.ActiveGuest].Name, DefaultFont, new Rectangle(100, 100, 600, 600));
+                    messages.CreateIndependentMessage("Ukonczono misje:\r\n" + Gracz.Quests [Gracz.ActiveGuest].Name, new Rectangle(50, 20, 1000, 1000));
                     switch (Gracz.ActiveGuest) {
                         case 0:
                         Gracz.Tools.Find(x => x.ToolName == "Hammer").IsOwned = true;
@@ -343,8 +364,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                     Gracz.Player_Dairy.dairy_notes.Add("\r\nUkonczono misje : \r\n" + Gracz.Quests [Gracz.ActiveGuest].Name);
                     Gracz.ActiveGuest++;
                 }
-
-                map.Update();
+                messages.Update();
             } else {
                 main.Update();
             }
@@ -367,19 +387,21 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             spriteBatch.Begin();
             if (GameRunning == true) {
                 // Rysowanie Pierwszych 2 warstw.
-                map.Draw(spriteBatch, 0, false);
-                map.Draw(spriteBatch, 1, false);
+                map.Draw(spriteBatch, 0);
+                map.Draw(spriteBatch, 1);
 
 
                 // Rysowanie Gracza
                 Gracz.Draw(spriteBatch, new Rectangle(
                     ((ScreenX / 2) - (map.GetZoomValue() / 2)),
-                    ((ScreenY / 2)) - map.GetZoomValue() + 40,
+                    ((ScreenY / 2)) - map.GetZoomValue() + 35,
                     map.GetZoomValue() - 20, map.GetZoomValue() - 20)
                     );
 
                 // Rysowanie 3 Warstwy.
-                map.Draw(spriteBatch, 2, true);
+                map.Draw(spriteBatch, 2);
+
+                messages.DrawMessages(spriteBatch);
 
                 //  0 - 5 NOC ||  5 - 7 ZMIANA ||  7 - 17 DZIEÑ ||  17 - 19 ZMIANA ||  19 - 23 NOC
                 // Dzien i noc
@@ -463,10 +485,10 @@ namespace VoidCraft_Map_Pad_Player_v1 {
                     //   spriteBatch.DrawString(DefaultFont, "Liany: " + Gracz.Materials.Lianas, new Vector2(1600, 200), Color.White);
                     //   spriteBatch.DrawString(DefaultFont, "Kamien: " + Gracz.Materials.Stone, new Vector2(1600, 250), Color.White);
 
-                    spriteBatch.DrawString(DefaultFont, "Zdrowie: " + Gracz.HP, new Vector2(400, 50), Color.LightGreen);
-                    spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.WODA, new Vector2(400, 100), Color.LightGreen);
-                    spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.GLOD, new Vector2(400, 150), Color.LightGreen);
-                    spriteBatch.DrawString(DefaultFont, "Strach: " + Gracz.STRACH, new Vector2(400, 200), Color.LightGreen);
+                    //spriteBatch.DrawString(DefaultFont, "Zdrowie: " + Gracz.HP, new Vector2(400, 50), Color.LightGreen);
+                    //spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.WODA, new Vector2(400, 100), Color.LightGreen);
+                    //spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.GLOD, new Vector2(400, 150), Color.LightGreen);
+                    //spriteBatch.DrawString(DefaultFont, "Strach: " + Gracz.STRACH, new Vector2(400, 200), Color.LightGreen);
 
                     /*
                     if (Gracz.HP != 0)

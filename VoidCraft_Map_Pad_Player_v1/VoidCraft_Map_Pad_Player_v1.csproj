@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity1.cs" />
+    <Compile Include="Chest\Chest.cs" />
     <Compile Include="EpicQuests\Dairy.cs" />
     <Compile Include="EpicQuests\Quest.cs" />
     <Compile Include="Game1.cs" />
@@ -68,6 +69,8 @@
     <Compile Include="MapControler\Map.cs" />
     <Compile Include="MapControler\MapTexture.cs" />
     <Compile Include="MapControler\Tile.cs" />
+    <Compile Include="Message\Message.cs" />
+    <Compile Include="Message\Messages.cs" />
     <Compile Include="PadControler\GameControler.cs" />
     <Compile Include="PadControler\PadButton.cs" />
     <Compile Include="PlayerControler\Player.cs" />

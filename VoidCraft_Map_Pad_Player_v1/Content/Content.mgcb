@@ -542,7 +542,16 @@
 /copy:UI/Menu.png
 
 #begin UI/MessageWnd.png
-/copy:UI/MessageWnd.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/MessageWnd.png
 
 #begin UI/SomeMsg.png
 /copy:UI/SomeMsg.png
@@ -2693,4 +2702,10 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:Takeover.mp3
+
+#begin Maps/PiecioWarstwowy/Textures/L1/chest.png
+/copy:Maps/PiecioWarstwowy/Textures/L1/chest.png
+
+#begin Maps/PiecioWarstwowy/Textures/L3/chest.png
+/copy:Maps/PiecioWarstwowy/Textures/L3/chest.png
 
