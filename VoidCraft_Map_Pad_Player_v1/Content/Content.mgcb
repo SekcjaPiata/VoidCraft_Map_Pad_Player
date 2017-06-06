@@ -2688,3 +2688,9 @@
 /processorParam:TextureFormat=Color
 /build:Characters/NewChar_10.png
 
+#begin Takeover.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Takeover.mp3
+
