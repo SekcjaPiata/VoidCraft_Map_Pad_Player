@@ -15,7 +15,7 @@ using System.Text;
 using EpicQuests;
 using Sounds;
 using Message;
-
+// Alan
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
 //////////////////      Johnny              /////////////////
 //////////////////      6,06.2017r          /////////////////   
