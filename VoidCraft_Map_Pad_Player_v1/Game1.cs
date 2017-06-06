@@ -18,9 +18,9 @@ using Message;
 
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
 //////////////////      Johnny              /////////////////
-//////////////////      3.06.2017r          /////////////////   
-//////////////////      13:44               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
-//////////////////      VERSION 0.049       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
+//////////////////      6,06.2017r          /////////////////   
+//////////////////      21,20               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////      VERSION 0.051       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
 
 namespace VoidCraft_Map_Pad_Player_v1 {
