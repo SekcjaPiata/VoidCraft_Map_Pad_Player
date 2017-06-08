@@ -142,7 +142,8 @@ namespace Menu
         {
             if (element == "Menu\\B_graj")
             {
-                Game1.Running = true;
+                Game1.GameRunning = true;
+                Game1.SongPlayed = 1;
                 // plays the game
                 gamestate = GameState.inGame;
             }
