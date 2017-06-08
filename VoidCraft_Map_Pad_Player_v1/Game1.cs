@@ -15,12 +15,12 @@ using System.Text;
 using EpicQuests;
 using Sounds;
 using Message;
-// Alan Pull Request Test
+
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
 //////////////////      Johnny              /////////////////
-//////////////////      6,06.2017r          /////////////////   
-//////////////////      21,20               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
-//////////////////      VERSION 0.051       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
+//////////////////      8,06.2017r          /////////////////   
+//////////////////      22,20               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////      VERSION 0.052       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
 
 namespace VoidCraft_Map_Pad_Player_v1 {
@@ -80,6 +80,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
         GamePadStatus buff = GamePadStatus.None;
 
+        Rectangle Buff;
 
         // ----------------------------------------------------------------------------------------------------- Konstruktor
         public Game1() {
@@ -97,6 +98,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
         // ----------------------------------------------------------------------------------------------------- Init
         protected override void Initialize() {
+            Buff = new Rectangle();
+
             ScreenX = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
@@ -114,7 +117,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             GrassWalk = new SoundEffects("GrassStep", Content, "GrassWalk");
 
             //MAPY->  ProjektTestowy  JohnnoweTekstury  NoweTeksturyV4  MalaMapa  POLIGON  VoidMap
-            map = new Map(GraphicsDevice, "PiecioWarstwowy", ScreenX, ScreenY);
+            map = new Map(GraphicsDevice, "Map_Final_V2", ScreenX, ScreenY);
             map.SetPosition(Starting_posX, Starting_posY);
 
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
@@ -287,7 +290,7 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
                         }
 
                         // Zmiana ID kafelek mapy
-                        Vector2 TreeBase = map.ChangeID(WalkingDirection, 1, 30); // Zmiana podstawy drzewa na pieniek
+                        Vector2 TreeBase = map.ChangeID(WalkingDirection, 1, 31); // Zmiana podstawy drzewa na pieniek
                         map.ChangeID(WalkingDirection, 3, 1); // Zmiana ID podstawy na BLOKADA
                         map.ChangeID((int)TreeBase.X, (int)TreeBase.Y - 1, 2, 0); // Usuniêcie korony drzewa (1 wy¿ej ni¿ podstawa)
 
@@ -394,7 +397,7 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
                 // Rysowanie Gracza
                 Gracz.Draw(spriteBatch, new Rectangle(
                     ((ScreenX / 2) - (map.GetZoomValue() / 2)),
-                    ((ScreenY / 2)) - map.GetZoomValue() + 35,
+                    ((ScreenY / 2)) - map.GetZoomValue() + 40,
                     map.GetZoomValue() - 20, map.GetZoomValue() - 20)
                     );
 
@@ -439,9 +442,15 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
                 foreach (TouchLocation T in tl) {
 
 
-                    if (KnefelRect.Contains(T.Position)) {
+                    if (KnefelRect.Contains(T.Position) && !Buff.Contains(T.Position)) {
                         IsMenuButtonPressed = !IsMenuButtonPressed;
                         DebugMode = !DebugMode;
+
+                        Buff.X = (int)T.Position.X-2;
+                        Buff.Y = (int)T.Position.Y- 2;
+                        Buff.Width = 4;
+                        Buff.Height = 4;
+
                         break;
                     }
 
@@ -536,7 +545,6 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
             GameMinute = M;
             DayCycleTimer = 0;
             if (GameHour >= 5 && GameHour <= 7)
-                //DayCycle = ((120 - ((7 - (GameHour + 1)) * 60) + ((60 - GameMinute))) / 5);
                 DayCycle = 24 - ((120 - (((7 - GameHour + 1)) * 60) + ((60 - GameMinute))) / 5);
             else if (GameHour >= 17 && GameHour <= 19)
                 DayCycle = ((120 - (((19 - GameHour + 1)) * 60) + ((60 - GameMinute))) / 5);
