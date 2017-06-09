@@ -1,6 +1,6 @@
 namespace MapControler
 {
-    class Tile
+    public class Tile
     {
         public int Id { get; set; }
         public int Layer { get; set; }

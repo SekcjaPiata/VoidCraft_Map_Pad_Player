@@ -17,6 +17,9 @@ using Sounds;
 
 using Raw_Materials_C;
 using Message;
+using System.Xml.Serialization;
+using System.IO;
+using System.Xml;
 
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
 //////////////////      Johnny              /////////////////
@@ -106,7 +109,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
             main = new MainMenu();
-            messages = new Messages(Content, new Rectangle(50, 20, 200, 50), 3);
+            messages = new Messages(Content, new Rectangle(50, 20, 500, 50), 3);
 
             DefaultFont = Content.Load<SpriteFont>("SpriteFontPL");
 
@@ -143,6 +146,34 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
 
             base.Initialize();
+        }
+
+        public void SerializeAl<T>(T details ,string path) {
+            XmlDocument a = new XmlDocument();
+            try {
+                XmlAttribute b;
+                //string pathh = "Content/ZAPIS/slot_1.xml";
+                string pathh = "XoLololo.xml";
+
+                string filename = Path.Combine("", pathh);
+
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+
+                using (StreamWriter writer = new StreamWriter(
+                    new FileStream(filename, FileMode.Create, FileAccess.ReadWrite),
+                        Encoding.UTF8)) {
+
+                    //serializer.Serialize(Console.Out, details); // Wyswietlanie na ekran
+                    serializer.Serialize(writer, details); // Zapis do pliku
+                }
+                messages.AddMessage("Zapisano gre", new Rectangle(100, 100, 1000, 200));
+            } catch (Exception ex) {
+                messages.AddMessage(ex.Message, new Rectangle(100,100,1000,200));
+                if(ex.InnerException != null)
+                messages.AddMessage(ex.InnerException.Message, new Rectangle(100, 100, 1900, 200));
+            }
+
+
         }
 
         // ----------------------------------------------------------------------------------------------------- Update
@@ -324,6 +355,8 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
 
                 if (Pad.IsButtonClicked(GamePadStatus.B)) {
 
+                    //SerializeAl(map,@"D:/XoLololo.xml");
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Serializacja -> zapis
 
                    // //ChangeGameTime(GameHour + 1, 0);
                    // RawMaterials r = new RawMaterials(5, 10, 1, 2, 20, 1);
@@ -335,7 +368,8 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
                         dairy += m;
                     }
                     //map.Message(dairy, DefaultFont, new Rectangle(50, 20, 1000, 1000));
-                    messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
+
+                    //messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
                 }
 
                 //if (map.GetCurrentID(4) != 0)
