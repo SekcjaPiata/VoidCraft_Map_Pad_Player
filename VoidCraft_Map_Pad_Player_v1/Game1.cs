@@ -237,7 +237,8 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
                     }
                 }
-
+                
+                 
 
                 if (Pad.IsButtonClicked(GamePadStatus.A))                   ///---------- BUTTON A ----------------
                 {
@@ -467,10 +468,7 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
 
 
                 // /\/\/\/\/\/\/\/\/\/\/\/\/\
-
-
-
-
+                
                 // Rysowanie Przyciskow i informacji pomocniczych.
 
                 Pad.Draw(spriteBatch);

@@ -6,9 +6,6 @@ using VoidCraft_Map_Pad_Player_v1;
 
 namespace Menu
 {
-
-
-
     public class MainMenu
     {
 
