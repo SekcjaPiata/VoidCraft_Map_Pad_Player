@@ -31,9 +31,10 @@ namespace InGameMenuControler
         public InGameMenuWindow(InGameMenuState _InGameMenuState, String _InGameMenuWindowTextureName, List<Texture2D> _Buttons, List<Rectangle> _ButtonPos, List<Texture2D> _Icons, List<Rectangle> _IconsPos, ContentManager _Content)
         {
             Content = _Content;
-            MenuState = InGameMenuState._Game;
+            // MenuState = InGameMenuState._Game;
+            MenuState = _InGameMenuState;
             InGameMenuWindowTexture = Content.Load<Texture2D>(_InGameMenuWindowTextureName);
-            InGameMenuWindowPos = new Rectangle(100, 100, 500, 500);
+            InGameMenuWindowPos = new Rectangle(50, 50, (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width - 100), (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 100));
             Buttons = _Buttons;
             ButtonsPos = _ButtonPos;
             Icons = _Icons;
@@ -54,7 +55,7 @@ namespace InGameMenuControler
 
 
             // --------------------------------------- Ikony -----------------------------------------------------------------
-            if (Icons.Count > 0)
+            if (Icons != null)
             {
                 for (int i = 0; i < Icons.Count; i++) // Pêtla rysowania ikon
                 {

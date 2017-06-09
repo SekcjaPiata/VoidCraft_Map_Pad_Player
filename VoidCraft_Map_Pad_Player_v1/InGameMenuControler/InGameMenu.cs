@@ -20,28 +20,28 @@ namespace InGameMenuControler
     {
         private int _ScreenX, _ScreenY;
         public List<InGameMenuWindow> InGameMenuWindows;
-        private SpriteBatch spritebatch;
+     //   private SpriteBatch spritebatch;
         private ContentManager content;
         public Texture2D InGameMenuButton;
         public Rectangle InGameMenuButtonPos;
 
-        private List<Texture2D> SettingsButtons;
-        private List<Rectangle> SettingsButtonsPos;
+        public List<Texture2D> SettingsButtons;
+        public List<Rectangle> SettingsButtonsPos;
 
-        private List<Texture2D> InventoryButtons;
-        private List<Rectangle> InventoryButtonsPos;
+        public List<Texture2D> InventoryButtons;
+        public List<Rectangle> InventoryButtonsPos;
 
-        private List<Texture2D> CraftingButtons;
-        private List<Rectangle> CraftingButtonsPos;
+        public List<Texture2D> CraftingButtons;
+        public List<Rectangle> CraftingButtonsPos;
 
-        private List<Texture2D> QuestsButtons;
-        private List<Rectangle> QuestsButtonsPos;
+        public List<Texture2D> QuestsButtons;
+        public List<Rectangle> QuestsButtonsPos;
 
-        private List<Texture2D> InventoryIcons;
-        private List<Rectangle> InventoryIconsPos;
+        public List<Texture2D> InventoryIcons;
+        public List<Rectangle> InventoryIconsPos;
 
-        private List<Texture2D> CraftingIcons;
-        private List<Rectangle> CraftingIconsPos;
+        public List<Texture2D> CraftingIcons;
+        public List<Rectangle> CraftingIconsPos;
 
 
         public InGameMenu(ContentManager _Content)
@@ -86,15 +86,15 @@ namespace InGameMenuControler
 
             // Index 0 - Button do dŸwiêku
             SettingsButtons.Add(content.Load<Texture2D>("Buttons/Button_Checked"));
-            SettingsButtonsPos.Add(new Rectangle(100, 100, 50, 50));
+            SettingsButtonsPos.Add(new Rectangle(250, 200, 50, 50));
 
             // Index 1 - Button do zapisu
             SettingsButtons.Add(content.Load<Texture2D>("Buttons/Button_Checked"));
-            SettingsButtonsPos.Add(new Rectangle(100, 200, 50, 50));
+            SettingsButtonsPos.Add(new Rectangle(250, 300, 50, 50));
 
             // Index 2 - Button do przejœcia w prawo
             SettingsButtons.Add(content.Load<Texture2D>("Buttons/Button_Right"));
-            SettingsButtonsPos.Add(new Rectangle(_ScreenX - 150, _ScreenY - 150, 50, 50));
+            SettingsButtonsPos.Add(new Rectangle(_ScreenX / 2 + 100, _ScreenY - 150, 50, 50));
 
 
             // ---------- InventoryButtons ----------
@@ -105,7 +105,7 @@ namespace InGameMenuControler
 
             // Index 1 - Button do przejœcia w prawo
             InventoryButtons.Add(content.Load<Texture2D>("Buttons/Button_Right"));
-            SettingsButtonsPos.Add(new Rectangle(_ScreenX - 150, _ScreenY - 150, 50, 50));
+            InventoryButtonsPos.Add(new Rectangle(_ScreenX - 150, _ScreenY - 150, 50, 50));
 
             // ---------- InventoryIcons ----------
 
@@ -163,21 +163,30 @@ namespace InGameMenuControler
 
 
             InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Settings, "MenuWindows/MenuWindow_Settings", SettingsButtons, SettingsButtonsPos, null, null, content));
-            InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Settings, "MenuWindows/MenuWindow_Inventory", InventoryButtons, InventoryButtonsPos, InventoryIcons, InventoryIconsPos, content));
-            InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Settings, "MenuWindows/MenuWindow_Crafting", CraftingButtons, CraftingButtonsPos, CraftingIcons, CraftingIconsPos, content));
-            InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Settings, "MenuWindows/MenuWindow_Quests", QuestsButtons, QuestsButtonsPos, null, null, content));
+            InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Inventory, "MenuWindows/MenuWindow_Inventory", InventoryButtons, InventoryButtonsPos, InventoryIcons, InventoryIconsPos, content));
+            InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Crafting, "MenuWindows/MenuWindow_Crafting", CraftingButtons, CraftingButtonsPos, CraftingIcons, CraftingIconsPos, content));
+            InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Quests, "MenuWindows/MenuWindow_Quests", QuestsButtons, QuestsButtonsPos, null, null, content));
         }
 
         public void DrawInGameMenuButton(SpriteBatch spritebatch)
         {
             spritebatch.Draw(InGameMenuButton, InGameMenuButtonPos, Color.White);
         }
-        public void DrawInGameMenu(InGameMenuState _GameState)
+        public void DrawInGameMenu(InGameMenuState _GameState, SpriteBatch spritebatch)
         {
-            foreach(InGameMenuWindow TTT in InGameMenuWindows)
+            for (int i = 0; i < InGameMenuWindows.Count; i++)
             {
-                if (TTT.MenuState == _GameState) TTT.DrawInGameMenuWindow(spritebatch);
+                if (InGameMenuWindows.ElementAt(i).MenuState == _GameState) InGameMenuWindows.ElementAt(i).DrawInGameMenuWindow(spritebatch);
             }
+
+            
+
+
+            //foreach(InGameMenuWindow TTT in InGameMenuWindows)
+            //{
+            //    if (TTT.MenuState == _GameState) TTT.DrawInGameMenuWindow(spritebatch);
+            //}
+
         }
     }
 }
