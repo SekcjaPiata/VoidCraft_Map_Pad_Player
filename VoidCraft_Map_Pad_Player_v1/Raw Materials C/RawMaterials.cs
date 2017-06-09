@@ -1,17 +1,8 @@
 using System;
-using System.Xml.Serialization;
-using System.IO;
-using System.Diagnostics;
-
-using System.Xml;
-using System.Runtime.Serialization;
-
 
 namespace Raw_Materials_C
 {
-    //[DataContractSer]
-    [DataContract]
-    public class RawMaterials
+    class RawMaterials
     {
         internal class OutOfWoodException : Exception
         {
@@ -39,9 +30,9 @@ namespace Raw_Materials_C
         }
 
 
-        
+
         private int _wood;
-        [DataMember]
+
         public int Wood
         {
             get { return _wood; }
@@ -55,9 +46,9 @@ namespace Raw_Materials_C
                 }
             }
         }
-        
+
         private int _stone;
-        [DataMember]
+
         public int Stone
         {
             get { return _stone; }
@@ -71,9 +62,9 @@ namespace Raw_Materials_C
                 }
             }
         }
-        
+
         private int _lianas;
-        [DataMember]
+
         public int Lianas
         {
             get { return _lianas; }
@@ -85,9 +76,8 @@ namespace Raw_Materials_C
                 }
             }
         }
-        
         private int _metal;
-        [DataMember]
+
         public int Metal
         {
             get { return _metal; }
@@ -99,9 +89,9 @@ namespace Raw_Materials_C
                 }
             }
         }
-       
+
         private int _water;
-        [DataMember]
+
         public int Water
         {
             get { return _water; }
@@ -111,9 +101,9 @@ namespace Raw_Materials_C
                 { _water = value; }
             }
         }
-      
+
         private int _food;
-        [DataMember]
+
         public int Food
         {
             get { return _food; }
@@ -158,7 +148,6 @@ namespace Raw_Materials_C
             Water = 0;
             Food = 0;
         }
-
         public RawMaterials(int Wood, int Stone, int Lianas, int Metal, int Water, int Food)
         {
             this.Wood = Wood;
@@ -168,37 +157,6 @@ namespace Raw_Materials_C
             this.Water = Water;
             this.Food = Food;
         }
-        public void SaveToFile(string filename)
-        {
-            //try
-            //{
-            //    XmlRootAttribute root_atribute = new XmlRootAttribute();
-            //    root_atribute.IsNullable = true;
-            //    root_atribute.ElementName = "Dupa";
-            //    XmlSerializer xmlFormat = new XmlSerializer(typeof(RawMaterials), root_atribute);
-            //    using (FileStream fStream = new FileStream(@"r.xml",FileMode.OpenOrCreate))
-            //    {
-            //        xmlFormat.Serialize(fStream, this);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Debug.WriteLine(ex.Message);
-            //}
 
-            //DataContractSerializer dcs = new DataContractSerializer(typeof(RawMaterials));
-
-            
-
-            //using (Stream stream = new FileStream("C://r", FileMode.Create, FileAccess.Write))
-            //{
-            //    using (XmlDictionaryWriter writer =
-            //        XmlDictionaryWriter.CreateTextWriter(stream))
-            //    {
-            //        writer.WriteStartDocument();
-            //        dcs.WriteObject(writer, this);
-            //    }
-            //}
-        }
     }
 }

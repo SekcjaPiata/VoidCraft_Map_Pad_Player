@@ -14,19 +14,18 @@ using Menu;
 using System.Text;
 using EpicQuests;
 using Sounds;
-
-using Raw_Materials_C;
 using Message;
-using System.Xml.Serialization;
-using System.IO;
-using System.Xml;
+using InGameMenuControler;
 
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
-//////////////////      Johnny              /////////////////
-//////////////////      8,06.2017r          /////////////////   
-//////////////////      22,20               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
-//////////////////      VERSION 0.052       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
-/////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/   
+//////////////////      Juan                /////////////////
+//////////////////      9,06.2017r          /////////////////   
+//////////////////      19,56               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////      VERSION 0.060       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
+/////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/ 
+
+// Zrobiona Klasa InGameMenu, nie wrzuca³em jej do maina jeszcze
+// Testowy knefel okomentowany i nie bêdzie reagowa³ na kliki
 
 namespace VoidCraft_Map_Pad_Player_v1 {
     public class Game1 : Game {
@@ -60,9 +59,10 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
         Texture2D back;
 
-        Texture2D Knefel_EQ; // Guziczek do ingame menu **
-        Texture2D Inventory; // Ekwipunek Ingamemenu **
+       // Texture2D Knefel_EQ; // Guziczek do ingame menu **
+       // Texture2D Inventory; // Ekwipunek Ingamemenu **
         bool IsMenuButtonPressed = false; // pomocniczy bool dow wyœwietlania menu **
+        public InGameMenu InGameMenuManager;
 
 
         float timer = 1;
@@ -109,7 +109,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
             ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
             main = new MainMenu();
-            messages = new Messages(Content, new Rectangle(50, 20, 500, 50), 3);
+            messages = new Messages(Content, new Rectangle(50, 20, 200, 50), 3);
 
             DefaultFont = Content.Load<SpriteFont>("SpriteFontPL");
 
@@ -140,40 +140,12 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
             // --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-            Knefel_EQ = Content.Load<Texture2D>("Knefel_EQ"); // £adowanie tekstury knefla **
-            Inventory = Content.Load<Texture2D>("UI\\Equipment"); // £adowanie tekstury menu **
-
+         //   Knefel_EQ = Content.Load<Texture2D>("Knefel_EQ"); // £adowanie tekstury knefla **
+         //   Inventory = Content.Load<Texture2D>("UI\\Equipment"); // £adowanie tekstury menu **
+            InGameMenuManager = new InGameMenu(Content);
 
 
             base.Initialize();
-        }
-
-        public void SerializeAl<T>(T details ,string path) {
-            XmlDocument a = new XmlDocument();
-            try {
-                XmlAttribute b;
-                //string pathh = "Content/ZAPIS/slot_1.xml";
-                string pathh = "XoLololo.xml";
-
-                string filename = Path.Combine("", pathh);
-
-                XmlSerializer serializer = new XmlSerializer(typeof(T));
-
-                using (StreamWriter writer = new StreamWriter(
-                    new FileStream(filename, FileMode.Create, FileAccess.ReadWrite),
-                        Encoding.UTF8)) {
-
-                    //serializer.Serialize(Console.Out, details); // Wyswietlanie na ekran
-                    serializer.Serialize(writer, details); // Zapis do pliku
-                }
-                messages.AddMessage("Zapisano gre", new Rectangle(100, 100, 1000, 200));
-            } catch (Exception ex) {
-                messages.AddMessage(ex.Message, new Rectangle(100,100,1000,200));
-                if(ex.InnerException != null)
-                messages.AddMessage(ex.InnerException.Message, new Rectangle(100, 100, 1900, 200));
-            }
-
-
         }
 
         // ----------------------------------------------------------------------------------------------------- Update
@@ -270,8 +242,7 @@ namespace VoidCraft_Map_Pad_Player_v1 {
 
                     }
                 }
-                
-                 
+
 
                 if (Pad.IsButtonClicked(GamePadStatus.A))                   ///---------- BUTTON A ----------------
                 {
@@ -355,21 +326,16 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
 
                 if (Pad.IsButtonClicked(GamePadStatus.B)) {
 
-                    //SerializeAl(map,@"D:/XoLololo.xml");
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Serializacja -> zapis
-
-                   // //ChangeGameTime(GameHour + 1, 0);
-                   // RawMaterials r = new RawMaterials(5, 10, 1, 2, 20, 1);
-                   //r.SaveToFile("r.xml");
                     
+                    //ChangeGameTime(GameHour + 1, 0);
+
 
                     string dairy = "";
                     foreach (string m in Gracz.Player_Dairy.dairy_notes) {
                         dairy += m;
                     }
                     //map.Message(dairy, DefaultFont, new Rectangle(50, 20, 1000, 1000));
-
-                    //messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
+                    messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
                 }
 
                 //if (map.GetCurrentID(4) != 0)
@@ -471,42 +437,49 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
 
                 // \/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
-                Rectangle KnefelRect = new Rectangle((int)(ScreenX / 1.125), 50, 50, 50);   // Pozycja knefla do ingame menu **
-                spriteBatch.Draw(Knefel_EQ, new Rectangle((int)(ScreenX / 1.125), 50, 50, 50), Color.White); // Rysowanie knefla do ingame menu **
+                InGameMenuManager.DrawInGameMenuButton(spriteBatch);
+
+
+
+                //   Rectangle KnefelRect = new Rectangle((int)(ScreenX / 1.125), 50, 50, 50);   // Pozycja knefla do ingame menu **
+                //    spriteBatch.Draw(Knefel_EQ, new Rectangle((int)(ScreenX / 1.125), 50, 50, 50), Color.White); // Rysowanie knefla do ingame menu **
 
                 TouchCollection tl = TouchPanel.GetState();
 
 
 
-                foreach (TouchLocation T in tl) {
+                //foreach (TouchLocation T in tl) {
 
 
-                    if (KnefelRect.Contains(T.Position) && !Buff.Contains(T.Position)) {
-                        IsMenuButtonPressed = !IsMenuButtonPressed;
-                        DebugMode = !DebugMode;
+                //    if (KnefelRect.Contains(T.Position) && !Buff.Contains(T.Position)) {
+                //        IsMenuButtonPressed = !IsMenuButtonPressed;
+                //        DebugMode = !DebugMode;
 
-                        Buff.X = (int)T.Position.X-2;
-                        Buff.Y = (int)T.Position.Y- 2;
-                        Buff.Width = 4;
-                        Buff.Height = 4;
+                //        Buff.X = (int)T.Position.X-2;
+                //        Buff.Y = (int)T.Position.Y- 2;
+                //        Buff.Width = 4;
+                //        Buff.Height = 4;
 
-                        break;
-                    }
+                //        break;
+                //    }
 
-                }
-                if (IsMenuButtonPressed) {
-                    spriteBatch.Draw(Inventory, new Rectangle(100, 100, 800, 400), Color.White); // Rysowanie knefla do ingame menu **
+                //}
+                //if (IsMenuButtonPressed) {
+                //    spriteBatch.Draw(Inventory, new Rectangle(100, 100, 800, 400), Color.White); // Rysowanie knefla do ingame menu **
 
-                    spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.Materials.Water, new Vector2(120, 150), Color.White);
-                    spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.Materials.Food, new Vector2(120, 200), Color.White);
-                    spriteBatch.DrawString(DefaultFont, "Drewno: " + Gracz.Materials.Wood, new Vector2(120, 250), Color.White);
-                    spriteBatch.DrawString(DefaultFont, "Liany: " + Gracz.Materials.Lianas, new Vector2(120, 300), Color.White);
-                    spriteBatch.DrawString(DefaultFont, "Kamien: " + Gracz.Materials.Stone, new Vector2(120, 350), Color.White);
-                }
+                //    spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.Materials.Water, new Vector2(120, 150), Color.White);
+                //    spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.Materials.Food, new Vector2(120, 200), Color.White);
+                //    spriteBatch.DrawString(DefaultFont, "Drewno: " + Gracz.Materials.Wood, new Vector2(120, 250), Color.White);
+                //    spriteBatch.DrawString(DefaultFont, "Liany: " + Gracz.Materials.Lianas, new Vector2(120, 300), Color.White);
+                //    spriteBatch.DrawString(DefaultFont, "Kamien: " + Gracz.Materials.Stone, new Vector2(120, 350), Color.White);
+                //}
 
 
                 // /\/\/\/\/\/\/\/\/\/\/\/\/\
-                
+
+
+
+
                 // Rysowanie Przyciskow i informacji pomocniczych.
 
                 Pad.Draw(spriteBatch);
