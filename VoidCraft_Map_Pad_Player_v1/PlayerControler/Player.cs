@@ -5,7 +5,9 @@ using Microsoft.Xna.Framework.Graphics;
 using MapControler;
 using Microsoft.Xna.Framework.Audio;
 using MonoGame;
-
+using System.Diagnostics;
+using System.IO;
+using System.Xml.Serialization;
 using Tools;
 using Raw_Materials_C;
 using EpicQuests;
@@ -13,8 +15,8 @@ using EpicQuests;
 
 namespace PlayerControler
 {
-    
 
+   // [Serializable]
     class Player
     {
         /// <summary>
@@ -94,15 +96,31 @@ namespace PlayerControler
         /// </summary>
         private int timeSinceLastFrame = 0;
         public int milliseconsuPerFrame = 140;
-          
 
 
+        //public void SaveToFile(string filename)
+        //{
+        //    try
+        //    {
+        //        XmlSerializer xmlFormat = new XmlSerializer(typeof(Player));
+        //        using (Stream fStream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
+        //        {
+        //            xmlFormat.Serialize(fStream, this);
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        Debug.WriteLine(ex.Message);
+        //    }
+        //}
 
         SoundEffect Grass;
 
         /// <summary>
         /// Konstruktor Parametryczny Postaci
         /// </summary>
+        /// 
+        public Player() { }
         public Player(SoundEffect Grass, Texture2D texture, int rows, int columns, int posX, int posY)
         {
             this.Grass = Grass;

@@ -14,6 +14,8 @@ using Menu;
 using System.Text;
 using EpicQuests;
 using Sounds;
+
+using Raw_Materials_C;
 using Message;
 
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
@@ -322,9 +324,11 @@ String message = "Oooo skrzyneczka na pozycji " +map.GetNextCords(WalkingDirecti
 
                 if (Pad.IsButtonClicked(GamePadStatus.B)) {
 
-                    
-                    //ChangeGameTime(GameHour + 1, 0);
 
+                   // //ChangeGameTime(GameHour + 1, 0);
+                   // RawMaterials r = new RawMaterials(5, 10, 1, 2, 20, 1);
+                   //r.SaveToFile("r.xml");
+                    
 
                     string dairy = "";
                     foreach (string m in Gracz.Player_Dairy.dairy_notes) {
