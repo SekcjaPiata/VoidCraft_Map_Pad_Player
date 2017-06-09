@@ -9,7 +9,8 @@ namespace MapControler
         public string Name { get; set; }
         public string Path { get; set; }
         public Texture2D Bitmap { get; set; }
-        
+
+
         public MapTexture(int id, int layer, string name, string path, Texture2D bitmap)
         {
             ID = id;

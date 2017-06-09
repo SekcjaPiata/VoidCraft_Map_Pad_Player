@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.IO;
+using Microsoft.Xna.Framework.Input.Touch;
 
 namespace MapControler {
     enum Direction {
@@ -14,14 +15,18 @@ namespace MapControler {
     }
 
     class Map {
+        /// <summary>
+        /// Variables
+        /// </summary>
         GraphicsDevice GraphicDevice;
         List<List<MapTexture>> Textur; //id ,layer ,name ,path ,bitmap
         List<Tile [,]> Tiles;
-        
+
+
         internal int MessageActive = 0;
 
         string MapName;
-        private const int MapSizeX = 18, MapSizeY = 11;
+        int MapSizeX = 18, MapSizeY = 11;
         int NumberOfLayers, Height, Width;
 
         public double MapOfsetX { get; set; }
@@ -32,13 +37,19 @@ namespace MapControler {
         private int InitMapZoom;
 
         private int MapZoom;
-        
+
+        /// <summary>
+        /// Constructors
+        /// </summary>
         public Map(GraphicsDevice GraphicDevice, string MapName, int screenX, int screenY) {
             this.GraphicDevice = GraphicDevice;
             this.screenX = screenX;
             this.screenY = screenY;
 
-            this.MapZoom = ((screenY / 10) + (screenX / 17)) / 2; 
+            //this.MapZoom = (screenX / 17); // Po szerokosci
+            //this.MapZoom = (screenY / 10); // Po wyskokosci
+
+            this.MapZoom = ((screenY / 10) + (screenX / 17)) / 2; // Po wyskokosci i szerokosci
 
             this.InitMapZoom = this.MapZoom;
 
@@ -62,7 +73,10 @@ namespace MapControler {
             LoadMap();
 
         }
-        
+
+        /// <summary>
+        /// Private methods ...
+        /// </summary>
         private void GetMapSize() {
             using (var stream = TitleContainer.OpenStream("Content/Maps/" + MapName + "/mapdata.vcmd"))
             using (var reader = new StreamReader(stream)) {
@@ -86,9 +100,11 @@ namespace MapControler {
                     Textur [l].Add(new MapTexture(i, l, name, path, GetTextureFromFile("Content/Maps/" + MapName + "/" + path)));
                 }
             }
+
+
         }
 
-        private void LoadMap() {
+        private void LoadMap() {// name = Level_1
             string line;
             string [] lineNumbers;
 
@@ -113,7 +129,9 @@ namespace MapControler {
                         }
                         y++;
                     }
+
                 }
+
             }
         }
 
@@ -123,6 +141,10 @@ namespace MapControler {
             }
         }
 
+
+        /// <summary>
+        /// Public methods ...
+        /// </summary>
         public void Draw(SpriteBatch spriteBatch, int LayerToDraw) {
 
             for (int y = 0; y < Height; y++) {//18
@@ -144,6 +166,12 @@ namespace MapControler {
             }
         }
 
+
+
+
+        /// <summary>
+        /// Geters
+        /// </summary>
         public Vector2 GetPosition() {
             return new Vector2(Convert.ToInt32((float)MapOfsetX), Convert.ToInt32((float)MapOfsetY));
         }
@@ -153,36 +181,49 @@ namespace MapControler {
             if (Dir != Direction.Idle_Down) {
                 int x = (Dir == Direction.Left) ? -1 : (Dir == Direction.Right) ? 1 : 0;
                 int y = (Dir == Direction.Up) ? -1 : (Dir == Direction.Down) ? 1 : 0;
+                // x = 0;
+                // y = 0;
 
                 if (GetPosition().X + x >= 0 && GetPosition().Y + y >= 0) {
                     if (GetPosition().X + x < Width && GetPosition().Y + y < Height) {
                         if (((int)GetPosition().X + x) - 1 >= 0 && ((int)GetPosition().Y + y) - 1 >= 0) {
                             i = Textur [Layer] [Tiles [Layer] [((int)GetPosition().X + x) - 1, ((int)GetPosition().Y + y) - 1].Id].ID;
                         }
+
+                        // TOFIX
+
                     }
                 }
+
             }
             return i;
         }
 
         public int GetCurrentID(int Layer) {
+
             return Textur [Layer] [Tiles [Layer] [((int)GetPosition().X) - 1, ((int)GetPosition().Y) - 1].Id].ID;
         }
 
         public int GetZoomValue() {
             return MapZoom;
         }
-        
+
+        /// <summary>
+        /// Seters
+        /// </summary>
         public void MoveMap(double ToAddX, double ToAddY) {
+
             MapOfsetX += ToAddX;
             MapOfsetY += ToAddY;
-            
+
+
             if (MapOfsetX <= 1) { MapOfsetX = 1; }
             if (MapOfsetY <= 1) { MapOfsetY = 1; }
 
             if (MapOfsetX >= Width) { MapOfsetX = Width; }
 
             if (MapOfsetY >= Height) { MapOfsetY = Height; }
+
         }
 
         public void SetPosition(double PosX, double PosY) {
@@ -192,6 +233,7 @@ namespace MapControler {
 
         public void ChangeID(int x, int y, int layer, int NewID) {
             Tiles [layer] [x - 1, y - 1].Id = NewID;
+            //Textur [layer] [Tiles [layer] [x-1, y-1].Id].ID = NewID;
         }
 
         public Vector2 GetNextCords(Direction Dir) {
@@ -206,8 +248,10 @@ namespace MapControler {
             int y = (int)GetPosition().Y + ((Dir == Direction.Up) ? -1 : (Dir == Direction.Down) ? 1 : 0);
 
             Tiles [layer] [x - 1, y - 1].Id = NewID;
+            //Textur [layer] [Tiles [layer] [x-1, y-1].Id].ID = NewID;
 
             return new Vector2(x, y);
         }
     }
+
 }
