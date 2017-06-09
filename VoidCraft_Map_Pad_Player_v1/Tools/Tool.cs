@@ -2,7 +2,6 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Raw_Materials_C;
 
-
 namespace Tools
 {
     class Tool
