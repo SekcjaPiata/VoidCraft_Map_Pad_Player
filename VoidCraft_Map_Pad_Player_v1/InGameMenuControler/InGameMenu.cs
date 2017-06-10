@@ -155,6 +155,10 @@ namespace InGameMenuControler
             CraftingButtons.Add(content.Load<Texture2D>("Buttons/Button_Right"));
             CraftingButtonsPos.Add(new Rectangle(_ScreenX / 2 + 100, _ScreenY - 150, 50, 50));
 
+            // Index 2 - Button do craftu
+            CraftingButtons.Add(content.Load<Texture2D>("Buttons/Button_Checked"));
+            CraftingButtonsPos.Add(new Rectangle((int)(_ScreenX / 1.250), _ScreenY / 2, 100, 100));
+
             // ---------- CraftingIcons ----------
 
             // Index 0 - M³otek
@@ -175,19 +179,19 @@ namespace InGameMenuControler
 
             ///////////////////////////////////////////////////////////////////////////
 
-            // Index 4 - Znacznik
+            // Index 4 - Znacznik (Do M³otka)
             CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
             CraftingIconsPos.Add(new Rectangle(200, 150, 100, 100));
 
-            // Index 5 - Znacznik
+            // Index 5 - Znacznik (Do Kilofa)
             CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
             CraftingIconsPos.Add(new Rectangle(200, 250, 100, 100));
 
-            // Index 6 - Znacznik
+            // Index 6 - Znacznik (Do Toporu)
             CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
             CraftingIconsPos.Add(new Rectangle(200, 350, 100, 100));
 
-            // Index 7 - Znacznik
+            // Index 7 - Znacznik (Do Pi³y)
             CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
             CraftingIconsPos.Add(new Rectangle(200, 450, 100, 100));
 

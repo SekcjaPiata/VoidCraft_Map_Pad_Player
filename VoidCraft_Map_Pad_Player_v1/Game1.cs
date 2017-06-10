@@ -668,8 +668,12 @@ namespace VoidCraft_Map_Pad_Player_v1
                     foreach (TouchLocation TC in TouchCollectionManager)
                     {
                         // ------------------------------ DŸwiêk -------------------------------------------
-                        if (InGameMenuManager.SettingsButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings)
+                        if (InGameMenuManager.SettingsButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings && !Buff.Contains(TC.Position))
                         {
+                            Buff.X = (int)TC.Position.X - 2;
+                            Buff.Y = (int)TC.Position.Y - 2;
+                            Buff.Width = 4;
+                            Buff.Height = 4;
                             IsSoundPlaying = !IsSoundPlaying;
                             if (IsSoundPlaying) InGameMenuManager.SettingsButtons[0] = Content.Load<Texture2D>("Buttons/Button_Checked");
                             else if (!IsSoundPlaying) InGameMenuManager.SettingsButtons[0] = Content.Load<Texture2D>("Buttons/Button_UnChecked");
@@ -680,8 +684,12 @@ namespace VoidCraft_Map_Pad_Player_v1
                             //
                         }
                         // ------------------------------ Zapis gry -------------------------------------------
-                        if (InGameMenuManager.SettingsButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings)
+                        if (InGameMenuManager.SettingsButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings && !Buff.Contains(TC.Position))
                         {
+                            Buff.X = (int)TC.Position.X - 2;
+                            Buff.Y = (int)TC.Position.Y - 2;
+                            Buff.Width = 4;
+                            Buff.Height = 4;
                             Gracz.SavePlayer();
                             map.SaveMap();
                             //
@@ -690,8 +698,29 @@ namespace VoidCraft_Map_Pad_Player_v1
                             //
                             //
                         }
+                        // ------------------------------ Zuber -------------------------------------------
+                        if (InGameMenuManager.CraftingButtonsPos[2].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting && !Buff.Contains(TC.Position))
+                        {
+                            Buff.X = (int)TC.Position.X - 2;
+                            Buff.Y = (int)TC.Position.Y - 2;
+                            Buff.Width = 4;
+                            Buff.Height = 4;
+                            // \|/ Tutaj mo¿esz wdupiæ crafting w zale¿noœci od wybranego przedmiotu
+                            //switch (ItemToCraftChosenManager)
+                            //{
+                            //    case ItemToCraftChosen._Hammer:
+                            //        break;
+                            //    case ItemToCraftChosen._Axe:
+                            //        break;
+                            //    case ItemToCraftChosen._Pickaxe:
+                            //        break;
+                            //    case ItemToCraftChosen._Saw:
+                            //        break;
 
-                        // ------------------------------ Crafting -------------------------------------------
+                            //}
+                        }
+
+                        // ------------------------------ Wyœwietlanie craftowanych itemów -------------------------------------------
                         if (InGameMenuStateManager == InGameMenuState._Crafting)
                         {
                             for (int i = 0; i < 4; i++)
@@ -705,39 +734,63 @@ namespace VoidCraft_Map_Pad_Player_v1
                         }
 
                         // ------------------------------ Zmiana na ekwipunek ------------------------------
-                        if (InGameMenuManager.SettingsButtonsPos[2].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings)
+                        if (InGameMenuManager.SettingsButtonsPos[2].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings && !Buff.Contains(TC.Position))
                         {
+                            Buff.X = (int)TC.Position.X - 2;
+                            Buff.Y = (int)TC.Position.Y - 2;
+                            Buff.Width = 4;
+                            Buff.Height = 4;
                             ItemToCraftChosenManager = ItemToCraftChosen._None;
                             InGameMenuStateManager = InGameMenuState._Inventory;
                         }
 
                         // --------------------------------- Zmiana na ustawienia ------------------------------
-                        else if (InGameMenuManager.InventoryButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Inventory)
+                        else if (InGameMenuManager.InventoryButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Inventory && !Buff.Contains(TC.Position))
                         {
+                            Buff.X = (int)TC.Position.X - 2;
+                            Buff.Y = (int)TC.Position.Y - 2;
+                            Buff.Width = 4;
+                            Buff.Height = 4;
                             ItemToCraftChosenManager = ItemToCraftChosen._None;
                             InGameMenuStateManager = InGameMenuState._Settings;
                         }
 
                         // ----------------------------------- Zmiana na crafting ---------------------------------
-                        else if (InGameMenuManager.InventoryButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Inventory)
+                        else if (InGameMenuManager.InventoryButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Inventory && !Buff.Contains(TC.Position))
                         {
+                            Buff.X = (int)TC.Position.X - 2;
+                            Buff.Y = (int)TC.Position.Y - 2;
+                            Buff.Width = 4;
+                            Buff.Height = 4;
                             InGameMenuStateManager = InGameMenuState._Crafting;
                         }
                         // ----------------------------------- Zmiana na ekwipunek -----------------------------------
-                        else if (InGameMenuManager.CraftingButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting)
+                        else if (InGameMenuManager.CraftingButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting && !Buff.Contains(TC.Position))
                         {
+                            Buff.X = (int)TC.Position.X - 2;
+                            Buff.Y = (int)TC.Position.Y - 2;
+                            Buff.Width = 4;
+                            Buff.Height = 4;
                             ItemToCraftChosenManager = ItemToCraftChosen._None;
                             InGameMenuStateManager = InGameMenuState._Inventory;
                         }
                         // ------------------------------------ Zmiana na questy --------------------------------------
-                        else if (InGameMenuManager.CraftingButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting)
+                        else if (InGameMenuManager.CraftingButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting && !Buff.Contains(TC.Position))
                         {
+                            Buff.X = (int)TC.Position.X - 2;
+                            Buff.Y = (int)TC.Position.Y - 2;
+                            Buff.Width = 4;
+                            Buff.Height = 4;
                             ItemToCraftChosenManager = ItemToCraftChosen._None;
                             InGameMenuStateManager = InGameMenuState._Quests;
                         }
                         // ------------------------------------ Zmiana na crafting --------------------------------------
-                        else if (InGameMenuManager.QuestsButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Quests)
+                        else if (InGameMenuManager.QuestsButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Quests && !Buff.Contains(TC.Position))
                         {
+                            Buff.X = (int)TC.Position.X - 2;
+                            Buff.Y = (int)TC.Position.Y - 2;
+                            Buff.Width = 4;
+                            Buff.Height = 4;
                             InGameMenuStateManager = InGameMenuState._Crafting;
                         }
                     }
