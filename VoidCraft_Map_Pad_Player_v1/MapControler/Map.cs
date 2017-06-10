@@ -13,8 +13,8 @@ namespace MapControler {
    public enum DirectionPAC {
         Pac_Left, Pac_Right, Pac_R_Axe, Pac_L_Axe, Pac_Up, Pac_Down
     }
-
-    class Map {
+    [Serializable]
+  public  class Map {
         /// <summary>
         /// Variables
         /// </summary>
@@ -71,6 +71,11 @@ namespace MapControler {
 
             LoadTextures();
             LoadMap();
+
+        }
+
+        public Map()
+        {
 
         }
 

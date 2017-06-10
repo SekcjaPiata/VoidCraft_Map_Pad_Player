@@ -36,9 +36,9 @@ namespace VoidCraft_Map_Pad_Player_v1
 {
     public class Game1 : Game
     {
-       
 
 
+        bool firstclick = true;
         GraphicsDeviceManager Graphics;
         SpriteBatch spriteBatch;
         SpriteFont DefaultFont;
@@ -431,54 +431,27 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                     //ChangeGameTime(GameHour + 1, 0);
 
-                    var store = IsolatedStorageFile.GetUserStoreForApplication();
-                    XmlSerializer xmlFormat = null;
-                    try
+                    string dairy = "";
+                    foreach (string m in Gracz.Player_Dairy.dairy_notes)
                     {
-                        xmlFormat = new XmlSerializer(typeof(Player));
+                        dairy += m;
                     }
-                    catch (Exception ex)
+                    //map.Message(dairy, DefaultFont, new Rectangle(50, 20, 1000, 1000));
+                    messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
+                    if (firstclick)
                     {
-                        Debug.Write(ex.InnerException.ToString());
-                    }
-                    RawMaterials serializacja = new RawMaterials();
-                    serializacja.Food += 10;
-                    serializacja.Metal += 20;
-                        var fs = store.CreateFile("Gracz.xml");
-                        using (StreamWriter sw = new StreamWriter(fs))
-                        {
-                        //sw.WriteLine("0ss");
-                        xmlFormat.Serialize(sw, Gracz);
-                       // sw.Close();
-                        }
-                  
-                    //string dairy = "";
-                    //foreach (string m in Gracz.Player_Dairy.dairy_notes)
-                    //{
-                    //    dairy += m;
-                    //}
-                    ////map.Message(dairy, DefaultFont, new Rectangle(50, 20, 1000, 1000));
-                    //messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
-                    if (store.FileExists("Gracz.xml"))
-                    {
-                        var fss = store.OpenFile("Gracz.xml", FileMode.Open);
-                        using (StreamReader sr = new StreamReader(fss))
-                        {
-                            //while (sr.EndOfStream)
-                            //{
-                            //    messages.CreateIndependentMessage(sr.ReadLine(), new Rectangle(50, 20, 1000, 1000));
-                            //}
-
-                            string xmls= sr.ReadToEnd();
-
-                            Debug.Write(xmls);
-                            messages.CreateIndependentMessage(xmls, new Rectangle(50, 20, 1000, 1000));
-                        }
+                        Gracz.SavePlayer();
+                        firstclick = false;
                     }
                     else
                     {
-                        messages.CreateIndependentMessage("Plik nie istnieje", new Rectangle(50, 20, 1000, 1000));
+                        Gracz = Player.LoadPlayer();
+                          Gracz.Texture = PlayerMoveTexture[4];
+                         Gracz.Grass = GrassWalk.sound;
+
+                        
                     }
+                    
                 }
 
                 //if (map.GetCurrentID(4) != 0)
