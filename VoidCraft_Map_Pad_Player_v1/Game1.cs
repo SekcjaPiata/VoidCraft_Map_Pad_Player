@@ -65,6 +65,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
         bool DebugMode = true;
         public static bool GameRunning = false;
+        public static bool LoadedGame =  false;
         public static int SongPlayed = 0;
 
         Texture2D back;
@@ -101,7 +102,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         GamePadStatus buff = GamePadStatus.None;
 
         Rectangle Buff;
-
+   
         // ----------------------------------------------------------------------------------------------------- Konstruktor
         public Game1()
         {
@@ -125,8 +126,8 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             ScreenX = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             ScreenY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-
             main = new MainMenu();
+
             messages = new Messages(Content, new Rectangle(50, 20, 200, 50), 3);
 
             DefaultFont = Content.Load<SpriteFont>("SpriteFontPL");
@@ -154,7 +155,15 @@ namespace VoidCraft_Map_Pad_Player_v1
             for (int i = 0; i < 12; i++) { PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
 
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
-            Gracz = new Player(GrassWalk.sound, PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); // Gdybyœ przekaza³ ContenMenager Content jako parametr to wczytywanie siê nie zmieni ,a bêdzie w klasie ... :P
+
+            //---------------------------------------------------------------
+         
+                Gracz = new Player(GrassWalk.sound, PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); // Gdybyœ przekaza³ ContenMenager Content jako parametr to wczytywanie siê nie zmieni ,a bêdzie w klasie ... :P
+            
+            
+        
+          
+            //----------------------------------------------------------
 
             // --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -171,9 +180,11 @@ namespace VoidCraft_Map_Pad_Player_v1
         // ----------------------------------------------------------------------------------------------------- Update
         protected override void Update(GameTime gameTime)
         {
-
             if (GameRunning == true)
             {
+
+            
+
                 Gracz.PosY = map.GetPosition().Y;
                 Gracz.PosX = map.GetPosition().X;
 
@@ -190,6 +201,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                 Gracz.gin(gameTime);
                 Gracz.Update(gameTime);
 
+         
 
                 /// Zmiana predkosci animacji przy Pacnieciu
                 if (PAC == false) { Gracz.milliseconsuPerFrame = 140; } else { Gracz.milliseconsuPerFrame = 60; }
@@ -433,7 +445,17 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
                 }
 
+
+
                 //-------------------------------------------- BUTTON B ---------------------------------------//
+
+                if (LoadedGame == true)
+                {
+                    Gracz = Player.LoadPlayer();
+                    Gracz.Texture = PlayerMoveTexture[4];
+                    Gracz.Grass = GrassWalk.sound;
+                    LoadedGame = false;
+                }
 
                 if (Pad.IsButtonClicked(GamePadStatus.B))
                 {
@@ -525,6 +547,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             }
 
             base.Update(gameTime);
+       
         }
 
         // ----------------------------------------------------------------------------------------------------- Draw
@@ -750,6 +773,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             }
             else
                 main.Draw(spriteBatch);
+
             spriteBatch.End();
             base.Draw(gameTime);
         }

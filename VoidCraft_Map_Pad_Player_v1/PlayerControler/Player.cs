@@ -263,17 +263,22 @@ namespace PlayerControler
         /// </summary>
         public void Draw(SpriteBatch spriteBatch, Rectangle location)
         {
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
-            int row = (int)((float)currentFrame / Columns);
-            int column = currentFrame % Columns;
+            try
+            {
+                int width = Texture.Width / Columns;
+                int height = Texture.Height / Rows;
+                int row = (int)((float)currentFrame / Columns);
+                int column = currentFrame % Columns;
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+                Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
 
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, location.Width, location.Height + (int)(location.Height * 0.4));
+                Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, location.Width, location.Height + (int)(location.Height * 0.4));
 
 
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            }
+
+            catch (Exception ex ) { Debug.WriteLine(ex.Message); }
 
         }
 
