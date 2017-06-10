@@ -87,6 +87,9 @@
     <Compile Include="Tools\Tool.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Documentation\Dokumentacja-VoidCraft.docx" />
+    <None Include="Documentation\Voidcraft-prezentacja-1.pdf" />
+    <None Include="Documentation\Voidcraft-prezentacja-2.pptx" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -113,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Buildings\Buildings list.txt" />
+    <Content Include="Documentation\obraz-tytułowa.PNG" />
     <Content Include="Raw Materials C\Raw materials list.txt" />
     <Content Include="Tools\Tools list.txt" />
   </ItemGroup>
