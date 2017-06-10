@@ -63,6 +63,16 @@ namespace Menu
 
         }
 
+
+        public void Resize(int height, int width)
+        {
+        
+            // TODO Dororbić
+            GUIRect = new Rectangle(this.GUIRect.X , this.GUIRect.Y , this.GUIRect.Width + width, this.GUIRect.Height + height);
+             
+        }
+
+
         public void MoveElement(int x, int y)
         {
             GUIRect = new Rectangle(GUIRect.X += x, GUIRect.Y += y, GUIRect.Width, GUIRect.Height);

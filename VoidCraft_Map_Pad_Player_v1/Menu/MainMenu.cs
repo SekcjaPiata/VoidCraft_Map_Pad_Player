@@ -17,9 +17,10 @@ namespace Menu
         enum GameState { MainMenu, authors, inGame, Options }
         GameState gamestate;
 
-        List<GUIElement> options = new List<GUIElement>();
+        List<GUIElement> options = new List<GUIElement>(); // rozważam usunięcie 
         List<GUIElement> main = new List<GUIElement>();
         public List<GUIElement> authors = new List<GUIElement>();
+        
 
         //  private Keys
         public MainMenu()
@@ -27,6 +28,7 @@ namespace Menu
 
             main.Add(new GUIElement("Menu\\M_BACK"));
             main.Add(new GUIElement("Menu\\B_graj"));
+            main.Add(new GUIElement("Menu\\Wczytaj"));
             main.Add(new GUIElement("Menu\\B_ustawianie"));
             main.Add(new GUIElement("Menu\\B_autorzy"));
             main.Add(new GUIElement("Menu\\voidscraft"));
@@ -47,13 +49,14 @@ namespace Menu
             {
                 element.LoadContent(content);
 
-                element.CenterElement((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 500) + 250 * c, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
+                element.CenterElement((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 700) + 250 * c, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
                 c++;
                 element.clickEvent += OnClick;
             }
             c = 1;
             main.Find(x => x.AssetName == "Menu\\M_BACK").Background();
-            main.Find(x => x.AssetName == "Menu\\voidscraft").MoveElement(0, -600);
+            main.Find(x => x.AssetName == "Menu\\voidscraft").Resize(50, 150);
+            main.Find(x => x.AssetName == "Menu\\voidscraft").MoveElement(-50, -700);
 
             foreach (GUIElement element in authors)
             {
@@ -156,6 +159,11 @@ namespace Menu
                 Game1.SongPlayed = 1;
                 // plays the game
                 gamestate = GameState.inGame;
+            }
+            if(element=="Menu\\Wczytaj")
+            {
+                // to do wczytywanie 
+
             }
             if (element == "Menu\\B_autorzy")
             {
