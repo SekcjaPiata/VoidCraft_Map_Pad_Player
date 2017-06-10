@@ -5,17 +5,22 @@ using Microsoft.Xna.Framework.Graphics;
 using MapControler;
 using Microsoft.Xna.Framework.Audio;
 using MonoGame;
-
+using System.Web;
 using Tools;
 using Raw_Materials_C;
 using EpicQuests;
+using System.Xml.Serialization;
+using Message;
+using System.IO.IsolatedStorage;
+using System.IO;
 
+using System.Diagnostics;
 
 namespace PlayerControler
 {
     
-
-    class Player
+    [Serializable]
+   public class Player
     {
         /// <summary>
         /// Statystyki Postaci
@@ -76,7 +81,12 @@ namespace PlayerControler
         /// <summary>
         /// Zmienne Odpowiedzialne Za Poprawne Wyœwietlanie Postaci
         /// </summary>
+        /// 
+
+        [XmlIgnore]
+
         public Texture2D Texture { get; set; }
+
 
         public float PosX { get; set; }
         public float PosY { get; set; }
@@ -94,15 +104,23 @@ namespace PlayerControler
         /// </summary>
         private int timeSinceLastFrame = 0;
         public int milliseconsuPerFrame = 140;
-          
 
 
 
-        SoundEffect Grass;
+        [XmlIgnore]
+        public SoundEffect Grass;
 
         /// <summary>
         /// Konstruktor Parametryczny Postaci
         /// </summary>
+        /// 
+
+        public Player()
+        {
+            currentFrame = 0;
+            totalFrames = 4;
+
+        }
         public Player(SoundEffect Grass, Texture2D texture, int rows, int columns, int posX, int posY)
         {
             this.Grass = Grass;
@@ -127,13 +145,13 @@ namespace PlayerControler
             //dodawanie Toolsów do listy, dodaæ tutaj tekstury w miejsce "texture" w konstruktorze!
 
             //M³otek  (1 drewna, 3 liany, 1 kamieñ) 
-            tools.Add(new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0));
+            tools.Add(new Tool( "Hammer", 1, 1, 3, 0, 0, 0));
             //Topór Siekiera (1 m³otek,3 drewna, 3 liany, 3 kamieñ) -> Jeœli jest w eq to daje wiêcej drewna po œciêciu drzewa
-            tools.Add(new Tool(texture, "Axe", 3, 3, 3, 0, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+            tools.Add(new Tool( "Axe", 3, 3, 3, 0, 0, 0, new Tool( "Hammer", 1, 1, 3, 0, 0, 0)));
             //3.Kilof (1 m³otek, 5 drewna, 5 liany, 5 kamieñ) ->pozwala wydobywaæ metal 
-            tools.Add(new Tool(texture, "Pick", 5, 5, 5, 0, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+            tools.Add(new Tool( "Pick", 5, 5, 5, 0, 0, 0, new Tool( "Hammer", 1, 1, 3, 0, 0, 0)));
             //Saw 4.Pi³a (1 m³otek, 3 drewna, 5 metal, 5 liany)
-            tools.Add(new Tool(texture, "Saw", 3, 0, 5, 5, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+            tools.Add(new Tool( "Saw", 3, 0, 5, 5, 0, 0, new Tool( "Hammer", 1, 1, 3, 0, 0, 0)));
 
           
             //Dodajemy questy dla playera, tutaj dawajcie opisy tychze questow
@@ -142,14 +160,14 @@ namespace PlayerControler
             ActiveGuest = 0;
             //Pocz¹tek, zcrafæ m³otek
             string plot1 = "Nie wiem co sie stalo... \r\n Musze zbudowac jakies schronienie przed noca\r\nMusze zaczac od budowy mlotka\r\nPotrzeba: 1 wood\r\n1 stone\r\n3 lianas";
-            quests.Add(new Quest("1.Stworz mlotek",new Vector2(26,34),new RawMaterials(), plot1,new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0)));
+            quests.Add(new Quest("1.Stworz mlotek",new Vector2(26,34),new RawMaterials(), plot1,new Tool("Hammer", 1, 1, 3, 0, 0, 0)));
             //quests[0].Activated = true;
             //Druga misja-scrafciæ Axe
             string plot2 = "\r\n\r\n Udalo mi sie stworzyc mlotek" +
                 "\r\nMusze szybciej zdobywac drewno\r\n"
                 + "trzeba zrobic siekiere"
             +"\r\n Potrzeba: 3 wood \r\n 3 stone \r\n 3 lianas\r\n";
-            quests.Add(new Quest("2.Craft Axe", new Vector2(26, 34), new RawMaterials(), plot2, new Tool(texture, "Axe", 3, 3, 3, 0, 0, 0, new Tool(texture, "Hammer", 1, 1, 3, 0, 0, 0))));
+            quests.Add(new Quest("2.Craft Axe", new Vector2(26, 34), new RawMaterials(), plot2, new Tool( "Axe", 3, 3, 3, 0, 0, 0, new Tool( "Hammer", 1, 1, 3, 0, 0, 0))));
             //Trzecia misja - stworzenie szeltera przed noc¹
             string plot3 = "\r\nZbliza sie noc, musze zbudowac schronienie!"+
                 "Potrzebne : 20 wood \r\n 20 stone \r\n 20 lianas \r\n";
@@ -302,6 +320,12 @@ namespace PlayerControler
                     { IsMoving = false; Texture = tx[9]; break; }
                 case DirectionPAC.Pac_R_Axe:
                     { IsMoving = false; Texture = tx[10]; break; }
+                case DirectionPAC.Pac_L_Axe:
+                    { IsMoving = false; Texture = tx[11]; break; }
+                case DirectionPAC.Pac_Down:
+                    { IsMoving = false; Texture = tx[3]; break; }
+                case DirectionPAC.Pac_Up:
+                    { IsMoving = false; Texture = tx[2]; break; }
                 default:
                     break;
             }
@@ -316,5 +340,74 @@ namespace PlayerControler
             Spadek_Strach(gameTime);
         }
 
+        public static Player LoadPlayer()
+        {
+            var store = IsolatedStorageFile.GetUserStoreForApplication();
+            XmlSerializer xmlFormat = null;
+            try
+            {
+                xmlFormat = new XmlSerializer(typeof(Player));
+            }
+            catch (Exception ex)
+            {
+                Debug.Write(ex.InnerException.ToString());
+            }
+
+            if (store.FileExists("Gracz.xml"))
+            {
+                var fs = store.OpenFile("Gracz.xml", FileMode.Open);
+
+                using (StreamReader sw = new StreamReader(fs))
+                {
+                    return (Player)xmlFormat.Deserialize(sw);
+                }
+            }
+            else throw new Exception("Brak pliku z zapisem gry");
+
+            
+        }
+
+        public void SavePlayer()
+        {
+            var store = IsolatedStorageFile.GetUserStoreForApplication();
+            XmlSerializer xmlFormat = null;
+            try
+            {
+                xmlFormat = new XmlSerializer(typeof(Player));
+            }
+            catch (Exception ex)
+            {
+                Debug.Write(ex.InnerException.ToString());
+            }
+
+            if (store.FileExists("Gracz.xml"))
+            {
+                store.DeleteFile("Gracz.xml");
+            }
+
+            var fs = store.CreateFile("Gracz.xml");
+            using (StreamWriter sw = new StreamWriter(fs))
+            { 
+                xmlFormat.Serialize(sw, this);
+            }
+
+           
+            if (store.FileExists("Gracz.xml"))
+            {
+                var fss = store.OpenFile("Gracz.xml", FileMode.Open);
+                using (StreamReader sr = new StreamReader(fss))
+                {
+
+                    string xmls = sr.ReadToEnd();
+
+                    Debug.Write(xmls);
+                    store.Close();
+                }
+            }
+            else
+            {
+                Debug.Write("Plik nie istnieje");
+            }
+        }
     }
 }

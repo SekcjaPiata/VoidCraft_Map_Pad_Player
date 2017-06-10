@@ -5,7 +5,8 @@ using Raw_Materials_C;
 
 namespace Tools
 {
-    class Tool
+    [Serializable]
+    public class Tool
     {
         internal class CantCraftException : Exception
         {
@@ -14,13 +15,13 @@ namespace Tools
 
         //Klasa opisuje narzêdzia. Zak³adamy, ¿e takowe siê nie niszcz¹
 
-        private Texture2D _toolTexture;//Wczytana zostanie tekstura narzêdzia
+      //  private Texture2D _toolTexture;//Wczytana zostanie tekstura narzêdzia
 
-        public Texture2D ToolTexture
-        {
-            get { return _toolTexture; }
-            set { _toolTexture = value; }
-        }
+       // public Texture2D ToolTexture
+       // {
+       //     get { return _toolTexture; }
+      //      set { _toolTexture = value; }
+      //  }
         private string _toolName;
 
         public string ToolName
@@ -90,7 +91,7 @@ namespace Tools
 
         }
 
-        public Tool(Texture2D TexturePath, string ToolName, int WoodNeeded, int StoneNeeded,
+        public Tool( string ToolName, int WoodNeeded, int StoneNeeded,
             int LianasNeeded, int MetalNeeded, int WaterNeeded, int FoodNeeded)
         //kontruktor, który tworzy narzêdzie i ustawia wymagania do jego posiadania(scrafcenia) przez playera
         {
@@ -98,9 +99,9 @@ namespace Tools
             this.ToolName = ToolName;
             _requirements = new RawMaterials(WoodNeeded, StoneNeeded, LianasNeeded, MetalNeeded, WaterNeeded, FoodNeeded);
             this.IsOwned = false;
-            this._toolTexture = TexturePath;
+           // this._toolTexture = TexturePath;
         }
-        public Tool(Texture2D TexturePath, string ToolName, int WoodNeeded, int StoneNeeded,
+        public Tool( string ToolName, int WoodNeeded, int StoneNeeded,
            int LianasNeeded, int MetalNeeded, int WaterNeeded, int FoodNeeded, params Tool [] ToolsNeeded)
         //kontruktor, który tworzy narzêdzie i ustawia wymagania do jego posiadania(scrafcenia) przez playera i wymagane narzêdzia
         {
@@ -108,8 +109,12 @@ namespace Tools
             this.ToolName = ToolName;
             _requirements = new RawMaterials(WoodNeeded, StoneNeeded, LianasNeeded, MetalNeeded, WaterNeeded, FoodNeeded);
             this.IsOwned = false;
-            this._toolTexture = TexturePath;
+           // this._toolTexture = TexturePath;
             this.Tools_needed = ToolsNeeded;
+        }
+        public Tool()
+        {
+
         }
 
 

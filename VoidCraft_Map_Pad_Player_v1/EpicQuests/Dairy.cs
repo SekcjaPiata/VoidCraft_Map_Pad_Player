@@ -12,7 +12,8 @@ using Android.Widget;
 
 namespace EpicQuests
 {
-    internal class Dairy
+    [Serializable]
+    public class Dairy
     {
         public List<string> dairy_notes { get; set; }
 
@@ -20,5 +21,6 @@ namespace EpicQuests
         {
             dairy_notes = new List<string>();
         }
+        //public Dairy() { }
     }
 }

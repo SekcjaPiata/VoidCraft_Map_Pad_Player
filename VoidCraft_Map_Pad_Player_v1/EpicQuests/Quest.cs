@@ -5,7 +5,8 @@ using Raw_Materials_C;
 using Tools;
 namespace EpicQuests
 {
-    class Quest
+    [Serializable]
+    public class Quest
     {
         //  TODO:
         //wymyœliæ jak zapisywaæ wartoœci dla spe³nionych warunków questa
@@ -71,7 +72,10 @@ namespace EpicQuests
 
             this.Activated = false;
         }
-
+        public Quest()
+        {
+            this.Tools_needed = new List<Tool>();
+        }
 
     }
 }
