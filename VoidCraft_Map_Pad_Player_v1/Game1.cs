@@ -16,6 +16,11 @@ using EpicQuests;
 using Sounds;
 using Message;
 using InGameMenuControler;
+using System.IO.IsolatedStorage;
+using System.IO;
+using System.Xml.Serialization;
+using Raw_Materials_C;
+using System.Diagnostics;
 
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
 //////////////////      John                /////////////////
@@ -426,14 +431,47 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                     //ChangeGameTime(GameHour + 1, 0);
 
+                    var store = IsolatedStorageFile.GetUserStoreForApplication();
+                    XmlSerializer xmlFormat = new XmlSerializer(typeof(RawMaterials));
 
-                    string dairy = "";
-                    foreach (string m in Gracz.Player_Dairy.dairy_notes)
+                    RawMaterials serializacja = new RawMaterials();
+                    serializacja.Food += 10;
+                    serializacja.Metal += 20;
+                        var fs = store.CreateFile("Gracz.xml");
+                        using (StreamWriter sw = new StreamWriter(fs))
+                        {
+                        //sw.WriteLine("0ss");
+                        xmlFormat.Serialize(sw, serializacja);
+                       // sw.Close();
+                        }
+                  
+                    //string dairy = "";
+                    //foreach (string m in Gracz.Player_Dairy.dairy_notes)
+                    //{
+                    //    dairy += m;
+                    //}
+                    ////map.Message(dairy, DefaultFont, new Rectangle(50, 20, 1000, 1000));
+                    //messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
+                    if (store.FileExists("Gracz.xml"))
                     {
-                        dairy += m;
+                        var fss = store.OpenFile("Gracz.xml", FileMode.Open);
+                        using (StreamReader sr = new StreamReader(fss))
+                        {
+                            //while (sr.EndOfStream)
+                            //{
+                            //    messages.CreateIndependentMessage(sr.ReadLine(), new Rectangle(50, 20, 1000, 1000));
+                            //}
+
+                            string xmls= sr.ReadToEnd();
+
+                            Debug.Write(xmls);
+                            messages.CreateIndependentMessage(xmls, new Rectangle(50, 20, 1000, 1000));
+                        }
                     }
-                    //map.Message(dairy, DefaultFont, new Rectangle(50, 20, 1000, 1000));
-                    messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
+                    else
+                    {
+                        messages.CreateIndependentMessage("Plik nie istnieje", new Rectangle(50, 20, 1000, 1000));
+                    }
                 }
 
                 //if (map.GetCurrentID(4) != 0)
@@ -614,7 +652,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 // /\/\/\/\/\/\/\/\/\/\/\/\/\
 
-
+                
 
                 if (DebugMode)
                 {

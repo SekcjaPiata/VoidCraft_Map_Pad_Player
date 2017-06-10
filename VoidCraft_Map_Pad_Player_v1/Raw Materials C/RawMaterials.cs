@@ -2,7 +2,8 @@ using System;
 
 namespace Raw_Materials_C
 {
-    class RawMaterials
+    [Serializable]
+   public class RawMaterials
     {
         internal class OutOfWoodException : Exception
         {
