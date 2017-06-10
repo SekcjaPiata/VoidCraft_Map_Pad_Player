@@ -18,10 +18,10 @@ using Message;
 using InGameMenuControler;
 
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
-//////////////////      Juan                /////////////////
-//////////////////      9,06.2017r          /////////////////   
-//////////////////      19,56               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
-//////////////////      VERSION 0.060       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
+//////////////////      John                /////////////////
+//////////////////      10.06.2017r         /////////////////   
+//////////////////      7:37                /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////      VERSION 0.061       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/ 
 
 // Zrobiona Klasa InGameMenu, nie wrzuca³em jej do maina jeszcze
@@ -31,6 +31,9 @@ namespace VoidCraft_Map_Pad_Player_v1
 {
     public class Game1 : Game
     {
+       
+
+
         GraphicsDeviceManager Graphics;
         SpriteBatch spriteBatch;
         SpriteFont DefaultFont;
@@ -73,12 +76,13 @@ namespace VoidCraft_Map_Pad_Player_v1
 
 
         //John'owicz
+
+        enum SwingDirection{ Swing_Up, Swing_Down, Swing_Right, Swing_Left }
+        SwingDirection swingdirection;
         public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
         private Player Gracz; // Tworzenie istancji
         private int IloscKlatek = 4; // ilosc klatek w danej animacji
         bool PAC = false;
-        bool kierun_Left = false;
-        bool kierun_Right = false;
         bool Zbierz = false;
         DirectionPAC PACDirection;
         double PacTimer = 0;
@@ -104,7 +108,8 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             WalkingDirection = Direction.Idle_Down;
             PACDirection = DirectionPAC.Pac_Left;
-        }
+            swingdirection = SwingDirection.Swing_Up;
+    }
 
         // ----------------------------------------------------------------------------------------------------- Init
         protected override void Initialize()
@@ -139,7 +144,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
             //// Wczytywanie tekstur Animacji i tworzenie instancji Player
             String CharFoldName = "Characters\\NewChar_";
-            for (int i = 0; i < 11; i++) { PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
+            for (int i = 0; i < 12; i++) { PlayerMoveTexture.Add(Content.Load<Texture2D>(CharFoldName + (i))); }
 
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
             Gracz = new Player(GrassWalk.sound, PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); // Gdybyœ przekaza³ ContenMenager Content jako parametr to wczytywanie siê nie zmieni ,a bêdzie w klasie ... :P
@@ -219,6 +224,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                         if (map.GetNextID(3, Direction.On) != 0)
                             map.MoveMap(0, WalkSpeed);
+                        swingdirection = SwingDirection.Swing_Up;
                     }
                 }
                 else
@@ -233,6 +239,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                         if (map.GetNextID(3, Direction.On) != 0)
                             map.MoveMap(0, -WalkSpeed);
+                        swingdirection = SwingDirection.Swing_Down;
                     }
                 }
                 else
@@ -247,8 +254,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                         map.MoveMap(WalkSpeed, 0);
                         if (map.GetNextID(3, Direction.On) != 0)
                             map.MoveMap(-WalkSpeed, 0);
-                        kierun_Right = true;
-                        kierun_Left = false;
+                        swingdirection = SwingDirection.Swing_Right;
+                        
                     }
                 }
                 else
@@ -263,9 +270,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                         map.MoveMap(-WalkSpeed, 0);
                         if (map.GetNextID(3, Direction.On) != 0)
                             map.MoveMap(WalkSpeed, 0);
-                        kierun_Left = true;
-                        kierun_Right = false;
-
+                        swingdirection = SwingDirection.Swing_Left;
                     }
                 }
 
@@ -274,7 +279,47 @@ namespace VoidCraft_Map_Pad_Player_v1
                 {
 
 
-                    if (kierun_Right == true)                               ///---------- Animacja Zbierania ----------------
+                    switch (swingdirection)                                 ///---------- Animacja Zbierania ----------------
+                    {
+                        case SwingDirection.Swing_Up:
+                            PAC = true;
+                            PACDirection = DirectionPAC.Pac_Up;
+                            Gracz.PAC_PAC(DirectionPAC.Pac_Up, PlayerMoveTexture);
+
+                            break;
+                        case SwingDirection.Swing_Down:
+                            PAC = true;
+                            PACDirection = DirectionPAC.Pac_Down;
+                            Gracz.PAC_PAC(DirectionPAC.Pac_Down, PlayerMoveTexture);
+                            break;
+
+                        case SwingDirection.Swing_Right:
+                            PAC = true;
+                            if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true) {
+                                PACDirection = DirectionPAC.Pac_R_Axe;
+                                Gracz.PAC_PAC(DirectionPAC.Pac_R_Axe, PlayerMoveTexture);  }
+
+                            else  {
+                                PACDirection = DirectionPAC.Pac_Right;
+                                Gracz.PAC_PAC(DirectionPAC.Pac_Right, PlayerMoveTexture); }
+                            break;
+
+                        case SwingDirection.Swing_Left:
+                            PAC = true;
+                            if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)  {
+                                PACDirection = DirectionPAC.Pac_L_Axe;
+                                Gracz.PAC_PAC(DirectionPAC.Pac_L_Axe, PlayerMoveTexture); }
+
+                            else {
+                                PACDirection = DirectionPAC.Pac_Left;
+                                Gracz.PAC_PAC(DirectionPAC.Pac_Left, PlayerMoveTexture); }
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    /*if (kierun_Right == true)                              
                     {
                         PAC = true;
                         if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
@@ -292,10 +337,18 @@ namespace VoidCraft_Map_Pad_Player_v1
                     if (kierun_Left == true)
                     {
                         PAC = true;
-                        PACDirection = DirectionPAC.Pac_Left;
-                        Gracz.PAC_PAC(DirectionPAC.Pac_Left, PlayerMoveTexture);
+                        if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
+                        {
+                            PACDirection = DirectionPAC.Pac_L_Axe;
+                            Gracz.PAC_PAC(DirectionPAC.Pac_L_Axe, PlayerMoveTexture);
+                        }
+                        else
+                        {
+                            PACDirection = DirectionPAC.Pac_Left;
+                            Gracz.PAC_PAC(DirectionPAC.Pac_Left, PlayerMoveTexture);
+                        }
                     }
-
+                    */
 
                     ///-------------------------------------------------------------   WYKRYWANIE KOLIZJI   -------------------------//
                     if (map.GetNextID(3, WalkingDirection) == 6)
@@ -496,24 +549,28 @@ namespace VoidCraft_Map_Pad_Player_v1
                 spriteBatch.Draw(DayCycleTexture[DayCycle], new Rectangle(0, 0, ScreenX, ScreenY), Color.White);      // Rysowanie Tekstury Nocy
 
 
-                // \/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
+
+
+
+                // Rysowanie Przyciskow i informacji pomocniczych.
+                Pad.Draw(spriteBatch);
+
+
+
+                // \/\/\/\/\/\/\/\/\/\/\/\/\/\/  Menu EKWIPUNEK 
+
+                // rysuj po padzie :)  TO DO: Trzeba zablokowac Pada(poruszanie sie) na czas kiedy jest EQ otwarte,  /John
 
                 InGameMenuManager.DrawInGameMenuButton(spriteBatch);
-
-
 
                 //   Rectangle KnefelRect = new Rectangle((int)(ScreenX / 1.125), 50, 50, 50);   // Pozycja knefla do ingame menu **
                 //    spriteBatch.Draw(Knefel_EQ, new Rectangle((int)(ScreenX / 1.125), 50, 50, 50), Color.White); // Rysowanie knefla do ingame menu **
 
                 TouchCollection tl = TouchPanel.GetState();
 
-
-
                 foreach (TouchLocation T in tl)
                 {
-
-
                     if (InGameMenuManager.InGameMenuButtonPos.Contains(T.Position) && !Buff.Contains(T.Position))
                     {
                         IsMenuButtonPressed = !IsMenuButtonPressed;
@@ -527,7 +584,6 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                         break;
                     }
-
                 }
 
                 if (IsMenuButtonPressed)
@@ -547,7 +603,6 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
 
 
-
                     //spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.Materials.Water, new Vector2(120, 150), Color.White);
                     //spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.Materials.Food, new Vector2(120, 200), Color.White);
                     //spriteBatch.DrawString(DefaultFont, "Drewno: " + Gracz.Materials.Wood, new Vector2(120, 250), Color.White);
@@ -557,15 +612,10 @@ namespace VoidCraft_Map_Pad_Player_v1
                 }
 
 
-
                 // /\/\/\/\/\/\/\/\/\/\/\/\/\
 
 
 
-
-                // Rysowanie Przyciskow i informacji pomocniczych.
-
-                Pad.Draw(spriteBatch);
                 if (DebugMode)
                 {
                     spriteBatch.DrawString(DefaultFont, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Red);
@@ -579,7 +629,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                     spriteBatch.DrawString(DefaultFont, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) / 18 + "x" + (((ScreenY / 2)) - map.GetZoomValue()) / 11, new Vector2(50, 450), Color.Red);
                     spriteBatch.DrawString(DefaultFont, "DayCycleTimer: " + DayCycleTimer + " ID:" + DayCycle, new Vector2(50, 500), Color.Red); // DayCycle TEST PacTimer
                     spriteBatch.DrawString(DefaultFont, "PacTimer: " + PacTimer, new Vector2(50, 550), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "Zbierz: " + Zbierz, new Vector2(50, 600), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "Zbierz: " + Zbierz, new Vector2(50, 600), Color.Red);
 
                     //   spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.Materials.Water, new Vector2(1600, 50), Color.White);
                     //   spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.Materials.Food, new Vector2(1600, 100), Color.White);

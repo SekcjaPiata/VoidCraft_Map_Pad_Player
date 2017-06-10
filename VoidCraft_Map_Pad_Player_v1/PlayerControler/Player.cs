@@ -302,6 +302,12 @@ namespace PlayerControler
                     { IsMoving = false; Texture = tx[9]; break; }
                 case DirectionPAC.Pac_R_Axe:
                     { IsMoving = false; Texture = tx[10]; break; }
+                case DirectionPAC.Pac_L_Axe:
+                    { IsMoving = false; Texture = tx[11]; break; }
+                case DirectionPAC.Pac_Down:
+                    { IsMoving = false; Texture = tx[3]; break; }
+                case DirectionPAC.Pac_Up:
+                    { IsMoving = false; Texture = tx[2]; break; }
                 default:
                     break;
             }

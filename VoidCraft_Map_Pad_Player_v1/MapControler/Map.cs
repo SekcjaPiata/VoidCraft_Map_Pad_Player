@@ -11,7 +11,7 @@ namespace MapControler {
     }
 
     enum DirectionPAC {
-        Pac_Left, Pac_Right, Pac_R_Axe
+        Pac_Left, Pac_Right, Pac_R_Axe, Pac_L_Axe, Pac_Up, Pac_Down
     }
 
     class Map {
