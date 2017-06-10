@@ -38,7 +38,7 @@ namespace VoidCraft_Map_Pad_Player_v1
     {
 
 
-        bool firstclick = true;
+        
         GraphicsDeviceManager Graphics;
         SpriteBatch spriteBatch;
         SpriteFont DefaultFont;
@@ -448,19 +448,21 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
                     //map.Message(dairy, DefaultFont, new Rectangle(50, 20, 1000, 1000));
                     messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
-                    if (firstclick)
-                    {
-                        Gracz.SavePlayer();
-                        firstclick = false;
-                    }
-                    else
+
+
+                    //wczytywanie na razie jest tu
+                    try
                     {
                         Gracz = Player.LoadPlayer();
                         Gracz.Texture = PlayerMoveTexture[4];
                         Gracz.Grass = GrassWalk.sound;
-
-
                     }
+                    catch (Exception ex)
+                    {
+                        messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 1000, 1000));
+                    }
+
+                  //  }
 
                 }
 
@@ -639,6 +641,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                         // ------------------------------ Zapis gry -------------------------------------------
                         if (InGameMenuManager.SettingsButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings)
                         {
+                            Gracz.SavePlayer();
                             //
                             //
                             //

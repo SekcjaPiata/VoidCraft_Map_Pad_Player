@@ -362,7 +362,7 @@ namespace PlayerControler
                     return (Player)xmlFormat.Deserialize(sw);
                 }
             }
-            else throw new Exception("Coœ siê zdupi³o przy wczytywaniu playera!");
+            else throw new Exception("Brak pliku z zapisem gry");
 
             
         }
