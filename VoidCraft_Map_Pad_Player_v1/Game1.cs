@@ -162,9 +162,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             //---------------------------------------------------------------
          
                 Gracz = new Player(GrassWalk.sound, PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); // Gdybyœ przekaza³ ContenMenager Content jako parametr to wczytywanie siê nie zmieni ,a bêdzie w klasie ... :P
-            
-            
-        
+
           
             //----------------------------------------------------------
 
@@ -454,18 +452,26 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 if (LoadedGame == true)
                 {
-                    Gracz = Player.LoadPlayer();
-                    Gracz.Texture = PlayerMoveTexture[4];
-                    Gracz.Grass = GrassWalk.sound;
+                    try
+                    {
+                        Gracz = Player.LoadPlayer();
+                        Gracz.Texture = PlayerMoveTexture[4];
+                        Gracz.Grass = GrassWalk.sound;
 
-                    map = new Map(GraphicsDevice, "Map_Final_V2", ScreenX, ScreenY);
-                   // map.SetPosition(Starting_posX, Starting_posY);
+                        map = new Map(GraphicsDevice, "Map_Final_V2", ScreenX, ScreenY);
+                        // map.SetPosition(Starting_posX, Starting_posY);
 
-                    map.LoadMapFromXML();
+                        map.LoadMapFromXML();
 
-                    //map = Map.LoadMapFromXML();
-                    map.SetPosition(Gracz.PosX, Gracz.PosY);
-                    LoadedGame = false;
+                        //map = Map.LoadMapFromXML();
+                        map.SetPosition(Gracz.PosX, Gracz.PosY);
+                        LoadedGame = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 1000, 1000));
+                        LoadedGame = false;
+                    }
                 }
 
                 if (Pad.IsButtonClicked(GamePadStatus.B))

@@ -169,7 +169,7 @@ namespace MapControler {
                 using (StreamReader sw = new StreamReader(fs))
                 {
                     Map temp = (Map)xmlFormat.Deserialize(sw);
-                    //return (Map)xmlFormat.Deserialize(sw);
+                    
                     this.Tiles = temp.Tiles;
 
 
