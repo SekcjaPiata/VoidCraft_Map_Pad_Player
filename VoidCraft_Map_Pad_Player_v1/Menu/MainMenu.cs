@@ -163,13 +163,18 @@ namespace Menu
             if(element=="Menu\\Wczytaj")
             {
                 // to do wczytywanie 
+                Game1.GameRunning = true;
+                Game1.SongPlayed = 1;
+                gamestate = GameState.inGame;
+                PlayerControler.Player.LoadPlayer();
+               
 
 
             }
             if (element == "Menu\\B_autorzy")
             {
                 gamestate = GameState.authors;
-
+            
 
             }
             if (element == "Menu\\done")//Done button
