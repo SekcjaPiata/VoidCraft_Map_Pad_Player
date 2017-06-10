@@ -1,5 +1,8 @@
+using System;
+
 namespace MapControler
 {
+    [Serializable]
     public class Tile
     {
         public int Id { get; set; }

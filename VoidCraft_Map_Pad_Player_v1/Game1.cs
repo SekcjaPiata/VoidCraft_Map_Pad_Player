@@ -142,8 +142,10 @@ namespace VoidCraft_Map_Pad_Player_v1
             GrassWalk = new SoundEffects("GrassStep", Content, "GrassWalk");
 
             //MAPY->  ProjektTestowy  JohnnoweTekstury  NoweTeksturyV4  MalaMapa  POLIGON  VoidMap
-            map = new Map(GraphicsDevice, "Map_Final_V2", ScreenX, ScreenY);
-            map.SetPosition(Starting_posX, Starting_posY);
+          
+                map = new Map(GraphicsDevice, "Map_Final_V2", ScreenX, ScreenY);
+                map.SetPosition(Starting_posX, Starting_posY);
+            
 
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
@@ -455,6 +457,14 @@ namespace VoidCraft_Map_Pad_Player_v1
                     Gracz = Player.LoadPlayer();
                     Gracz.Texture = PlayerMoveTexture[4];
                     Gracz.Grass = GrassWalk.sound;
+
+                    map = new Map(GraphicsDevice, "Map_Final_V2", ScreenX, ScreenY);
+                   // map.SetPosition(Starting_posX, Starting_posY);
+
+                    map.LoadMapFromXML();
+
+                    //map = Map.LoadMapFromXML();
+                    map.SetPosition(Gracz.PosX, Gracz.PosY);
                     LoadedGame = false;
                 }
 
@@ -474,16 +484,16 @@ namespace VoidCraft_Map_Pad_Player_v1
 
 
                     //wczytywanie na razie jest tu
-                    try
-                    {
-                        Gracz = Player.LoadPlayer();
-                        Gracz.Texture = PlayerMoveTexture[4];
-                        Gracz.Grass = GrassWalk.sound;
-                    }
-                    catch (Exception ex)
-                    {
-                        messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 1000, 1000));
-                    }
+                    //try
+                    //{
+                    //    Gracz = Player.LoadPlayer();
+                    //    Gracz.Texture = PlayerMoveTexture[4];
+                    //    Gracz.Grass = GrassWalk.sound;
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 1000, 1000));
+                    //}
 
                   //  }
 
@@ -498,7 +508,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                 {
                     //map.Message("\r\n Brawo! Zebrales potrzebne materialy\r\n aby stworzyc schronienie i przetrwac\r\n nadchodzaca NOC \r\n \r\n Ukonczono fabule prologu!", DefaultFont, new Rectangle(100, 100, 600, 600));
                     // .. map.
-                    map.MessageActive = 2;
+                   // map.MessageActive = 2;
                     string message = "\r\n Brawo! Zebrales potrzebne materialy\r\n aby stworzyc schronienie i przetrwac\r\n nadchodzaca NOC \r\n \r\n Ukonczono fabule prologu!";
                     messages.CreateIndependentMessage(message, new Rectangle(50, 20, 1000, 1000));
                 }
@@ -667,6 +677,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                         if (InGameMenuManager.SettingsButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings)
                         {
                             Gracz.SavePlayer();
+                            map.SaveMap();
                             //
                             //
                             //

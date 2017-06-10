@@ -5,6 +5,22 @@ using Microsoft.Xna.Framework;
 using System.IO;
 using Microsoft.Xna.Framework.Input.Touch;
 
+
+using MapControler;
+using Microsoft.Xna.Framework.Audio;
+using MonoGame;
+using System.Web;
+using Tools;
+using Raw_Materials_C;
+using EpicQuests;
+using System.Xml.Serialization;
+using Message;
+using System.IO.IsolatedStorage;
+
+
+using System.Diagnostics;
+
+
 namespace MapControler {
    public enum Direction {
         Idle_Down, Left, Right, Up, Down, Idle_Left, Idle_Right, Idle_Back, On
@@ -18,12 +34,17 @@ namespace MapControler {
         /// <summary>
         /// Variables
         /// </summary>
+        /// [
+        /// 
+        [NonSerialized]
         GraphicsDevice GraphicDevice;
+        [NonSerialized]
         List<List<MapTexture>> Textur; //id ,layer ,name ,path ,bitmap
-        List<Tile [,]> Tiles;
+
+        public List<Tile [][]> Tiles;
 
 
-        internal int MessageActive = 0;
+        //internal int MessageActive = 0;
 
         string MapName;
         int MapSizeX = 18, MapSizeY = 11;
@@ -60,13 +81,19 @@ namespace MapControler {
             GetMapSize();
 
             Textur = new List<List<MapTexture>>();
-            Tiles = new List<Tile [,]>();
+            Tiles = new List<Tile[][]>();
 
             for (int i = 0; i < NumberOfLayers; i++) {
                 Textur.Add(new List<MapTexture>());
 
                 Textur [i] = new List<MapTexture>();
-                Tiles.Add(new Tile [Width, Height]);
+                Tile[][] temp = new Tile[Width][];
+                for (int j = 0; j < Width; j++)
+                {
+                    temp[j] = new Tile[Height];
+                }
+                Tiles.Add(temp);
+                
             }
 
             LoadTextures();
@@ -76,9 +103,84 @@ namespace MapControler {
 
         public Map()
         {
+            Textur = new List<List<MapTexture>>();
+            Tiles = new List<Tile[][]>();
+        }
+
+        public void SaveMap()
+        {
+            var store = IsolatedStorageFile.GetUserStoreForApplication();
+            XmlSerializer xmlFormat = null;
+            try
+            {
+                xmlFormat = new XmlSerializer(typeof(Map));
+            }
+            catch (Exception ex)
+            {
+                Debug.Write(ex.InnerException.ToString());
+            }
+
+            if (store.FileExists("Mapa.xml"))
+            {
+                store.DeleteFile("Mapa.xml");
+            }
+
+            var fs = store.CreateFile("Mapa.xml");
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                xmlFormat.Serialize(sw, this);
+            }
+
+
+            if (store.FileExists("Mapa.xml"))
+            {
+                var fss = store.OpenFile("Mapa.xml", FileMode.Open);
+                using (StreamReader sr = new StreamReader(fss))
+                {
+
+                    string xmls = sr.ReadToEnd();
+
+                    Debug.Write(xmls);
+                    store.Close();
+                }
+            }
+            else
+            {
+                Debug.Write("Plik nie istnieje");
+            }
+        }
+        public void LoadMapFromXML()
+        {
+            var store = IsolatedStorageFile.GetUserStoreForApplication();
+            XmlSerializer xmlFormat = null;
+            try
+            {
+                xmlFormat = new XmlSerializer(typeof(Map));
+            }
+            catch (Exception ex)
+            {
+                Debug.Write(ex.InnerException.ToString());
+            }
+
+            if (store.FileExists("Mapa.xml"))
+            {
+                var fs = store.OpenFile("Mapa.xml", FileMode.Open);
+
+                using (StreamReader sw = new StreamReader(fs))
+                {
+                    Map temp = (Map)xmlFormat.Deserialize(sw);
+                    //return (Map)xmlFormat.Deserialize(sw);
+                    this.Tiles = temp.Tiles;
+
+
+                }
+            }
+            else throw new Exception("Brak pliku z zapisem mapy");
+
 
         }
 
+     
         /// <summary>
         /// Private methods ...
         /// </summary>
@@ -126,9 +228,9 @@ namespace MapControler {
                             if (x >= Width)
                                 break;
 
-                            if (Tiles [i] [x, y] == null)
-                                Tiles [i] [x, y] = new Tile();
-                            Tiles [i] [x, y].Set(int.Parse(L), i);
+                            if (Tiles [i] [x] [y] == null)
+                                Tiles [i] [x] [y] = new Tile();
+                            Tiles [i] [x] [y].Set(int.Parse(L), i);
 
                             x++;
                         }
@@ -161,7 +263,7 @@ namespace MapControler {
                     if (YY >= 0 && (YY / MapZoom) < MapSizeY + 1) {
                         if (XX >= 0 && (XX / MapZoom) < MapSizeX + 1) {
 
-                            spriteBatch.Draw(Textur [LayerToDraw] [Tiles [LayerToDraw] [x, y].Id].Bitmap,
+                            spriteBatch.Draw(Textur [LayerToDraw] [Tiles [LayerToDraw] [x] [y].Id].Bitmap,
                                     new Rectangle(XX - MapZoom, YY - MapZoom, MapZoom, MapZoom),
                                     Color.White);
                         }
@@ -192,7 +294,7 @@ namespace MapControler {
                 if (GetPosition().X + x >= 0 && GetPosition().Y + y >= 0) {
                     if (GetPosition().X + x < Width && GetPosition().Y + y < Height) {
                         if (((int)GetPosition().X + x) - 1 >= 0 && ((int)GetPosition().Y + y) - 1 >= 0) {
-                            i = Textur [Layer] [Tiles [Layer] [((int)GetPosition().X + x) - 1, ((int)GetPosition().Y + y) - 1].Id].ID;
+                            i = Textur [Layer] [Tiles [Layer] [((int)GetPosition().X + x) - 1] [((int)GetPosition().Y + y) - 1].Id].ID;
                         }
 
                         // TOFIX
@@ -206,7 +308,7 @@ namespace MapControler {
 
         public int GetCurrentID(int Layer) {
 
-            return Textur [Layer] [Tiles [Layer] [((int)GetPosition().X) - 1, ((int)GetPosition().Y) - 1].Id].ID;
+            return Textur [Layer] [Tiles [Layer] [((int)GetPosition().X) - 1][ ((int)GetPosition().Y) - 1].Id].ID;
         }
 
         public int GetZoomValue() {
@@ -237,7 +339,7 @@ namespace MapControler {
         }
 
         public void ChangeID(int x, int y, int layer, int NewID) {
-            Tiles [layer] [x - 1, y - 1].Id = NewID;
+            Tiles [layer] [x - 1][ y - 1].Id = NewID;
             //Textur [layer] [Tiles [layer] [x-1, y-1].Id].ID = NewID;
         }
 
@@ -252,7 +354,7 @@ namespace MapControler {
             int x = (int)GetPosition().X + ((Dir == Direction.Left) ? -1 : (Dir == Direction.Right) ? 1 : 0);
             int y = (int)GetPosition().Y + ((Dir == Direction.Up) ? -1 : (Dir == Direction.Down) ? 1 : 0);
 
-            Tiles [layer] [x - 1, y - 1].Id = NewID;
+            Tiles [layer] [x - 1][ y - 1].Id = NewID;
             //Textur [layer] [Tiles [layer] [x-1, y-1].Id].ID = NewID;
 
             return new Vector2(x, y);
