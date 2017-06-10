@@ -18,6 +18,8 @@ using Microsoft.Xna.Framework.Input.Touch;
 namespace InGameMenuControler
 {
     public enum InGameMenuState { _Game, _Settings, _Inventory, _Crafting, _Quests }
+    public enum ItemToCraftChosen { _Hammer, _Pickaxe, _Axe, _Saw, _None }
+
     public class InGameMenuWindow
     {
         ContentManager Content;
@@ -62,6 +64,7 @@ namespace InGameMenuControler
                     _SpriteBatch.Draw(Icons.ElementAt(i), IconsPos.ElementAt(i), Color.White); // Rysowanie dodatkowych ikonek
                 }
             }
+
             // ---------------------------------------------------------------------------------------------------------------
 
         }

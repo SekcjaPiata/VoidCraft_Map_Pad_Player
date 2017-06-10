@@ -20,7 +20,7 @@ namespace InGameMenuControler
     {
         private int _ScreenX, _ScreenY;
         public List<InGameMenuWindow> InGameMenuWindows;
-     //   private SpriteBatch spritebatch;
+        //   private SpriteBatch spritebatch;
         private ContentManager content;
         public Texture2D InGameMenuButton;
         public Rectangle InGameMenuButtonPos;
@@ -155,6 +155,42 @@ namespace InGameMenuControler
             CraftingButtons.Add(content.Load<Texture2D>("Buttons/Button_Right"));
             CraftingButtonsPos.Add(new Rectangle(_ScreenX / 2 + 100, _ScreenY - 150, 50, 50));
 
+            // ---------- CraftingIcons ----------
+
+            // Index 0 - M³otek
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_HammerUnlocked"));
+            CraftingIconsPos.Add(new Rectangle(100, 150, 100, 100));
+
+            // Index 1 - Kilof
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_PickaxeUnlocked"));
+            CraftingIconsPos.Add(new Rectangle(100, 250, 100, 100));
+
+            // Index 2 - Topór
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_AxeUnlocked"));
+            CraftingIconsPos.Add(new Rectangle(100, 350, 100, 100));
+
+            // Index 3 - Pi³a
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_SawUnlocked"));
+            CraftingIconsPos.Add(new Rectangle(100, 450, 100, 100));
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Index 4 - Znacznik
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
+            CraftingIconsPos.Add(new Rectangle(200, 150, 100, 100));
+
+            // Index 5 - Znacznik
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
+            CraftingIconsPos.Add(new Rectangle(200, 250, 100, 100));
+
+            // Index 6 - Znacznik
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
+            CraftingIconsPos.Add(new Rectangle(200, 350, 100, 100));
+
+            // Index 7 - Znacznik
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
+            CraftingIconsPos.Add(new Rectangle(200, 450, 100, 100));
+
             // ---------- QuestsButtons ----------
 
             // Index 0 - Button do przejœcia w lewo
@@ -172,6 +208,26 @@ namespace InGameMenuControler
         {
             spritebatch.Draw(InGameMenuButton, InGameMenuButtonPos, Color.White);
         }
+        public void DrawItemToCraft(SpriteBatch spritebatch, ItemToCraftChosen _ItemToCraftChosen)
+        {
+            switch (_ItemToCraftChosen)
+            {
+                case ItemToCraftChosen._Hammer:
+                    spritebatch.Draw(CraftingIcons[0], new Rectangle(_ScreenX / 2 - 200, _ScreenY / 2 - 200, 400, 400), Color.White);
+                    break;
+                case ItemToCraftChosen._Pickaxe:
+                    spritebatch.Draw(CraftingIcons[1], new Rectangle(_ScreenX / 2 - 200, _ScreenY / 2 - 200, 400, 400), Color.White);
+                    break;
+                case ItemToCraftChosen._Axe:
+                    spritebatch.Draw(CraftingIcons[2], new Rectangle(_ScreenX / 2 - 200, _ScreenY / 2 - 200, 400, 400), Color.White);
+                    break;
+                case ItemToCraftChosen._Saw:
+                    spritebatch.Draw(CraftingIcons[3], new Rectangle(_ScreenX / 2 - 200, _ScreenY / 2 - 200, 400, 400), Color.White);
+                    break;
+                case ItemToCraftChosen._None:
+                    break;
+            }
+        }
         public void DrawInGameMenu(InGameMenuState _GameState, SpriteBatch spritebatch)
         {
             for (int i = 0; i < InGameMenuWindows.Count; i++)
@@ -179,7 +235,7 @@ namespace InGameMenuControler
                 if (InGameMenuWindows.ElementAt(i).MenuState == _GameState) InGameMenuWindows.ElementAt(i).DrawInGameMenuWindow(spritebatch);
             }
 
-            
+
 
 
             //foreach(InGameMenuWindow TTT in InGameMenuWindows)

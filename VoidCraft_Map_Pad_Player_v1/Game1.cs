@@ -78,6 +78,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         bool IsSoundPlaying = true;
         string SoundText = "Dzwiek";
         string SaveText = "Zapisz";
+        ItemToCraftChosen ItemToCraftChosenManager = ItemToCraftChosen._None;
 
         float timer = 1;
 
@@ -603,6 +604,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                 {
                     if (InGameMenuManager.InGameMenuButtonPos.Contains(T.Position) && !Buff.Contains(T.Position))
                     {
+                        ItemToCraftChosenManager = ItemToCraftChosen._None;
                         IsMenuButtonPressed = !IsMenuButtonPressed;
                         InGameMenuStateManager = InGameMenuState._Game;
                         DebugMode = !DebugMode;
@@ -649,15 +651,30 @@ namespace VoidCraft_Map_Pad_Player_v1
                             //
                         }
 
+                        // ------------------------------ Crafting -------------------------------------------
+                        if (InGameMenuStateManager == InGameMenuState._Crafting)
+                        {
+                            for (int i = 0; i < 4; i++)
+                            {
+                                if (InGameMenuManager.CraftingIconsPos[i].Contains(TC.Position))
+                                {
+                                    ItemToCraftChosenManager = (ItemToCraftChosen)i;
+                                }
+                            }
+
+                        }
+
                         // ------------------------------ Zmiana na ekwipunek ------------------------------
                         if (InGameMenuManager.SettingsButtonsPos[2].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings)
                         {
+                            ItemToCraftChosenManager = ItemToCraftChosen._None;
                             InGameMenuStateManager = InGameMenuState._Inventory;
                         }
 
                         // --------------------------------- Zmiana na ustawienia ------------------------------
                         else if (InGameMenuManager.InventoryButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Inventory)
                         {
+                            ItemToCraftChosenManager = ItemToCraftChosen._None;
                             InGameMenuStateManager = InGameMenuState._Settings;
                         }
 
@@ -669,11 +686,13 @@ namespace VoidCraft_Map_Pad_Player_v1
                         // ----------------------------------- Zmiana na ekwipunek -----------------------------------
                         else if (InGameMenuManager.CraftingButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting)
                         {
+                            ItemToCraftChosenManager = ItemToCraftChosen._None;
                             InGameMenuStateManager = InGameMenuState._Inventory;
                         }
                         // ------------------------------------ Zmiana na questy --------------------------------------
                         else if (InGameMenuManager.CraftingButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting)
                         {
+                            ItemToCraftChosenManager = ItemToCraftChosen._None;
                             InGameMenuStateManager = InGameMenuState._Quests;
                         }
                         // ------------------------------------ Zmiana na crafting --------------------------------------
@@ -696,6 +715,9 @@ namespace VoidCraft_Map_Pad_Player_v1
                         spriteBatch.DrawString(DefaultFont, SoundText, new Vector2(150, 200), Color.Black);
                         spriteBatch.DrawString(DefaultFont, SaveText, new Vector2(150, 300), Color.Black);
                     }
+
+                    InGameMenuManager.DrawItemToCraft(spriteBatch, ItemToCraftChosenManager);
+
                     InGameMenuManager.DrawInGameMenuButton(spriteBatch);
 
 
