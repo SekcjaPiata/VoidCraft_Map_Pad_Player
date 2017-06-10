@@ -76,14 +76,15 @@ namespace VoidCraft_Map_Pad_Player_v1
         public InGameMenuState InGameMenuStateManager;
         public TouchCollection TouchCollectionManager;
         bool IsSoundPlaying = true;
-
+        string SoundText = "Dzwiek";
+        string SaveText = "Zapisz";
 
         float timer = 1;
 
 
         //John'owicz
 
-        enum SwingDirection{ Swing_Up, Swing_Down, Swing_Right, Swing_Left }
+        enum SwingDirection { Swing_Up, Swing_Down, Swing_Right, Swing_Left }
         SwingDirection swingdirection;
         public List<Texture2D> PlayerMoveTexture; // Tworzenie Listy na teksturyPlayera
         private Player Gracz; // Tworzenie istancji
@@ -115,7 +116,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             WalkingDirection = Direction.Idle_Down;
             PACDirection = DirectionPAC.Pac_Left;
             swingdirection = SwingDirection.Swing_Up;
-    }
+        }
 
         // ----------------------------------------------------------------------------------------------------- Init
         protected override void Initialize()
@@ -161,7 +162,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             //   Inventory = Content.Load<Texture2D>("UI\\Equipment"); // £adowanie tekstury menu **
             InGameMenuManager = new InGameMenu(Content);
             InGameMenuStateManager = InGameMenuState._Game;
-            
+
 
 
             base.Initialize();
@@ -261,7 +262,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                         if (map.GetNextID(3, Direction.On) != 0)
                             map.MoveMap(-WalkSpeed, 0);
                         swingdirection = SwingDirection.Swing_Right;
-                        
+
                     }
                 }
                 else
@@ -301,24 +302,32 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                         case SwingDirection.Swing_Right:
                             PAC = true;
-                            if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true) {
+                            if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
+                            {
                                 PACDirection = DirectionPAC.Pac_R_Axe;
-                                Gracz.PAC_PAC(DirectionPAC.Pac_R_Axe, PlayerMoveTexture);  }
+                                Gracz.PAC_PAC(DirectionPAC.Pac_R_Axe, PlayerMoveTexture);
+                            }
 
-                            else  {
+                            else
+                            {
                                 PACDirection = DirectionPAC.Pac_Right;
-                                Gracz.PAC_PAC(DirectionPAC.Pac_Right, PlayerMoveTexture); }
+                                Gracz.PAC_PAC(DirectionPAC.Pac_Right, PlayerMoveTexture);
+                            }
                             break;
 
                         case SwingDirection.Swing_Left:
                             PAC = true;
-                            if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)  {
+                            if (Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
+                            {
                                 PACDirection = DirectionPAC.Pac_L_Axe;
-                                Gracz.PAC_PAC(DirectionPAC.Pac_L_Axe, PlayerMoveTexture); }
+                                Gracz.PAC_PAC(DirectionPAC.Pac_L_Axe, PlayerMoveTexture);
+                            }
 
-                            else {
+                            else
+                            {
                                 PACDirection = DirectionPAC.Pac_Left;
-                                Gracz.PAC_PAC(DirectionPAC.Pac_Left, PlayerMoveTexture); }
+                                Gracz.PAC_PAC(DirectionPAC.Pac_Left, PlayerMoveTexture);
+                            }
                             break;
 
                         default:
@@ -447,12 +456,12 @@ namespace VoidCraft_Map_Pad_Player_v1
                     else
                     {
                         Gracz = Player.LoadPlayer();
-                          Gracz.Texture = PlayerMoveTexture[4];
-                         Gracz.Grass = GrassWalk.sound;
+                        Gracz.Texture = PlayerMoveTexture[4];
+                        Gracz.Grass = GrassWalk.sound;
 
-                        
+
                     }
-                    
+
                 }
 
                 //if (map.GetCurrentID(4) != 0)
@@ -681,8 +690,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
                     if (InGameMenuStateManager == InGameMenuState._Settings)
                     {
-                        //   spriteBatch.DrawString(DefaultFont, "Dzwiêk", new Vector2(200, 200), Color.Black);
-                        //   spriteBatch.DrawString(DefaultFont, "Zapisz", new Vector2(200, 300), Color.Black);
+                        spriteBatch.DrawString(DefaultFont, SoundText, new Vector2(150, 200), Color.Black);
+                        spriteBatch.DrawString(DefaultFont, SaveText, new Vector2(150, 300), Color.Black);
                     }
                     InGameMenuManager.DrawInGameMenuButton(spriteBatch);
 

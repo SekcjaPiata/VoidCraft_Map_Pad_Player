@@ -101,11 +101,11 @@ namespace InGameMenuControler
 
             // Index 0 - Button do przejœcia w lewo
             InventoryButtons.Add(content.Load<Texture2D>("Buttons/Button_Left"));
-            InventoryButtonsPos.Add(new Rectangle(150, _ScreenY - 150, 50, 50));
+            InventoryButtonsPos.Add(new Rectangle(_ScreenX / 2 - 100, _ScreenY - 150, 50, 50));
 
             // Index 1 - Button do przejœcia w prawo
             InventoryButtons.Add(content.Load<Texture2D>("Buttons/Button_Right"));
-            InventoryButtonsPos.Add(new Rectangle(_ScreenX - 150, _ScreenY - 150, 50, 50));
+            InventoryButtonsPos.Add(new Rectangle(_ScreenX / 2 + 100, _ScreenY - 150, 50, 50));
 
             // ---------- InventoryIcons ----------
 
@@ -149,17 +149,17 @@ namespace InGameMenuControler
 
             // Index 0 - Button do przejœcia w lewo
             CraftingButtons.Add(content.Load<Texture2D>("Buttons/Button_Left"));
-            CraftingButtonsPos.Add(new Rectangle(150, _ScreenY - 150, 50, 50));
+            CraftingButtonsPos.Add(new Rectangle(_ScreenX / 2 - 100, _ScreenY - 150, 50, 50));
 
             // Index 1 - Button do przejœcia w prawo
             CraftingButtons.Add(content.Load<Texture2D>("Buttons/Button_Right"));
-            CraftingButtonsPos.Add(new Rectangle(_ScreenX - 150, _ScreenY - 150, 50, 50));
+            CraftingButtonsPos.Add(new Rectangle(_ScreenX / 2 + 100, _ScreenY - 150, 50, 50));
 
             // ---------- QuestsButtons ----------
 
             // Index 0 - Button do przejœcia w lewo
             QuestsButtons.Add(content.Load<Texture2D>("Buttons/Button_Left"));
-            QuestsButtonsPos.Add(new Rectangle(150, _ScreenY - 150, 50, 50));
+            QuestsButtonsPos.Add(new Rectangle(_ScreenX / 2 - 100, _ScreenY - 150, 50, 50));
 
 
             InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Settings, "MenuWindows/MenuWindow_Settings", SettingsButtons, SettingsButtonsPos, null, null, content));
