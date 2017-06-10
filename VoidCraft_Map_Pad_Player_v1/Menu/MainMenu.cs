@@ -12,7 +12,7 @@ namespace Menu
     public class MainMenu
     {
         private int c = 1;
-
+     
 
         enum GameState { MainMenu, authors, inGame, Options }
         GameState gamestate;
@@ -21,11 +21,15 @@ namespace Menu
         List<GUIElement> main = new List<GUIElement>();
         public List<GUIElement> authors = new List<GUIElement>();
         
+        void load(ref PlayerControler.Player pl)
+        {
+            pl = PlayerControler.Player.LoadPlayer();
+        }
 
         //  private Keys
-        public MainMenu()
+        public MainMenu( )
         {
-
+            
             main.Add(new GUIElement("Menu\\M_BACK"));
             main.Add(new GUIElement("Menu\\B_graj"));
             main.Add(new GUIElement("Menu\\Wczytaj"));
@@ -164,10 +168,11 @@ namespace Menu
             {
                 // to do wczytywanie 
                 Game1.GameRunning = true;
+                Game1.LoadedGame = true;
                 Game1.SongPlayed = 1;
-                gamestate = GameState.inGame;
-                PlayerControler.Player.LoadPlayer();
-               
+                 gamestate = GameState.inGame;
+                
+              
 
 
             }
