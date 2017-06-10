@@ -75,6 +75,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         public InGameMenu InGameMenuManager;
         public InGameMenuState InGameMenuStateManager;
         public TouchCollection TouchCollectionManager;
+        bool IsSoundPlaying = true;
 
 
         float timer = 1;
@@ -608,31 +609,90 @@ namespace VoidCraft_Map_Pad_Player_v1
                 {
                     if (InGameMenuStateManager == InGameMenuState._Game) InGameMenuStateManager = InGameMenuState._Settings;
                     //   spriteBatch.Draw(Inventory, new Rectangle(100, 100, 800, 400), Color.White); // Rysowanie knefla do ingame menu **
-
+                    //InGameMenuManager.DisposeUnusedButtons(InGameMenuStateManager);
                     InGameMenuManager.DrawInGameMenu(InGameMenuStateManager, spriteBatch);
 
                     TouchCollectionManager = TouchPanel.GetState();
                     foreach (TouchLocation TC in TouchCollectionManager)
                     {
-                        if (InGameMenuManager.SettingsButtonsPos[2].Contains(TC.Position))
+                        // ------------------------------ DŸwiêk -------------------------------------------
+                        if (InGameMenuManager.SettingsButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings)
+                        {
+                            IsSoundPlaying = !IsSoundPlaying;
+                            if (IsSoundPlaying) InGameMenuManager.SettingsButtons[0] = Content.Load<Texture2D>("Buttons/Button_Checked");
+                            else if (!IsSoundPlaying) InGameMenuManager.SettingsButtons[0] = Content.Load<Texture2D>("Buttons/Button_UnChecked");
+                            //
+                            //
+                            //
+                            //
+                            //
+                        }
+                        // ------------------------------ Zapis gry -------------------------------------------
+                        if (InGameMenuManager.SettingsButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings)
+                        {
+                            //
+                            //
+                            //
+                            //
+                            //
+                        }
+
+                        // ------------------------------ Zmiana na ekwipunek ------------------------------
+                        if (InGameMenuManager.SettingsButtonsPos[2].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Settings)
                         {
                             InGameMenuStateManager = InGameMenuState._Inventory;
                         }
+
+                        // --------------------------------- Zmiana na ustawienia ------------------------------
+                        else if (InGameMenuManager.InventoryButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Inventory)
+                        {
+                            InGameMenuStateManager = InGameMenuState._Settings;
+                        }
+
+                        // ----------------------------------- Zmiana na crafting ---------------------------------
+                        else if (InGameMenuManager.InventoryButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Inventory)
+                        {
+                            InGameMenuStateManager = InGameMenuState._Crafting;
+                        }
+                        // ----------------------------------- Zmiana na ekwipunek -----------------------------------
+                        else if (InGameMenuManager.CraftingButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting)
+                        {
+                            InGameMenuStateManager = InGameMenuState._Inventory;
+                        }
+                        // ------------------------------------ Zmiana na questy --------------------------------------
+                        else if (InGameMenuManager.CraftingButtonsPos[1].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting)
+                        {
+                            InGameMenuStateManager = InGameMenuState._Quests;
+                        }
+                        // ------------------------------------ Zmiana na crafting --------------------------------------
+                        else if (InGameMenuManager.QuestsButtonsPos[0].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Quests)
+                        {
+                            InGameMenuStateManager = InGameMenuState._Crafting;
+                        }
                     }
-
-
-                    //spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.Materials.Water, new Vector2(120, 150), Color.White);
-                    //spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.Materials.Food, new Vector2(120, 200), Color.White);
-                    //spriteBatch.DrawString(DefaultFont, "Drewno: " + Gracz.Materials.Wood, new Vector2(120, 250), Color.White);
-                    //spriteBatch.DrawString(DefaultFont, "Liany: " + Gracz.Materials.Lianas, new Vector2(120, 300), Color.White);
-                    //spriteBatch.DrawString(DefaultFont, "Kamien: " + Gracz.Materials.Stone, new Vector2(120, 350), Color.White);
+                    // Musia³em to tutaj daæ, bo jakbym chcia³ to wypisywaæ w klasie to trza by by³o pozmieniaæ klauzury dostêpnoœci w playerze - Juan
+                    if (InGameMenuStateManager == InGameMenuState._Inventory)
+                    {
+                        spriteBatch.DrawString(DefaultFont, ":" + Gracz.Materials.Wood, new Vector2(150, 160), Color.Black);
+                        spriteBatch.DrawString(DefaultFont, ":" + Gracz.Materials.Stone, new Vector2(150, 210), Color.Black);
+                        spriteBatch.DrawString(DefaultFont, ":" + Gracz.Materials.Lianas, new Vector2(150, 260), Color.Black);
+                        spriteBatch.DrawString(DefaultFont, ":" + Gracz.Materials.Food, new Vector2(150, 310), Color.Black);
+                        spriteBatch.DrawString(DefaultFont, ":" + Gracz.Materials.Water, new Vector2(150, 360), Color.Black);
+                    }
+                    if (InGameMenuStateManager == InGameMenuState._Settings)
+                    {
+                        //   spriteBatch.DrawString(DefaultFont, "Dzwiêk", new Vector2(200, 200), Color.Black);
+                        //   spriteBatch.DrawString(DefaultFont, "Zapisz", new Vector2(200, 300), Color.Black);
+                    }
                     InGameMenuManager.DrawInGameMenuButton(spriteBatch);
+
+
                 }
 
 
                 // /\/\/\/\/\/\/\/\/\/\/\/\/\
 
-                
+
 
                 if (DebugMode)
                 {

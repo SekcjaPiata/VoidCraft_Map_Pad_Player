@@ -111,7 +111,7 @@ namespace InGameMenuControler
 
             // Index 0 - Drewno
             InventoryIcons.Add(content.Load<Texture2D>("Icons/Icon_Wood"));
-            InventoryIconsPos.Add(new Rectangle(100, 100, 50, 50));
+            InventoryIconsPos.Add(new Rectangle(100, 150, 50, 50));
 
             // Index 1 - Kamieñ
             InventoryIcons.Add(content.Load<Texture2D>("Icons/Icon_Stone"));
@@ -119,19 +119,19 @@ namespace InGameMenuControler
 
             // Index 2 - Liany
             InventoryIcons.Add(content.Load<Texture2D>("Icons/Icon_Liane"));
-            InventoryIconsPos.Add(new Rectangle(100, 300, 50, 50));
+            InventoryIconsPos.Add(new Rectangle(100, 250, 50, 50));
 
             // Index 3 - Jedzenie
             InventoryIcons.Add(content.Load<Texture2D>("Icons/Icon_Food"));
-            InventoryIconsPos.Add(new Rectangle(100, 400, 50, 50));
+            InventoryIconsPos.Add(new Rectangle(100, 300, 50, 50));
 
             // Index 4 - Woda
             InventoryIcons.Add(content.Load<Texture2D>("Icons/Icon_Water"));
-            InventoryIconsPos.Add(new Rectangle(100, 500, 50, 50));
+            InventoryIconsPos.Add(new Rectangle(100, 350, 50, 50));
 
             // Index 5 - M³otek
             InventoryIcons.Add(content.Load<Texture2D>("Icons/Icon_HammerLocked"));
-            InventoryIconsPos.Add(new Rectangle(_ScreenX - 150, 100, 50, 50));
+            InventoryIconsPos.Add(new Rectangle(_ScreenX - 150, 150, 50, 50));
 
             // Index 6 - Kilof
             InventoryIcons.Add(content.Load<Texture2D>("Icons/Icon_PickaxeLocked"));
@@ -139,11 +139,11 @@ namespace InGameMenuControler
 
             // Index 7 - Topór
             InventoryIcons.Add(content.Load<Texture2D>("Icons/Icon_AxeLocked"));
-            InventoryIconsPos.Add(new Rectangle(_ScreenX - 150, 300, 50, 50));
+            InventoryIconsPos.Add(new Rectangle(_ScreenX - 150, 250, 50, 50));
 
             // Index 8 - Pi³a
             InventoryIcons.Add(content.Load<Texture2D>("Icons/Icon_SawLocked"));
-            InventoryIconsPos.Add(new Rectangle(_ScreenX - 150, 400, 50, 50));
+            InventoryIconsPos.Add(new Rectangle(_ScreenX - 150, 300, 50, 50));
 
             // ---------- CraftingButtons ----------
 
