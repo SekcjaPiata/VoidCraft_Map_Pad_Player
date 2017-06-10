@@ -6,11 +6,11 @@ using System.IO;
 using Microsoft.Xna.Framework.Input.Touch;
 
 namespace MapControler {
-    enum Direction {
+   public enum Direction {
         Idle_Down, Left, Right, Up, Down, Idle_Left, Idle_Right, Idle_Back, On
     }
 
-    enum DirectionPAC {
+   public enum DirectionPAC {
         Pac_Left, Pac_Right, Pac_R_Axe, Pac_L_Axe, Pac_Up, Pac_Down
     }
 

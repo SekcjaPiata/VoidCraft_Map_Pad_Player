@@ -432,8 +432,15 @@ namespace VoidCraft_Map_Pad_Player_v1
                     //ChangeGameTime(GameHour + 1, 0);
 
                     var store = IsolatedStorageFile.GetUserStoreForApplication();
-                    XmlSerializer xmlFormat = new XmlSerializer(typeof(RawMaterials));
-
+                    XmlSerializer xmlFormat = null;
+                    try
+                    {
+                        xmlFormat = new XmlSerializer(typeof(Player));
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.Write(ex.InnerException.ToString());
+                    }
                     RawMaterials serializacja = new RawMaterials();
                     serializacja.Food += 10;
                     serializacja.Metal += 20;
@@ -441,7 +448,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                         using (StreamWriter sw = new StreamWriter(fs))
                         {
                         //sw.WriteLine("0ss");
-                        xmlFormat.Serialize(sw, serializacja);
+                        xmlFormat.Serialize(sw, Gracz);
                        // sw.Close();
                         }
                   
