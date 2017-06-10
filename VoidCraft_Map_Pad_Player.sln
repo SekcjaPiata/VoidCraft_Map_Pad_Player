@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoidCraft_Map_Pad_Player_v1", "VoidCraft_Map_Pad_Player_v1\VoidCraft_Map_Pad_Player_v1.csproj", "{93E01DED-B327-46BE-94B0-4ED09C653FFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9335794C-747D-4626-AB15-054E8CB3549C}"
+	ProjectSection(SolutionItems) = preProject
+		D:\Studia\Semestr 4\Programowanie urządzeń mobilnych\Projekt\Nasza dokumentacja\Dokumentacja-VoidCraft.docx = D:\Studia\Semestr 4\Programowanie urządzeń mobilnych\Projekt\Nasza dokumentacja\Dokumentacja-VoidCraft.docx
+		D:\Studia\Semestr 4\Programowanie urządzeń mobilnych\Projekt\Nasza dokumentacja\obraz-tytułowa.PNG = D:\Studia\Semestr 4\Programowanie urządzeń mobilnych\Projekt\Nasza dokumentacja\obraz-tytułowa.PNG
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
