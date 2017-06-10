@@ -11,16 +11,15 @@ namespace Menu
 
     public class MainMenu
     {
-
         private int c = 1;
-        private Song mor;
+
 
         enum GameState { MainMenu, authors, inGame, Options }
         GameState gamestate;
 
         List<GUIElement> options = new List<GUIElement>();
         List<GUIElement> main = new List<GUIElement>();
-        public List<GUIElement> enterName = new List<GUIElement>();
+        public List<GUIElement> authors = new List<GUIElement>();
 
         //  private Keys
         public MainMenu()
@@ -32,10 +31,13 @@ namespace Menu
             main.Add(new GUIElement("Menu\\B_autorzy"));
             main.Add(new GUIElement("Menu\\voidscraft"));
             //  options.Add(new GUIElement("2"));
-            options.Add(new GUIElement("Menu\\Bot"));
 
-            enterName.Add(new GUIElement("Menu\\name"));
-            enterName.Add(new GUIElement("Menu\\done"));
+            options.Add(new GUIElement("Menu\\M_BACK"));
+            options.Add(new GUIElement("Menu\\B_powrot"));
+
+
+            authors.Add(new GUIElement("Menu\\M_BACK"));
+            authors.Add(new GUIElement("Menu\\B_powrot"));
         }
 
         public void LoadContent(ContentManager content)
@@ -53,7 +55,7 @@ namespace Menu
             main.Find(x => x.AssetName == "Menu\\M_BACK").Background();
             main.Find(x => x.AssetName == "Menu\\voidscraft").MoveElement(0, -600);
 
-            foreach (GUIElement element in enterName)
+            foreach (GUIElement element in authors)
             {
                 element.LoadContent(content);
 
@@ -61,15 +63,20 @@ namespace Menu
                 element.clickEvent += OnClick;
                 c++;
             }
-
+            authors.Find(x => x.AssetName == "Menu\\B_powrot").MoveElement(-500, 300);
+            authors.Find(x => x.AssetName == "Menu\\M_BACK").Background();
+            c = 1;
 
             foreach (GUIElement element in options)
             {
 
                 element.LoadContent(content);
-                element.CenterElement(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
+                element.CenterElement((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 500) + 250 * c, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
                 element.clickEvent += OnClick;
+                c++;
             }
+            options.Find(x => x.AssetName == "Menu\\M_BACK").Background();
+            options.Find(x => x.AssetName == "Menu\\B_powrot").MoveElement(-500, 300);
 
         }
 
@@ -78,26 +85,26 @@ namespace Menu
             switch (gamestate)
             {
                 case GameState.MainMenu:
-                foreach (GUIElement element in main)
-                {
-                    element.Update();
-                }
-                break;
+                    foreach (GUIElement element in main)
+                    {
+                        element.Update();
+                    }
+                    break;
                 case GameState.authors:
-                foreach (GUIElement element in enterName)
-                {
-                    element.Update();
-                }
-                break;
+                    foreach (GUIElement element in authors)
+                    {
+                        element.Update();
+                    }
+                    break;
                 case GameState.inGame:
-                break;
+                    break;
                 case GameState.Options:
-                foreach (GUIElement element in options)
-                {
-                    element.Update();
-                }
+                    foreach (GUIElement element in options)
+                    {
+                        element.Update();
+                    }
 
-                break;
+                    break;
             }
 
 
@@ -108,29 +115,30 @@ namespace Menu
             switch (gamestate)
             {
                 case GameState.MainMenu:
-                foreach (GUIElement element in main)
-                {
-                    element.Draw(spriteBatch);
+                    foreach (GUIElement element in main)
+                    {
+                        element.Draw(spriteBatch);
 
-                }
-                break;
+                    }
+                    break;
                 case GameState.authors:
-                foreach (GUIElement element in enterName)
-                {
+                    foreach (GUIElement element in authors)
+                    {
 
-                    element.Draw(spriteBatch);
+                        element.Draw(spriteBatch);
 
-                }
-                break;
+                    }
+                    break;
                 case GameState.inGame:
-                break;
+                    break;
                 case GameState.Options:
-                foreach (GUIElement element in options)
-                {
-                    element.Draw(spriteBatch);
-                }
+                    foreach (GUIElement element in options)
+                    {
+                        element.Draw(spriteBatch);
 
-                break;
+                    }
+
+                    break;
 
             }
 
@@ -138,8 +146,10 @@ namespace Menu
         }
 
 
+
         public void OnClick(string element)
         {
+
             if (element == "Menu\\B_graj")
             {
                 Game1.GameRunning = true;
@@ -165,19 +175,17 @@ namespace Menu
             {
                 // To do: Tuaj będą "ustawienia" jakieś pomysły ?
             }
+
+
+            if (element == "Menu\\B_powrot")
+            {
+                gamestate = GameState.MainMenu;
+
+            }
+
+
+
         }
-        //private void GetKeys()
-        //{
-        //    KeyboardState state = Keyboard.GetState();
-        //   // TouchCollection state = TouchPanel.GetState();
-        //    System.Text.StringBuilder sb = new StringBuilder();
-        //    foreach (var key in state.GetPressedKeys())
-        //        sb.Append(key);
 
-        //    if (sb.Length > 0) System.Diagnostics.Debug.WriteLine(sb.ToString());
-        //    else
-        //        System.Diagnostics.Debug.WriteLine("NIc sie nie wcisnęło");
-
-        //}
     }
 }
