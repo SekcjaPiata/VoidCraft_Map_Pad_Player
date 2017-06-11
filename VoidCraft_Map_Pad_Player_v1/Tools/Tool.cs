@@ -86,7 +86,7 @@ namespace Tools
                 PlayerMaterials.Food -= Requirements.Food;
                 IsOwned = true;
             } else
-                throw new CantCraftException("Zbyt ma³o materia³ów do stworzenia przedmiotu: " + this.ToolName);
+                throw new CantCraftException("Zbyt malo materialow do stworzenia przedmiotu: " + this.ToolName);
 
 
         }

@@ -39,9 +39,11 @@ namespace EpicQuests
             if (!player_materials.Contains(Materials_needed)) return false;
             foreach (Tool t in Tools_needed)
             {
-                if (!t.CanCraft(player_materials)) return false;
-                // if (!player_tools.Contains(t)) return false; -> wersja na póŸniejsze questy
-                // Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned == true)
+               
+                if (player_tools.Find(x => x.ToolName == t.ToolName).IsOwned==false)
+                {
+                    return false;
+                }
             }
             Materials_for_quest_owned = true;
             Finished = true;

@@ -489,19 +489,6 @@ namespace VoidCraft_Map_Pad_Player_v1
                     messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
 
 
-                    //wczytywanie na razie jest tu
-                    //try
-                    //{
-                    //    Gracz = Player.LoadPlayer();
-                    //    Gracz.Texture = PlayerMoveTexture[4];
-                    //    Gracz.Grass = GrassWalk.sound;
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 1000, 1000));
-                    //}
-
-                  //  }
 
                 }
 
@@ -509,12 +496,11 @@ namespace VoidCraft_Map_Pad_Player_v1
                 //{
                 //    map.Message("Oooo misja :/  ID:" + map.GetMissionID(4), DefaultFont, new Rectangle(50, 20, 400, 100));
                 //}
+                //------questy-----------
 
                 if (Gracz.ActiveGuest >= Gracz.Quests.Count)
                 {
-                    //map.Message("\r\n Brawo! Zebrales potrzebne materialy\r\n aby stworzyc schronienie i przetrwac\r\n nadchodzaca NOC \r\n \r\n Ukonczono fabule prologu!", DefaultFont, new Rectangle(100, 100, 600, 600));
-                    // .. map.
-                   // map.MessageActive = 2;
+                    
                     string message = "\r\n Brawo! Zebrales potrzebne materialy\r\n aby stworzyc schronienie i przetrwac\r\n nadchodzaca NOC \r\n \r\n Ukonczono fabule prologu!";
                     messages.CreateIndependentMessage(message, new Rectangle(50, 20, 1000, 1000));
                 }
@@ -529,19 +515,9 @@ namespace VoidCraft_Map_Pad_Player_v1
                 }
                 else if (Gracz.Quests[Gracz.ActiveGuest].IsFinished(Gracz.Materials, Gracz.Tools))
                 {
-                    //map.Message("Ukonczono misje:\r\n" + Gracz.Quests [Gracz.ActiveGuest].Name, DefaultFont, new Rectangle(100, 100, 600, 600));
+                    
                     messages.CreateIndependentMessage("Ukonczono misje:\r\n" + Gracz.Quests[Gracz.ActiveGuest].Name, new Rectangle(50, 20, 1000, 1000));
-                    switch (Gracz.ActiveGuest)
-                    {
-                        case 0:
-                            Gracz.Tools.Find(x => x.ToolName == "Hammer").IsOwned = true;
-                            Gracz.Tools.Find(x => x.ToolName == "Hammer").Craft(Gracz.Materials);
-                            break;
-                        case 1:
-                            Gracz.Tools.Find(x => x.ToolName == "Axe").IsOwned = true;
-                            Gracz.Tools.Find(x => x.ToolName == "Axe").Craft(Gracz.Materials);
-                            break;
-                    }
+                   
                     Gracz.Player_Dairy.dairy_notes.Add("\r\nUkonczono misje : \r\n" + Gracz.Quests[Gracz.ActiveGuest].Name);
                     Gracz.ActiveGuest++;
                 }
@@ -698,7 +674,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                             //
                             //
                         }
-                        // ------------------------------ Zuber -------------------------------------------
+                        // ------------------------------ Crafting -------------------------------------------
                         if (InGameMenuManager.CraftingButtonsPos[2].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting && !Buff.Contains(TC.Position))
                         {
                             Buff.X = (int)TC.Position.X - 2;
@@ -706,18 +682,50 @@ namespace VoidCraft_Map_Pad_Player_v1
                             Buff.Width = 4;
                             Buff.Height = 4;
                             // \|/ Tutaj mo¿esz wdupiæ crafting w zale¿noœci od wybranego przedmiotu
-                            //switch (ItemToCraftChosenManager)
-                            //{
-                            //    case ItemToCraftChosen._Hammer:
-                            //        break;
-                            //    case ItemToCraftChosen._Axe:
-                            //        break;
-                            //    case ItemToCraftChosen._Pickaxe:
-                            //        break;
-                            //    case ItemToCraftChosen._Saw:
-                            //        break;
+                            switch (ItemToCraftChosenManager)
+                            {
+                                case ItemToCraftChosen._Hammer:
+                                    try
+                                    {
+                                        Gracz.Tools.Find(x => x.ToolName == "Hammer").Craft(Gracz.Materials);
+                                    }
+                                    catch (Tool.CantCraftException ex)
+                                    {
+                                        messages.CreateIndependentMessage(ex.Message,new  Rectangle(50, 20, 600, 200));
+                                    }
+                                    break;
+                                case ItemToCraftChosen._Axe:
+                                    try
+                                    {
+                                        Gracz.Tools.Find(x => x.ToolName == "Axe").Craft(Gracz.Materials);
+                                    }
+                                    catch (Tool.CantCraftException ex)
+                                    {
+                                        messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 600, 200));
+                                    }
+                                    break;
+                                case ItemToCraftChosen._Pickaxe:
+                                    try
+                                    {
+                                        Gracz.Tools.Find(x => x.ToolName == "Pick").Craft(Gracz.Materials);
+                                    }
+                                    catch (Tool.CantCraftException ex)
+                                    {
+                                        messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 600, 200));
+                                    }
+                                    break;
+                                case ItemToCraftChosen._Saw:
+                                    try
+                                    {
+                                        Gracz.Tools.Find(x => x.ToolName == "Saw").Craft(Gracz.Materials);
+                                    }
+                                    catch (Tool.CantCraftException ex)
+                                    {
+                                        messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 600, 200));
+                                    }
+                                    break;
 
-                            //}
+                            }
                         }
 
                         // ------------------------------ Wyœwietlanie craftowanych itemów -------------------------------------------
