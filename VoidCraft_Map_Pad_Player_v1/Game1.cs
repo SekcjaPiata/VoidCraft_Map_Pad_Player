@@ -67,7 +67,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         public static bool GameRunning = false;
         public static bool LoadedGame =  false;
         public static int SongPlayed = 0;
-
+        public static bool IsSoundPlaying = true;
         Texture2D back;
 
         // Texture2D Knefel_EQ; // Guziczek do ingame menu **
