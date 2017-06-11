@@ -688,6 +688,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                                     try
                                     {
                                         Gracz.Tools.Find(x => x.ToolName == "Hammer").Craft(Gracz.Materials);
+                                        InGameMenuManager.CraftingIcons[4] = Content.Load<Texture2D>("Icons/Icon_Allowed");
+                                        InGameMenuManager.InventoryIcons[5] = Content.Load<Texture2D>("Icons/Icon_HammerUnlocked");
                                     }
                                     catch (Tool.CantCraftException ex)
                                     {
@@ -698,6 +700,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                                     try
                                     {
                                         Gracz.Tools.Find(x => x.ToolName == "Axe").Craft(Gracz.Materials);
+                                        InGameMenuManager.CraftingIcons[6] = Content.Load<Texture2D>("Icons/Icon_Allowed");
+                                        InGameMenuManager.InventoryIcons[7] = Content.Load<Texture2D>("Icons/Icon_AxeUnlocked");
                                     }
                                     catch (Tool.CantCraftException ex)
                                     {
@@ -708,6 +712,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                                     try
                                     {
                                         Gracz.Tools.Find(x => x.ToolName == "Pick").Craft(Gracz.Materials);
+                                        InGameMenuManager.CraftingIcons[5] = Content.Load<Texture2D>("Icons/Icon_Allowed");
+                                        InGameMenuManager.InventoryIcons[6] = Content.Load<Texture2D>("Icons/Icon_PickaxeUnlocked");
                                     }
                                     catch (Tool.CantCraftException ex)
                                     {
@@ -718,6 +724,8 @@ namespace VoidCraft_Map_Pad_Player_v1
                                     try
                                     {
                                         Gracz.Tools.Find(x => x.ToolName == "Saw").Craft(Gracz.Materials);
+                                        InGameMenuManager.CraftingIcons[7] = Content.Load<Texture2D>("Icons/Icon_Allowed");
+                                        InGameMenuManager.InventoryIcons[8] = Content.Load<Texture2D>("Icons/Icon_SawUnlocked");
                                     }
                                     catch (Tool.CantCraftException ex)
                                     {
