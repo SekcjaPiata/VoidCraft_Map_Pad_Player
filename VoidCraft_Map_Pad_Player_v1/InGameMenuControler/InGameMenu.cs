@@ -13,6 +13,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Content;
+using EpicQuests;
+using PlayerControler;
 
 namespace InGameMenuControler
 {
@@ -230,6 +232,17 @@ namespace InGameMenuControler
                     break;
                 case ItemToCraftChosen._None:
                     break;
+            }
+        }
+        public void DrawQuestsNames(SpriteBatch _spritebatch, SpriteFont _spritefont, List<Quest> QuestNames)
+        {
+            if (QuestNames != null)
+            {
+                for (int i = 0; i < QuestNames.Count; i++)
+                {
+                    if (i == 0) _spritebatch.DrawString(_spritefont, QuestNames.ElementAt(0).Name, new Vector2(150, 150), Color.Black);
+                    else _spritebatch.DrawString(_spritefont, QuestNames.ElementAt(i).Name, new Vector2(150, 150 + (i * 30)), Color.Black);
+                }
             }
         }
         public void DrawInGameMenu(InGameMenuState _GameState, SpriteBatch spritebatch)
