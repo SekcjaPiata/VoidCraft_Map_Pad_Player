@@ -80,6 +80,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         string SoundText = "Dzwiek";
         string SaveText = "Zapisz";
         ItemToCraftChosen ItemToCraftChosenManager = ItemToCraftChosen._None;
+        public List<Rectangle> QuestsPos;
 
         float timer = 1;
 
@@ -172,7 +173,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             //   Inventory = Content.Load<Texture2D>("UI\\Equipment"); // £adowanie tekstury menu **
             InGameMenuManager = new InGameMenu(Content);
             InGameMenuStateManager = InGameMenuState._Game;
-
+            QuestsPos = new List<Rectangle>();
 
 
             base.Initialize();
@@ -829,6 +830,8 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                     InGameMenuManager.DrawInGameMenuButton(spriteBatch);
 
+                    // Wyœwietlanie nazw questów
+                    if (InGameMenuStateManager == InGameMenuState._Quests) InGameMenuManager.DrawQuestsNames(spriteBatch, DefaultFont, Gracz.Quests);
 
                 }
 
