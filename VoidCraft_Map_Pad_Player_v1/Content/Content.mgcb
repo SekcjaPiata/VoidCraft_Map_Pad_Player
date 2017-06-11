@@ -2079,18 +2079,6 @@
 /processorParam:TextureFormat=Color
 /build:Menu/B_graj.png
 
-#begin Menu/B_ustawianie.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Menu/B_ustawianie.png
-
 #begin Menu/M_BACK.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
