@@ -17,9 +17,8 @@ namespace Menu
         enum GameState { MainMenu, authors, inGame }
         GameState gamestate;
 
-        List<GUIElement> options = new List<GUIElement>(); // rozważam usunięcie 
         List<GUIElement> main = new List<GUIElement>();
-        public List<GUIElement> authors = new List<GUIElement>();
+        List<GUIElement> authors = new List<GUIElement>();
         
 
         //  private Keys

@@ -110,6 +110,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             Graphics = new GraphicsDeviceManager(this);
 
             Content.RootDirectory = "Content";
+            
             Graphics.IsFullScreen = true;
             Graphics.PreferredBackBufferWidth = 800;
             Graphics.PreferredBackBufferHeight = 480;
