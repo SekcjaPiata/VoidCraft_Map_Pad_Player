@@ -38,7 +38,7 @@ namespace VoidCraft_Map_Pad_Player_v1
     {
 
 
-        
+
         GraphicsDeviceManager Graphics;
         SpriteBatch spriteBatch;
         SpriteFont DefaultFont;
@@ -66,8 +66,6 @@ namespace VoidCraft_Map_Pad_Player_v1
         bool DebugMode = true;
         public static bool GameRunning = false;
         public static bool LoadedGame =  false;
-        public static bool IsSoundPlaying = true;
-
         public static int SongPlayed = 0;
 
         Texture2D back;
@@ -106,14 +104,14 @@ namespace VoidCraft_Map_Pad_Player_v1
         GamePadStatus buff = GamePadStatus.None;
 
         Rectangle Buff;
-   
+
         // ----------------------------------------------------------------------------------------------------- Konstruktor
         public Game1()
         {
             Graphics = new GraphicsDeviceManager(this);
 
             Content.RootDirectory = "Content";
-            
+
             Graphics.IsFullScreen = true;
             Graphics.PreferredBackBufferWidth = 800;
             Graphics.PreferredBackBufferHeight = 480;
@@ -146,10 +144,10 @@ namespace VoidCraft_Map_Pad_Player_v1
             GrassWalk = new SoundEffects("GrassStep", Content, "GrassWalk");
 
             //MAPY->  ProjektTestowy  JohnnoweTekstury  NoweTeksturyV4  MalaMapa  POLIGON  VoidMap
-          
-                map = new Map(GraphicsDevice, "Map_Final_V2", ScreenX, ScreenY);
-                map.SetPosition(Starting_posX, Starting_posY);
-            
+
+            map = new Map(GraphicsDevice, "Map_Final_V2", ScreenX, ScreenY);
+            map.SetPosition(Starting_posX, Starting_posY);
+
 
             Pad = new GameControler(GraphicsDevice, ScreenX, ScreenY);
 
@@ -164,10 +162,10 @@ namespace VoidCraft_Map_Pad_Player_v1
             // Przekazuje teksture do postaci i ilosc klatek w danej animacji
 
             //---------------------------------------------------------------
-         
-                Gracz = new Player(GrassWalk.sound, PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); // Gdybyœ przekaza³ ContenMenager Content jako parametr to wczytywanie siê nie zmieni ,a bêdzie w klasie ... :P
 
-          
+            Gracz = new Player(GrassWalk.sound, PlayerMoveTexture[4], 1, IloscKlatek, 10, 600); // Gdybyœ przekaza³ ContenMenager Content jako parametr to wczytywanie siê nie zmieni ,a bêdzie w klasie ... :P
+
+
             //----------------------------------------------------------
 
             // --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -188,7 +186,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             if (GameRunning == true)
             {
 
-            
+
 
                 Gracz.PosY = map.GetPosition().Y;
                 Gracz.PosX = map.GetPosition().X;
@@ -206,95 +204,98 @@ namespace VoidCraft_Map_Pad_Player_v1
                 Gracz.gin(gameTime);
                 Gracz.Update(gameTime);
 
-         
+
 
                 /// Zmiana predkosci animacji przy Pacnieciu
                 if (PAC == false) { Gracz.milliseconsuPerFrame = 140; } else { Gracz.milliseconsuPerFrame = 60; }
 
 
                 ///---------- STEROWANIE POSTACIA ----------------
-
-                if (Pad.IsButtonPresed(GamePadStatus.DirNone))
+                if (!IsMenuButtonPressed)
                 {
-                    PAC = false;
-                    if (buff == GamePadStatus.Up)
+
+                    if (Pad.IsButtonPresed(GamePadStatus.DirNone))
                     {
-                        Gracz.Move(Direction.Idle_Back, PlayerMoveTexture);
+                        PAC = false;
+                        if (buff == GamePadStatus.Up)
+                        {
+                            Gracz.Move(Direction.Idle_Back, PlayerMoveTexture);
+                        }
+                        else if (buff == GamePadStatus.Down)
+                        {
+                            Gracz.Move(Direction.Idle_Down, PlayerMoveTexture);
+                        }
+                        else if (buff == GamePadStatus.Right)
+                        {
+                            Gracz.Move(Direction.Idle_Right, PlayerMoveTexture);
+                        }
+                        else if (buff == GamePadStatus.Left)
+                        {
+                            Gracz.Move(Direction.Idle_Left, PlayerMoveTexture);
+                        }
                     }
-                    else if (buff == GamePadStatus.Down)
-                    {
-                        Gracz.Move(Direction.Idle_Down, PlayerMoveTexture);
-                    }
-                    else if (buff == GamePadStatus.Right)
-                    {
-                        Gracz.Move(Direction.Idle_Right, PlayerMoveTexture);
-                    }
-                    else if (buff == GamePadStatus.Left)
-                    {
-                        Gracz.Move(Direction.Idle_Left, PlayerMoveTexture);
-                    }
-                }
 
 
 
-                if (Pad.IsButtonPresed(GamePadStatus.Up))                   ///---------- UP ----------------
-                {
-                    if (map.GetNextID(3, Direction.On) == 0)
+                    if (Pad.IsButtonPresed(GamePadStatus.Up))                   ///---------- UP ----------------
                     {
-                        WalkingDirection = Direction.Up;
-                        buff = GamePadStatus.Up;
-                        Gracz.Move(Direction.Up, PlayerMoveTexture);
-                        map.MoveMap(0, -WalkSpeed);
-
-                        if (map.GetNextID(3, Direction.On) != 0)
-                            map.MoveMap(0, WalkSpeed);
-                        swingdirection = SwingDirection.Swing_Up;
-                    }
-                }
-                else
-                if (Pad.IsButtonPresed(GamePadStatus.Down))                 ///---------- DOWN ----------------
-                {
-                    if (map.GetNextID(3, Direction.On) == 0)
-                    {
-                        WalkingDirection = Direction.Down;
-                        buff = GamePadStatus.Down;
-                        Gracz.Move(Direction.Down, PlayerMoveTexture);
-                        map.MoveMap(0, WalkSpeed);
-
-                        if (map.GetNextID(3, Direction.On) != 0)
+                        if (map.GetNextID(3, Direction.On) == 0)
+                        {
+                            WalkingDirection = Direction.Up;
+                            buff = GamePadStatus.Up;
+                            Gracz.Move(Direction.Up, PlayerMoveTexture);
                             map.MoveMap(0, -WalkSpeed);
-                        swingdirection = SwingDirection.Swing_Down;
+
+                            if (map.GetNextID(3, Direction.On) != 0)
+                                map.MoveMap(0, WalkSpeed);
+                            swingdirection = SwingDirection.Swing_Up;
+                        }
                     }
-                }
-                else
-                if (Pad.IsButtonPresed(GamePadStatus.Right))                ///---------- RIGHT ----------------
-                {
-
-                    if (map.GetNextID(3, Direction.On) == 0)
+                    else
+                    if (Pad.IsButtonPresed(GamePadStatus.Down))                 ///---------- DOWN ----------------
                     {
-                        WalkingDirection = Direction.Right;
-                        buff = GamePadStatus.Right;
-                        Gracz.Move(Direction.Right, PlayerMoveTexture);
-                        map.MoveMap(WalkSpeed, 0);
-                        if (map.GetNextID(3, Direction.On) != 0)
-                            map.MoveMap(-WalkSpeed, 0);
-                        swingdirection = SwingDirection.Swing_Right;
+                        if (map.GetNextID(3, Direction.On) == 0)
+                        {
+                            WalkingDirection = Direction.Down;
+                            buff = GamePadStatus.Down;
+                            Gracz.Move(Direction.Down, PlayerMoveTexture);
+                            map.MoveMap(0, WalkSpeed);
 
+                            if (map.GetNextID(3, Direction.On) != 0)
+                                map.MoveMap(0, -WalkSpeed);
+                            swingdirection = SwingDirection.Swing_Down;
+                        }
                     }
-                }
-                else
-                if (Pad.IsButtonPresed(GamePadStatus.Left))                 ///---------- LEFT ----------------
-                {
-
-                    if (map.GetNextID(3, Direction.On) == 0)
+                    else
+                    if (Pad.IsButtonPresed(GamePadStatus.Right))                ///---------- RIGHT ----------------
                     {
-                        WalkingDirection = Direction.Left;
-                        buff = GamePadStatus.Left;
-                        Gracz.Move(Direction.Left, PlayerMoveTexture);
-                        map.MoveMap(-WalkSpeed, 0);
-                        if (map.GetNextID(3, Direction.On) != 0)
+
+                        if (map.GetNextID(3, Direction.On) == 0)
+                        {
+                            WalkingDirection = Direction.Right;
+                            buff = GamePadStatus.Right;
+                            Gracz.Move(Direction.Right, PlayerMoveTexture);
                             map.MoveMap(WalkSpeed, 0);
-                        swingdirection = SwingDirection.Swing_Left;
+                            if (map.GetNextID(3, Direction.On) != 0)
+                                map.MoveMap(-WalkSpeed, 0);
+                            swingdirection = SwingDirection.Swing_Right;
+
+                        }
+                    }
+                    else
+                    if (Pad.IsButtonPresed(GamePadStatus.Left))                 ///---------- LEFT ----------------
+                    {
+
+                        if (map.GetNextID(3, Direction.On) == 0)
+                        {
+                            WalkingDirection = Direction.Left;
+                            buff = GamePadStatus.Left;
+                            Gracz.Move(Direction.Left, PlayerMoveTexture);
+                            map.MoveMap(-WalkSpeed, 0);
+                            if (map.GetNextID(3, Direction.On) != 0)
+                                map.MoveMap(WalkSpeed, 0);
+                            swingdirection = SwingDirection.Swing_Left;
+                        }
                     }
                 }
 
@@ -499,7 +500,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 if (Gracz.ActiveGuest >= Gracz.Quests.Count)
                 {
-                    
+
                     string message = "\r\n Brawo! Zebrales potrzebne materialy\r\n aby stworzyc schronienie i przetrwac\r\n nadchodzaca NOC \r\n \r\n Ukonczono fabule prologu!";
                     messages.CreateIndependentMessage(message, new Rectangle(50, 20, 1000, 1000));
                 }
@@ -514,9 +515,9 @@ namespace VoidCraft_Map_Pad_Player_v1
                 }
                 else if (Gracz.Quests[Gracz.ActiveGuest].IsFinished(Gracz.Materials, Gracz.Tools))
                 {
-                    
+
                     messages.CreateIndependentMessage("Ukonczono misje:\r\n" + Gracz.Quests[Gracz.ActiveGuest].Name, new Rectangle(50, 20, 1000, 1000));
-                   
+
                     Gracz.Player_Dairy.dairy_notes.Add("\r\nUkonczono misje : \r\n" + Gracz.Quests[Gracz.ActiveGuest].Name);
                     Gracz.ActiveGuest++;
                 }
@@ -543,7 +544,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                 SongPlayed = 0;
             }
             base.Update(gameTime);
-       
+
         }
 
         // ----------------------------------------------------------------------------------------------------- Draw
@@ -697,7 +698,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                                     }
                                     catch (Tool.CantCraftException ex)
                                     {
-                                        messages.CreateIndependentMessage(ex.Message,new  Rectangle(50, 20, 600, 200));
+                                        messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 600, 200));
                                     }
                                     break;
                                 case ItemToCraftChosen._Axe:
@@ -736,14 +737,20 @@ namespace VoidCraft_Map_Pad_Player_v1
                                         messages.CreateIndependentMessage(ex.Message, new Rectangle(50, 20, 600, 200));
                                     }
                                     break;
-
+                                case ItemToCraftChosen._Shelter:
+                                    //
+                                    //
+                                    //
+                                    //
+                                    //
+                                    break;
                             }
                         }
 
                         // ------------------------------ Wyœwietlanie craftowanych itemów -------------------------------------------
                         if (InGameMenuStateManager == InGameMenuState._Crafting)
                         {
-                            for (int i = 0; i < 4; i++)
+                            for (int i = 0; i < 5; i++)
                             {
                                 if (InGameMenuManager.CraftingIconsPos[i].Contains(TC.Position))
                                 {
