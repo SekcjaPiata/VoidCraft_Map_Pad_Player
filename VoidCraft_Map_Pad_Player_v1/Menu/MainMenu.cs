@@ -33,7 +33,9 @@ namespace Menu
             //  options.Add(new GUIElement("2"));
 
             authors.Add(new GUIElement("Menu\\M_BACK"));
+            authors.Add(new GUIElement("Menu\\panelT"));
             authors.Add(new GUIElement("Menu\\B_powrot"));
+            
         }
 
         public void LoadContent(ContentManager content)
@@ -60,7 +62,10 @@ namespace Menu
                 element.clickEvent += OnClick;
                 c++;
             }
-            authors.Find(x => x.AssetName == "Menu\\B_powrot").MoveElement(-500, 300);
+            authors.Find(x => x.AssetName == "Menu\\B_powrot").MoveElement(-500, 200);
+            authors.Find(x => x.AssetName == "Menu\\panelT").Background();
+            authors.Find(x => x.AssetName == "Menu\\panelT").Resize(-200, -200);
+            authors.Find(x => x.AssetName == "Menu\\panelT").MoveElement(100, 100);
             authors.Find(x => x.AssetName == "Menu\\M_BACK").Background();
             c = 1;
 
