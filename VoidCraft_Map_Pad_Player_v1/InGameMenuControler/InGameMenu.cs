@@ -45,7 +45,6 @@ namespace InGameMenuControler
         public List<Texture2D> CraftingIcons;
         public List<Rectangle> CraftingIconsPos;
 
-
         public InGameMenu(ContentManager _Content)
         {
             content = _Content;
@@ -80,8 +79,6 @@ namespace InGameMenuControler
             QuestsButtonsPos = new List<Rectangle>();
 
             InGameMenuWindows = new List<InGameMenuWindow>();
-
-
 
 
             // ---------- SettingsButtons ----------
@@ -203,7 +200,6 @@ namespace InGameMenuControler
             QuestsButtons.Add(content.Load<Texture2D>("Buttons/Button_Left"));
             QuestsButtonsPos.Add(new Rectangle(_ScreenX / 2 - 100, _ScreenY - 150, 50, 50));
 
-
             InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Settings, "MenuWindows/MenuWindow_Settings", SettingsButtons, SettingsButtonsPos, null, null, content));
             InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Inventory, "MenuWindows/MenuWindow_Inventory", InventoryButtons, InventoryButtonsPos, InventoryIcons, InventoryIconsPos, content));
             InGameMenuWindows.Add(new InGameMenuWindow(InGameMenuState._Crafting, "MenuWindows/MenuWindow_Crafting", CraftingButtons, CraftingButtonsPos, CraftingIcons, CraftingIconsPos, content));
@@ -234,6 +230,7 @@ namespace InGameMenuControler
                     break;
             }
         }
+        // Wyœwietlanie Nazw Questów
         public void DrawQuestsNames(SpriteBatch _spritebatch, SpriteFont _spritefont, List<Quest> QuestNames)
         {
             if (QuestNames != null)
@@ -241,10 +238,19 @@ namespace InGameMenuControler
                 for (int i = 0; i < QuestNames.Count; i++)
                 {
                     if (i == 0) _spritebatch.DrawString(_spritefont, QuestNames.ElementAt(0).Name, new Vector2(150, 150), Color.Black);
-                    else _spritebatch.DrawString(_spritefont, QuestNames.ElementAt(i).Name, new Vector2(150, 150 + (i * 30)), Color.Black);
+                    else _spritebatch.DrawString(_spritefont, QuestNames.ElementAt(i).Name, new Vector2(150, 150 + (i * 50)), Color.Black);
                 }
             }
         }
+        // Wyœwietlanie dairy questa o podanym indexie
+        public void DrawQuestDairy(SpriteBatch _spritebatch, SpriteFont _spritefont, Dairy _dairy, int _dairyindex)
+        {
+            if (_dairy != null &&  _dairyindex < _dairy.dairy_notes.Count)
+            {
+                _spritebatch.DrawString(_spritefont, _dairy.dairy_notes[_dairyindex], new Vector2(400, 250), Color.Black);
+            }
+        }
+        // Rysowanie menu
         public void DrawInGameMenu(InGameMenuState _GameState, SpriteBatch spritebatch)
         {
             for (int i = 0; i < InGameMenuWindows.Count; i++)
