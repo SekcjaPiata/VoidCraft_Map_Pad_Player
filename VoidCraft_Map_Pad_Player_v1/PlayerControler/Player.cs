@@ -261,25 +261,22 @@ namespace PlayerControler
         /// <summary>
         /// Rysowanie Postaci
         /// </summary>
-        public void Draw(SpriteBatch spriteBatch, Rectangle location)
+
+        public void Draw(SpriteBatch spriteBatch, Rectangle location) //Przyjmujê uchwyt do rysowania i pozycje do rysowania
         {
             try
             {
-                int width = Texture.Width / Columns;
-                int height = Texture.Height / Rows;
-                int row = (int)((float)currentFrame / Columns);
-                int column = currentFrame % Columns;
+                int width = Texture.Width / Columns;                // Szerokoœæ tekstury / iloœæ kolumn w szablonie (4)
+                int height = Texture.Height / Rows;                 // Wysokoœæ tekstury  / iloœæ wierszy w szablonie (1)
+                int row = (int)((float)currentFrame / Columns);     // Aktualna klatka animacji / iloœæ kolumn w szablonie
+                int column = currentFrame % Columns;                // Aktualna klatka animacji % iloœæ kolumn w szablonie
 
-                Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+                Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height); // Wybranie odpowiedniej klatki do narysowania
+                Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, location.Width, location.Height + (int)(location.Height * 0.4)); // Gdzie narysowaæ
 
-                Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, location.Width, location.Height + (int)(location.Height * 0.4));
-
-
-                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White); // Rysowanie postaci gracza
             }
-
             catch (Exception ex ) { Debug.WriteLine(ex.Message); }
-
         }
 
         /// <summary>

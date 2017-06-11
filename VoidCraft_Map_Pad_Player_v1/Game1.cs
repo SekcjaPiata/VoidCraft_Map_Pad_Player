@@ -478,8 +478,6 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 if (Pad.IsButtonClicked(GamePadStatus.B))
                 {
-
-
                     //ChangeGameTime(GameHour + 1, 0);
 
                     string dairy = "";
@@ -489,9 +487,6 @@ namespace VoidCraft_Map_Pad_Player_v1
                     }
                     //map.Message(dairy, DefaultFont, new Rectangle(50, 20, 1000, 1000));
                     messages.CreateIndependentMessage(dairy, new Rectangle(50, 20, 1000, 1000));
-
-
-
                 }
 
                 //if (map.GetCurrentID(4) != 0)
