@@ -657,6 +657,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                             else if (!IsSoundPlaying) InGameMenuManager.SettingsButtons[0] = Content.Load<Texture2D>("Buttons/Button_UnChecked");
                             //
                             //
+                            // TODO
                             //
                             //
                             //
@@ -833,6 +834,7 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                     // Wyœwietlanie nazw questów
                     if (InGameMenuStateManager == InGameMenuState._Quests) InGameMenuManager.DrawQuestsNames(spriteBatch, DefaultFont, Gracz.Quests);
+                    if (InGameMenuStateManager == InGameMenuState._Quests) InGameMenuManager.DrawQuestDairy(spriteBatch, DefaultFont, Gracz.Player_Dairy, Gracz.Player_Dairy.dairy_notes.Count - 1);
 
                 }
 
