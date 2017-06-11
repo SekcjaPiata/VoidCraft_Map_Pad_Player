@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 namespace InGameMenuControler
 {
     public enum InGameMenuState { _Game, _Settings, _Inventory, _Crafting, _Quests }
-    public enum ItemToCraftChosen { _Hammer, _Pickaxe, _Axe, _Saw, _None }
+    public enum ItemToCraftChosen { _Hammer, _Pickaxe, _Axe, _Saw, _Shelter, _None }
 
     public class InGameMenuWindow
     {

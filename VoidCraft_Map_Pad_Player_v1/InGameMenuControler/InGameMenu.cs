@@ -176,23 +176,31 @@ namespace InGameMenuControler
             CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_SawUnlocked"));
             CraftingIconsPos.Add(new Rectangle(100, 450, 100, 100));
 
+            // Index 4 - Shelter
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Shelter"));
+            CraftingIconsPos.Add(new Rectangle(100, 550, 100, 100));
+
             ///////////////////////////////////////////////////////////////////////////
 
-            // Index 4 - Znacznik (Do M這tka)
+            // Index 5 - Znacznik (Do M這tka)
             CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
             CraftingIconsPos.Add(new Rectangle(200, 150, 100, 100));
 
-            // Index 5 - Znacznik (Do Kilofa)
+            // Index 6 - Znacznik (Do Kilofa)
             CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
             CraftingIconsPos.Add(new Rectangle(200, 250, 100, 100));
 
-            // Index 6 - Znacznik (Do Toporu)
+            // Index 7 - Znacznik (Do Toporu)
             CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
             CraftingIconsPos.Add(new Rectangle(200, 350, 100, 100));
 
-            // Index 7 - Znacznik (Do Pi造)
+            // Index 8 - Znacznik (Do Pi造)
             CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
             CraftingIconsPos.Add(new Rectangle(200, 450, 100, 100));
+
+            // Index 9 - Znacznik (Do Sheltera)
+            CraftingIcons.Add(content.Load<Texture2D>("Icons/Icon_Reject"));
+            CraftingIconsPos.Add(new Rectangle(200, 550, 100, 100));
 
             // ---------- QuestsButtons ----------
 
@@ -225,6 +233,9 @@ namespace InGameMenuControler
                     break;
                 case ItemToCraftChosen._Saw:
                     spritebatch.Draw(CraftingIcons[3], new Rectangle(_ScreenX / 2 - 200, _ScreenY / 2 - 200, 400, 400), Color.White);
+                    break;
+                case ItemToCraftChosen._Shelter:
+                    spritebatch.Draw(CraftingIcons[4], new Rectangle(_ScreenX / 2 - 200, _ScreenY / 2 - 200, 400, 400), Color.White);
                     break;
                 case ItemToCraftChosen._None:
                     break;
