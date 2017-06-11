@@ -15,6 +15,7 @@ using System.IO.IsolatedStorage;
 using System.IO;
 
 using System.Diagnostics;
+using VoidCraft_Map_Pad_Player_v1;
 
 namespace PlayerControler
 {
@@ -124,7 +125,7 @@ namespace PlayerControler
         public Player(SoundEffect Grass, Texture2D texture, int rows, int columns, int posX, int posY)
         {
             this.Grass = Grass;
-           
+          
             Texture = texture;
             Rows = rows;
             Columns = columns;
@@ -249,10 +250,12 @@ namespace PlayerControler
 
                 if (currentFrame == totalFrames)
                 { currentFrame = 0; }
-
-                if ((currentFrame == 1 || currentFrame == 3) && IsMoving)
+                
+             
+                if ((currentFrame == 1 || currentFrame == 3) && IsMoving && Game1.IsSoundPlaying==true )
                 {
                     Grass.Play();
+                    
                 }
             }
         }

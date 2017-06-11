@@ -66,6 +66,8 @@ namespace VoidCraft_Map_Pad_Player_v1
         bool DebugMode = true;
         public static bool GameRunning = false;
         public static bool LoadedGame =  false;
+        public static bool IsSoundPlaying = true;
+
         public static int SongPlayed = 0;
 
         Texture2D back;
@@ -76,7 +78,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         public InGameMenu InGameMenuManager;
         public InGameMenuState InGameMenuStateManager;
         public TouchCollection TouchCollectionManager;
-        bool IsSoundPlaying = true;
+     
         string SoundText = "Dzwiek";
         string SaveText = "Zapisz";
         ItemToCraftChosen ItemToCraftChosenManager = ItemToCraftChosen._None;
@@ -535,7 +537,11 @@ namespace VoidCraft_Map_Pad_Player_v1
                 GameBgAmbient.ChangeSong("BgMusic");
                 SongPlayed = 100;
             }
-
+            else if(IsSoundPlaying== false)
+            {
+                GameBgAmbient.Stop();
+                SongPlayed = 0;
+            }
             base.Update(gameTime);
        
         }
@@ -651,7 +657,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                             if (IsSoundPlaying) InGameMenuManager.SettingsButtons[0] = Content.Load<Texture2D>("Buttons/Button_Checked");
                             else if (!IsSoundPlaying) InGameMenuManager.SettingsButtons[0] = Content.Load<Texture2D>("Buttons/Button_UnChecked");
                             //
-                            //
+                            
                             // TODO
                             //
                             //
