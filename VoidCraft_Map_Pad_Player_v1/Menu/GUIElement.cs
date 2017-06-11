@@ -8,7 +8,7 @@ namespace Menu
     {
         private Texture2D GUITexture;
         private Rectangle GUIRect;
-
+        private GUIElement() { }
         // private string assetName;
         public string AssetName { get; set; }
 

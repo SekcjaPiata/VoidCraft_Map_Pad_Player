@@ -14,17 +14,13 @@ namespace Menu
         private int c = 1;
      
 
-        enum GameState { MainMenu, authors, inGame, Options }
+        enum GameState { MainMenu, authors, inGame }
         GameState gamestate;
 
         List<GUIElement> options = new List<GUIElement>(); // rozważam usunięcie 
         List<GUIElement> main = new List<GUIElement>();
-        public List<GUIElement> authors = new List<GUIElement>();
+        List<GUIElement> authors = new List<GUIElement>();
         
-        void load(ref PlayerControler.Player pl)
-        {
-            pl = PlayerControler.Player.LoadPlayer();
-        }
 
         //  private Keys
         public MainMenu( )
@@ -33,14 +29,9 @@ namespace Menu
             main.Add(new GUIElement("Menu\\M_BACK"));
             main.Add(new GUIElement("Menu\\B_graj"));
             main.Add(new GUIElement("Menu\\Wczytaj"));
-            main.Add(new GUIElement("Menu\\B_ustawianie"));
+
             main.Add(new GUIElement("Menu\\B_autorzy"));
             main.Add(new GUIElement("Menu\\voidscraft"));
-            //  options.Add(new GUIElement("2"));
-
-            options.Add(new GUIElement("Menu\\M_BACK"));
-            options.Add(new GUIElement("Menu\\B_powrot"));
-
 
             authors.Add(new GUIElement("Menu\\M_BACK"));
             authors.Add(new GUIElement("Menu\\B_powrot"));
@@ -74,16 +65,7 @@ namespace Menu
             authors.Find(x => x.AssetName == "Menu\\M_BACK").Background();
             c = 1;
 
-            foreach (GUIElement element in options)
-            {
-
-                element.LoadContent(content);
-                element.CenterElement((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 500) + 250 * c, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width);
-                element.clickEvent += OnClick;
-                c++;
-            }
-            options.Find(x => x.AssetName == "Menu\\M_BACK").Background();
-            options.Find(x => x.AssetName == "Menu\\B_powrot").MoveElement(-500, 300);
+    
 
         }
 
@@ -105,13 +87,7 @@ namespace Menu
                     break;
                 case GameState.inGame:
                     break;
-                case GameState.Options:
-                    foreach (GUIElement element in options)
-                    {
-                        element.Update();
-                    }
-
-                    break;
+        
             }
 
 
@@ -138,14 +114,7 @@ namespace Menu
                     break;
                 case GameState.inGame:
                     break;
-                case GameState.Options:
-                    foreach (GUIElement element in options)
-                    {
-                        element.Draw(spriteBatch);
-
-                    }
-
-                    break;
+    
 
             }
 
@@ -186,14 +155,9 @@ namespace Menu
             {
                 gamestate = GameState.MainMenu;
             }
-            if (element == "Menu\\B_ustawianie")
-            {
-                gamestate = GameState.Options;
-            }
-            if (element == "Menu\\Bot")
-            {
-                // To do: Tuaj będą "ustawienia" jakieś pomysły ?
-            }
+  
+            
+    
 
 
             if (element == "Menu\\B_powrot")
