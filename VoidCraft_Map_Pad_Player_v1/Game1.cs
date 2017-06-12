@@ -68,7 +68,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         public static bool LoadedGame =  false;
         public static bool IsSoundPlaying = true;
         public static int SongPlayed = 0;
-        public static bool IsSoundPlaying = true;
+
         Texture2D back;
 
         // Texture2D Knefel_EQ; // Guziczek do ingame menu **
@@ -693,7 +693,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                                 case ItemToCraftChosen._Hammer:
                                     try
                                     {
-                                        Gracz.Tools.Find(x => x.ToolName == "Hammer").Craft(Gracz.Materials);
+                                        Gracz.Tools.Find(x => x.ToolName == "Hammer").Craft(Gracz.Materials,Gracz.Tools);
                                         InGameMenuManager.CraftingIcons[4] = Content.Load<Texture2D>("Icons/Icon_Allowed");
                                         InGameMenuManager.InventoryIcons[5] = Content.Load<Texture2D>("Icons/Icon_HammerUnlocked");
                                     }
@@ -705,7 +705,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                                 case ItemToCraftChosen._Axe:
                                     try
                                     {
-                                        Gracz.Tools.Find(x => x.ToolName == "Axe").Craft(Gracz.Materials);
+                                        Gracz.Tools.Find(x => x.ToolName == "Axe").Craft(Gracz.Materials, Gracz.Tools);
                                         InGameMenuManager.CraftingIcons[6] = Content.Load<Texture2D>("Icons/Icon_Allowed");
                                         InGameMenuManager.InventoryIcons[7] = Content.Load<Texture2D>("Icons/Icon_AxeUnlocked");
                                     }
@@ -717,7 +717,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                                 case ItemToCraftChosen._Pickaxe:
                                     try
                                     {
-                                        Gracz.Tools.Find(x => x.ToolName == "Pick").Craft(Gracz.Materials);
+                                        Gracz.Tools.Find(x => x.ToolName == "Pick").Craft(Gracz.Materials, Gracz.Tools);
                                         InGameMenuManager.CraftingIcons[5] = Content.Load<Texture2D>("Icons/Icon_Allowed");
                                         InGameMenuManager.InventoryIcons[6] = Content.Load<Texture2D>("Icons/Icon_PickaxeUnlocked");
                                     }
@@ -729,7 +729,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                                 case ItemToCraftChosen._Saw:
                                     try
                                     {
-                                        Gracz.Tools.Find(x => x.ToolName == "Saw").Craft(Gracz.Materials);
+                                        Gracz.Tools.Find(x => x.ToolName == "Saw").Craft(Gracz.Materials, Gracz.Tools);
                                         InGameMenuManager.CraftingIcons[7] = Content.Load<Texture2D>("Icons/Icon_Allowed");
                                         InGameMenuManager.InventoryIcons[8] = Content.Load<Texture2D>("Icons/Icon_SawUnlocked");
                                     }
