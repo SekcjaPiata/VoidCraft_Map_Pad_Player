@@ -68,7 +68,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         public static bool LoadedGame =  false;
         public static bool IsSoundPlaying = true;
         public static int SongPlayed = 0;
-
+        public static bool IsSoundPlaying = true;
         Texture2D back;
 
         // Texture2D Knefel_EQ; // Guziczek do ingame menu **
@@ -865,25 +865,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                     spriteBatch.DrawString(DefaultFont, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) / 18 + "x" + (((ScreenY / 2)) - map.GetZoomValue()) / 11, new Vector2(50, 450), Color.Red);
                     spriteBatch.DrawString(DefaultFont, "DayCycleTimer: " + DayCycleTimer + " ID:" + DayCycle, new Vector2(50, 500), Color.Red); // DayCycle TEST PacTimer
                     spriteBatch.DrawString(DefaultFont, "PacTimer: " + PacTimer, new Vector2(50, 550), Color.Red);
-                    //spriteBatch.DrawString(DefaultFont, "Zbierz: " + Zbierz, new Vector2(50, 600), Color.Red);
 
-                    //   spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.Materials.Water, new Vector2(1600, 50), Color.White);
-                    //   spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.Materials.Food, new Vector2(1600, 100), Color.White);
-                    //   spriteBatch.DrawString(DefaultFont, "Drewno: " + Gracz.Materials.Wood, new Vector2(1600, 150), Color.White);
-                    //   spriteBatch.DrawString(DefaultFont, "Liany: " + Gracz.Materials.Lianas, new Vector2(1600, 200), Color.White);
-                    //   spriteBatch.DrawString(DefaultFont, "Kamien: " + Gracz.Materials.Stone, new Vector2(1600, 250), Color.White);
-
-                    //spriteBatch.DrawString(DefaultFont, "Zdrowie: " + Gracz.HP, new Vector2(400, 50), Color.LightGreen);
-                    //spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.WODA, new Vector2(400, 100), Color.LightGreen);
-                    //spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.GLOD, new Vector2(400, 150), Color.LightGreen);
-                    //spriteBatch.DrawString(DefaultFont, "Strach: " + Gracz.STRACH, new Vector2(400, 200), Color.LightGreen);
-
-                    /*
-                    if (Gracz.HP != 0)
-                    { spriteBatch.DrawString(DefaultFont, "HP: " + Gracz.HP, new Vector2(0, 20), Color.Black); } //Wyswietlanie Poziomu HP na Ekranie
-                    else 
-                    { spriteBatch.DrawString(DefaultFont, "HP: " + Gracz.HP + " YOU DIED!", new Vector2(100, 100), Color.Black); }
-                    */
                 }
 
 
