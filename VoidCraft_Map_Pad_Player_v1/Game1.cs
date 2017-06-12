@@ -680,6 +680,32 @@ namespace VoidCraft_Map_Pad_Player_v1
                             //
                             //
                         }
+
+                        // ------------------------------ Jedzenie i picie -------------------------------------------
+                        if (InGameMenuStateManager == InGameMenuState._Inventory)
+                        {
+                            // ----------------------------- Jedzenie ------------------------------------------------
+                            if (InGameMenuManager.InventoryIconsPos[3].Contains(TC.Position) && !Buff.Contains(TC.Position) && Gracz.Materials.Food > 0)
+                            {
+                                Buff.X = (int)TC.Position.X - 2;
+                                Buff.Y = (int)TC.Position.Y - 2;
+                                Buff.Width = 4;
+                                Buff.Height = 4;
+                                Gracz.GLOD = 100;
+                                Gracz.HP = 100;
+                                Gracz.Materials.Food--;
+                            }
+                            // ----------------------------- Picie ------------------------------------------------
+                            if (InGameMenuManager.InventoryIconsPos[4].Contains(TC.Position) && !Buff.Contains(TC.Position) && Gracz.Materials.Water > 0)
+                            {
+                                Buff.X = (int)TC.Position.X - 2;
+                                Buff.Y = (int)TC.Position.Y - 2;
+                                Buff.Width = 4;
+                                Buff.Height = 4;
+                                Gracz.WODA = 100;
+                                Gracz.Materials.Water--;
+                            }
+                        }
                         // ------------------------------ Crafting -------------------------------------------
                         if (InGameMenuManager.CraftingButtonsPos[2].Contains(TC.Position) && InGameMenuStateManager == InGameMenuState._Crafting && !Buff.Contains(TC.Position))
                         {
@@ -694,7 +720,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                                     try
                                     {
                                         Gracz.Tools.Find(x => x.ToolName == "Hammer").Craft(Gracz.Materials,Gracz.Tools);
-                                        InGameMenuManager.CraftingIcons[4] = Content.Load<Texture2D>("Icons/Icon_Allowed");
+                                        InGameMenuManager.CraftingIcons[5] = Content.Load<Texture2D>("Icons/Icon_Allowed");
                                         InGameMenuManager.InventoryIcons[5] = Content.Load<Texture2D>("Icons/Icon_HammerUnlocked");
                                     }
                                     catch (Tool.CantCraftException ex)
@@ -706,7 +732,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                                     try
                                     {
                                         Gracz.Tools.Find(x => x.ToolName == "Axe").Craft(Gracz.Materials, Gracz.Tools);
-                                        InGameMenuManager.CraftingIcons[6] = Content.Load<Texture2D>("Icons/Icon_Allowed");
+                                        InGameMenuManager.CraftingIcons[7] = Content.Load<Texture2D>("Icons/Icon_Allowed");
                                         InGameMenuManager.InventoryIcons[7] = Content.Load<Texture2D>("Icons/Icon_AxeUnlocked");
                                     }
                                     catch (Tool.CantCraftException ex)
@@ -718,7 +744,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                                     try
                                     {
                                         Gracz.Tools.Find(x => x.ToolName == "Pick").Craft(Gracz.Materials, Gracz.Tools);
-                                        InGameMenuManager.CraftingIcons[5] = Content.Load<Texture2D>("Icons/Icon_Allowed");
+                                        InGameMenuManager.CraftingIcons[6] = Content.Load<Texture2D>("Icons/Icon_Allowed");
                                         InGameMenuManager.InventoryIcons[6] = Content.Load<Texture2D>("Icons/Icon_PickaxeUnlocked");
                                     }
                                     catch (Tool.CantCraftException ex)
@@ -730,7 +756,7 @@ namespace VoidCraft_Map_Pad_Player_v1
                                     try
                                     {
                                         Gracz.Tools.Find(x => x.ToolName == "Saw").Craft(Gracz.Materials, Gracz.Tools);
-                                        InGameMenuManager.CraftingIcons[7] = Content.Load<Texture2D>("Icons/Icon_Allowed");
+                                        InGameMenuManager.CraftingIcons[8] = Content.Load<Texture2D>("Icons/Icon_Allowed");
                                         InGameMenuManager.InventoryIcons[8] = Content.Load<Texture2D>("Icons/Icon_SawUnlocked");
                                     }
                                     catch (Tool.CantCraftException ex)
