@@ -224,6 +224,7 @@ namespace PlayerControler
                     try
                     {
                         materials.Water -= 5;
+                        HP += 5;
                     }
                     catch (RawMaterials.OutOfWaterException ex)
                     {
@@ -237,7 +238,7 @@ namespace PlayerControler
 
         public void Spadek_Glod(GameTime gameTime)
         {
-            Glod_Czas += gameTime.ElapsedGameTime.Milliseconds*20;
+            Glod_Czas += gameTime.ElapsedGameTime.Milliseconds;
 
             if (Glod_Czas > Glod_Predkosc)
             {
@@ -249,6 +250,7 @@ namespace PlayerControler
                     try
                     {
                         materials.Food -= 5;
+                        HP += 5;
                     }
                     catch (RawMaterials.OutOfFoodException ex)
                     {
