@@ -139,7 +139,7 @@ namespace VoidCraft_Map_Pad_Player_v1
             PlayerMoveTexture = new List<Texture2D>();
             DayCycleTexture = new List<Texture2D>();
 
-            ChangeGameTime(5, 0);
+            ChangeGameTime(6, 30);
 
             GameBgAmbient = new BackgroundSongs("Takeover", Content, true, 0.80f, "Ambient");
             GrassWalk = new SoundEffects("GrassStep", Content, "GrassWalk");
@@ -892,10 +892,10 @@ namespace VoidCraft_Map_Pad_Player_v1
                     //spriteBatch.DrawString(DefaultFont, "DayCycleTimer: " + DayCycleTimer + " ID:" + DayCycle, new Vector2(50, 500), Color.Red); // DayCycle TEST PacTimer
                     //spriteBatch.DrawString(DefaultFont, "PacTimer: " + PacTimer, new Vector2(50, 550), Color.Red);
 
-                    spriteBatch.DrawString(DefaultFont, "Zdrowie: " + Gracz.HP, new Vector2(400, 50), Color.LightGreen);
-                    spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.WODA, new Vector2(400, 100), Color.LightGreen);
-                    spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.GLOD, new Vector2(400, 150), Color.LightGreen);
-                    spriteBatch.DrawString(DefaultFont, "Strach: " + Gracz.STRACH, new Vector2(400, 200), Color.LightGreen);
+                    spriteBatch.DrawString(DefaultFont, "Zdrowie: " + Gracz.HP, new Vector2(100, 50), Color.LightGreen);
+                    spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.WODA, new Vector2(100, 100), Color.LightGreen);
+                    spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.GLOD, new Vector2(100, 150), Color.LightGreen);
+                    spriteBatch.DrawString(DefaultFont, "Strach: " + Gracz.STRACH, new Vector2(100, 200), Color.LightGreen);
                 }
 
 
