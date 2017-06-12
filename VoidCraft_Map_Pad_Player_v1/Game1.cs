@@ -66,6 +66,7 @@ namespace VoidCraft_Map_Pad_Player_v1
         bool DebugMode = true;
         public static bool GameRunning = false;
         public static bool LoadedGame =  false;
+        public static bool IsSoundPlaying = true;
         public static int SongPlayed = 0;
 
         Texture2D back;
