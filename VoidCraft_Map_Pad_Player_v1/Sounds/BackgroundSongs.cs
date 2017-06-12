@@ -1,13 +1,14 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
-using System;
 
 namespace Sounds {
+    // Klasa obsługująca muzyke tła
     class BackgroundSongs {
-        Song song;
-        public string Name { get; }
+        Song song; // Muzyka
+        public string Name { get; } // Nazwa piosenki
         ContentManager Content;
 
+        // Dodanie nowej piosenki
         public BackgroundSongs(Song song, ContentManager Content, bool IsRepeating, float Volume, string Name) {
             this.song = song;
             Repeating(IsRepeating);
@@ -15,6 +16,7 @@ namespace Sounds {
             this.Name = Name;
         }
 
+        // Wczyanie nowej piosenki z pliku
         public BackgroundSongs(string SongPath, ContentManager Content, bool IsRepeating, float Volume, string Name) {
             this.Content = Content;
             this.song = Content.Load<Song>(SongPath);
@@ -24,15 +26,19 @@ namespace Sounds {
             this.Name = Name;
         }
 
+        // Zmiana piosenki
         public void ChangeSong(string SongPath) {
             Stop();
             this.song = Content.Load<Song>(SongPath);
             Play();
         }
 
+        // Czy piosenka ma być powatarzana
         public void Repeating(bool Repeating) {
             MediaPlayer.IsRepeating = Repeating;
         }
+
+        // Głośność piosenki
         public void ChangeVolume(float Volume) {
             MediaPlayer.Volume = Volume;
         }

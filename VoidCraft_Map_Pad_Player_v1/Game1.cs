@@ -386,11 +386,11 @@ namespace VoidCraft_Map_Pad_Player_v1
                     ///-------------------------------------------------------------   WYKRYWANIE KOLIZJI   -------------------------//
                     if (map.GetNextID(3, WalkingDirection) == 6)
                     { // skrzyneczka
-                        String message = "Oooo skrzyneczka na pozycji " + map.GetNextCords(WalkingDirection).X + "x" + map.GetNextCords(WalkingDirection).Y;
+                        //String message = "Oooo skrzyneczka na pozycji " + map.GetNextCords(WalkingDirection).X + "x" + map.GetNextCords(WalkingDirection).Y;
                         //Gracz.Chests.Find(x, y => x.X == map.GetNextCords(WalkingDirection).X &&
                         //x.X == map.GetNextCords(WalkingDirection).Y);
                         //map.Message(message, DefaultFont, new Rectangle(50, 20, 600, 200));
-                        messages.AddMessage(message, new Rectangle(50, 20, 600, 200));
+                        //messages.AddMessage(message, new Rectangle(50, 20, 600, 200));
                     }
 
 

@@ -1,24 +1,20 @@
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MapControler
-{
-    class MapTexture
-    {
-        public int ID { get; set; }
-        public int Layer { get; set; }
+namespace MapControler {
+    // Klasa przechowuj¹ca teksture mapy i informacje do jakiej warstwy przynale¿y i jakie ma ID
+    class MapTexture {
+        public Texture2D Bitmap { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }
-        public Texture2D Bitmap { get; set; }
+        public int Layer { get; set; }
+        public int ID { get; set; }
 
-
-        public MapTexture(int id, int layer, string name, string path, Texture2D bitmap)
-        {
-            ID = id;
-            Layer = layer;
-            Name = name;
-            Path = path;
-            Bitmap = bitmap;
+        public MapTexture(int ID, int Layer, string Name, string Path, Texture2D Bitmap) {
+            this.ID = ID;
+            this.Layer = Layer;
+            this.Name = Name;
+            this.Path = Path;
+            this.Bitmap = Bitmap;
         }
-
     }
 }

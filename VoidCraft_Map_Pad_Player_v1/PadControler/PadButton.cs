@@ -1,37 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
-namespace PadControler
-{
-    class PadButton
-    {
-        public Rectangle Position { get; set; }
-        public Texture2D Bitmap { get; set; }
-        public bool Pressed { get; set; }
-        public GamePadStatus ButonType { get; set; }
+namespace PadControler {
+    // Przycisk pada
+    class PadButton {
+        public Rectangle Position { get; set; } // Pozycja i rozmiar 
+        public Texture2D Bitmap { get; set; } // Obraz przycisku
+        public bool Pressed { get; set; } // Czy jest wciœniêty
+        public GamePadStatus ButonType { get; set; }// Rodzaj przycisku
 
-        public PadButton(GamePadStatus ButtonType, GraphicsDevice graphicsDevice, string Path, Rectangle Position)
-        {
+        // Konstruktor przycisku
+        public PadButton(GamePadStatus ButtonType, GraphicsDevice graphicsDevice, string Path, Rectangle Position) {
             this.ButonType = ButtonType;
             this.Position = Position;
             this.Pressed = false;
-            using (var stream = TitleContainer.OpenStream(Path))
-            {
+            using (var stream = TitleContainer.OpenStream(Path)) {
                 Bitmap = Texture2D.FromStream(graphicsDevice, stream);
             }
         }
-
-
     }
 }
