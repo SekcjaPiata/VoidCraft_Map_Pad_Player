@@ -47,6 +47,7 @@ namespace PlayerControler
         private int Strach_Predkosc = 4000;
 
 
+
         //Surowce posiadane
         private RawMaterials materials;
 
@@ -190,7 +191,21 @@ namespace PlayerControler
             {
                 HP_Czas -= HP_Predkosc;
                 if (HP != 0)
-                { HP -= 1; }
+                {
+                    HP -= 1;
+                }
+                if (WODA<20 || GLOD < 20)
+                {
+                  
+                    
+                        Game1.messages.AddMessage("Za chwile umrzesz jesli \r\n nic nie zjesz albo\r\n sie nie napijesz",new Rectangle(10,10,100,100));
+                    
+                }
+                if (HP < 1)
+                {
+                    Game1.messages.CreateIndependentMessage("Zginales", new Rectangle(10, 10, Game1.ScreenX, Game1.ScreenY));
+
+                }
                 HP_Czas = 0;
             }
         }
@@ -204,19 +219,43 @@ namespace PlayerControler
                 Woda_Czas -= Woda_Predkosc;
                 if (WODA != 0)
                 { WODA -= 1; }
+                if (WODA < 20)
+                {
+                    try
+                    {
+                        materials.Water -= 5;
+                    }
+                    catch (RawMaterials.OutOfWaterException ex)
+                    {
+                        Game1.messages.AddMessage("Za chwile umrzesz \r\n z pragnienia a nie masz wody\r\n", new Rectangle(10, 10, 100, 100));
+                        HP -= 1;
+                    }
+                }
                 Woda_Czas = 0;
             }
         }
 
         public void Spadek_Glod(GameTime gameTime)
         {
-            Glod_Czas += gameTime.ElapsedGameTime.Milliseconds;
+            Glod_Czas += gameTime.ElapsedGameTime.Milliseconds*20;
 
             if (Glod_Czas > Glod_Predkosc)
             {
                 Glod_Czas -= Glod_Predkosc;
                 if (GLOD != 0)
                 { GLOD -= 1; }
+                if (GLOD < 20)
+                {
+                    try
+                    {
+                        materials.Food -= 5;
+                    }
+                    catch (RawMaterials.OutOfFoodException ex)
+                    {
+                        Game1.messages.AddMessage("Za chwile umrzesz \r\n z glodu a nie masz jedzenia\r\n", new Rectangle(10, 10, 100, 100));
+                        HP -= 1;
+                    }
+                }
                 Glod_Czas = 0;
             }
         }

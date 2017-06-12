@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Raw_Materials_C;
-
+using System.Collections.Generic;
 
 namespace Tools
 {
@@ -13,15 +13,7 @@ namespace Tools
             public CantCraftException(string message) : base(message) { }
         }
 
-        //Klasa opisuje narzêdzia. Zak³adamy, ¿e takowe siê nie niszcz¹
 
-      //  private Texture2D _toolTexture;//Wczytana zostanie tekstura narzêdzia
-
-       // public Texture2D ToolTexture
-       // {
-       //     get { return _toolTexture; }
-      //      set { _toolTexture = value; }
-      //  }
         private string _toolName;
 
         public string ToolName
@@ -55,27 +47,25 @@ namespace Tools
             set { _requirements = value; }
         }
 
-        public bool CanCraft(RawMaterials PlayerMaterials)//bêdzie sprawdza³, czy wymagania pokrywaj¹ siê z posiadanym eq playera
+        public bool CanCraft(RawMaterials PlayerMaterials, List<Tool> PlayerTools)//bêdzie sprawdza³, czy wymagania pokrywaj¹ siê z posiadanym eq playera
         {
-            //if (PlayerMaterials.Wood < Requirements.Wood)
-            //    return false;
-            //if (PlayerMaterials.Stone < Requirements.Stone)
-            //    return false;
-            //if (PlayerMaterials.Lianas < Requirements.Lianas)
-            //    return false;
-            //if (PlayerMaterials.Metal < Requirements.Metal)
-            //    return false;
-            //if (PlayerMaterials.Water < Requirements.Water)
-            //    return false;
-            //if (PlayerMaterials.Food < Requirements.Food)
-            //    return false;
-            //return true;
+            if (tools_needed != null)
+            {
+                foreach (Tool t in tools_needed)
+                {
+
+                    if (PlayerTools.Find(x => x.ToolName == t.ToolName).IsOwned == false)
+                    {
+                        return false;
+                    }
+                }
+            }
             return PlayerMaterials.Contains(this._requirements);
         }
 
-        public void Craft(RawMaterials PlayerMaterials)
+        public void Craft(RawMaterials PlayerMaterials, List<Tool> PlayerTools)
         {
-            if (CanCraft(PlayerMaterials))
+            if (CanCraft(PlayerMaterials, PlayerTools))
             {
 
                 PlayerMaterials.Wood -= Requirements.Wood;
@@ -99,6 +89,7 @@ namespace Tools
             this.ToolName = ToolName;
             _requirements = new RawMaterials(WoodNeeded, StoneNeeded, LianasNeeded, MetalNeeded, WaterNeeded, FoodNeeded);
             this.IsOwned = false;
+            tools_needed = null;
            // this._toolTexture = TexturePath;
         }
         public Tool( string ToolName, int WoodNeeded, int StoneNeeded,
