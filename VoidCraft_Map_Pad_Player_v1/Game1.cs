@@ -46,15 +46,15 @@ namespace VoidCraft_Map_Pad_Player_v1
         Map map;
         GameControler Pad;
         MainMenu main;
-        Messages messages;
+       public static Messages messages;
 
         BackgroundSongs GameBgAmbient;
         SoundEffects GrassWalk;
 
         Direction WalkingDirection;
 
-        public int ScreenX { get; private set; }
-        public int ScreenY { get; private set; }
+        public static int ScreenX { get; private set; }
+        public static int ScreenY { get; private set; }
 
         double WalkSpeed = 0.05;
         int GameHour; // U¿ywaæ metody ChangeGameTime(int H,int M);
@@ -854,17 +854,17 @@ namespace VoidCraft_Map_Pad_Player_v1
 
                 if (DebugMode)
                 {
-                    spriteBatch.DrawString(DefaultFont, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "Square size: " + map.GetZoomValue(), new Vector2(50, 200), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "Game time: " + GameHour + ":" + GameMinute, new Vector2(50, 250), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "Resolution: " + ScreenX + "x" + ScreenY, new Vector2(50, 300), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "Square size: " + map.GetZoomValue(), new Vector2(50, 350), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) + "x" + (((ScreenY / 2)) - map.GetZoomValue()), new Vector2(50, 400), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) / 18 + "x" + (((ScreenY / 2)) - map.GetZoomValue()) / 11, new Vector2(50, 450), Color.Red);
-                    spriteBatch.DrawString(DefaultFont, "DayCycleTimer: " + DayCycleTimer + " ID:" + DayCycle, new Vector2(50, 500), Color.Red); // DayCycle TEST PacTimer
-                    spriteBatch.DrawString(DefaultFont, "PacTimer: " + PacTimer, new Vector2(50, 550), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "X: " + map.GetPosition().X, new Vector2(50, 50), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "Y: " + map.GetPosition().Y, new Vector2(50, 100), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "Dir: " + WalkingDirection.ToString(), new Vector2(50, 150), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "Square size: " + map.GetZoomValue(), new Vector2(50, 200), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "Game time: " + GameHour + ":" + GameMinute, new Vector2(50, 250), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "Resolution: " + ScreenX + "x" + ScreenY, new Vector2(50, 300), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "Square size: " + map.GetZoomValue(), new Vector2(50, 350), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) + "x" + (((ScreenY / 2)) - map.GetZoomValue()), new Vector2(50, 400), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "Player Pos: " + (((ScreenX / 2) - (map.GetZoomValue() / 2))) / 18 + "x" + (((ScreenY / 2)) - map.GetZoomValue()) / 11, new Vector2(50, 450), Color.Red);
+                    //spriteBatch.DrawString(DefaultFont, "DayCycleTimer: " + DayCycleTimer + " ID:" + DayCycle, new Vector2(50, 500), Color.Red); // DayCycle TEST PacTimer
+                    //spriteBatch.DrawString(DefaultFont, "PacTimer: " + PacTimer, new Vector2(50, 550), Color.Red);
 
                     spriteBatch.DrawString(DefaultFont, "Zdrowie: " + Gracz.HP, new Vector2(400, 50), Color.LightGreen);
                     spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.WODA, new Vector2(400, 100), Color.LightGreen);
