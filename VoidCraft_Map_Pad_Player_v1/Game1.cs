@@ -866,6 +866,10 @@ namespace VoidCraft_Map_Pad_Player_v1
                     spriteBatch.DrawString(DefaultFont, "DayCycleTimer: " + DayCycleTimer + " ID:" + DayCycle, new Vector2(50, 500), Color.Red); // DayCycle TEST PacTimer
                     spriteBatch.DrawString(DefaultFont, "PacTimer: " + PacTimer, new Vector2(50, 550), Color.Red);
 
+                    spriteBatch.DrawString(DefaultFont, "Zdrowie: " + Gracz.HP, new Vector2(400, 50), Color.LightGreen);
+                    spriteBatch.DrawString(DefaultFont, "Woda: " + Gracz.WODA, new Vector2(400, 100), Color.LightGreen);
+                    spriteBatch.DrawString(DefaultFont, "Jedzenie: " + Gracz.GLOD, new Vector2(400, 150), Color.LightGreen);
+                    spriteBatch.DrawString(DefaultFont, "Strach: " + Gracz.STRACH, new Vector2(400, 200), Color.LightGreen);
                 }
 
 
