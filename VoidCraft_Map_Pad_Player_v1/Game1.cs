@@ -22,11 +22,14 @@ using System.Xml.Serialization;
 using Raw_Materials_C;
 using System.Diagnostics;
 
+
+/// ZALICZONE NA 58/70 ! Trza by sie napiæ Alan D:
+
 /////////////////////////////////////////////////////////////    J: Kurde nie da sie na timerze zrobic zbierania bo Button A sprawdza tylko warunek przy pierwszym nacisnieciu...
 //////////////////      John                /////////////////
-//////////////////      10.06.2017r         /////////////////   
-//////////////////      7:37                /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
-//////////////////      VERSION 0.061       /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
+//////////////////      13.06.2017r         /////////////////   
+//////////////////      16:11               /////////////////    A: Johnny dodaj tekstury drzewa ,kamienia ,wody itd do 4 warstwy
+//////////////////      VERSION 0.1         /////////////////    P: Juan, trzeba zrobiæ projekt mapy albo tekstury do toolsow
 /////////////////////////////////////////////////////////////    A: ... coœ tam wa¿nego :/ 
 
 // Zrobiona Klasa InGameMenu, nie wrzuca³em jej do maina jeszcze
